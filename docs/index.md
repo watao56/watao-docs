@@ -13,7 +13,7 @@ watao56 のドキュメントサイトへようこそ！
 
     アドが調べた内容のまとめ。技術調査やリサーチ結果を記録。
 
-    [:octicons-arrow-right-24: 調査メモを見る](research/index.md)
+    [調査メモを見る](research/index.md)
 
 -   **🛠️ 技術ノート**
 
@@ -21,7 +21,7 @@ watao56 のドキュメントサイトへようこそ！
 
     開発関連のメモ。コマンド、設定、トラブルシュートなど。
 
-    [:octicons-arrow-right-24: 技術ノートを見る](tech/index.md)
+    [技術ノートを見る](tech/index.md)
 
 -   **📋 プロジェクト**
 
@@ -29,7 +29,7 @@ watao56 のドキュメントサイトへようこそ！
 
     プロジェクトごとのドキュメント。進捗や設計メモ。
 
-    [:octicons-arrow-right-24: プロジェクトを見る](projects/index.md)
+    [プロジェクトを見る](projects/index.md)
 
 -   **💡 アイデア**
 
@@ -37,6 +37,6 @@ watao56 のドキュメントサイトへようこそ！
 
     アイデアや提案のメモ。思いついたことを記録。
 
-    [:octicons-arrow-right-24: アイデアを見る](ideas/index.md)
+    [アイデアを見る](ideas/index.md)
 
 </div>
