@@ -7,27 +7,25 @@ theme:
   name: material
   language: ja
   palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: ダークモードに切り替え
-    - scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-4
-        name: ライトモードに切り替え
+    scheme: slate
+    primary: custom
+    accent: cyan
   features:
     - navigation.sections
     - navigation.expand
     - navigation.top
     - search.highlight
     - content.code.copy
+    - navigation.instant
+    - navigation.tracking
   font:
-    text: Noto Sans JP
-    code: Roboto Mono
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    logo: material/file-document
+
+extra_css:
+  - stylesheets/custom.css
 
 nav:
   - ホーム: index.md
