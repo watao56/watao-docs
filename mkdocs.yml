@@ -35,6 +35,12 @@ nav:
   - 🛠️ 技術ノート:
     - tech/index.md
     - サンプルノート: tech/sample.md
+    - 🤖 Claude Code:
+      - tech/claude-code/index.md
+      - Ghostty 連携: tech/claude-code/ghostty-integration.md
+      - CLAUDE.md / Skills ガイド: tech/claude-code/md-files-guide.md
+      - CLI・MCP 連携: tech/claude-code/cli-integration.md
+      - Tips & Tricks: tech/claude-code/tips-and-tricks.md
   - 📋 プロジェクト:
     - projects/index.md
     - サンプルプロジェクト: projects/sample.md
