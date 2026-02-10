@@ -29,20 +29,16 @@ extra_css:
 
 nav:
   - ホーム: index.md
-  - 📚 調査メモ:
-    - research/index.md
+  - 📚 調査メモ: research/index.md
   - 🛠️ 技術ノート:
-    - tech/index.md
     - 🤖 Claude Code:
       - tech/claude-code/index.md
       - Ghostty 連携: tech/claude-code/ghostty-integration.md
       - CLAUDE.md / Skills ガイド: tech/claude-code/md-files-guide.md
       - CLI・MCP 連携: tech/claude-code/cli-integration.md
       - Tips & Tricks: tech/claude-code/tips-and-tricks.md
-  - 📋 プロジェクト:
-    - projects/index.md
-  - 💡 アイデア:
-    - ideas/index.md
+  - 📋 プロジェクト: projects/index.md
+  - 💡 アイデア: ideas/index.md
 
 markdown_extensions:
   - admonition
