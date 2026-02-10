@@ -1,21 +1,24 @@
-# Claude Code Tips & Tricks
+# Tips & Tricks
 
-実践的な小技、コスト最適化、hooks、カスタムコマンドなど。
+コスト最適化、プロンプト設計、権限設定、Extended Thinking、よくある失敗パターンとその対策。
 
 ## コスト最適化
 
-### コンテキスト管理が最重要
+### コンテキスト管理が全て
 
 Claude Code のコストはトークン消費量に直結する。コンテキストウィンドウが埋まるほど、トークン消費も品質低下も加速する。
 
+> Claude のコンテキストウィンドウには会話全体が入る：全メッセージ、Claude が読んだ全ファイル、全コマンド出力。しかしこれはすぐに埋まる。1回のデバッグやコードベース探索で数万トークンを生成・消費することがある。
+>
+> — [公式ベストプラクティス](https://code.claude.com/docs/en/best-practices)
+
 #### 基本戦略
 
-```
-1. /clear — タスク完了ごとにコンテキストをリセット
-2. /compact — 長い会話を要約してコンテキストを縮小
-3. 1セッション1タスク — 複数タスクを1セッションに詰め込まない
-4. 新鮮なコンテキスト — 「AI のコンテキストは牛乳。新鮮で濃縮されたものが最高」
-```
+1. **`/clear`** — タスク完了ごとにコンテキストをリセット
+2. **`/compact`** — 長い会話を要約して圧縮（`/compact API変更に集中` でフォーカス指定可能）
+3. **1セッション1タスク** — 複数の無関係なタスクを1セッションに詰め込まない
+4. **サブエージェント** — 調査は別コンテキストで実行、結果の要約だけ受け取る
+5. **`/rewind` + 要約** — `Esc × 2` で選択メッセージから要約し、前のコンテキストは保持
 
 #### .claudeignore で不要ファイルを除外
 
@@ -32,223 +35,33 @@ __pycache__/
 .next/
 ```
 
-#### ステータスラインでトークン監視
+#### カスタムコンパクション指示
 
-Claude Code のステータスラインをカスタマイズしてトークン使用量を常時表示:
+CLAUDE.md にコンパクション時の指示を書ける：
 
-```bash
-# Claude Code 内で
-/config
-# → status_line を設定
+```markdown
+# コンパクション時の注意
+コンパクション実行時は、変更したファイルの完全なリストとテストコマンドを必ず保持すること。
 ```
 
 ### モデルの使い分け
 
 | シナリオ | 推奨モデル |
 |----------|-----------|
-| 複雑なアーキテクチャ設計 | Opus |
+| 複雑なアーキテクチャ設計、難しい推論 | Opus |
 | 日常的な実装・デバッグ | Sonnet |
-| 簡単なファイル操作・質問 | Haiku |
+| 高速な探索・簡単な質問 | Haiku |
 
 ```bash
-# モデル切り替え
+# モデル切り替え（Claude Code 内）
 /model opus
 /model sonnet
 /model haiku
 ```
 
-## Hooks の活用
+### Agent Teams のトークンコスト
 
-### Hooks とは
-
-Claude Code のライフサイクルの特定のポイントで**自動的にスクリプトを実行**する仕組み。CLAUDE.md の指示は助言的だが、hooks は**確定的に実行される**。
-
-### 主要なイベント
-
-| イベント | タイミング |
-|----------|-----------|
-| `SessionStart` | セッション開始・再開時 |
-| `UserPromptSubmit` | プロンプト送信時 |
-| `PreToolUse` | ツール実行前（ブロック可能） |
-| `PostToolUse` | ツール実行成功後 |
-| `PostToolUseFailure` | ツール実行失敗後 |
-| `Notification` | Claude が通知を送信時 |
-| `Stop` | Claude の応答完了時 |
-| `PreCompact` | コンパクション前 |
-| `SessionEnd` | セッション終了時 |
-
-### 実用的な Hook 例
-
-#### デスクトップ通知（Claude が待機中に通知）
-
-```json
-{
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "osascript -e 'display notification \"Claude Code needs your attention\" with title \"Claude Code\"'"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-Linux の場合:
-
-```json
-{
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "notify-send 'Claude Code' 'Claude Code needs your attention'"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### ファイル編集後に自動フォーマット
-
-```json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "jq -r '.tool_input.file_path' | xargs npx prettier --write"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### 保護ファイルへの編集をブロック
-
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "jq -r '.tool_input.file_path' | grep -qE '(\\.env|package-lock\\.json|\\.git/)' && echo 'Protected file' >&2 && exit 2 || exit 0"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### コンパクション後にコンテキストを再注入
-
-```json
-{
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "compact",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo 'リマインダー: pnpm を使う（npm ではない）。コミット前に pnpm test を実行。現在のスプリント: 認証リファクタリング'"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-### Hook の設定場所
-
-```
-~/.claude/settings.json          — 全プロジェクト共通
-.claude/settings.json            — プロジェクト固有
-```
-
-!!! tip "Claude に Hook を書かせる"
-    「ファイル編集後に eslint を実行する hook を書いて」のようにプロンプトで指示できる。`/hooks` コマンドで対話的に設定も可能。
-
-## カスタムスラッシュコマンド（Skills）
-
-!!! info "コマンドとスキルの統合"
-    `.claude/commands/` のカスタムスラッシュコマンドは `.claude/skills/` のスキルと**統合された**。どちらの場所に置いても `/name` で呼び出せる。同名の場合はスキルが優先。
-
-### よく使うカスタムコマンド例
-
-#### /review — コードレビュー
-
-```yaml
-# .claude/skills/review/SKILL.md
----
-name: review
-description: 変更されたファイルのコードレビュー
-disable-model-invocation: true
----
-git diff で変更されたファイルをレビューする。
-
-1. `git diff --name-only HEAD~1` で変更ファイルを取得
-2. 各ファイルの差分を確認
-3. 以下の観点でレビュー:
-   - バグの可能性
-   - セキュリティリスク
-   - パフォーマンス問題
-   - コードスタイルの一貫性
-4. 問題点と改善提案をまとめる
-```
-
-#### /commit — スマートコミット
-
-```yaml
-# .claude/skills/commit/SKILL.md
----
-name: commit
-description: 変更内容から適切なコミットメッセージを生成してコミット
-disable-model-invocation: true
----
-1. `git diff --staged` でステージされた変更を確認
-2. 変更内容を分析
-3. Conventional Commits 形式のメッセージを生成
-4. `git commit -m "<message>"` でコミット
-```
-
-#### /test — テスト生成
-
-```yaml
-# .claude/skills/test/SKILL.md
----
-name: test
-description: 指定ファイルのテストを生成
-disable-model-invocation: true
-argument-hint: [ファイルパス]
----
-$ARGUMENTS のテストを作成する。
-
-1. 対象ファイルを読み込む
-2. 既存のテストパターンを確認（テストディレクトリを検索）
-3. エッジケースを含むテストを作成
-4. テストを実行して全てパスすることを確認
-```
+Agent Teams は各チームメイトが個別のコンテキストウィンドウを持つため、トークン使用量が大幅に増える。リサーチ・レビュー・新機能開発では追加トークンに見合う価値があるが、ルーチンタスクでは単一セッションの方がコスト効率が良い。
 
 ## プロンプトエンジニアリング
 
@@ -271,99 +84,92 @@ validateEmail 関数を書いて。
 既存のウィジェット実装を確認して（HotDogWidget.php が良い例）。
 同じパターンに従ってカレンダーウィジェットを実装して。
 月選択とページネーション機能付き。
+外部ライブラリは、既にコードベースで使われているもの以外使わない。
+```
+
+#### 症状の具体的な記述
+
+```
+セッションタイムアウト後にログインが失敗する。
+src/auth/ の認証フロー、特にトークンリフレッシュを確認して。
+問題を再現するテストを書いてから修正して。
 ```
 
 #### スクリーンショットベースの UI 指示
 
 ```
 [画像をペースト]
-このデザインを実装して。完成後にスクリーンショットを撮って元のデザインと比較して。
-差異があれば修正して。
+このデザインを実装して。完成後にスクリーンショットを撮って
+元のデザインと比較して。差異があれば修正して。
+```
+
+#### Claude にインタビューさせる
+
+```
+[機能の簡単な説明]を構築したい。AskUserQuestion ツールを使って
+詳細にインタビューして。
+自明な質問は避け、見落としそうな部分を掘り下げて。
+全てカバーしたら SPEC.md に完全な仕様書を書いて。
 ```
 
 ### やってはいけないこと
 
-| ❌ 悪い例 | ✅ 良い例 |
-|----------|----------|
-| 「このファイルを改善して」 | 「この関数のエラーハンドリングを追加して。null の場合のケースを処理」 |
-| 「バグを直して」 | 「ログイン後にリダイレクトが失敗する。src/auth/redirect.ts を確認して」 |
-| 「テストを書いて」 | 「src/utils/parser.ts のエッジケーステストを書いて。空文字列、null、巨大入力を含める」 |
+| ❌ 悪い例 | ✅ 良い例 | 理由 |
+|----------|----------|------|
+| 「このファイルを改善して」 | 「この関数のエラーハンドリングを追加。null ケースを処理」 | スコープが曖昧 |
+| 「バグを直して」 | 「ログイン後のリダイレクト失敗。src/auth/redirect.ts を確認」 | 症状と場所が不明 |
+| 「テストを書いて」 | 「src/utils/parser.ts のエッジケーステスト。空文字列、null、巨大入力」 | 対象とケースが不明 |
+| 「調査して」（スコープなし） | 「src/auth/ のトークンリフレッシュ処理を調査して」 | 無限探索になる |
 
-## マルチリポジトリ運用
+!!! tip "曖昧なプロンプトが有効な場面"
+    探索的な作業で軌道修正できる場合、「このファイルで何を改善する？」のような曖昧なプロンプトが有効な場合もある。思いつかなかった問題を見つけてくれることがある。
 
-### --add-dir でマルチリポジトリ
+## コードベースの質問
+
+新しいプロジェクトにオンボーディングする際、Claude Code に他のエンジニアに聞くのと同じような質問ができる：
+
+```
+「ロギングの仕組みは？」
+「新しい API エンドポイントの作り方は？」
+「foo.rs の 134 行目の async move { ... } は何をしている？」
+「CustomerOnboardingFlowImpl はどんなエッジケースを処理している？」
+「333 行目で bar() ではなく foo() を呼んでいるのはなぜ？」
+```
+
+特別なプロンプト技法は不要。直接質問するだけでよい。
+
+## Extended Thinking（拡張思考）
+
+### 概要
+
+Extended Thinking はデフォルトで有効。複雑な問題で Claude が段階的に推論する空間を与える。
+
+Opus 4.6 では**適応推論（Adaptive Reasoning）**が導入され、固定の思考トークン予算ではなく、Effort Level に基づいて動的に思考を割り当てる。
+
+### 設定方法
+
+| 設定 | 方法 | 詳細 |
+|------|------|------|
+| Effort Level | `/model` で調整 or `CLAUDE_CODE_EFFORT_LEVEL` 環境変数 | `low`, `medium`, `high`（デフォルト） |
+| トグルショートカット | `Option+T`（macOS）/ `Alt+T`（Win/Linux） | 現セッションで on/off |
+| グローバルデフォルト | `/config` で設定 | `alwaysThinkingEnabled` として保存 |
+| トークン制限 | `MAX_THINKING_TOKENS` 環境変数 | 思考予算を制限（Opus 4.6 では 0 以外は無視） |
+
+### いつ有効か
+
+- 複雑なアーキテクチャ設計
+- 難しいバグ
+- マルチステップの実装計画
+- 異なるアプローチ間のトレードオフ評価
+
+### 思考プロセスの確認
 
 ```bash
-# メインリポジトリで起動し、他リポジトリも参照可能にする
-claude --add-dir ../shared-lib --add-dir ../api-server
+# Verbose モードで思考過程を表示
+Ctrl+O  # トグル
 ```
 
-### モノレポでの CLAUDE.md 配置
-
-```
-monorepo/
-├── CLAUDE.md                    # 共通ルール
-├── packages/
-│   ├── frontend/
-│   │   ├── CLAUDE.md            # フロントエンド固有ルール
-│   │   └── .claude/skills/      # フロントエンド固有スキル
-│   ├── backend/
-│   │   ├── CLAUDE.md            # バックエンド固有ルール
-│   │   └── .claude/skills/
-│   └── shared/
-│       └── CLAUDE.md            # 共有ライブラリのルール
-```
-
-Claude Code は作業中のディレクトリに応じて、該当する階層の CLAUDE.md を自動でマージして読み込む。
-
-## CI/CD との連携
-
-### GitHub Actions での利用
-
-```yaml
-# .github/workflows/claude-review.yml
-name: Claude Code Review
-on:
-  pull_request:
-    types: [opened, synchronize]
-
-jobs:
-  review:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - run: npm install -g @anthropic-ai/claude-code
-      - name: Review PR
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          claude -p "git diff origin/main...HEAD の変更をレビューして、
-            問題点があれば指摘して。結果を review.md に書き出して" \
-            --allowedTools "Read,Bash,Write"
-      - name: Upload review
-        uses: actions/upload-artifact@v4
-        with:
-          name: code-review
-          path: review.md
-```
-
-### pre-commit hook での利用
-
-```bash
-#!/bin/bash
-# .git/hooks/pre-commit
-
-# ステージされたファイルの簡易チェック
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
-
-if [ -n "$STAGED_FILES" ]; then
-  claude -p "以下のファイルの変更に明らかなバグやセキュリティ問題がないか簡潔にチェックして:
-    $STAGED_FILES" --allowedTools "Read,Bash" 2>/dev/null
-fi
-```
+灰色のイタリック体で内部推論が表示される。
 
 ## 権限設定の最適化
 
@@ -386,12 +192,14 @@ fi
 }
 ```
 
+!!! warning "パーミッションルールの構文"
+    `Bash(git diff *)` のように末尾に `*` を付けるとプレフィックスマッチ。`*` の前のスペースが重要：`Bash(git diff*)` だと `git diff-index` にもマッチしてしまう。
+
 ### サンドボックスモード
 
-OS レベルの分離で、ファイルシステム・ネットワークアクセスを制限しつつ Claude に自由度を与える:
+OS レベルの分離で、ファイルシステム・ネットワークアクセスを制限しつつ Claude に自由度を与える：
 
 ```bash
-# サンドボックス有効で起動
 claude --sandbox
 ```
 
@@ -403,38 +211,95 @@ claude --dangerously-skip-permissions
 ```
 
 !!! danger "注意"
-    `--dangerously-skip-permissions` は信頼できる環境でのみ使用すること。ローカル開発では許可リストを推奨。
+    `--dangerously-skip-permissions` は信頼できる環境でのみ使用する。ローカル開発では許可リストを推奨。
+
+## よくある失敗パターンとその対策
+
+Anthropic 公式ドキュメントで明記されている、避けるべき典型的なパターン：
+
+### 1. キッチンシンク・セッション
+
+**症状**: 1つのタスクで始め、無関係なことを聞き、元のタスクに戻る。コンテキストが無関係な情報で埋まる。
+
+**対策**: `/clear` で無関係なタスク間にリセット。
+
+### 2. 修正の繰り返し
+
+**症状**: Claude が間違え、修正し、まだ間違い、また修正。コンテキストが失敗アプローチで汚染される。
+
+**対策**: 2回修正しても直らなければ `/clear`。学んだことを反映したより良い初期プロンプトで再開。
+
+### 3. 肥大化した CLAUDE.md
+
+**症状**: CLAUDE.md が長すぎて、Claude が半分を無視。重要なルールがノイズに埋もれる。
+
+**対策**: 情け容赦なく整理。Claude が指示なしで既に正しく動いていることは削除するか、確実に実行させたいなら Hook に変換。
+
+### 4. 信頼と検証のギャップ
+
+**症状**: Claude がもっともらしい実装を生成するが、エッジケースを処理していない。
+
+**対策**: 常に検証手段（テスト、スクリプト、スクリーンショット）を提供する。検証できないなら出荷しない。
+
+### 5. 無限探索
+
+**症状**: スコープなしで「調査して」と依頼。Claude が数百のファイルを読み、コンテキストが埋まる。
+
+**対策**: 調査のスコープを絞るか、サブエージェントを使って探索がメインコンテキストを消費しないようにする。
+
+## マルチリポジトリ運用
+
+### --add-dir でマルチリポジトリ
+
+```bash
+# メインリポジトリで起動し、他リポジトリも参照可能にする
+claude --add-dir ../shared-lib --add-dir ../api-server
+```
+
+### モノレポでの CLAUDE.md 配置
+
+```
+monorepo/
+├── CLAUDE.md                    # 共通ルール
+├── .claude/
+│   └── rules/
+│       ├── code-style.md        # 共通コードスタイル
+│       └── testing.md           # 共通テスト規約
+├── packages/
+│   ├── frontend/
+│   │   ├── CLAUDE.md            # フロントエンド固有ルール
+│   │   └── .claude/skills/      # フロントエンド固有スキル
+│   ├── backend/
+│   │   ├── CLAUDE.md            # バックエンド固有ルール
+│   │   └── .claude/skills/
+│   └── shared/
+│       └── CLAUDE.md            # 共有ライブラリのルール
+```
+
+Claude Code は作業中のディレクトリに応じて、該当する階層の CLAUDE.md を自動でマージして読み込む。`.claude/rules/` のパス固有ルールを使えば、特定のファイルにのみ適用されるルールも定義できる。
 
 ## プラグインの活用
 
 ### プラグインとは
 
-Skills、hooks、サブエージェント、MCP サーバーを**ひとつのパッケージ**にまとめたもの。コミュニティや Anthropic が公開。
+Skills、Hooks、サブエージェント、MCP サーバーを**1つのパッケージ**にまとめたもの。コミュニティや Anthropic が公開。
 
 ### コードインテリジェンスプラグイン
 
-型付き言語を使っているなら、[コードインテリジェンスプラグイン](https://code.claude.com/docs/en/discover-plugins#code-intelligence) をインストールすると、シンボルナビゲーションや編集後の自動エラー検出が利用できる。
+型付き言語を使っているなら、[コードインテリジェンスプラグイン](https://code.claude.com/docs/en/discover-plugins#code-intelligence)をインストールすると、シンボルナビゲーションや編集後の自動エラー検出が利用できる。
 
-### awesome-claude-code
+### コミュニティリソース
 
-コミュニティのプラグイン・スキル集:
+- [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) — プラグイン・スキル・Hook の包括的なリスト
+- [awesome-claude-code-plugins](https://github.com/ccplugins/awesome-claude-code-plugins) — プラグイン集
+- [awesome-claude-md](https://github.com/josix/awesome-claude-md) — CLAUDE.md の優れた実例集
 
-- [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code)
-- [awesome-claude-code-plugins](https://github.com/ccplugins/awesome-claude-code-plugins)
+## 直感を磨く
 
-## よく使うコマンド早見表
+> このガイドのパターンは固定されたものではない。一般的にうまくいく出発点だが、全ての状況に最適とは限らない。
+>
+> — [公式ベストプラクティス](https://code.claude.com/docs/en/best-practices)
 
-| コマンド | 説明 |
-|----------|------|
-| `/clear` | コンテキストをクリア |
-| `/compact` | 会話を要約して圧縮 |
-| `/init` | CLAUDE.md を自動生成 |
-| `/model` | モデル切り替え |
-| `/config` | 設定変更 |
-| `/hooks` | Hook の対話的設定 |
-| `/mcp` | MCP サーバーのステータス |
-| `/permissions` | 権限設定 |
-| `/vim` | Vim モード切り替え |
-| `/terminal-setup` | ターミナル設定 |
-| `Shift+Tab` × 2 | Plan Mode（計画のみ、実行しない） |
-| `Esc` | 実行中のタスクを中断 |
+**うまくいくパターンに注意を払う。** Claude が素晴らしい出力を出した時、自分が何をしたかに気づく：プロンプトの構造、提供したコンテキスト、使ったモード。Claude が苦戦した時は、なぜかを考える。コンテキストがノイジーすぎた？プロンプトが曖昧すぎた？タスクが1回で処理するには大きすぎた？
+
+時間とともに、ガイドでは伝えられない直感を身につけることができる。いつ具体的にするか、いつオープンエンドにするか。いつ計画してからいつ探索するか。いつコンテキストをクリアして、いつ蓄積するか。

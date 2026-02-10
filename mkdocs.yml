@@ -33,9 +33,12 @@ nav:
   - 🛠️ 技術ノート:
     - 🤖 Claude Code:
       - tech/claude-code/index.md
-      - Ghostty 連携: tech/claude-code/ghostty-integration.md
-      - CLAUDE.md / Skills ガイド: tech/claude-code/md-files-guide.md
+      - CLAUDE.md メモリ管理: tech/claude-code/md-files-guide.md
+      - エージェントモード活用: tech/claude-code/agent-mode.md
+      - Hooks・自動化: tech/claude-code/hooks-automation.md
+      - CI/CD・GitHub Actions: tech/claude-code/ci-cd-integration.md
       - CLI・MCP 連携: tech/claude-code/cli-integration.md
+      - Ghostty 連携: tech/claude-code/ghostty-integration.md
       - Tips & Tricks: tech/claude-code/tips-and-tricks.md
   - 📋 プロジェクト: projects/index.md
   - 💡 アイデア: ideas/index.md

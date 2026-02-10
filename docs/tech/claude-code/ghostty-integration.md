@@ -121,11 +121,11 @@ keybind = shift+enter=text:\x0a
 [Tab 1: プロジェクトA] [Tab 2: プロジェクトB] [Tab 3: プロジェクトC]
 ```
 
-各タブで別の Claude Code セッションを起動。タブ切り替え（`Cmd+数字`）で即座にプロジェクトを行き来。
+各タブで別の Claude Code セッションを起動。タブ切り替え（`Cmd+数字`）で即座にプロジェクトを行き来。セッションに名前を付けて（`/rename`）後で再開しやすくする。
 
-### 上級パターン: 同一プロジェクト多角アプローチ
+### Git Worktree + 複数タブで並行開発
 
-git worktree を活用して、同じリポジトリで並行作業する:
+[Agent Teams](agent-mode.md#agent-teams) を使わない場合でも、Git Worktree で同一リポジトリの並行作業が可能：
 
 ```bash
 # worktree を作成
@@ -149,36 +149,14 @@ cd ~/projects/myapp-docs && claude
 ### Ghostty 側の最適化
 
 ```ini
-# GPU レンダリング（デフォルトで有効）
-# 特に設定不要だが、問題がある場合は以下で調整
-# renderer = opengl
-
-# フレームレート制限（バッテリー節約）
-# repaint-hz = 60
-
 # 大量出力時のパフォーマンス
 scrollback-limit = 5000
-```
-
-### Claude Code 側の最適化
-
-```bash
-# コンテキストが重くなったらリセット
-# Claude Code 内で:
-/clear
-
-# 定期的にコンパクション
-/compact
-
-# 不要なファイル読み込みを避ける .claudeignore
-echo "node_modules/\ndist/\n.git/" > .claudeignore
 ```
 
 ### シェル統合の設定
 
 ```bash
 # .zshrc / .bashrc に追加
-# Claude Code のパスを通す
 export PATH="$HOME/.npm-global/bin:$PATH"
 
 # エイリアス
@@ -196,13 +174,17 @@ alias ccr="claude --resume"
 | GPU レンダリング | 全ペイン対応 | 制限あり |
 | コピーペースト | OS ネイティブ | tmux バッファ経由 |
 | セッション永続化 | ❌ | ✅ |
+| Agent Teams Split Pane | ❌（非対応） | ✅ |
 
-!!! note "tmux が必要な場合"
-    SSH 先でのセッション維持が必要なら tmux を使う。ローカル作業なら Ghostty ネイティブ分割で十分。
+!!! note "tmux を使うべき場面"
+    - SSH 先でのセッション維持が必要な場合
+    - Agent Teams の Split Pane モードを使いたい場合（Ghostty は現在非対応）
+    - ローカルのみで Agent Teams を使わないなら、Ghostty ネイティブ分割で十分
 
 ## まとめ
 
 - **Ghostty + Claude Code CLI** はメモリ効率・応答速度で最強の組み合わせ
 - 分割・タブを活用して複数セッションを軽量に並行運用
 - Shift+Enter 設定を忘れずに
-- worktree + 複数タブで同一プロジェクトの多角的開発が可能
+- Worktree + 複数タブで同一プロジェクトの多角的開発が可能
+- Agent Teams の Split Pane を使いたい場合は tmux を併用
