@@ -31,10 +31,8 @@ nav:
   - ホーム: index.md
   - 📚 調査メモ:
     - research/index.md
-    - サンプル調査: research/sample.md
   - 🛠️ 技術ノート:
     - tech/index.md
-    - サンプルノート: tech/sample.md
     - 🤖 Claude Code:
       - tech/claude-code/index.md
       - Ghostty 連携: tech/claude-code/ghostty-integration.md
@@ -43,10 +41,8 @@ nav:
       - Tips & Tricks: tech/claude-code/tips-and-tricks.md
   - 📋 プロジェクト:
     - projects/index.md
-    - サンプルプロジェクト: projects/sample.md
   - 💡 アイデア:
     - ideas/index.md
-    - サンプルアイデア: ideas/sample.md
 
 markdown_extensions:
   - admonition
