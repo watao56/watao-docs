@@ -1,0 +1,64 @@
+site_name: Watao Docs
+site_url: https://watao56.github.io/watao-docs/
+site_description: watao56のドキュメントサイト
+site_author: watao56
+
+theme:
+  name: material
+  language: ja
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: ダークモードに切り替え
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: ライトモードに切り替え
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+  font:
+    text: Noto Sans JP
+    code: Roboto Mono
+
+nav:
+  - ホーム: index.md
+  - 📚 調査メモ:
+    - research/index.md
+    - サンプル調査: research/sample.md
+  - 🛠️ 技術ノート:
+    - tech/index.md
+    - サンプルノート: tech/sample.md
+  - 📋 プロジェクト:
+    - projects/index.md
+    - サンプルプロジェクト: projects/sample.md
+  - 💡 アイデア:
+    - ideas/index.md
+    - サンプルアイデア: ideas/sample.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+plugins:
+  - search:
+      lang: ja
