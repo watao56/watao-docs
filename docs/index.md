@@ -7,7 +7,7 @@ watao56 のドキュメントサイトへようこそ！
 
 <div class="grid cards" markdown>
 
--   :material-book-open-variant:{ .lg .middle } **📚 調査メモ**
+-   **📚 調査メモ**
 
     ---
 
@@ -15,7 +15,7 @@ watao56 のドキュメントサイトへようこそ！
 
     [:octicons-arrow-right-24: 調査メモを見る](research/index.md)
 
--   :material-wrench:{ .lg .middle } **🛠️ 技術ノート**
+-   **🛠️ 技術ノート**
 
     ---
 
@@ -23,7 +23,7 @@ watao56 のドキュメントサイトへようこそ！
 
     [:octicons-arrow-right-24: 技術ノートを見る](tech/index.md)
 
--   :material-clipboard-text:{ .lg .middle } **📋 プロジェクト**
+-   **📋 プロジェクト**
 
     ---
 
@@ -31,7 +31,7 @@ watao56 のドキュメントサイトへようこそ！
 
     [:octicons-arrow-right-24: プロジェクトを見る](projects/index.md)
 
--   :material-lightbulb-on:{ .lg .middle } **💡 アイデア**
+-   **💡 アイデア**
 
     ---
 
