@@ -33,6 +33,8 @@ nav:
   - 🛠️ 技術ノート:
     - 🤖 Claude Code:
       - tech/claude-code/index.md
+      - Mac セットアップ: tech/claude-code/setup-mac.md
+      - Windows セットアップ: tech/claude-code/setup-windows.md
       - CLAUDE.md メモリ管理: tech/claude-code/md-files-guide.md
       - エージェントモード活用: tech/claude-code/agent-mode.md
       - Hooks・自動化: tech/claude-code/hooks-automation.md
