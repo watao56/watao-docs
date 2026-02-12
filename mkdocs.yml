@@ -62,6 +62,15 @@ nav:
       - カスタムGPTs: tech/chatgpt/custom-gpts.md
       - API活用: tech/chatgpt/api.md
       - Claude使い分け: tech/chatgpt/vs-claude.md
+    - 💬 Gemini:
+      - tech/gemini-app/index.md
+      - モード活用: tech/gemini-app/modes.md
+      - プロンプト設計: tech/gemini-app/prompts.md
+      - Gems: tech/gemini-app/gems.md
+      - API活用: tech/gemini-app/api.md
+      - Workspace連携: tech/gemini-app/workspace.md
+      - NotebookLM: tech/gemini-app/notebooklm.md
+      - Claude使い分け: tech/gemini-app/vs-claude.md
     - 🎯 Skills:
       - tech/skills/index.md
       - おすすめSkills一覧: tech/skills/recommended.md
