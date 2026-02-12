@@ -71,6 +71,14 @@ nav:
       - Workspace連携: tech/gemini-app/workspace.md
       - NotebookLM: tech/gemini-app/notebooklm.md
       - Claude使い分け: tech/gemini-app/vs-claude.md
+    - 💜 Claude:
+      - tech/claude/index.md
+      - モード・機能活用: tech/claude/modes.md
+      - プロンプト設計: tech/claude/prompts.md
+      - Projects: tech/claude/projects.md
+      - API活用: tech/claude/api.md
+      - エコシステム: tech/claude/ecosystem.md
+      - ChatGPT・Gemini使い分け: tech/claude/vs-others.md
     - 🎯 Skills:
       - tech/skills/index.md
       - おすすめSkills一覧: tech/skills/recommended.md
