@@ -55,6 +55,15 @@ nav:
       - セットアップ: tech/codex/setup.md
       - 活用事例: tech/codex/use-cases.md
       - ツール比較: tech/codex/comparison.md
+    - 🎯 Skills:
+      - tech/skills/index.md
+      - おすすめSkills一覧: tech/skills/recommended.md
+      - 自作Skillの作り方: tech/skills/create.md
+    - 🔌 MCP:
+      - tech/mcp/index.md
+      - おすすめサーバー: tech/mcp/servers.md
+      - セットアップ: tech/mcp/setup.md
+      - 活用事例: tech/mcp/use-cases.md
   - 📋 プロジェクト: projects/index.md
   - 💡 アイデア: ideas/index.md
 
