@@ -77,6 +77,8 @@ nav:
       - プロンプト設計: tech/claude/prompts.md
       - Projects: tech/claude/projects.md
       - API活用: tech/claude/api.md
+      - Cowork活用: tech/claude/cowork.md
+      - Microsoft Office連携: tech/claude/office.md
       - エコシステム: tech/claude/ecosystem.md
       - ChatGPT・Gemini使い分け: tech/claude/vs-others.md
     - 🎯 Skills:
