@@ -50,6 +50,11 @@ nav:
       - セットアップ: tech/gemini/setup.md
       - 活用事例: tech/gemini/use-cases.md
       - Claude Codeとの連携: tech/gemini/integration.md
+    - 🤖 Codex CLI:
+      - tech/codex/index.md
+      - セットアップ: tech/codex/setup.md
+      - 活用事例: tech/codex/use-cases.md
+      - ツール比較: tech/codex/comparison.md
   - 📋 プロジェクト: projects/index.md
   - 💡 アイデア: ideas/index.md
 
