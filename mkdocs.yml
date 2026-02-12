@@ -54,6 +54,14 @@ nav:
       - セットアップ: tech/codex/setup.md
       - 活用事例: tech/codex/use-cases.md
       - ツール比較: tech/codex/comparison.md
+    - 💬 ChatGPT:
+      - tech/chatgpt/index.md
+      - モード活用: tech/chatgpt/modes.md
+      - プロンプト設計: tech/chatgpt/prompts.md
+      - カスタム指示: tech/chatgpt/custom-instructions.md
+      - カスタムGPTs: tech/chatgpt/custom-gpts.md
+      - API活用: tech/chatgpt/api.md
+      - Claude使い分け: tech/chatgpt/vs-claude.md
     - 🎯 Skills:
       - tech/skills/index.md
       - おすすめSkills一覧: tech/skills/recommended.md
