@@ -42,6 +42,9 @@ nav:
       - CLI・MCP 連携: tech/claude-code/cli-integration.md
       - Ghostty 連携: tech/claude-code/ghostty-integration.md
       - Tips & Tricks: tech/claude-code/tips-and-tricks.md
+      - 実践活用事例集: tech/claude-code/use-cases.md
+      - 上級ワークフロー: tech/claude-code/advanced-workflows.md
+      - 実例：プロジェクト構築の全工程: tech/claude-code/real-project-example.md
   - 📋 プロジェクト: projects/index.md
   - 💡 アイデア: ideas/index.md
 
