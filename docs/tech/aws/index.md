@@ -234,12 +234,23 @@ aws rds describe-db-instances     # DBインスタンス一覧
 aws rds create-db-instance        # DBインスタンス作成
 ```
 
-## 次のステップ
+## サービス別ガイド
 
-- [EC2概要](ec2/index.md) - 仮想サーバーの基本と選び方
-- [EC2セットアップ](ec2/setup.md) - インスタンス作成の詳細手順
-- [EC2活用事例](ec2/use-cases.md) - 実践的な使用例
-- [EC2セキュリティ](ec2/security.md) - セキュリティのベストプラクティス
+### EC2（仮想サーバー）
+- [EC2概要](ec2/index.md) - インスタンスタイプと料金モデル
+- [セットアップ](ec2/setup.md) - インスタンス作成の詳細手順
+- [活用事例](ec2/use-cases.md) - Webサーバー、Auto Scaling等
+- [セキュリティ](ec2/security.md) - SG、IAM、監視のベストプラクティス
+
+### S3（オブジェクトストレージ）
+- [S3概要](s3/index.md) - ストレージクラスと料金
+- [セットアップ](s3/setup.md) - バケット作成、アクセス制御、CLI操作
+- [活用事例](s3/use-cases.md) - 静的ホスティング、バックアップ、データレイク
+
+### CloudFront（CDN）
+- [CloudFront概要](cloudfront/index.md) - CDNの仕組みと料金
+- [セットアップ](cloudfront/setup.md) - ディストリビューション作成、SSL/TLS、キャッシュ
+- [活用事例](cloudfront/use-cases.md) - 静的サイト配信、Lambda@Edge、WAF連携
 
 !!! note "継続学習のヒント"
     AWSは常に新機能がリリースされます。[AWS News Blog](https://aws.amazon.com/jp/blogs/news/)や[AWS What's New](https://aws.amazon.com/jp/new/)で最新情報をキャッチアップしましょう。
