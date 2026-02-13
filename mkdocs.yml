@@ -30,66 +30,68 @@ nav:
   - ホーム: index.md
   - 📚 調査メモ: research/index.md
   - 🛠️ 技術ノート:
-    - 🤖 Claude Code:
-      - tech/claude-code/index.md
-      - Mac セットアップ: tech/claude-code/setup-mac.md
-      - Windows セットアップ: tech/claude-code/setup-windows.md
-      - CLAUDE.md メモリ管理: tech/claude-code/md-files-guide.md
-      - エージェントモード活用: tech/claude-code/agent-mode.md
-      - Hooks・自動化: tech/claude-code/hooks-automation.md
-      - CI/CD・GitHub Actions: tech/claude-code/ci-cd-integration.md
-      - CLI・MCP 連携: tech/claude-code/cli-integration.md
-      - Ghostty 連携: tech/claude-code/ghostty-integration.md
-      - Tips & Tricks: tech/claude-code/tips-and-tricks.md
-      - 実践活用事例集: tech/claude-code/use-cases.md
-      - 上級ワークフロー: tech/claude-code/advanced-workflows.md
-      - 実例：プロジェクト構築の全工程: tech/claude-code/real-project-example.md
-    - 🤖 Gemini CLI:
-      - tech/gemini/index.md
-      - セットアップ: tech/gemini/setup.md
-      - 活用事例: tech/gemini/use-cases.md
-      - Claude Codeとの連携: tech/gemini/integration.md
-    - 🤖 Codex CLI:
-      - tech/codex/index.md
-      - セットアップ: tech/codex/setup.md
-      - 活用事例: tech/codex/use-cases.md
-      - ツール比較: tech/codex/comparison.md
-    - 💬 ChatGPT:
-      - tech/chatgpt/index.md
-      - モード活用: tech/chatgpt/modes.md
-      - プロンプト設計: tech/chatgpt/prompts.md
-      - カスタム指示: tech/chatgpt/custom-instructions.md
-      - カスタムGPTs: tech/chatgpt/custom-gpts.md
-      - API活用: tech/chatgpt/api.md
-      - Claude使い分け: tech/chatgpt/vs-claude.md
-    - 💬 Gemini:
-      - tech/gemini-app/index.md
-      - モード活用: tech/gemini-app/modes.md
-      - プロンプト設計: tech/gemini-app/prompts.md
-      - Gems: tech/gemini-app/gems.md
-      - API活用: tech/gemini-app/api.md
-      - Workspace連携: tech/gemini-app/workspace.md
-      - NotebookLM: tech/gemini-app/notebooklm.md
-      - Claude使い分け: tech/gemini-app/vs-claude.md
-    - 💜 Claude:
-      - tech/claude/index.md
-      - モード・機能活用: tech/claude/modes.md
-      - プロンプト設計: tech/claude/prompts.md
-      - Projects: tech/claude/projects.md
-      - API活用: tech/claude/api.md
-      - Cowork活用: tech/claude/cowork.md
-      - Microsoft Office連携: tech/claude/office.md
-      - エコシステム: tech/claude/ecosystem.md
-      - ChatGPT・Gemini使い分け: tech/claude/vs-others.md
-    - 🎯 Skills:
-      - tech/skills/index.md
-      - おすすめSkills一覧: tech/skills/recommended.md
-      - 自作Skillの作り方: tech/skills/create.md
-    - 🔌 MCP:
-      - tech/mcp/index.md
-      - おすすめサーバー: tech/mcp/servers.md
-      - セットアップ: tech/mcp/setup.md
-      - 活用事例: tech/mcp/use-cases.md
+    - tech/index.md
+    - 🤖 AI:
+      - 💜 Claude:
+        - tech/claude/index.md
+        - モード・機能活用: tech/claude/modes.md
+        - プロンプト設計: tech/claude/prompts.md
+        - Projects: tech/claude/projects.md
+        - API活用: tech/claude/api.md
+        - Cowork活用: tech/claude/cowork.md
+        - Microsoft Office連携: tech/claude/office.md
+        - エコシステム: tech/claude/ecosystem.md
+        - ChatGPT・Gemini使い分け: tech/claude/vs-others.md
+      - 💬 ChatGPT:
+        - tech/chatgpt/index.md
+        - モード活用: tech/chatgpt/modes.md
+        - プロンプト設計: tech/chatgpt/prompts.md
+        - カスタム指示: tech/chatgpt/custom-instructions.md
+        - カスタムGPTs: tech/chatgpt/custom-gpts.md
+        - API活用: tech/chatgpt/api.md
+        - Claude使い分け: tech/chatgpt/vs-claude.md
+      - 💬 Gemini:
+        - tech/gemini-app/index.md
+        - モード活用: tech/gemini-app/modes.md
+        - プロンプト設計: tech/gemini-app/prompts.md
+        - Gems: tech/gemini-app/gems.md
+        - API活用: tech/gemini-app/api.md
+        - Workspace連携: tech/gemini-app/workspace.md
+        - NotebookLM: tech/gemini-app/notebooklm.md
+        - Claude使い分け: tech/gemini-app/vs-claude.md
+      - 🤖 Claude Code:
+        - tech/claude-code/index.md
+        - Mac セットアップ: tech/claude-code/setup-mac.md
+        - Windows セットアップ: tech/claude-code/setup-windows.md
+        - CLAUDE.md メモリ管理: tech/claude-code/md-files-guide.md
+        - エージェントモード活用: tech/claude-code/agent-mode.md
+        - Hooks・自動化: tech/claude-code/hooks-automation.md
+        - CI/CD・GitHub Actions: tech/claude-code/ci-cd-integration.md
+        - CLI・MCP 連携: tech/claude-code/cli-integration.md
+        - Ghostty 連携: tech/claude-code/ghostty-integration.md
+        - Tips & Tricks: tech/claude-code/tips-and-tricks.md
+        - 実践活用事例集: tech/claude-code/use-cases.md
+        - 上級ワークフロー: tech/claude-code/advanced-workflows.md
+        - 実例：プロジェクト構築の全工程: tech/claude-code/real-project-example.md
+      - 🤖 Gemini CLI:
+        - tech/gemini/index.md
+        - セットアップ: tech/gemini/setup.md
+        - 活用事例: tech/gemini/use-cases.md
+        - Claude Codeとの連携: tech/gemini/integration.md
+      - 🤖 Codex CLI:
+        - tech/codex/index.md
+        - セットアップ: tech/codex/setup.md
+        - 活用事例: tech/codex/use-cases.md
+        - ツール比較: tech/codex/comparison.md
+      - 🎯 Skills:
+        - tech/skills/index.md
+        - おすすめSkills一覧: tech/skills/recommended.md
+        - 自作Skillの作り方: tech/skills/create.md
+      - 🔌 MCP:
+        - tech/mcp/index.md
+        - おすすめサーバー: tech/mcp/servers.md
+        - セットアップ: tech/mcp/setup.md
+        - 活用事例: tech/mcp/use-cases.md
   - 📋 プロジェクト: projects/index.md
   - 💡 アイデア: ideas/index.md
 
