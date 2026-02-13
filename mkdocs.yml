@@ -30,7 +30,7 @@ nav:
   - ホーム: index.md
   - 📚 調査メモ: research/index.md
   - 🛠️ 技術ノート:
-    - tech/index.md
+    - 概要: tech/index.md
     - 🤖 AI:
       - 💜 Claude:
         - tech/claude/index.md
