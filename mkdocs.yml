@@ -83,6 +83,13 @@ nav:
         - セットアップ: tech/codex/setup.md
         - 活用事例: tech/codex/use-cases.md
         - ツール比較: tech/codex/comparison.md
+    - ☁️ AWS:
+      - tech/aws/index.md
+      - EC2:
+        - tech/aws/ec2/index.md
+        - セットアップ: tech/aws/ec2/setup.md
+        - 活用事例: tech/aws/ec2/use-cases.md
+        - セキュリティ: tech/aws/ec2/security.md
       - 🎯 Skills:
         - tech/skills/index.md
         - おすすめSkills一覧: tech/skills/recommended.md
