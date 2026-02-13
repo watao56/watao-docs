@@ -90,6 +90,14 @@ nav:
         - セットアップ: tech/aws/ec2/setup.md
         - 活用事例: tech/aws/ec2/use-cases.md
         - セキュリティ: tech/aws/ec2/security.md
+      - S3:
+        - tech/aws/s3/index.md
+        - セットアップ: tech/aws/s3/setup.md
+        - 活用事例: tech/aws/s3/use-cases.md
+      - CloudFront:
+        - tech/aws/cloudfront/index.md
+        - セットアップ: tech/aws/cloudfront/setup.md
+        - 活用事例: tech/aws/cloudfront/use-cases.md
       - 🎯 Skills:
         - tech/skills/index.md
         - おすすめSkills一覧: tech/skills/recommended.md
