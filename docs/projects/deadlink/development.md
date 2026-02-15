@@ -43,21 +43,34 @@
 | Vercel | Hobby | $0 | Next.jsホスティング（未デプロイ） |
 | AWS | Free Tier | $0 | IAM権限未設定のため未使用 |
 
+## 2026-02-15: DynamoDB移行
+
+### 実施内容
+
+- **スキャン結果の保存先をSupabase PostgreSQL → AWS DynamoDBに変更**
+- DynamoDBテーブル作成（ap-northeast-1リージョン）:
+  - `deadlink_scan_reports` (PK: site_id, SK: scanned_at, GSI: report_id-index)
+  - `deadlink_scan_results` (PK: report_id, SK: link_url)
+  - 各5 RCU/WCU（無料枠内）
+- `src/lib/dynamodb.ts` を @aws-sdk/lib-dynamodb ベースに書き換え
+- npm install @aws-sdk/client-dynamodb @aws-sdk/lib-dynamodb
+- ユーザー管理・認証はSupabaseのまま（変更なし）
+- ビルド確認済み（`npm run build` 成功）
+
 ### 次のフェーズで必要なもの
 
 1. **Vercel アカウント** - フロントエンドデプロイ用
 2. **Stripe アカウント** - Pro課金 ($5/月) 実装
-3. **AWS IAM権限** - DynamoDB, Lambda, SQS, EventBridge, SES の作成・管理権限
-4. **GitHub OAuth App** - Supabase Auth用のClient ID / Secret
-5. **ドメイン** - deadlink.app 等の取得
+3. **GitHub OAuth App** - Supabase Auth用のClient ID / Secret
+4. **ドメイン** - deadlink.app 等の取得
 
 ### TODO (Phase 2)
 
 - [ ] Supabase SQL Editorでテーブル作成を実行
 - [ ] GitHub OAuth App 設定
-- [ ] Vercel デプロイ
+- [ ] Vercel デプロイ（AWS環境変数設定必要）
 - [ ] Stripe 連携
 - [ ] Discord/Slack Webhook通知
-- [ ] AWS IAM権限取得 → DynamoDB/Lambda移行
+- [ ] Lambda + SQS移行（クローラー分離）
 - [ ] SES設定 → メール通知
 - [ ] EventBridge定期実行

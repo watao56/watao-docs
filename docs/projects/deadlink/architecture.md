@@ -12,29 +12,24 @@
                     ┌─────────┴─────────┐
                     ▼                   ▼
             ┌──────────────┐   ┌──────────────┐
-            │  Supabase    │   │  Supabase    │
+            │  Supabase    │   │  DynamoDB    │
             │  Auth +      │   │  scan_reports│
             │  profiles/   │   │  scan_results│
-            │  sites       │   │  (PostgreSQL)│
+            │  sites       │   │  (AWS)       │
             └──────────────┘   └──────────────┘
 ```
 
-## MVP構成（Phase 1）
-
-MVP段階では、すべてをNext.js + Supabaseで構成：
+## 現在の構成
 
 - **フロントエンド**: Next.js 15 (App Router) + Tailwind CSS
 - **認証**: Supabase Auth (GitHub OAuth + Magic Link)
 - **ユーザーDB**: Supabase PostgreSQL (profiles, sites)
-- **スキャンDB**: Supabase PostgreSQL (scan_reports, scan_results)
+- **スキャンDB**: AWS DynamoDB (deadlink_scan_reports, deadlink_scan_results)
 - **クローラー**: Next.js API Routes内で直接実行
 - **ホスティング**: Vercel (予定)
 
 ## 将来のアーキテクチャ（Phase 2+）
 
-AWS IAMが適切に設定された後：
-
-- **スキャンDB** → DynamoDB（大量書き込み最適化）
 - **クローラー** → Lambda (SQSトリガー)
 - **スケジューラー** → EventBridge + Lambda
 - **通知** → SES (メール) + Webhook (Discord/Slack)
@@ -42,7 +37,7 @@ AWS IAMが適切に設定された後：
 
 ## データベース設計
 
-### Supabase (PostgreSQL)
+### Supabase (PostgreSQL) — ユーザー・サイト管理
 
 ```sql
 -- ユーザープロフィール
@@ -50,13 +45,24 @@ profiles (id, plan, stripe_customer_id, notification_email, discord_webhook, sla
 
 -- 登録サイト
 sites (id, user_id, url, name, page_limit, check_interval, last_checked_at)
-
--- スキャンレポート
-scan_reports (site_id, scanned_at, report_id, url, total_links, broken_links, redirected_links, status, duration_ms)
-
--- スキャン結果詳細
-scan_results (report_id, link_url, source_page, status_code, status, redirect_to, anchor_text, checked_at)
 ```
+
+### DynamoDB (AWS ap-northeast-1) — スキャン結果
+
+```
+Table: deadlink_scan_reports
+  PK: site_id (String)
+  SK: scanned_at (String, ISO8601)
+  GSI: report_id-index (PK: report_id)
+  Attributes: report_id, url, total_links, broken_links, redirected_links, status, duration_ms
+
+Table: deadlink_scan_results
+  PK: report_id (String)
+  SK: link_url (String)
+  Attributes: source_page, status_code, status, redirect_to, anchor_text, checked_at
+```
+
+**プロビジョニング**: 各テーブル 5 RCU / 5 WCU（無料枠内）
 
 ## クローラーの仕組み
 
