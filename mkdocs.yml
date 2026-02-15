@@ -108,7 +108,9 @@ nav:
         - セットアップ: tech/aws/cloudfront/setup.md
         - 活用事例: tech/aws/cloudfront/use-cases.md
   - 📋 プロジェクト: projects/index.md
-  - 💡 アイデア: ideas/index.md
+  - 💡 アイデア:
+    - 概要: ideas/index.md
+    - DeadLink: ideas/deadlink.md
 
 markdown_extensions:
   - admonition
