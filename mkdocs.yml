@@ -107,7 +107,13 @@ nav:
         - tech/aws/cloudfront/index.md
         - セットアップ: tech/aws/cloudfront/setup.md
         - 活用事例: tech/aws/cloudfront/use-cases.md
-  - 📋 プロジェクト: projects/index.md
+  - 📋 プロジェクト:
+    - 概要: projects/index.md
+    - 🔗 DeadLink:
+      - projects/deadlink/index.md
+      - アーキテクチャ: projects/deadlink/architecture.md
+      - セットアップ: projects/deadlink/setup.md
+      - 開発ログ: projects/deadlink/development.md
   - 💡 アイデア:
     - 概要: ideas/index.md
     - DeadLink: ideas/deadlink.md
