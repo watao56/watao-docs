@@ -118,6 +118,22 @@ nav:
       - コードレビュー: projects/deadlink/review-code.md
   - 💡 アイデア:
     - 概要: ideas/index.md
+    - "🏆 v4 (2026-02-16 監視/リマインド系)":
+      - 🛎️ FormShield:
+        - 設計書: ideas/formshield.md
+        - レビュー: ideas/formshield-review.md
+      - 💰 InvoiceTrack:
+        - 設計書: ideas/invoicetrack.md
+        - レビュー: ideas/invoicetrack-review.md
+      - ⭐ ReviewPing:
+        - 設計書: ideas/reviewping.md
+        - レビュー: ideas/reviewping-review.md
+      - ⚡ SpeedLoss:
+        - 設計書: ideas/speedloss.md
+        - レビュー: ideas/speedloss-review.md
+      - 📜 CertRemind:
+        - 設計書: ideas/certremind.md
+        - レビュー: ideas/certremind-review.md
     - "🏆 v3 (ライト層向けA評価)":
       - 💳 SubsAlert:
         - 設計書: ideas/subsalert.md
