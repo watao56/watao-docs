@@ -169,6 +169,8 @@ nav:
     - ナイトーク:
       - 設計書: ideas/nightalk.md
       - レビュー: ideas/nightalk-review.md
+    - 🐍 Python Quest:
+      - 設計書: ideas/python-quest-design.md
 
 markdown_extensions:
   - admonition
