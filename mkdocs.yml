@@ -118,6 +118,22 @@ nav:
       - コードレビュー: projects/deadlink/review-code.md
   - 💡 アイデア:
     - 概要: ideas/index.md
+    - "🏆 v3 (ライト層向けA評価)":
+      - 💳 SubsAlert:
+        - 設計書: ideas/subsalert.md
+        - レビュー: ideas/subsalert-review.md
+      - 🛡️ HoshoNote:
+        - 設計書: ideas/hosho-note.md
+        - レビュー: ideas/hosho-note-review.md
+      - 📱 ShopPost:
+        - 設計書: ideas/shoppost.md
+        - レビュー: ideas/shoppost-review.md
+      - 👴 MimamoriPing:
+        - 設計書: ideas/mimamori-ping.md
+        - レビュー: ideas/mimamori-ping-review.md
+      - 📅 YoyakuRemind:
+        - 設計書: ideas/yoyaku-remind.md
+        - レビュー: ideas/yoyaku-remind-review.md
     - "🏆 v2 (A評価)":
       - 🔐 EnvLeakGuard:
         - 設計書: ideas/envleakguard.md
