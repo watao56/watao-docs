@@ -2,7 +2,7 @@
 
 > 子供向けPython学習プラットフォーム  
 > Scratch → 変換 → Python の段階的アプローチでプログラミング的思考を育てる  
-> ※ 本設計書はシニアエンジニアレビュー（2026-02-16）の指摘を反映済み
+> ※ 本設計書はシニアエンジニアレビュー第1回・第2回（2026-02-16）の指摘を反映済み
 
 ---
 
@@ -353,13 +353,13 @@ function judgeTurtle(expected: TurtleStep[], actual: TurtleStep[]): boolean {
 | フレームワーク | Next.js (React) | App Router, SSR/SSG |
 | 言語 | TypeScript | 型安全 |
 | ブロックエディタ | Blockly | Google製。ブロック→Python変換を標準サポート |
-| コードエディタ | Monaco Editor | VSCode同等。**遅延ロード + 部分インポートで最適化**（5.6参照） |
-| Python実行 | Skulpt | ブラウザ内実行。**実行層を抽象化して将来Pyodide移行可能**（5.5参照） |
+| コードエディタ | Monaco Editor | VSCode同等。**遅延ロード + 部分インポートで最適化**（5.7参照） |
+| Python実行 | Skulpt | ブラウザ内実行。**実行層を抽象化して将来Pyodide移行可能**（5.6参照） |
 | 可視化 | Canvas API | turtle描画 + 結果表示 |
 | アニメーション | Framer Motion | UI演出（正解エフェクト等） |
 | スタイリング | Tailwind CSS | ユーティリティファースト |
-| 状態管理 | Zustand | 軽量。**ストア分割設計**（5.7参照） |
-| データフェッチ | SWR or React Query | キャッシュ戦略（5.8参照） |
+| 状態管理 | Zustand | 軽量。**ストア分割設計**（5.8参照） |
+| データフェッチ | React Query (TanStack Query) | キャッシュ戦略（5.9参照）。リアルタイム更新対応が強み |
 
 ### 5.2 バックエンド
 
@@ -390,7 +390,37 @@ function judgeTurtle(expected: TurtleStep[], actual: TurtleStep[]): boolean {
 | Git | GitHub |
 | CI/CD | GitHub Actions → Vercel |
 
-### 5.5 Python実行層の抽象化
+### 5.5 ブラウザ最低動作環境
+
+学校PC環境を想定し、以下を最低動作環境として定義する。Blockly・Monaco Editor・Skulptの各ライブラリの要件を考慮し、ES2020+をベースラインとする。
+
+| ブラウザ | 最低バージョン | 備考 |
+|---------|--------------|------|
+| **Google Chrome** | 90+ | GIGAスクール端末の標準ブラウザ |
+| **Microsoft Edge** | 90+ | Chromiumベース。Windows学校PC |
+| **Chromebook (ChromeOS)** | 90+ | GIGAスクール端末で採用多数 |
+| **Safari** | 15+ | iPad導入校向け |
+| **Firefox** | 90+ | 一部自治体で採用 |
+
+**非サポート:** Internet Explorer（全バージョン）、Chrome 89以下
+
+**動作確認の優先順位:**
+1. **最優先:** Chrome（Chromebook含む） — GIGAスクール端末の大半を占める
+2. **高:** Edge — Windows PC環境
+3. **中:** Safari — iPad環境
+4. **低:** Firefox — 利用率が低いため後回し
+
+**必要なブラウザAPI:**
+- Web Worker（無限ループ対策のSkulpt実行に必須）
+- ES2020（Optional chaining, Nullish coalescing等）
+- IndexedDB（オフライン時のコード自動保存）
+- CSS Grid / Flexbox（レイアウト）
+
+> **📌 GIGAスクール対応:** 文部科学省のGIGAスクール構想で配布された端末（Chromebook、iPad、Windows）を主要ターゲットとする。Phase 1のユーザーテスト時に実機確認を行い、パフォーマンス問題があれば対処する。
+
+---
+
+### 5.6 Python実行層の抽象化
 
 MVPはSkulptで進め、制約にぶつかったらPyodideに移行できるよう、Python実行層を抽象化しておく。
 
@@ -438,7 +468,7 @@ function createPythonRunner(type: 'skulpt' | 'pyodide' = 'skulpt'): PythonRunner
 | turtle対応 | 組み込み | カスタム実装必要 |
 | 標準ライブラリ | 限定的 | ほぼ完全 |
 
-### 5.6 Monaco Editorの最適化
+### 5.7 Monaco Editorの最適化
 
 Monaco Editorはバンドルサイズが大きい（数MB）。学校のPCは低スペックなことが多いため、以下の最適化を行う：
 
@@ -461,7 +491,7 @@ const MonacoEditor = dynamic(() => import('@monaco-editor/react'), {
 - **キャッシュ:** Service Workerでモジュールをキャッシュし、2回目以降は即時ロード
 - **フォールバック:** ロード中はシンプルな `<textarea>` を表示
 
-### 5.7 Zustand ストア分割設計
+### 5.8 Zustand ストア分割設計
 
 状態管理のカオス化を防ぐため、ストアを役割別に分割する：
 
@@ -510,7 +540,7 @@ const useAuthStore = create<AuthState>((set) => ({
 }));
 ```
 
-### 5.8 キャッシュ戦略
+### 5.9 キャッシュ戦略
 
 ```
 問題データ（JSON）    → SSGで静的生成（ビルド時に全問題をプリレンダ）
@@ -520,7 +550,53 @@ const useAuthStore = create<AuthState>((set) => ({
 先生ダッシュボード    → React Query（30秒キャッシュ + リアルタイム更新オプション）
 ```
 
-### 5.9 無限ループ対策
+### 5.10 API Routesのドメイン層分離
+
+67問+管理画面のビジネスロジックがAPI Routesに肥大化するのを防ぐため、ドメイン層を分離する：
+
+```
+app/api/quest/submit/route.ts  ← ルーティング+バリデーションのみ
+  ↓
+lib/services/quest-service.ts  ← ビジネスロジック（正解判定、XP計算、★評価）
+  ↓
+lib/repositories/quest-repo.ts ← データアクセス（Supabase操作）
+lib/repositories/progress-repo.ts
+```
+
+```typescript
+// Service層の例
+class QuestService {
+  constructor(
+    private questRepo: QuestRepository,
+    private progressRepo: ProgressRepository,
+  ) {}
+
+  async submitAnswer(userId: string, questId: string, code: string, output: string) {
+    const quest = await this.questRepo.findById(questId);
+    const isCorrect = this.compareOutput(output, quest.expected_output);
+    if (!isCorrect) return { success: false };
+
+    const progress = await this.progressRepo.findByUserAndQuest(userId, questId);
+    const stars = this.calculateStars(progress);
+    const rewards = this.calculateRewards(quest.rewards, stars, progress.saw_answer);
+
+    await this.progressRepo.updateCleared(userId, questId, stars);
+    await this.progressRepo.addXP(userId, rewards.xp);
+
+    return { success: true, stars, ...rewards };
+  }
+}
+```
+
+- **API Route:** リクエスト解析・認証チェック・レスポンス整形のみ
+- **Service層:** ビジネスロジック（正解判定、XP計算、進捗管理）
+- **Repository層:** Supabaseへのデータアクセスを抽象化
+
+> **📌 メリット:** テスタビリティの向上（Service層の単体テストが容易）、ロジックの再利用（管理画面と生徒画面で同じServiceを使用）、将来のDB移行への備え。
+
+---
+
+### 5.11 無限ループ対策
 
 生徒が `while True` を書いた場合にブラウザがフリーズしないよう、以下の対策を実装する：
 
@@ -547,7 +623,7 @@ const timeoutId = setTimeout(() => {
 - タイムアウト（10秒）で自動停止
 - 停止時は日本語でわかりやすいメッセージを表示
 
-### 5.10 エラーハンドリング・オフライン対策
+### 5.12 エラーハンドリング・オフライン対策
 
 ```typescript
 // オフライン時のコード保存
@@ -576,6 +652,81 @@ const fetchWithRetry = async (url: string, options: RequestInit, retries = 3) =>
 - **オフライン検知:** `navigator.onLine` + 定期的なヘルスチェック
 - **オフラインモード:** API通信なしでもコード編集・実行（Skulptはブラウザ内完結）が可能。進捗同期はオンライン復帰後に実行
 - **リトライ:** ネットワークエラー時はexponential backoffで最大3回リトライ
+
+#### オフライン同期のコンフリクト解決
+
+学校PCと自宅PCなど、複数デバイスでオフライン状態のまま学習した場合の進捗コンフリクトを解決する戦略：
+
+```typescript
+// 同期戦略: タイムスタンプベースのラストライトウィン + XP最大値採用
+interface SyncableProgress {
+  quest_id: string;
+  stars: number;
+  status: 'locked' | 'available' | 'cleared';
+  code: string;
+  attempts: number;
+  hints_used: number;
+  saw_answer: boolean;
+  updated_at: number; // Unix timestamp (ms)
+}
+
+async function syncProgress(localData: SyncableProgress[], userId: string) {
+  const serverData = await fetchServerProgress(userId);
+
+  for (const local of localData) {
+    const server = serverData.find(s => s.quest_id === local.quest_id);
+
+    if (!server) {
+      // サーバーにデータなし → ローカルをアップロード
+      await uploadProgress(userId, local);
+      continue;
+    }
+
+    // コンフリクト解決
+    const merged = resolveConflict(local, server);
+    if (merged.needsUpdate) {
+      await uploadProgress(userId, merged.data);
+    }
+  }
+
+  // XP/レベルはサーバー側で全進捗から再計算（整合性保証）
+  await recalculateXP(userId);
+}
+
+function resolveConflict(
+  local: SyncableProgress,
+  server: SyncableProgress
+): { needsUpdate: boolean; data: SyncableProgress } {
+  // ルール1: ★評価は常に最大値を採用（巻き戻りを防止）
+  const stars = Math.max(local.stars, server.stars);
+
+  // ルール2: クリア済みは巻き戻さない
+  const status = (local.status === 'cleared' || server.status === 'cleared')
+    ? 'cleared' : (local.updated_at > server.updated_at ? local.status : server.status);
+
+  // ルール3: コード（最後に書いた内容）はタイムスタンプが新しい方を採用
+  const code = local.updated_at > server.updated_at ? local.code : server.code;
+
+  // ルール4: 挑戦回数は合算（両デバイスでの試行を反映）
+  const attempts = Math.max(local.attempts, server.attempts);
+
+  return {
+    needsUpdate: true,
+    data: { ...local, stars, status, code, attempts, updated_at: Date.now() },
+  };
+}
+```
+
+**同期ルールまとめ:**
+| データ | 戦略 | 理由 |
+|--------|------|------|
+| ★評価 | **最大値を採用** | ★の巻き戻りは子供のモチベーションを大きく損なう |
+| クリア状態 | **クリア済みは巻き戻さない** | 一度クリアした問題がロックに戻るのは不正 |
+| コード | **タイムスタンプが新しい方** | ラストライトウィン。最新の作業を優先 |
+| XP/レベル | **サーバー側で全進捗から再計算** | 部分同期でもXPの整合性を保証 |
+| 挑戦回数 | **大きい方を採用** | 正確な合算は困難なため、保守的に最大値 |
+
+> **📌 設計判断:** 「学校で途中まで→自宅で続き」は十分あり得るシナリオ。完全な双方向同期（CRDT等）は複雑すぎるため、上記のシンプルなルールで対応する。ユーザーテストで問題が出れば改善する。
 
 ---
 
@@ -794,7 +945,7 @@ CREATE POLICY "Teachers can view class students"
   );
 ```
 
-### 8.4 XP改ざん防止
+### 8.4 XP改ざん防止 — サーバー側正解判定の具体設計
 
 XP・コインの加算は必ずサーバー側で行う。クライアントからの直接加算リクエストは受け付けない。
 
@@ -807,12 +958,120 @@ XP・コインの加算は必ずサーバー側で行う。クライアントか
 // → サーバーが正解判定 → XPを計算 → DBに保存
 ```
 
-- クエスト完了時、クライアントはコード（またはブロック構成）を送信
-- サーバー側で正解判定を実行（ブラウザ側のSkulpt実行とは別に検証）
-- XP・コインの付与はサーバー側のみで実行
-- 進捗の更新は必ずサーバー経由
+#### サーバー側正解判定フロー
 
-### 8.5 その他のセキュリティ対策
+サーバー側でPythonコードを再実行するのはインフラコスト・セキュリティリスクが大きいため、**「クライアント実行結果 + サーバー側検証」のハイブリッド方式**を採用する。
+
+```
+┌─────────────┐     POST /api/quest/submit      ┌─────────────────┐
+│  クライアント  │ ──────────────────────────────→ │  API Route       │
+│              │   {                              │                  │
+│  1. Skulptで  │     questId: "1-1",             │  1. コード整合性   │
+│     コード実行 │     code: "print('こんにちは')", │     チェック       │
+│  2. 出力を取得 │     output: "こんにちは\n",     │  2. 期待出力と比較 │
+│  3. サーバーに │     stars: 3                    │  3. ★再計算       │
+│     送信      │   }                             │  4. XP/コイン付与 │
+│              │ ←────────────────────────────── │  5. DB保存        │
+│  4. 結果表示  │   { success, xp, level, ... }   │                  │
+└─────────────┘                                  └─────────────────┘
+```
+
+```typescript
+// API Route: /api/quest/submit
+export async function POST(req: Request) {
+  const { questId, code, output } = await req.json();
+  const user = await getAuthUser(req); // Supabase Auth検証
+
+  // 1. クエスト情報をDBから取得
+  const quest = await getQuest(questId);
+  if (!quest) return error(404, 'Quest not found');
+
+  // 2. コード整合性チェック（カジュアルな不正を防ぐ）
+  const codeCheck = validateCode(code, quest);
+  if (!codeCheck.valid) return error(400, codeCheck.reason);
+
+  // 3. 期待出力との比較（サーバー側で判定）
+  const isCorrect = compareOutput(output, quest.expected_output, quest.mode);
+  if (!isCorrect) return json({ success: false, message: '不正解です' });
+
+  // 4. ★評価をサーバー側で再計算（クライアントの自己申告を信用しない）
+  const progress = await getUserProgress(user.id, questId);
+  const stars = calculateStars(progress);
+
+  // 5. XP・コインをサーバー側で計算・付与
+  const rewards = calculateRewards(quest.rewards, stars, progress.saw_answer);
+  await updateProgress(user.id, questId, { stars, cleared: true });
+  await addXPAndCoins(user.id, rewards.xp, rewards.coins);
+
+  return json({ success: true, stars, xp: rewards.xp, coins: rewards.coins });
+}
+```
+
+```typescript
+// コード整合性チェック
+function validateCode(code: string, quest: Quest): { valid: boolean; reason?: string } {
+  // 空コードでないか
+  if (!code || code.trim().length === 0) {
+    return { valid: false, reason: 'コードが空です' };
+  }
+
+  // 最低限のキーワードを含むか（例: print問題なら print が含まれるべき）
+  if (quest.required_keywords?.length) {
+    const missing = quest.required_keywords.filter(kw => !code.includes(kw));
+    if (missing.length > 0) {
+      return { valid: false, reason: 'コードに必要な要素が含まれていません' };
+    }
+  }
+
+  // コードの長さが異常でないか（1文字や10000文字など）
+  if (code.length > 5000) {
+    return { valid: false, reason: 'コードが長すぎます' };
+  }
+
+  return { valid: true };
+}
+
+// 出力比較
+function compareOutput(actual: string, expected: string, mode: string): boolean {
+  // 末尾の改行・空白を正規化して比較
+  const normalize = (s: string) => s.replace(/\s+$/gm, '').trim();
+  return normalize(actual) === normalize(expected);
+}
+```
+
+**設計方針:**
+- **サーバー側ではPythonコードを再実行しない。** Skulptはブラウザ向け設計でありNode.js上での実行は非推奨。Vercel Serverless Functionsでのサンドボックス実行もコスト・複雑性が高すぎる
+- **代わりに「出力文字列の比較 + コード整合性チェック」で検証する。** 100%の改ざん防止は諦め、カジュアルな不正（DevToolsでXPを書き換える等）を防ぐレベルで十分
+- **★評価はサーバー側で再計算する。** ヒント使用回数・実行回数はサーバーのUserProgressで管理しているため、クライアントの自己申告に依存しない
+- **教育プラットフォームでは、完全な改ざん防止よりUXが優先。** 子供が不正してXPを水増ししても、学習効果がないだけで実害は小さい
+
+### 8.5 招待コード総当たり対策
+
+8桁英数字の招待コードは`36^8 ≈ 2.8兆通り`で十分なエントロピーだが、APIレベルでの保護を実装する：
+
+- **レート制限:** 同一IPから招待コード入力は10回/時間まで。超過時は一時ブロック
+- **遅延レスポンス:** 招待コード検証APIは意図的に500ms〜1000msの遅延を入れ、高速な総当たりを抑制
+- **失敗ログ:** 連続失敗をログに記録し、異常なパターンをSentryでアラート
+
+### 8.6 セッション管理
+
+学校の共有PC環境を考慮したセッション設計：
+
+- **セッション有効期限:** ブラウザセッション（ブラウザを閉じたらセッション切れ）をデフォルトとする。子供がログアウトを忘れても、次の生徒がアクセスできないようにする
+- **「ログイン状態を保持する」チェックボックス:** 自宅PCなど個人端末向け。チェック時のみリフレッシュトークンをlocalStorageに保存（有効期限7日）
+- **同時セッション:** 同一アカウントの複数デバイス同時ログインを許可（学校と自宅での利用を想定）
+- **ログアウトボタン:** 画面上部に常に表示。子供でも見つけやすい位置に配置
+
+### 8.7 パスワード要件
+
+子供が使える範囲で最低限のセキュリティを確保する：
+
+- **最低文字数:** 4文字以上（子供が覚えられる長さ）
+- **最大文字数:** 100文字
+- **使用可能文字:** 英数字 + 基本的な記号
+- **先生によるパスワード配布:** クラス作成時に先生が初期パスワードを設定・配布することも可能
+
+### 8.8 その他のセキュリティ対策
 
 - **XSS対策:** ユーザー入力（コード、ニックネーム）の表示時にサニタイズ。特にコード表示部分は `dangerouslySetInnerHTML` を使わず、専用のコード表示コンポーネントを使用
 - **CSRF対策:** Supabase Authのトークンベース認証で対応
@@ -1101,6 +1360,7 @@ const commonMistakes = [
 - [ ] ワールド1の残りクエスト（計18問）
 - [ ] ワールド2のクエスト（計16問）
 - [ ] つまづき救済システム（答えを見る、似た練習問題）
+- [ ] **プライバシーポリシー策定・掲示**（認証機能の公開前に必須。§8.2参照）
 
 ### Phase 2b: ワールド3 + ゲームシステム（4〜5週間）
 
@@ -1139,7 +1399,6 @@ const commonMistakes = [
 - [ ] アクセシビリティ改善
 - [ ] 多言語対応
 - [ ] PWA対応（オフライン利用）
-- [ ] プライバシーポリシー策定・掲示
 
 ---
 
@@ -1150,12 +1409,16 @@ const commonMistakes = [
 - **Blockly→Python変換はBlockly標準機能** — 自前実装不要
 - **問題データはJSONで管理** — MVPではファイル、後からDB移行可能
 - **モバイル対応は後回し** — ブロックエディタ/コードエディタはPC/タブレット前提
-- **Python実行層を抽象化** — Skulpt→Pyodide移行パスを確保（レビュー反映）
-- **個人情報の最小化** — メールアドレス不要、ニックネーム+パスワードのみ（レビュー反映）
-- **XP付与はサーバー側** — クライアントサイドでの改ざんを防止（レビュー反映）
-- **エラーメッセージの日本語化** — 子供が理解できるフィードバック（レビュー反映）
-- **ペナルティなし設計** — 連続ログインが途切れても罰しない（レビュー反映）
-- **早期ユーザーテスト** — Phase 1直後に実際の子供にテスト（レビュー反映）
+- **Python実行層を抽象化** — Skulpt→Pyodide移行パスを確保（第1回レビュー反映）
+- **個人情報の最小化** — メールアドレス不要、ニックネーム+パスワードのみ（第1回レビュー反映）
+- **XP付与はサーバー側** — 出力比較+コード整合性チェックで検証（第2回レビュー反映で具体化）
+- **エラーメッセージの日本語化** — 子供が理解できるフィードバック（第1回レビュー反映）
+- **ペナルティなし設計** — 連続ログインが途切れても罰しない（第1回レビュー反映）
+- **早期ユーザーテスト** — Phase 1直後に実際の子供にテスト（第1回レビュー反映）
+- **GIGAスクール端末対応** — Chrome 90+/Edge 90+/Chromebook を最低動作環境に設定（第2回レビュー反映）
+- **プライバシーポリシーは認証実装時に策定** — Phase 4ではなくPhase 2aで必須（第2回レビュー反映）
+- **ドメイン層の分離** — API Routes肥大化防止のためService/Repository層を分離（第2回レビュー反映）
+- **オフライン同期はラストライトウィン+XP最大値採用** — シンプルなルールでコンフリクト解決（第2回レビュー反映）
 
 ### 参考サービス
 - CodeCombat（ゲーム×プログラミング）
