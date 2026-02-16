@@ -118,9 +118,25 @@ nav:
       - コードレビュー: projects/deadlink/review-code.md
   - 💡 アイデア:
     - 概要: ideas/index.md
+    - ⏰ CronFailsafe:
+      - 設計書: ideas/cron-failsafe.md
+      - レビュー: ideas/cron-failsafe-review.md
+    - 📋 ContractAlert:
+      - 設計書: ideas/contract-alert.md
+      - レビュー: ideas/contract-alert-review.md
+    - 🏷️ Namer:
+      - 設計書: ideas/namer.md
+      - レビュー: ideas/namer-review.md
+    - 🖼️ OGP Gen:
+      - 設計書: ideas/ogp-gen.md
+      - レビュー: ideas/ogp-gen-review.md
+    - 🐕 DomainWatchdog:
+      - 設計書: ideas/domain-watchdog.md
+      - レビュー: ideas/domain-watchdog-review.md
     - DeadLink: ideas/deadlink.md
-    - ナイトーク: ideas/nightalk.md
-    - ナイトーク レビュー: ideas/nightalk-review.md
+    - ナイトーク:
+      - 設計書: ideas/nightalk.md
+      - レビュー: ideas/nightalk-review.md
 
 markdown_extensions:
   - admonition
