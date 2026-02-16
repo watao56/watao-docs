@@ -114,6 +114,8 @@ nav:
       - アーキテクチャ: projects/deadlink/architecture.md
       - セットアップ: projects/deadlink/setup.md
       - 開発ログ: projects/deadlink/development.md
+      - プロダクトレビュー: projects/deadlink/review-product.md
+      - コードレビュー: projects/deadlink/review-code.md
   - 💡 アイデア:
     - 概要: ideas/index.md
     - DeadLink: ideas/deadlink.md
