@@ -119,6 +119,7 @@ nav:
   - 💡 アイデア:
     - 概要: ideas/index.md
     - DeadLink: ideas/deadlink.md
+    - ナイトーク: ideas/nightalk.md
 
 markdown_extensions:
   - admonition
