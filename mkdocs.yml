@@ -150,21 +150,23 @@ nav:
       - 💾 BackupHero:
         - 設計書: ideas/backuphero.md
         - レビュー: ideas/backuphero-review.md
-    - ⏰ CronFailsafe:
-      - 設計書: ideas/cron-failsafe.md
-      - レビュー: ideas/cron-failsafe-review.md
-    - 📋 ContractAlert:
-      - 設計書: ideas/contract-alert.md
-      - レビュー: ideas/contract-alert-review.md
-    - 🏷️ Namer:
-      - 設計書: ideas/namer.md
-      - レビュー: ideas/namer-review.md
-    - 🖼️ OGP Gen:
-      - 設計書: ideas/ogp-gen.md
-      - レビュー: ideas/ogp-gen-review.md
-    - 🐕 DomainWatchdog:
-      - 設計書: ideas/domain-watchdog.md
-      - レビュー: ideas/domain-watchdog-review.md
+    - "🏆 v1 (初期設計)":
+      - まとめ: ideas/v1-summary.md
+      - ⏰ CronFailsafe:
+        - 設計書: ideas/cron-failsafe.md
+        - レビュー: ideas/cron-failsafe-review.md
+      - 📋 ContractAlert:
+        - 設計書: ideas/contract-alert.md
+        - レビュー: ideas/contract-alert-review.md
+      - 🏷️ Namer:
+        - 設計書: ideas/namer.md
+        - レビュー: ideas/namer-review.md
+      - 🖼️ OGP Gen:
+        - 設計書: ideas/ogp-gen.md
+        - レビュー: ideas/ogp-gen-review.md
+      - 🐕 DomainWatchdog:
+        - 設計書: ideas/domain-watchdog.md
+        - レビュー: ideas/domain-watchdog-review.md
     - DeadLink: ideas/deadlink.md
     - ナイトーク:
       - 設計書: ideas/nightalk.md
