@@ -118,6 +118,22 @@ nav:
       - コードレビュー: projects/deadlink/review-code.md
   - 💡 アイデア:
     - 概要: ideas/index.md
+    - "🏆 v2 (A評価)":
+      - 🔐 EnvLeakGuard:
+        - 設計書: ideas/envleakguard.md
+        - レビュー: ideas/envleakguard-review.md
+      - 📧 MailRepWatch:
+        - 設計書: ideas/mailrepwatch.md
+        - レビュー: ideas/mailrepwatch-review.md
+      - 👁️ PageDiff:
+        - 設計書: ideas/pagediff.md
+        - レビュー: ideas/pagediff-review.md
+      - 🛡️ DepsFence:
+        - 設計書: ideas/depsfence.md
+        - レビュー: ideas/depsfence-review.md
+      - 💾 BackupHero:
+        - 設計書: ideas/backuphero.md
+        - レビュー: ideas/backuphero-review.md
     - ⏰ CronFailsafe:
       - 設計書: ideas/cron-failsafe.md
       - レビュー: ideas/cron-failsafe-review.md
