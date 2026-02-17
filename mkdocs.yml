@@ -122,6 +122,7 @@ nav:
       - 設計レビュー: projects/python-quest/design-review.md
       - MVPレビュー: projects/python-quest/mvp-review.md
       - ブロック編集UXレビュー: projects/python-quest/blockly-review.md
+      - UI/UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
     - 概要: ideas/index.md
     - "🏆 v4 (2026-02-16 監視/リマインド系)":
