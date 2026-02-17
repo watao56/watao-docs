@@ -11,12 +11,18 @@ theme:
     primary: custom
     accent: cyan
   features:
-    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
     - navigation.top
+    - navigation.path
+    - navigation.prune
     - search.highlight
+    - search.suggest
     - content.code.copy
     - navigation.instant
     - navigation.tracking
+    - toc.integrate
   font:
     text: Inter
     code: JetBrains Mono
@@ -30,7 +36,7 @@ nav:
   - ホーム: index.md
   - 📚 調査メモ: research/index.md
   - 🛠️ 技術ノート:
-    - 概要: tech/index.md
+    - tech/index.md
     - 🤖 AI:
       - 💜 Claude:
         - tech/claude/index.md
@@ -39,9 +45,9 @@ nav:
         - Projects: tech/claude/projects.md
         - API活用: tech/claude/api.md
         - Cowork活用: tech/claude/cowork.md
-        - Microsoft Office連携: tech/claude/office.md
+        - Office連携: tech/claude/office.md
         - エコシステム: tech/claude/ecosystem.md
-        - ChatGPT・Gemini使い分け: tech/claude/vs-others.md
+        - 他AIとの使い分け: tech/claude/vs-others.md
       - 💬 ChatGPT:
         - tech/chatgpt/index.md
         - モード活用: tech/chatgpt/modes.md
@@ -64,20 +70,20 @@ nav:
         - Mac セットアップ: tech/claude-code/setup-mac.md
         - Windows セットアップ: tech/claude-code/setup-windows.md
         - CLAUDE.md メモリ管理: tech/claude-code/md-files-guide.md
-        - エージェントモード活用: tech/claude-code/agent-mode.md
+        - エージェントモード: tech/claude-code/agent-mode.md
         - Hooks・自動化: tech/claude-code/hooks-automation.md
-        - CI/CD・GitHub Actions: tech/claude-code/ci-cd-integration.md
-        - CLI・MCP 連携: tech/claude-code/cli-integration.md
-        - Ghostty 連携: tech/claude-code/ghostty-integration.md
+        - CI/CD連携: tech/claude-code/ci-cd-integration.md
+        - CLI・MCP連携: tech/claude-code/cli-integration.md
+        - Ghostty連携: tech/claude-code/ghostty-integration.md
         - Tips & Tricks: tech/claude-code/tips-and-tricks.md
-        - 実践活用事例集: tech/claude-code/use-cases.md
+        - 活用事例集: tech/claude-code/use-cases.md
         - 上級ワークフロー: tech/claude-code/advanced-workflows.md
-        - 実例：プロジェクト構築の全工程: tech/claude-code/real-project-example.md
+        - 実例：全工程: tech/claude-code/real-project-example.md
       - 🤖 Gemini CLI:
         - tech/gemini/index.md
         - セットアップ: tech/gemini/setup.md
         - 活用事例: tech/gemini/use-cases.md
-        - Claude Codeとの連携: tech/gemini/integration.md
+        - Claude Code連携: tech/gemini/integration.md
       - 🤖 Codex CLI:
         - tech/codex/index.md
         - セットアップ: tech/codex/setup.md
@@ -85,8 +91,8 @@ nav:
         - ツール比較: tech/codex/comparison.md
       - 🎯 Skills:
         - tech/skills/index.md
-        - おすすめSkills一覧: tech/skills/recommended.md
-        - 自作Skillの作り方: tech/skills/create.md
+        - おすすめ一覧: tech/skills/recommended.md
+        - 自作する: tech/skills/create.md
       - 🔌 MCP:
         - tech/mcp/index.md
         - おすすめサーバー: tech/mcp/servers.md
@@ -108,7 +114,7 @@ nav:
         - セットアップ: tech/aws/cloudfront/setup.md
         - 活用事例: tech/aws/cloudfront/use-cases.md
   - 📋 プロジェクト:
-    - 概要: projects/index.md
+    - projects/index.md
     - 🔗 DeadLink:
       - projects/deadlink/index.md
       - アーキテクチャ: projects/deadlink/architecture.md
@@ -121,80 +127,38 @@ nav:
       - 設計書: projects/python-quest/design.md
       - 設計レビュー: projects/python-quest/design-review.md
       - MVPレビュー: projects/python-quest/mvp-review.md
-      - ブロック編集UXレビュー: projects/python-quest/blockly-review.md
-      - UI/UX・コードレビュー: projects/python-quest/ux-code-review.md
+      - Blocklyレビュー: projects/python-quest/blockly-review.md
+      - UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
-    - 概要: ideas/index.md
-    - "🏆 v4 (2026-02-16 監視/リマインド系)":
-      - 🛎️ FormShield:
-        - 設計書: ideas/formshield.md
-        - レビュー: ideas/formshield-review.md
-      - 💰 InvoiceTrack:
-        - 設計書: ideas/invoicetrack.md
-        - レビュー: ideas/invoicetrack-review.md
-      - ⭐ ReviewPing:
-        - 設計書: ideas/reviewping.md
-        - レビュー: ideas/reviewping-review.md
-      - ⚡ SpeedLoss:
-        - 設計書: ideas/speedloss.md
-        - レビュー: ideas/speedloss-review.md
-      - 📜 CertRemind:
-        - 設計書: ideas/certremind.md
-        - レビュー: ideas/certremind-review.md
-    - "🏆 v3 (ライト層向けA評価)":
-      - 💳 SubsAlert:
-        - 設計書: ideas/subsalert.md
-        - レビュー: ideas/subsalert-review.md
-      - 🛡️ HoshoNote:
-        - 設計書: ideas/hosho-note.md
-        - レビュー: ideas/hosho-note-review.md
-      - 📱 ShopPost:
-        - 設計書: ideas/shoppost.md
-        - レビュー: ideas/shoppost-review.md
-      - 👴 MimamoriPing:
-        - 設計書: ideas/mimamori-ping.md
-        - レビュー: ideas/mimamori-ping-review.md
-      - 📅 YoyakuRemind:
-        - 設計書: ideas/yoyaku-remind.md
-        - レビュー: ideas/yoyaku-remind-review.md
-    - "🏆 v2 (A評価)":
-      - 🔐 EnvLeakGuard:
-        - 設計書: ideas/envleakguard.md
-        - レビュー: ideas/envleakguard-review.md
-      - 📧 MailRepWatch:
-        - 設計書: ideas/mailrepwatch.md
-        - レビュー: ideas/mailrepwatch-review.md
-      - 👁️ PageDiff:
-        - 設計書: ideas/pagediff.md
-        - レビュー: ideas/pagediff-review.md
-      - 🛡️ DepsFence:
-        - 設計書: ideas/depsfence.md
-        - レビュー: ideas/depsfence-review.md
-      - 💾 BackupHero:
-        - 設計書: ideas/backuphero.md
-        - レビュー: ideas/backuphero-review.md
-    - "🏆 v1 (初期設計)":
+    - ideas/index.md
+    - v4 - 監視/リマインド系:
+      - 🛎️ FormShield: ideas/formshield.md
+      - 💰 InvoiceTrack: ideas/invoicetrack.md
+      - ⭐ ReviewPing: ideas/reviewping.md
+      - ⚡ SpeedLoss: ideas/speedloss.md
+      - 📜 CertRemind: ideas/certremind.md
+    - v3 - ライト層向け:
+      - 💳 SubsAlert: ideas/subsalert.md
+      - 🛡️ HoshoNote: ideas/hosho-note.md
+      - 📱 ShopPost: ideas/shoppost.md
+      - 👴 MimamoriPing: ideas/mimamori-ping.md
+      - 📅 YoyakuRemind: ideas/yoyaku-remind.md
+    - v2 - A評価:
+      - 🔐 EnvLeakGuard: ideas/envleakguard.md
+      - 📧 MailRepWatch: ideas/mailrepwatch.md
+      - 👁️ PageDiff: ideas/pagediff.md
+      - 🛡️ DepsFence: ideas/depsfence.md
+      - 💾 BackupHero: ideas/backuphero.md
+    - v1 - 初期設計:
       - まとめ: ideas/v1-summary.md
-      - ⏰ CronFailsafe:
-        - 設計書: ideas/cron-failsafe.md
-        - レビュー: ideas/cron-failsafe-review.md
-      - 📋 ContractAlert:
-        - 設計書: ideas/contract-alert.md
-        - レビュー: ideas/contract-alert-review.md
-      - 🏷️ Namer:
-        - 設計書: ideas/namer.md
-        - レビュー: ideas/namer-review.md
-      - 🖼️ OGP Gen:
-        - 設計書: ideas/ogp-gen.md
-        - レビュー: ideas/ogp-gen-review.md
-      - 🐕 DomainWatchdog:
-        - 設計書: ideas/domain-watchdog.md
-        - レビュー: ideas/domain-watchdog-review.md
-    - DeadLink: ideas/deadlink.md
-    - ナイトーク:
-      - 設計書: ideas/nightalk.md
-      - レビュー: ideas/nightalk-review.md
-    # Python Quest → プロジェクトに移動済み
+      - ⏰ CronFailsafe: ideas/cron-failsafe.md
+      - 📋 ContractAlert: ideas/contract-alert.md
+      - 🏷️ Namer: ideas/namer.md
+      - 🖼️ OGP Gen: ideas/ogp-gen.md
+      - 🐕 DomainWatchdog: ideas/domain-watchdog.md
+    - その他:
+      - DeadLink: ideas/deadlink.md
+      - ナイトーク: ideas/nightalk.md
 
 markdown_extensions:
   - admonition
