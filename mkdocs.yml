@@ -116,6 +116,12 @@ nav:
       - 開発ログ: projects/deadlink/development.md
       - プロダクトレビュー: projects/deadlink/review-product.md
       - コードレビュー: projects/deadlink/review-code.md
+    - 🐍 Python Quest:
+      - projects/python-quest/index.md
+      - 設計書: projects/python-quest/design.md
+      - 設計レビュー: projects/python-quest/design-review.md
+      - MVPレビュー: projects/python-quest/mvp-review.md
+      - ブロック編集UXレビュー: projects/python-quest/blockly-review.md
   - 💡 アイデア:
     - 概要: ideas/index.md
     - "🏆 v4 (2026-02-16 監視/リマインド系)":
@@ -187,12 +193,7 @@ nav:
     - ナイトーク:
       - 設計書: ideas/nightalk.md
       - レビュー: ideas/nightalk-review.md
-    - 🐍 Python Quest:
-      - 設計書: ideas/python-quest-design.md
-      - 設計レビュー: ideas/python-quest-design-review.md
-      - MVPレビュー: ideas/python-quest-mvp-review.md
-      - ブロック編集UXレビュー: ideas/python-quest-blockly-review.md
-      - UI/UX・コードレビュー: ideas/python-quest-ux-code-review.md
+    # Python Quest → プロジェクトに移動済み
 
 markdown_extensions:
   - admonition
