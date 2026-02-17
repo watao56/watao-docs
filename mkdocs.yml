@@ -131,12 +131,14 @@ nav:
       - UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
     - ideas/index.md
+    - v6 - 2026-02-17 追加分:
+      - ⏰ WakeMeHook v2: ideas/wakemehook.md
+      - 🚨 AkiAlert: ideas/akialert.md
+      - 🔔 GitNudge: ideas/gitnudge.md
     - v5 - 月$20プロダクト構想:
       - 💸 ReceiptKeep: ideas/receiptkeep.md
       - 🚨 ErrorLens: ideas/errorlens.md
-      - ⏰ WakeMeHook: ideas/wakemehook.md
       - 📅 SlotAlert: ideas/slotalert.md
-      - 🔔 GitNudge: ideas/gitnudge.md
     - v4 - 監視/リマインド系:
       - 🛎️ FormShield: ideas/formshield.md
       - 💰 InvoiceTrack: ideas/invoicetrack.md
