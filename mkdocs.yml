@@ -192,6 +192,7 @@ nav:
       - 設計レビュー: ideas/python-quest-design-review.md
       - MVPレビュー: ideas/python-quest-mvp-review.md
       - ブロック編集UXレビュー: ideas/python-quest-blockly-review.md
+      - UI/UX・コードレビュー: ideas/python-quest-ux-code-review.md
 
 markdown_extensions:
   - admonition
