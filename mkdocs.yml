@@ -131,6 +131,12 @@ nav:
       - UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
     - ideas/index.md
+    - v7 - 2026-02-18:
+      - 💸 QuotaGuard: ideas/quotaguard.md
+      - 🔍 ChangelogSpy: ideas/changelogspy.md
+      - 📸 PixelProof: ideas/pixelproof.md
+      - 📆 TaxCalendar: ideas/taxcalendar.md
+      - 🛡️ DnsShield: ideas/dnsshield.md
     - v6 - 2026-02-17 追加分:
       - ⏰ WakeMeHook v2: ideas/wakemehook.md
       - 🚨 AkiAlert: ideas/akialert.md

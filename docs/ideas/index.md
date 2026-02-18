@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🏆 プロダクト設計書 v7（2026-02-18）
+
+「払わないと損」レベルの実害防止に特化。クラウド請求爆発・API破壊的変更・UI崩壊・税金延滞・ドメインハイジャック — 全て見落とすと金銭的損害が発生する課題。全5案A評価以上。
+
+| プロダクト | カテゴリ | 評価 | 月額目標達成 | 粗利率 |
+|-----------|---------|------|------------|--------|
+| [💸 QuotaGuard](quotaguard.md) ([レビュー](quotaguard-review.md)) | クラウド請求爆発防止 | **A-** | 3ヶ月目（Pro 4人） | 96.4% |
+| [🔍 ChangelogSpy](changelogspy.md) ([レビュー](changelogspy-review.md)) | 依存SaaS Breaking Change検知 | **A** | 3ヶ月目（Pro 4人） | 99.3% |
+| [📸 PixelProof](pixelproof.md) ([レビュー](pixelproof-review.md)) | デプロイ後ビジュアルリグレッション検知 | **A** | 3ヶ月目（Pro 3人） | 97.1% |
+| [📆 TaxCalendar](taxcalendar.md) ([レビュー](taxcalendar-review.md)) | フリーランス税務期限リマインダー | **A** | 3ヶ月目（Pro 6人） | 99.4% |
+| [🛡️ DnsShield](dnsshield.md) ([レビュー](dnsshield-review.md)) | DNS/WHOIS変更監視 | **A** | 3ヶ月目（Pro 4人） | 97.8% |
+
+### v7の特徴
+- **全案A評価以上**: ChangelogSpy・PixelProof・TaxCalendar・DnsShieldがA、QuotaGuardがA-
+- **「見落とし=金銭損害」の保険型**: 全て解約するとリスクが復活するモデル
+- **粗利96〜99%**: インフラコスト$0.20〜$2.00/月で圧倒的に低い
+- **ターゲット多様化**: 開発者（QuotaGuard/ChangelogSpy）、Web制作者（PixelProof/DnsShield）、フリーランス全般（TaxCalendar）
+- **3-6人で$20達成**: 全案とも少数有料ユーザーで目標クリア
+
+---
+
 ## 🏆 プロダクト設計書 v6（2026-02-17 追加分）
 
 v5の成功を受け、サブエージェント完遂作業として3案を新規設計・改善。WakeMeHookをB→A-にブラッシュアップし、AkiAlert・GitNudgeを新規設計。
