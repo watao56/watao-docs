@@ -131,6 +131,12 @@ nav:
       - UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
     - ideas/index.md
+    - v8 - 2026-02-19:
+      - 📋 PermitPing: ideas/permitping.md
+      - 🏢 BizNotify: ideas/biznotify.md
+      - 🔒 SSLWatcher: ideas/sslwatcher.md
+      - ⏳ EOLTracker: ideas/eoltracker.md
+      - 📬 FormLeadPing: ideas/formleadping.md
     - v7 - 2026-02-18:
       - 💸 QuotaGuard: ideas/quotaguard.md
       - 🔍 ChangelogSpy: ideas/changelogspy.md

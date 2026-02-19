@@ -2,6 +2,37 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🏆 プロダクト設計書 v8（2026-02-19）
+
+v7までの40+案と重複しない新領域を開拓。事業許認可・法人届出・SSL証明書・技術EOL・フォームリード管理の5案。全てAI不使用、外部API費$0、粗利98-99%超。
+
+| プロダクト | カテゴリ | 評価 | 月額目標達成 | 粗利率 |
+|-----------|---------|------|------------|--------|
+| [📋 PermitPing](permitping.md) ([レビュー](permitping-review.md)) | 事業許認可更新期限管理 | **A** | 3ヶ月目（Pro 4人+Biz 1人） | 99.5% |
+| [🏢 BizNotify](biznotify.md) ([レビュー](biznotify-review.md)) | 法人届出・報告書期限管理 | **A** | 3ヶ月目（Pro 3人+Advisor 1人） | 99.6% |
+| [🔒 SSLWatcher](sslwatcher.md) ([レビュー](sslwatcher-review.md)) | マルチドメインSSL証明書一括監視 | **A-** | 2ヶ月目（Agency 1社+Pro 2人） | 99.5% |
+| [⏳ EOLTracker](eoltracker.md) ([レビュー](eoltracker-review.md)) | 技術スタックEOL監視 | **A-** | 3ヶ月目（Pro 3人+Team 1人） | 99.4% |
+| [📬 FormLeadPing](formleadping.md) ([レビュー](formleadping-review.md)) | フォーム問い合わせ対応漏れ防止 | **A-** | 3ヶ月目（Pro 4人+Biz 1人） | 98.5% |
+
+### v8の特徴
+- **全案A評価以上**: PermitPing・BizNotifyがA、SSLWatcher・EOLTracker・FormLeadPingがA-
+- **全てAI不使用、外部API費$0**: endoflife.date API（無料）、Node.js tlsモジュール（ネイティブ）のみ
+- **「罰金・営業停止・情報漏洩」の恐怖訴求**: 解約=即リスク復活の保険型
+- **士業・Web制作会社パートナーチャネル**: 1人の導入で10-50社に波及
+- **新領域**: 事業許認可（PermitPing）、法人届出横断管理（BizNotify）は市場にブルーオーシャン
+- **既存プロダクトとの補完**: FormShield×FormLeadPing、CertRemind×PermitPing、TaxCalendar×BizNotify
+
+### ❌ ボツ案（B+以下→破棄）
+v8設計過程で以下5案を設計・レビューし、全てB+以下で破棄:
+
+- **RefundRadar** (B+): SaaS SLA違反検知。WTP弱い、返金額が小さい
+- **ReplyGuard** (B+): Gmail未返信アラート。OAuth審査リスク、無料代替多い
+- **GigProtect** (B+): 契約書AI検知。非弁行為リスク、利用頻度低い
+- **StockPing** (B+): EC在庫アラート。プラットフォーム標準機能と競合
+- **RankDrop** (B): SEO順位追跡。SerpApiコストがスケールしない（計算ミスで$900/月）
+
+---
+
 ## 🏆 プロダクト設計書 v7（2026-02-18）
 
 「払わないと損」レベルの実害防止に特化。クラウド請求爆発・API破壊的変更・UI崩壊・税金延滞・ドメインハイジャック — 全て見落とすと金銭的損害が発生する課題。全5案A評価以上。
