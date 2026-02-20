@@ -131,6 +131,12 @@ nav:
       - UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
     - ideas/index.md
+    - v10 - 海外発・画期的 2026-02-20:
+      - 🎙️ KoeLink: ideas/koelink.md
+      - 🎨 BrandKit: ideas/brandkit.md
+      - 🌱 NiwaLog: ideas/niwalog.md
+      - 🚀 ShipFolio: ideas/shipfolio.md
+      - 🖼️ OGP Lab: ideas/ogplab.md
     - v9 - 2026-02-20:
       - 🔔 WebhookGuard: ideas/webhookguard.md
       - ♿ A11yPing: ideas/a11yping.md
