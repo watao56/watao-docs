@@ -2,6 +2,28 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🏆 プロダクト設計書 v9（2026-02-20）
+
+v8までの45+案と重複しない新領域を開拓。Webhook配信監視・Webアクセシビリティ・SEOファイル保全・セキュリティヘッダー・構造化データの5案。全てAI不使用、外部API費$0、粗利99%超。
+
+| プロダクト | カテゴリ | 評価 | 月額目標達成 | 粗利率 |
+|-----------|---------|------|------------|--------|
+| [🔔 WebhookGuard](webhookguard.md) ([レビュー](webhookguard-review.md)) | Webhook配信監視 | **A** | 2ヶ月目（Pro 4人） | 99.2% |
+| [♿ A11yPing](a11yping.md) ([レビュー](a11yping-review.md)) | Webアクセシビリティ自動監視 | **A-** | 2ヶ月目（Pro 4人） | 99.9% |
+| [🤖 RoboGuard](roboguard.md) ([レビュー](roboguard-review.md)) | robots.txt/sitemap.xml破損検知 | **A** | 2ヶ月目（Pro 5人） | 99.9% |
+| [🛡️ HeaderShield](headershield.md) ([レビュー](headershield-review.md)) | HTTPセキュリティヘッダー監視 | **A-** | 2ヶ月目（Pro 4人） | 99.9% |
+| [📐 SchemaLint](schemalint.md) ([レビュー](schemalint-review.md)) | 構造化データ破損検知 | **A-** | 2ヶ月目（Pro 4人） | 99.9% |
+
+### v9の特徴
+- **全案A評価以上**: WebhookGuard・RoboGuardがA、A11yPing・HeaderShield・SchemaLintがA-
+- **全てAI不使用、外部API費$0**: axe-core(OSS)、cheerio(OSS)、テキスト差分のみ
+- **「売上損失・法的リスク・SEO壊滅」の実害防止**: 解約=即リスク復活の保険型
+- **Web保全スイート構想**: RoboGuard+SchemaLint+HeaderShieldでWebサイト保全を一気通貫
+- **新領域**: Webhook監視(WebhookGuard)、アクセシビリティ定期チェック(A11yPing)はブルーオーシャン
+- **インフラコスト$0〜$0.05/月**: 50ユーザー時でも事実上ゼロコスト
+
+---
+
 ## 🏆 プロダクト設計書 v8（2026-02-19）
 
 v7までの40+案と重複しない新領域を開拓。事業許認可・法人届出・SSL証明書・技術EOL・フォームリード管理の5案。全てAI不使用、外部API費$0、粗利98-99%超。

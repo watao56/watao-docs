@@ -131,6 +131,12 @@ nav:
       - UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
     - ideas/index.md
+    - v9 - 2026-02-20:
+      - 🔔 WebhookGuard: ideas/webhookguard.md
+      - ♿ A11yPing: ideas/a11yping.md
+      - 🤖 RoboGuard: ideas/roboguard.md
+      - 🛡️ HeaderShield: ideas/headershield.md
+      - 📐 SchemaLint: ideas/schemalint.md
     - v8 - 2026-02-19:
       - 📋 PermitPing: ideas/permitping.md
       - 🏢 BizNotify: ideas/biznotify.md
