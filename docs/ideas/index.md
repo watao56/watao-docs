@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🎯 多様性重視・5カテゴリ設計 v11（2026-02-21）
+
+保険型/監視系から完全脱却。マーケティング/AI×クリエイティブ/パーソナル/チーム生産性/ライティングの5カテゴリで設計。全案海外実証済み、全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🏆 TestiWall](testiwall.md) ([レビュー](testiwall-review.md)) | テスティモニアル収集Widget | Senja ($50K MRR) | **A** | 99.8% |
+| [🎨 MojiForge](mojiforge.md) ([レビュー](mojiforge-review.md)) | AI絵文字/スタンプパック生成 | LINE Creators (¥76億/年) | **A** | 95.5% |
+| [🖼️ DreamPaper](dreampaper.md) ([レビュー](dreampaper-review.md)) | AI壁紙ジェネレーター | iOS壁紙アプリ群 | **A** | 89.6% |
+| [🔄 RetroFlow](retroflow.md) ([レビュー](retroflow-review.md)) | AIファシリ付き振り返りボード | Retrium ($5M+ ARR) | **A** | 97.3% |
+| [✍️ CopyTone](copytone.md) ([レビュー](copytone-review.md)) | AIブランドボイス分析 | Writer.com ($200M+) | **A** | 95.6% |
+
+### v11の特徴
+- **5カテゴリ完全分散**: マーケ/クリエイティブ/パーソナル/チーム/ライティング
+- **保険型ゼロ**: 全てが「作る・表現する・改善する」系
+- **バイラル性重視**: MojiForge/DreamPaperはSNS拡散力が高い
+- **B2B〜B2Cミックス**: RetroFlow(B2B) / DreamPaper(B2C) / TestiWall(B2B2C)
+- **AI費用$0〜$11/月**: TestiWallはAI不使用、他もGPT-4o-mini/Flux Schnellで低コスト
+
+---
+
 ## 🌏 海外発・画期的プロダクト v10（2026-02-20）
 
 保険型/監視系を脱却し、**海外で流行っているが日本未展開**のプロダクトを日本市場向けにローカライズ。デザイン性・インパクト重視。全案A評価。

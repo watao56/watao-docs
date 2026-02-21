@@ -131,6 +131,12 @@ nav:
       - UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
     - ideas/index.md
+    - v11 - 多様性重視 2026-02-21:
+      - 🏆 TestiWall: ideas/testiwall.md
+      - 🎨 MojiForge: ideas/mojiforge.md
+      - 🖼️ DreamPaper: ideas/dreampaper.md
+      - 🔄 RetroFlow: ideas/retroflow.md
+      - ✍️ CopyTone: ideas/copytone.md
     - v10 - 海外発・画期的 2026-02-20:
       - 🎙️ KoeLink: ideas/koelink.md
       - 🎨 BrandKit: ideas/brandkit.md
