@@ -131,6 +131,12 @@ nav:
       - UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
     - ideas/index.md
+    - v12 - 新領域5カテゴリ 2026-02-22:
+      - 🍱 SnapMenu: ideas/snapmenu.md
+      - 🎯 PitchCraft: ideas/pitchcraft.md
+      - 📇 DigiMeishi: ideas/digimeishi.md
+      - 🎨 PromptStock: ideas/promptstock.md
+      - 🏅 MicroCert: ideas/microcert.md
     - v11 - 多様性重視 2026-02-21:
       - 🏆 TestiWall: ideas/testiwall.md
       - 🎨 MojiForge: ideas/mojiforge.md
