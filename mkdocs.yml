@@ -135,6 +135,9 @@ nav:
       - UX・コードレビュー: projects/python-quest/ux-code-review.md
   - 💡 アイデア:
     - ideas/index.md
+    - ❤️ heartbeat:
+      - まとめ: ideas/heartbeat/index.md
+      - 2026-02-23: ideas/heartbeat/2026-02-23.md
 
     - v13 - 非保険偏重 2026-02-23:
       - 🎬 HookCanvas: ideas/hookcanvas.md
