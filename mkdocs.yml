@@ -139,6 +139,13 @@ nav:
       - まとめ: ideas/heartbeat/index.md
       - 2026-02-23: ideas/heartbeat/2026-02-23.md
 
+
+    - v14 - 非監視偏重 2026-02-24:
+      - 🎧 AudioBloom: ideas/audiobloom.md
+      - 🔥 ChallengePods: ideas/challengepods.md
+      - 🌀 FocusArc: ideas/focusarc.md
+      - 🌿 WidgetGarden: ideas/widgetgarden.md
+      - 🧾 LicenseLens: ideas/licenselens.md
     - v13 - 非保険偏重 2026-02-23:
       - 🎬 HookCanvas: ideas/hookcanvas.md
       - 👥 CrewLoop: ideas/crewloop.md
