@@ -21,6 +21,10 @@
 - [🎯 Skills](skills/index.md) — Claude Code / OpenClaw向けSkills。おすすめ一覧・自作ガイド
 - [🔌 MCP](mcp/index.md) — Model Context Protocol。おすすめサーバー・セットアップ・活用事例
 
+### 実装パターン
+
+- [🧠 AI実装ノート](ai/index.md) — LLMアプリの安全実装とFunction Calling設計
+
 ## ☁️ AWS
 
 - [AWS概要](aws/index.md) — サービス一覧・料金体系・CLI基本

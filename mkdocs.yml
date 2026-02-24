@@ -98,6 +98,10 @@ nav:
         - おすすめサーバー: tech/mcp/servers.md
         - セットアップ: tech/mcp/setup.md
         - 活用事例: tech/mcp/use-cases.md
+      - 🧠 AI実装:
+        - tech/ai/index.md
+        - 安全なレンダリング: tech/ai/secure-rendering.md
+        - Function Calling設計: tech/ai/function-calling-patterns.md
     - ☁️ AWS:
       - tech/aws/index.md
       - EC2:
