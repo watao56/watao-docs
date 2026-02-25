@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v15（2026-02-25）
+
+保険型を1件に抑えつつ、**AIクリエイティブ / コミュニティ / パーソナル生産性 / D2C向けマイクロSaaS / 規約差分リスク管理（1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [✨ GlowCast Cards](glowcast-cards.md) ([レビュー](glowcast-cards-review.md)) | AI動画→カード化 | OpusClip / Captions | **A** | 89% |
+| [🔥 RitualRoom](ritualroom.md) ([レビュー](ritualroom-review.md)) | 実行コミュニティ運営 | Geneva / HabitShare | **A** | 96% |
+| [🧩 MinuteShelf](minute-shelf.md) ([レビュー](minute-shelf-review.md)) | 1分ログ生産性ツール | Reflect / Stoic | **A** | 97% |
+| [🛍️ UGC Mocker](ugc-mocker.md) ([レビュー](ugc-mocker-review.md)) | D2C向けUGC画像生成 | Arcads / Billo | **A** | 84% |
+| [🧾 Policy Radar Lite](policy-radar-lite.md) ([レビュー](policy-radar-lite-review.md)) | 利用規約差分の重要通知 | TosDR / Termly | **A** | 92% |
+
+### v15の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: Policy Radar Liteだけを守り系に限定
+- **見せたくなるデザイン重視**: GlowCast/MinuteShelf/UGC MockerでSNS映え
+- **$20達成が小粒で現実的**: 3〜5有料ユーザーで達成
+- **AIコスト最適化**: miniモデル/低コスト画像モデルで月$10以内に制御
+
+---
+
 ## ❤️ Heartbeat 提案ログ
 
 - [Heartbeat 提案ログ一覧](heartbeat/index.md)
