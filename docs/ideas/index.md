@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v16（2026-02-26）
+
+保険型を1件に抑え、**AIクリエイティブ / コミュニティ / パーソナル生産性 / Link-in-bioマイクロSaaS / 規約差分リスク管理（1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [✨ VibeCollage](vibecollage.md) ([レビュー](vibecollage-review.md)) | AIコラージュ生成 | Canva / Adobe Express | **A** | 86% |
+| [👥 SprintMates](sprintmates.md) ([レビュー](sprintmates-review.md)) | 20分公開作業コミュニティ | Focusmate / Caveday | **A** | 96% |
+| [🧭 TabSherpa](tabsherpa.md) ([レビュー](tabsherpa-review.md)) | タブ整理&復元生産性ツール | OneTab / Workona | **A** | 96.3% |
+| [🔗 LinkMenu Lite](linkmenu-lite.md) ([レビュー](linkmenu-lite-review.md)) | Link-in-bio最適化SaaS | Linktree / Beacons | **A** | 98% |
+| [🧾 TermsPulse](termspulse.md) ([レビュー](termspulse-review.md)) | 利用規約差分の重要通知 | ToSDR / Termly | **A** | 91% |
+
+### v16の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: TermsPulseのみ守り系、他4案は攻めの価値
+- **海外トレンドを日本語UXで再設計**: フォント/文脈/導線をローカライズ
+- **$20達成が現実的**: 3〜5有料ユーザーで到達
+- **AIコスト最小化**: miniモデル中心で月$1〜$7想定
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v15（2026-02-25）
 
 保険型を1件に抑えつつ、**AIクリエイティブ / コミュニティ / パーソナル生産性 / D2C向けマイクロSaaS / 規約差分リスク管理（1件）**で新規5案を設計。全案A評価。
