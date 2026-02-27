@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v17（2026-02-27）
+
+保険型を1件に抑え、**日本語デザインAI / 実行コミュニティ / 知識生産性 / Indie広報マイクロSaaS / クリエイター規約レーダー（1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎨 FontMuse JP](fontmuse-jp.md) ([レビュー](fontmuse-jp-review.md)) | 日本語フォントAIデザイン | Canva / Adobe Express | **A** | 94% |
+| [👥 BuildBet Club](buildbet-club.md) ([レビュー](buildbet-club-review.md)) | 非同期実行コミュニティ | Focusmate / Caveday | **A** | 98% |
+| [🧠 PocketThesis](pocketthesis.md) ([レビュー](pocketthesis-review.md)) | 保存記事の3行要約&行動化 | Readwise / Mymind系 | **A** | 93% |
+| [📣 Changelog Cards](changelog-cards.md) ([レビュー](changelog-cards-review.md)) | Git更新のSNSカード自動化 | Loom/Linear更新共有文化 | **A** | 98% |
+| [🛡️ Creator Rule Radar](creator-rule-radar.md) ([レビュー](creator-rule-radar-review.md)) | 収益規約変更アラート | ToS監視系 / クリエイター経済 | **A** | 89.7% |
+
+### v17の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: Creator Rule Radarだけ守り系
+- **見せたくなるデザイン重視**: FontMuse/Changelog CardsはSNS映えを重視
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: miniモデル中心、月$2〜$5帯で運用
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v16（2026-02-26）
 
 保険型を1件に抑え、**AIクリエイティブ / コミュニティ / パーソナル生産性 / Link-in-bioマイクロSaaS / 規約差分リスク管理（1件）**で新規5案を設計。全案A評価。
