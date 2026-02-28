@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v18（2026-02-28）
+
+保険型を1件に抑え、**AIファッション生成 / 実行コミュニティ / 作業可視化生産性 / 診断型マイクロSaaS / 広告規約レーダー（1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [📸 SnapFit Mirror](snapfit-mirror.md) ([レビュー](snapfit-mirror-review.md)) | AI×クリエイティブ（ファッション） | Lensa / Combyne | **A** | 88% |
+| [👥 PodRing](podring.md) ([レビュー](podring-review.md)) | ソーシャル実行ポッド | Focusmate / Geneva | **A** | 97% |
+| [🧾 FocusReceipt](focusreceipt.md) ([レビュー](focusreceipt-review.md)) | 作業レシート生産性ツール | RescueTime / Rize | **A** | 96% |
+| [🧩 QuizBio Lite](quizbio-lite.md) ([レビュー](quizbio-lite-review.md)) | 診断リンク・マイクロSaaS | Typeform / Interact | **A** | 98% |
+| [📢 AdPolicy Scout Lite](adpolicy-scout-lite.md) ([レビュー](adpolicy-scout-lite-review.md)) | 広告規約差分アラート（保険型） | Meta/Google Policy Updates | **A** | 91% |
+
+### v18の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: AdPolicy Scout Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 診断文化・SNS共有導線を最適化
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最小化**: 月$0.5〜$8レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v17（2026-02-27）
 
 保険型を1件に抑え、**日本語デザインAI / 実行コミュニティ / 知識生産性 / Indie広報マイクロSaaS / クリエイター規約レーダー（1件）**で新規5案を設計。全案A評価。
