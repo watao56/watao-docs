@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v19（2026-03-01）
+
+保険型を1件に抑え、**情報ダイエット生産性 / AI漫画クリエイティブ / マイクロ学習コミュニティ / 価格改定レーダー（1件） / 継続可視化ポスター**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [📨 LoomLetter JP](loomletter-jp.md) ([レビュー](loomletter-jp-review.md)) | ニュースレター行動化生産性 | Readwise / Superhuman | **A** | 93% |
+| [🎞️ Reel2Manga](reel2manga.md) ([レビュー](reel2manga-review.md)) | AI×クリエイティブ（動画→漫画） | OpusClip / Lensa | **A** | 82.8% |
+| [🤝 SkillSwap 15](skillswap-15.md) ([レビュー](skillswap-15-review.md)) | 15分スキル交換コミュニティ | Focusmate / Lunchclub | **A** | 83% |
+| [💳 PricePatch Radar](pricepatch-radar.md) ([レビュー](pricepatch-radar-review.md)) | SaaS料金改定アラート（保険型） | Visualping / Hexowatch | **A** | 96.7% |
+| [🧵 StreakPoster](streakposter.md) ([レビュー](streakposter-review.md)) | 継続可視化ポスターSaaS | Typefully / WakaTime Cards | **A** | 95% |
+
+### v19の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: PricePatch Radarのみ守り系
+- **海外トレンド→日本語UX変換**: 短時間交換・情報ダイエット・見せる進捗に最適化
+- **$20達成の現実性**: 3〜7有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$9レンジで運用
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v18（2026-02-28）
 
 保険型を1件に抑え、**AIファッション生成 / 実行コミュニティ / 作業可視化生産性 / 診断型マイクロSaaS / 広告規約レーダー（1件）**で新規5案を設計。全案A評価。
