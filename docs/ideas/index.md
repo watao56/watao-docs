@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v20（2026-03-02）
+
+保険型を1件に抑え、**AIムードボード制作 / 相互ローストコミュニティ / 60秒振り返り生産性 / 海外ローンチ日本語化マイクロSaaS / スポンサー契約期限レーダー（1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎨 MoodMesh Studio](moodmesh-studio.md) ([レビュー](moodmesh-studio-review.md)) | AI×クリエイティブ（ムードボード） | Canva Magic Design / Krea | **A** | 92% |
+| [🔥 TinyRoast Club](tinyroast-club.md) ([レビュー](tinyroast-club-review.md)) | ソーシャル相互レビューコミュニティ | Indie Hackers / Roast系 | **A** | 95% |
+| [🧠 OneTap Debrief](onetap-debrief.md) ([レビュー](onetap-debrief-review.md)) | パーソナル生産性（60秒振り返り） | Reflect / Stoic | **A** | 94% |
+| [🚀 LaunchLingo JP](launchlingo-jp.md) ([レビュー](launchlingo-jp-review.md)) | マイクロSaaS（海外ローンチ日本語化） | Taplio / Typefully | **A** | 96% |
+| [🛡️ SponsorSafe Expiry](sponsorsafe-expiry.md) ([レビュー](sponsorsafe-expiry-review.md)) | 契約期限アラート（保険型） | CreatorIQ契約管理 | **A** | 93% |
+
+### v20の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: SponsorSafe Expiryのみ守り系
+- **海外トレンド→日本語UX変換**: 共有導線・和文コピー・SNS比率に最適化
+- **$20達成の現実性**: 2〜4有料ユーザーで到達
+- **AIコスト最適化**: 月$2〜$9レンジで運用
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v19（2026-03-01）
 
 保険型を1件に抑え、**情報ダイエット生産性 / AI漫画クリエイティブ / マイクロ学習コミュニティ / 価格改定レーダー（1件） / 継続可視化ポスター**で新規5案を設計。全案A評価。
