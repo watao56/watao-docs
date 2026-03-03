@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v21（2026-03-03）
+
+保険型を1件に抑え、**シリーズ統一AIデザイン / リミックス連鎖コミュニティ / 再開特化の個人生産性 / 返信→ロードマップのIndieマイクロSaaS / 入金差異検知（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎨 VibeScene Lab](vibescene-lab.md) ([レビュー](vibescene-lab-review.md)) | AI×クリエイティブ（シリーズ統一生成） | Canva Magic Design / Headliner | **A** | 89% |
+| [🧩 Remix Baton](remix-baton.md) ([レビュー](remix-baton-review.md)) | ソーシャル創作コミュニティ | Partiful / Figma Community | **A** | 94% |
+| [🧠 ContextCapsule](contextcapsule.md) ([レビュー](contextcapsule-review.md)) | パーソナル生産性（再開特化） | Sunsama / OneTab | **A** | 90% |
+| [🗺️ Reply2Roadmap](reply2roadmap.md) ([レビュー](reply2roadmap-review.md)) | マイクロSaaS（返信→公開ロードマップ） | Canny / Productboard | **A** | 89% |
+| [🧾 PayoutProof Lite](payoutproof-lite.md) ([レビュー](payoutproof-lite-review.md)) | 入金差異検知（保険型） | Visualping / Creator収益管理系 | **A** | 88.9% |
+
+### v21の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: PayoutProof Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 連鎖参加・再開体験・公開進捗をローカライズ
+- **$20達成の現実性**: 2〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$0〜$12レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v20（2026-03-02）
 
 保険型を1件に抑え、**AIムードボード制作 / 相互ローストコミュニティ / 60秒振り返り生産性 / 海外ローンチ日本語化マイクロSaaS / スポンサー契約期限レーダー（1件）**で新規5案を設計。全案A評価。
