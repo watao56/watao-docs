@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v22（2026-03-04）
+
+保険型を1件に抑え、**AIミニジン制作 / 音声リミックス連鎖コミュニティ / Done可視化生産性 / フォーム回答→実績ページのIndieマイクロSaaS / 海外SaaS請求VAT抜け漏れ検知（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [📰 ZineFold](zinefold.md) ([レビュー](zinefold-review.md)) | AI×クリエイティブ（ミニジン自動生成） | Flipsnack / Canva Magic Design | **A** | 91% |
+| [🎵 JamCapsule](jamcapsule.md) ([レビュー](jamcapsule-review.md)) | ソーシャル/コミュニティ（音声リミックス連鎖） | BandLab / TikTok Duet | **A** | 92% |
+| [✅ DoneMirror](donemirror.md) ([レビュー](donemirror-review.md)) | パーソナル生産性（Done可視化） | Sunsama / Done-listトレンド | **A** | 94% |
+| [🧩 FormStory Lite](formstory-lite.md) ([レビュー](formstory-lite-review.md)) | マイクロSaaS（フォーム回答→実績ページ） | Senja / Tally | **A** | 91% |
+| [🧾 VATLens Lite](vatlens-lite.md) ([レビュー](vatlens-lite-review.md)) | 海外SaaS請求・VAT抜け漏れ検知（保険型） | Quaderno / Stripe Tax | **A** | 84% |
+
+### v22の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: VATLens Liteのみ守り系
+- **海外トレンド→日本語UX変換**: zine文化・短尺音声連鎖・Done-list文化をローカライズ
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$12レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v21（2026-03-03）
 
 保険型を1件に抑え、**シリーズ統一AIデザイン / リミックス連鎖コミュニティ / 再開特化の個人生産性 / 返信→ロードマップのIndieマイクロSaaS / 入金差異検知（保険型1件）**で新規5案を設計。全案A評価。
