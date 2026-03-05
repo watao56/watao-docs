@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v23（2026-03-05）
+
+保険型を1件に抑え、**返信動画AI / プロンプト対戦コミュニティ / クエスト型生産性 / 問い合わせ自動FAQマイクロSaaS / 共同制作の証跡化（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎬 NeonReel Reply](neonreel-reply.md) ([レビュー](neonreel-reply-review.md)) | AI×クリエイティブ（返信動画自動生成） | CapCut / Captions | **A** | 84% |
+| [🧩 PromptGuild](promptguild.md) ([レビュー](promptguild-review.md)) | ソーシャル/コミュニティ（プロンプト対戦） | PromptBase / Midjourneyコミュニティ | **A** | 90% |
+| [🗺️ Questline Solo](questline-solo.md) ([レビュー](questline-solo-review.md)) | パーソナル生産性（クエスト可視化） | Habitica / Finch | **A** | 92.5% |
+| [🧰 FAQForge Widget](faqforge-widget.md) ([レビュー](faqforge-widget-review.md)) | マイクロSaaS（問い合わせ→FAQ自動更新） | Intercom Fin / HelpScout | **A** | 86% |
+| [🧾 CollabLedger Lite](collabledger-lite.md) ([レビュー](collabledger-lite-review.md)) | 共同制作証跡化（保険型） | Frame.io / Contra dispute文脈 | **A** | 82.8% |
+
+### v23の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: CollabLedger Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 返信動画・学習対戦・軽量FAQ運用をローカライズ
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$6〜$12レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v22（2026-03-04）
 
 保険型を1件に抑え、**AIミニジン制作 / 音声リミックス連鎖コミュニティ / Done可視化生産性 / フォーム回答→実績ページのIndieマイクロSaaS / 海外SaaS請求VAT抜け漏れ検知（保険型1件）**で新規5案を設計。全案A評価。
