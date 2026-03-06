@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v24（2026-03-06）
+
+保険型を1件に抑え、**フィルム風AIアルバム / 非同期ビルドコミュニティ / 中断復帰特化の個人生産性 / 音声フック生成マイクロSaaS / UGC同意期限レーダー（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎞️ FlashRoll Studio](flashroll-studio.md) ([レビュー](flashroll-studio-review.md)) | AI×クリエイティブ（フィルム風アルバム） | Lapse / Dispo / VSCO | **A** | 78% |
+| [👥 BuildCam Circle](buildcam-circle.md) ([レビュー](buildcam-circle-review.md)) | ソーシャル/コミュニティ（非同期ビルド報告） | Geneva / Circle | **A** | 90% |
+| [🧠 Reset Ribbon](reset-ribbon.md) ([レビュー](reset-ribbon-review.md)) | パーソナル生産性（中断復帰特化） | Sunsama / Akiflow | **A** | 88% |
+| [🎙️ VoiceHook Card](voicehook-card.md) ([レビュー](voicehook-card-review.md)) | マイクロSaaS（音声URL→導入カード化） | Headliner / Descript | **A** | 85% |
+| [🛡️ UGC Release Radar Lite](ugc-release-radar-lite.md) ([レビュー](ugc-release-radar-lite-review.md)) | 同意・利用期限レーダー（保険型） | DocuSign / Air.inc | **A** | 82% |
+
+### v24の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: UGC Release Radar Liteのみ守り系
+- **海外トレンド→日本語UX変換**: Lapse系の写真文化、build-in-public、音声導線最適化をローカライズ
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$3〜$17レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v23（2026-03-05）
 
 保険型を1件に抑え、**返信動画AI / プロンプト対戦コミュニティ / クエスト型生産性 / 問い合わせ自動FAQマイクロSaaS / 共同制作の証跡化（保険型1件）**で新規5案を設計。全案A評価。
