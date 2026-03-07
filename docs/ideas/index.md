@@ -2,6 +2,29 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+
+## 🚀 非保険偏重・海外トレンド設計 v25（2026-03-07）
+
+保険型を1件に抑え、**AIルックブック生成 / 音声ビルドコミュニティ / 小さな勝利の生産性可視化 / スワイプファイル分解マイクロSaaS / 契約条項ライトレーダー（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [👗 StyleTwin Booth](styletwin-booth.md) ([レビュー](styletwin-booth-review.md)) | AI×クリエイティブ（ECルックブック生成） | Photoroom / Pebblely | **A** | 82% |
+| [🎙️ BuildTrail FM](buildtrail-fm.md) ([レビュー](buildtrail-fm-review.md)) | ソーシャル/コミュニティ（音声進捗） | Geneva / Loom | **A** | 89% |
+| [🏁 TinyWin Ledger](tinywin-ledger.md) ([レビュー](tinywin-ledger-review.md)) | パーソナル生産性（小さな勝利ログ） | Reflect / Stoic | **A** | 91% |
+| [📦 SwipeFile Bento](swipefile-bento.md) ([レビュー](swipefile-bento-review.md)) | マイクロSaaS（URL分解→再利用） | Foreplay / Milled | **A** | 84% |
+| [🛡️ ClauseCue Lite](clausecue-lite.md) ([レビュー](clausecue-lite-review.md)) | 契約条項チェック（保険型） | Juro / Ironclad | **A** | 81% |
+
+### v25の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ClauseCue Liteのみ守り系
+- **海外トレンド→日本語UX変換**: ルックブック・音声進捗・swipe file文化をローカライズ
+- **$20達成の現実性**: 3〜4有料ユーザーで到達
+- **AIコスト最適化**: 月$4〜$19レンジで制御
+
+---
+
+
 ## 🚀 非保険偏重・海外トレンド設計 v24（2026-03-06）
 
 保険型を1件に抑え、**フィルム風AIアルバム / 非同期ビルドコミュニティ / 中断復帰特化の個人生産性 / 音声フック生成マイクロSaaS / UGC同意期限レーダー（保険型1件）**で新規5案を設計。全案A評価。
