@@ -3,6 +3,28 @@
 プロダクトアイデアと設計書のまとめです。
 
 
+
+## 🚀 非保険偏重・海外トレンド設計 v26（2026-03-08）
+
+保険型を1件に抑え、**空間AIクリエイティブ / 非同期デモコミュニティ / 体力起点生産性 / UGC台本マイクロSaaS / SaaS返金期限ナビ（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🏠 RoomLoop AI](roomloop-ai.md) ([レビュー](roomloop-ai-review.md)) | AI×クリエイティブ（空間ビジュアル） | RoomGPT / ReimagineHome | **A** | 94% |
+| [🎬 DemoDrop Club](demodrop-club.md) ([レビュー](demodrop-club-review.md)) | ソーシャル/コミュニティ（非同期デモ会） | WIP.co / Indie Hackers | **A** | 97% |
+| [⚡ EnergyLane](energylane.md) ([レビュー](energylane-review.md)) | パーソナル生産性（体力起点） | Rise / Stoic | **A** | 98% |
+| [🧩 UGCSlot Lite](ugcslot-lite.md) ([レビュー](ugcslot-lite-review.md)) | マイクロSaaS（UGC台本） | Arcads / Foreplay | **A** | 96% |
+| [🛡️ RefundAlly Lite](refund-ally-lite.md) ([レビュー](refund-ally-lite-review.md)) | SaaS返金期限ナビ（保険型） | Rocket Money系 / Chargeflow文脈 | **A** | 93% |
+
+### v26の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: RefundAlly Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 空間生成・WIP文化・体力軸タスク管理をローカライズ
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$8レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v25（2026-03-07）
 
 保険型を1件に抑え、**AIルックブック生成 / 音声ビルドコミュニティ / 小さな勝利の生産性可視化 / スワイプファイル分解マイクロSaaS / 契約条項ライトレーダー（保険型1件）**で新規5案を設計。全案A評価。
