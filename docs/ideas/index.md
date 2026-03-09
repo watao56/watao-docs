@@ -4,6 +4,27 @@
 
 
 
+## 🚀 非保険偏重・海外トレンド設計 v27（2026-03-09）
+
+保険型を1件に抑え、**VHS風AIクリエイティブ / 非同期ショーケースコミュニティ / 先延ばし打破の個人生産性 / 海外トレンド実装カードSaaS / 助成金締切ナビ（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎬 KineticTape Studio](kinetictape-studio.md) ([レビュー](kinetictape-studio-review.md)) | AI×クリエイティブ（VHS縦動画） | Captions / CapCut / Lapse文脈 | **A** | 80% |
+| [🚢 ShipWindow Club](shipwindow-club.md) ([レビュー](shipwindow-club-review.md)) | ソーシャル/コミュニティ（非同期展示会） | WIP.co / Indie Hackers / Partiful文脈 | **A** | 86% |
+| [🎲 MicroQuest Dice](microquest-dice.md) ([レビュー](microquest-dice-review.md)) | パーソナル生産性（先延ばし打破） | Goblin Tools / Habitica | **A** | 95% |
+| [📈 TrendBite JP](trendbite-jp.md) ([レビュー](trendbite-jp-review.md)) | マイクロSaaS（海外トレンド→実装カード） | Trends系ニュースレター / Product Hunt文化 | **A** | 74% |
+| [🧾 GrantWindow Lite](grantwindow-lite.md) ([レビュー](grantwindow-lite-review.md)) | 助成金締切ナビ（保険型） | 海外Grant discovery系 | **A** | 88% |
+
+### v27の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: GrantWindow Liteのみ守り系
+- **海外トレンド→日本語UX変換**: rawクリエイティブ、短尺コミュニティ、実装カード文化をローカライズ
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$7レンジ中心で制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v26（2026-03-08）
 
 保険型を1件に抑え、**空間AIクリエイティブ / 非同期デモコミュニティ / 体力起点生産性 / UGC台本マイクロSaaS / SaaS返金期限ナビ（保険型1件）**で新規5案を設計。全案A評価。
