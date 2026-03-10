@@ -4,6 +4,28 @@
 
 
 
+
+## 🚀 非保険偏重・海外トレンド設計 v28（2026-03-10）
+
+保険型を1件に抑え、**動画リメイクAI / 非同期レビュー交換コミュニティ / 1タップ集中の生産性 / 海外課題抽出マイクロSaaS / SaaS更新最適化（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎞️ CutScene Bento](cutscene-bento.md) ([レビュー](cutscene-bento-review.md)) | AI×クリエイティブ（動画→縦カルーセル） | Captions / OpusClip | **A** | 82% |
+| [🧪 PeerRoast Rooms](peerroast-rooms.md) ([レビュー](peerroast-rooms-review.md)) | ソーシャル/コミュニティ（24hレビュー交換） | Indie Hackers Roast / Geneva | **A** | 94% |
+| [🪨 FocusPebble](focuspebble.md) ([レビュー](focuspebble-review.md)) | パーソナル生産性（1タップ集中） | Rize / done-list文化 | **A** | 96% |
+| [📌 PainBoard Scout](painboard-scout.md) ([レビュー](painboard-scout-review.md)) | マイクロSaaS（海外課題抽出） | GummySearch / Exploding Topics | **A** | 74% |
+| [🛡️ Renewal Nudger Lite](renewal-nudger-lite.md) ([レビュー](renewal-nudger-lite-review.md)) | SaaS更新最適化（保険型） | Rocket Money / Zluri | **A** | 93% |
+
+### v28の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: Renewal Nudger Liteのみ守り系
+- **海外トレンド→日本語UX変換**: roast文化・短尺再編集・課題発見ワークフローをローカライズ
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$5帯で制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v27（2026-03-09）
 
 保険型を1件に抑え、**VHS風AIクリエイティブ / 非同期ショーケースコミュニティ / 先延ばし打破の個人生産性 / 海外トレンド実装カードSaaS / 助成金締切ナビ（保険型1件）**で新規5案を設計。全案A評価。
