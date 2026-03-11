@@ -5,6 +5,27 @@
 
 
 
+## 🚀 非保険偏重・海外トレンド設計 v29（2026-03-11）
+
+保険型を1件に抑え、**音声起点ショート動画AI / 連鎖型ビルドコミュニティ / 迷い解消の個人生産性 / Git更新告知マイクロSaaS / 仕様合意漏れ防止（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎬 Storyboard Flick](storyboard-flick.md) ([レビュー](storyboard-flick-review.md)) | AI×クリエイティブ（音声→縦型ストーリーボード） | CapCut / Canva | **A** | 92% |
+| [🔗 BuildEcho Chain](buildecho-chain.md) ([レビュー](buildecho-chain-review.md)) | ソーシャル/コミュニティ（連鎖型ビルド報告） | Geneva / Locket | **A** | 98% |
+| [🧭 Decision Dock](decision-dock.md) ([レビュー](decision-dock-review.md)) | パーソナル生産性（迷いを3択化） | Sunsama / Goblin Tools | **A** | 94% |
+| [📦 Repo2Teaser](repo2teaser.md) ([レビュー](repo2teaser-review.md)) | マイクロSaaS（Git更新→告知カード） | Typefully / Bannerbear | **A** | 92% |
+| [🛡️ ScopeFreeze Lite](scopefreeze-lite.md) ([レビュー](scopefreeze-lite-review.md)) | 仕様変更の合意漏れ防止（保険型） | Notion運用 / 契約管理SaaS文脈 | **A** | 95% |
+
+### v29の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ScopeFreeze Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 音声起点制作・連鎖投稿・Git発信自動化をローカライズ
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$8レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v28（2026-03-10）
 
 保険型を1件に抑え、**動画リメイクAI / 非同期レビュー交換コミュニティ / 1タップ集中の生産性 / 海外課題抽出マイクロSaaS / SaaS更新最適化（保険型1件）**で新規5案を設計。全案A評価。
