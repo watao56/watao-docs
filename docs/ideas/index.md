@@ -5,6 +5,27 @@
 
 
 
+## 🚀 非保険偏重・海外トレンド設計 v30（2026-03-12）
+
+保険型を1件に抑え、**日次シネマログAI / 相互レビューコミュニティ / 状態連動タスク実行 / 海外LP訴求抽出SaaS / トライアル解約忘れ防止（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎥 ScenePulse Studio](scenepulse-studio.md) ([レビュー](scenepulse-studio-review.md)) | AI×クリエイティブ（音声メモ→縦リール） | Lapse / BeReal / Captions | **A** | 95% |
+| [☕ Handoff Cafe](handoff-cafe.md) ([レビュー](handoff-cafe-review.md)) | ソーシャル/コミュニティ（15分相互レビュー） | Indie Hackers roast文化 / Lunchclub | **A** | 98% |
+| [🧠 SwitchLoom](switchloom.md) ([レビュー](switchloom-review.md)) | パーソナル生産性（状態別実行メニュー） | Goblin Tools / Sunsama | **A** | 96% |
+| [📦 OfferAngle JP](offerangle-jp.md) ([レビュー](offerangle-jp-review.md)) | マイクロSaaS（海外LP→日本語訴求） | Foreplay / AdSpy / SwipeWell | **A** | 92% |
+| [🛡️ TrialPocket Lite](trial-pocket-lite.md) ([レビュー](trial-pocket-lite-review.md)) | 無料トライアル解約忘れ防止（保険型） | Rocket Money / Trim | **A** | 99% |
+
+### v30の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: TrialPocket Liteのみ守り系
+- **海外トレンド→日本語UX変換**: build-in-public映え、レビュー交換、広告swipe文化をローカライズ
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$0〜$8レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v29（2026-03-11）
 
 保険型を1件に抑え、**音声起点ショート動画AI / 連鎖型ビルドコミュニティ / 迷い解消の個人生産性 / Git更新告知マイクロSaaS / 仕様合意漏れ防止（保険型1件）**で新規5案を設計。全案A評価。
