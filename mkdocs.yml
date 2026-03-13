@@ -148,6 +148,13 @@ nav:
 
 
 
+    - v31 - 非保険偏重 2026-03-13:
+      - 🎨 ChromaRecast: ideas/chroma-recast.md
+      - 🪐 OrbitIntro: ideas/orbit-intro.md
+      - 📓 FlickPlan: ideas/flickplan.md
+      - 🌍 TrendLocalizer Lite: ideas/trend-localizer-lite.md
+      - 🛡️ ContractSwitch Lite: ideas/contract-switch-lite.md
+
     - v30 - 非保険偏重 2026-03-12:
       - 🎥 ScenePulse Studio: ideas/scenepulse-studio.md
       - ☕ Handoff Cafe: ideas/handoff-cafe.md

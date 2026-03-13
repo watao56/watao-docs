@@ -5,6 +5,27 @@
 
 
 
+## 🚀 非保険偏重・海外トレンド設計 v31（2026-03-13）
+
+保険型を1件に抑え、**SNSカード生成AI / 週次マッチングコミュニティ / 映画的1日設計ツール / 海外LP日本語ローカライズSaaS / 契約更新判断アシスト（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎨 ChromaRecast](chroma-recast.md) ([レビュー](chroma-recast-review.md)) | AI×クリエイティブ（文章→SNSカード） | Captions / Canva | **A** | 90% |
+| [🪐 OrbitIntro](orbit-intro.md) ([レビュー](orbit-intro-review.md)) | ソーシャル/コミュニティ（週次相性マッチ） | Lunchclub / ADPList | **A** | 96% |
+| [📓 FlickPlan](flickplan.md) ([レビュー](flickplan-review.md)) | パーソナル生産性（映画的1日設計） | Sunsama / Finch | **A** | 97.5% |
+| [🌍 TrendLocalizer Lite](trend-localizer-lite.md) ([レビュー](trend-localizer-lite-review.md)) | マイクロSaaS（海外訴求→日本語化） | Foreplay / SwipeWell | **A** | 89% |
+| [🛡️ ContractSwitch Lite](contract-switch-lite.md) ([レビュー](contract-switch-lite-review.md)) | 契約更新判断支援（保険型） | Rocket Money / 契約管理SaaS | **A** | 98% |
+
+### v31の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ContractSwitch Liteのみ守り系
+- **海外トレンド→日本語UX変換**: warm intro文化、広告swipe文化、感情駆動UIをローカライズ
+- **$20達成の現実性**: 3〜4有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$8レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v30（2026-03-12）
 
 保険型を1件に抑え、**日次シネマログAI / 相互レビューコミュニティ / 状態連動タスク実行 / 海外LP訴求抽出SaaS / トライアル解約忘れ防止（保険型1件）**で新規5案を設計。全案A評価。
