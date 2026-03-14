@@ -4,6 +4,26 @@
 
 
 
+## 🚀 非保険偏重・海外トレンド設計 v32（2026-03-14）
+
+保険型を1件に抑え、**商品ビジュアルAI制作 / 週次リミックス交換コミュニティ / ロックスクリーン起点の生産性OS / 海外LPの日本語フック台本化 / クーポン不整合防止（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎨 PalettePilot Studio](palette-pilot-studio.md) ([レビュー](palette-pilot-studio-review.md)) | AI×クリエイティブ（商品画像→キャンペーンビジュアル） | Photoroom / Krea / Canva | **A** | 82% |
+| [🧩 MakerRemix Ring](maker-remix-ring.md) ([レビュー](maker-remix-ring-review.md)) | ソーシャル/コミュニティ（週次リミックス交換） | ADPList / Lunchclub / Indie Hackers | **A** | 95% |
+| [🗂️ GlanceGrid](glancegrid.md) ([レビュー](glancegrid-review.md)) | パーソナル生産性（ロックスクリーン実行OS） | Structured / Sunsama / Routine | **A** | 96% |
+| [📦 HookLine JP](hookline-jp.md) ([レビュー](hookline-jp-review.md)) | マイクロSaaS（海外LP→日本語ショート台本） | Foreplay / SwipeWell / Jasper | **A** | 91% |
+| [🛡️ CouponLeak Guard Lite](coupon-leak-guard-lite.md) ([レビュー](coupon-leak-guard-lite-review.md)) | クーポン不整合防止（保険型） | Visualping / Hexowatch / Shopify Apps | **A** | 97% |
+
+### v32の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: CouponLeak Guard Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 生成ビジュアル、相互リミックス、swipe文化を国内向けに最適化
+- **$20達成の現実性**: 3〜4有料ユーザーで到達
+- **AIコスト最適化**: 月$2〜$12レンジで制御
+
+---
 
 ## 🚀 非保険偏重・海外トレンド設計 v31（2026-03-13）
 

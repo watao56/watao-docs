@@ -148,6 +148,13 @@ nav:
 
 
 
+    - v32 - 非保険偏重 2026-03-14:
+      - 🎨 PalettePilot Studio: ideas/palette-pilot-studio.md
+      - 🧩 MakerRemix Ring: ideas/maker-remix-ring.md
+      - 🗂️ GlanceGrid: ideas/glancegrid.md
+      - 📦 HookLine JP: ideas/hookline-jp.md
+      - 🛡️ CouponLeak Guard Lite: ideas/coupon-leak-guard-lite.md
+
     - v31 - 非保険偏重 2026-03-13:
       - 🎨 ChromaRecast: ideas/chroma-recast.md
       - 🪐 OrbitIntro: ideas/orbit-intro.md
