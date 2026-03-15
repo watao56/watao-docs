@@ -4,6 +4,27 @@
 
 
 
+## 🚀 非保険偏重・海外トレンド設計 v33（2026-03-15）
+
+保険型を1件に抑え、**日本語タイポ動画AI / 週次リミックス交換コミュニティ / 3枠特化の実行OS / 海外ニッチ訴求の日本語フック化 / チャージバック証跡整理（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎞️ TypoPulse Canvas](typopulse-canvas.md) ([レビュー](typopulse-canvas-review.md)) | AI×クリエイティブ（音声/文章→タイポ動画） | CapCut / Submagic / Canva | **A** | 85.9% |
+| [🧩 CoMuse Circles](comuse-circles.md) ([レビュー](comuse-circles-review.md)) | ソーシャル/コミュニティ（週次リミックス交換） | Circle / Geneva / Duet文化 | **A** | 94.3% |
+| [🪟 ThreeWindow OS](threewindow-os.md) ([レビュー](threewindow-os-review.md)) | パーソナル生産性（1日3枠実行OS） | Sunsama / Routine / Amie | **A** | 95.7% |
+| [🌍 NicheHook Pulse JP](nichehook-pulse-jp.md) ([レビュー](nichehook-pulse-jp-review.md)) | マイクロSaaS（海外投稿→日本語LPフック） | GummySearch / Exploding Topics | **A** | 92.1% |
+| [🛡️ DisputeSprint Lite](dispute-sprint-lite.md) ([レビュー](dispute-sprint-lite-review.md)) | チャージバック証跡整理（保険型） | Chargeflow / Midigator | **A** | 94.5% |
+
+### v33の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: DisputeSprint Liteのみ守り系
+- **海外トレンド→日本語UX変換**: タイポ動画、交換型創作、訴求ローカライズに注力
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$2〜$12レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v32（2026-03-14）
 
 保険型を1件に抑え、**商品ビジュアルAI制作 / 週次リミックス交換コミュニティ / ロックスクリーン起点の生産性OS / 海外LPの日本語フック台本化 / クーポン不整合防止（保険型1件）**で新規5案を設計。全案A評価。
