@@ -4,6 +4,28 @@
 
 
 
+
+## 🚀 非保険偏重・海外トレンド設計 v34（2026-03-16）
+
+保険型を1件に抑え、**文章→映像化AI / 持ち寄りイベントコミュニティ / 非同期ボディダブル生産性 / 広告フック疑似テスト / 投稿前EXIF漏れ防止（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎞️ FrameFlick Remix](frameflick-remix.md) ([レビュー](frameflick-remix-review.md)) | AI×クリエイティブ（文章/URL→縦スライド動画） | OpusClip / Captions / Canva | **A** | 86% |
+| [🥘 Potluck Pulse](potluck-pulse.md) ([レビュー](potluck-pulse-review.md)) | ソーシャル/コミュニティ（持ち寄りイベント運営） | Partiful / Luma / Geneva | **A** | 94% |
+| [🧍 BodyDouble Lane](bodydouble-lane.md) ([レビュー](bodydouble-lane-review.md)) | パーソナル生産性（非同期ボディダブル） | Focusmate / Caveday | **A** | 92% |
+| [🧪 HookBench Mini](hookbench-mini.md) ([レビュー](hookbench-mini-review.md)) | マイクロSaaS（広告フック疑似テスト） | Foreplay / AdCreative.ai | **A** | 84% |
+| [🛡️ EXIF Guardrail Lite](exif-guardrail-lite.md) ([レビュー](exif-guardrail-lite-review.md)) | 投稿前EXIF/GPS漏れ防止（保険型） | Partiful GPS leak文脈 / metadata scrubber | **A** | 96% |
+
+### v34の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: EXIF Guardrail Liteのみ守り系
+- **海外トレンド→日本語UX変換**: Partiful系イベント体験、body doubling、UGC制作導線をローカライズ
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$2〜$15レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v33（2026-03-15）
 
 保険型を1件に抑え、**日本語タイポ動画AI / 週次リミックス交換コミュニティ / 3枠特化の実行OS / 海外ニッチ訴求の日本語フック化 / チャージバック証跡整理（保険型1件）**で新規5案を設計。全案A評価。
