@@ -5,6 +5,29 @@
 
 
 
+
+
+## 🚀 非保険偏重・海外トレンド設計 v35（2026-03-17）
+
+保険型を1件に抑え、**Pinterest起点の動画生成AI / 少人数ディナーマッチングコミュニティ / 体調連動の実行OS / SNSコメント洞察マイクロSaaS / AIモデル規約差分レーダー（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎬 Pin2Reel Studio](pin2reel-studio.md) ([レビュー](pin2reel-studio-review.md)) | AI×クリエイティブ（Pinterest/画像→縦動画） | Pinterest board video / Typito | **A** | 76% |
+| [🍽️ DinnerSprint Club](dinnersprint-club.md) ([レビュー](dinnersprint-club-review.md)) | ソーシャル/コミュニティ（少人数継続マッチ） | Partiful / Luma / Geneva | **A** | 92.5% |
+| [🧠 ChronoFit OS](chronofit-os.md) ([レビュー](chronofit-os-review.md)) | パーソナル生産性（体調×タスク順最適化） | Rise / Sunsama / Motion | **A** | 88.6% |
+| [💬 CommentPulse JP](commentpulse-jp.md) ([レビュー](commentpulse-jp-review.md)) | マイクロSaaS（SNSコメント→訴求カード化） | Sprout Social / social listening trend | **A** | 81.6% |
+| [🛡️ ModelTerms Radar Lite](modelterms-radar-lite.md) ([レビュー](modelterms-radar-lite-review.md)) | AIモデル規約差分通知（保険型） | TermsMonitor / TOS monitoring | **A** | 92% |
+
+### v35の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ModelTerms Radar Liteのみ守り系
+- **海外トレンド→日本語UX変換**: Pinterest動画化、イベント運営、ソーシャル洞察を国内向け導線に最適化
+- **$20達成の現実性**: 3〜4有料ユーザーで到達
+- **AIコスト最適化**: 月$2〜$15レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v34（2026-03-16）
 
 保険型を1件に抑え、**文章→映像化AI / 持ち寄りイベントコミュニティ / 非同期ボディダブル生産性 / 広告フック疑似テスト / 投稿前EXIF漏れ防止（保険型1件）**で新規5案を設計。全案A評価。
