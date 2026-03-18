@@ -7,6 +7,27 @@
 
 
 
+## 🚀 非保険偏重・海外トレンド設計 v36（2026-03-18）
+
+保険型を1件に抑え、**カルーセル×短尺同時生成AI / 週次クリエイターマッチングコミュニティ / 体力連動デイリーフロー / 海外トレンド再包装マイクロSaaS / UGCライセンス期限監視（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎞️ ClipThread Atelier](clipthread-atelier.md) ([レビュー](clipthread-atelier-review.md)) | AI×クリエイティブ（カルーセル+縦動画同時生成） | OpusClip / Captions / Canva | **A** | 80% |
+| [🫂 CreatorGuild Matchnight](creatorguild-matchnight.md) ([レビュー](creatorguild-matchnight-review.md)) | ソーシャル/コミュニティ（週次3人マッチ） | Luma / Partiful / ADPList | **A** | 93% |
+| [🌤️ DayScene Autoflow](dayscene-autoflow.md) ([レビュー](dayscene-autoflow-review.md)) | パーソナル生産性（体力連動タスク再配置） | Sunsama / Rise / Routine | **A** | 90% |
+| [📦 NicheRadar Repack JP](nicheradar-repack-jp.md) ([レビュー](nicheradar-repack-jp-review.md)) | マイクロSaaS（海外課題→日本語訴求化） | GummySearch / Exploding Topics | **A** | 80% |
+| [🛡️ UGC Rights Watch Lite](ugc-rights-watch-lite.md) ([レビュー](ugc-rights-watch-lite-review.md)) | UGCライセンス期限監視（保険型） | Epidemic Sound / Artlist | **A** | 96.6% |
+
+### v36の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: UGC Rights Watch Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 再編集AI、マッチングコミュニティ、トレンド再包装を国内向け最適化
+- **$20達成の現実性**: 3〜4有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$11レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v35（2026-03-17）
 
 保険型を1件に抑え、**Pinterest起点の動画生成AI / 少人数ディナーマッチングコミュニティ / 体調連動の実行OS / SNSコメント洞察マイクロSaaS / AIモデル規約差分レーダー（保険型1件）**で新規5案を設計。全案A評価。
