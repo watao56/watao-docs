@@ -7,6 +7,28 @@
 
 
 
+
+
+## 🚀 非保険偏重・海外トレンド設計 v37（2026-03-20）
+
+保険型を1件に抑え、**ムードボード→短尺生成AI / 48hコラボコミュニティ / 再集中OS / 海外シグナル日本語実行カード / 案件証跡セーフティネット（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎨 PrismBoard Studio](prismboard-studio.md) ([レビュー](prismboard-studio-review.md)) | AI×クリエイティブ（ムードボード→短尺広告リール） | Kosmik / VSCO Canvas / Miro AI Moodboard | **A** | 79% |
+| [🫱🏻‍🫲🏽 CollabQuest Circles](collabquest-circles.md) ([レビュー](collabquest-circles-review.md)) | ソーシャル/コミュニティ（週次48hコラボ） | ADPList / Geneva / Lunchclub | **A** | 92.8% |
+| [🧭 AnchorLoop Desk](anchorloop-desk.md) ([レビュー](anchorloop-desk-review.md)) | パーソナル生産性（集中復帰ループOS） | Sunsama / Routine / Rise | **A** | 89.5% |
+| [🍱 SignalSnack JP](signalsnack-jp.md) ([レビュー](signalsnack-jp-review.md)) | マイクロSaaS（海外スレッド→日本語実行カード） | GummySearch / Exploding Topics / Glasp | **A** | 79.4% |
+| [🛡️ Creator Safety Net Lite](creator-safety-net-lite.md) ([レビュー](creator-safety-net-lite-review.md)) | 案件素材・納品証跡の自動保全（保険型） | Bonsai / Frame.io | **A** | 96.7% |
+
+### v37の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: Creator Safety Net Liteのみ守り系
+- **海外トレンド→日本語UX変換**: ムードボード潮流、短期コラボ、海外シグナル収集を国内導線に最適化
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$8レンジで制御
+
+---
 ## 🚀 非保険偏重・海外トレンド設計 v36（2026-03-18）
 
 保険型を1件に抑え、**カルーセル×短尺同時生成AI / 週次クリエイターマッチングコミュニティ / 体力連動デイリーフロー / 海外トレンド再包装マイクロSaaS / UGCライセンス期限監視（保険型1件）**で新規5案を設計。全案A評価。
