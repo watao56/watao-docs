@@ -150,6 +150,13 @@ nav:
 
 
 
+    - v38 - 非保険偏重 2026-03-21:
+      - 🎨 PromptPoster Live: ideas/promptposter-live.md
+      - 🫂 CreatorRelay Rooms: ideas/creatorrelay-rooms.md
+      - 🧭 TempoTiles: ideas/tempotiles.md
+      - 🌍 Toolstack Radar JP: ideas/toolstack-radar-jp.md
+      - 🛡️ MeetingConsent Vault Lite: ideas/meeting-consent-vault-lite.md
+
     - v37 - 非保険偏重 2026-03-20:
       - 🎨 PrismBoard Studio: ideas/prismboard-studio.md
       - 🫱🏻‍🫲🏽 CollabQuest Circles: ideas/collabquest-circles.md

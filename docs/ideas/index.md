@@ -9,6 +9,28 @@
 
 
 
+
+## 🚀 非保険偏重・海外トレンド設計 v38（2026-03-21）
+
+保険型を1件に抑え、**動く告知ポスターAI / バトン式フィードバックコミュニティ / 状態別タイル生産性 / 海外ツール実装カード / 録画同意証跡保全（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎨 PromptPoster Live](promptposter-live.md) ([レビュー](promptposter-live-review.md)) | AI×クリエイティブ（テキスト→動く告知ポスター） | Canva Magic Media / Kittl / Adobe Express | **A** | 80% |
+| [🫂 CreatorRelay Rooms](creatorrelay-rooms.md) ([レビュー](creatorrelay-rooms-review.md)) | ソーシャル/コミュニティ（24hバトン式FB） | ADPList / Lunchclub / Geneva | **A** | 95% |
+| [🧭 TempoTiles](tempotiles.md) ([レビュー](tempotiles-review.md)) | パーソナル生産性（気分×時間タイル） | Sunsama / Structured / Rise | **A** | 95% |
+| [🌍 Toolstack Radar JP](toolstack-radar-jp.md) ([レビュー](toolstack-radar-jp-review.md)) | マイクロSaaS（海外ツール実装カード） | Stackshare / G2 Trending / Product Hunt | **A** | 81% |
+| [🛡️ MeetingConsent Vault Lite](meeting-consent-vault-lite.md) ([レビュー](meeting-consent-vault-lite-review.md)) | 録画・再利用同意の証跡保全（保険型） | DocuSign / Notta consent flows | **A** | 92% |
+
+### v38の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: MeetingConsent Vault Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 動画告知、リレー型FB、実装カード文化を国内導線に最適化
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$8レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v37（2026-03-20）
 
 保険型を1件に抑え、**ムードボード→短尺生成AI / 48hコラボコミュニティ / 再集中OS / 海外シグナル日本語実行カード / 案件証跡セーフティネット（保険型1件）**で新規5案を設計。全案A評価。
