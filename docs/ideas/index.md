@@ -3,6 +3,28 @@
 プロダクトアイデアと設計書のまとめです。
 
 
+## 🚀 非保険偏重・海外トレンド設計 v39（2026-03-22）
+
+保険型を1件に抑え、**街頭ポスター風AI動画 / 近所15分作業コミュニティ / 気分連動ガーデン生産性 / 海外事例ローカライズカード / ライセンス表記事故防止（保険型1件）**で新規5案を設計。全案A評価。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎨 StreetCast Remix](streetcast-remix.md) ([レビュー](streetcast-remix-review.md)) | AI×クリエイティブ（街頭ポスター風モーション生成） | CapCut Commerce Pro / Canva Magic Media / Adobe Express | **A** | 85% |
+| [🫂 NeighborBench Club](neighborbench-club.md) ([レビュー](neighborbench-club-review.md)) | ソーシャル/コミュニティ（近所15分作業会） | Partiful / Luma / Geneva | **A** | 94% |
+| [🧭 PulseGarden Daily](pulsegarden-daily.md) ([レビュー](pulsegarden-daily-review.md)) | パーソナル生産性（気分・体力連動タスク再配置） | Rise / Structured / Finch | **A** | 90% |
+| [📦 TinyCase Localizer](tinycase-localizer.md) ([レビュー](tinycase-localizer-review.md)) | マイクロSaaS（海外成功事例→日本向け実装カード） | GummySearch / Exploding Topics / Taplio | **A** | 86% |
+| [🛡️ Attribution Trail Lite](attribution-trail-lite.md) ([レビュー](attribution-trail-lite-review.md)) | ライセンス表記事故防止（保険型） | Canva/Adobe Stock / Envato Elements | **A** | 90% |
+
+### v39の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: Attribution Trail Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 短尺広告生成、超短時間コミュニティ、実装カード文化を国内導線に最適化
+- **$20達成の現実性**: 3〜4有料ユーザーで到達
+- **AIコスト最適化**: 月$1.5〜$6レンジで制御
+
+---
+
+
 
 
 

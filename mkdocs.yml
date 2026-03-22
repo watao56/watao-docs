@@ -150,6 +150,14 @@ nav:
 
 
 
+
+    - v39 - 非保険偏重 2026-03-22:
+      - 🎨 StreetCast Remix: ideas/streetcast-remix.md
+      - 🫂 NeighborBench Club: ideas/neighborbench-club.md
+      - 🧭 PulseGarden Daily: ideas/pulsegarden-daily.md
+      - 📦 TinyCase Localizer: ideas/tinycase-localizer.md
+      - 🛡️ Attribution Trail Lite: ideas/attribution-trail-lite.md
+
     - v38 - 非保険偏重 2026-03-21:
       - 🎨 PromptPoster Live: ideas/promptposter-live.md
       - 🫂 CreatorRelay Rooms: ideas/creatorrelay-rooms.md
