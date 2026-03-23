@@ -2,6 +2,26 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v40（2026-03-23）
+
+保険型を1件に抑え、**360°商品演出AI / 未完成作品サロン運営 / 気分連動3レイヤー生産性 / 海外クリップ訴求ローカライズ / UGC同意ラベル管理（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎡 SpinShelf Studio](spinshelf-studio.md) ([レビュー](spinshelf-studio-review.md)) | AI×クリエイティブ（8枚写真→360°風商品動画） | Luma AI / Photoroom / Canva Magic Media | **A** | 80% |
+| [🧵 Patchwork Salons](patchwork-salons.md) ([レビュー](patchwork-salons-review.md)) | ソーシャル/コミュニティ（未完成作品の週次サロン） | Geneva / Circle / ADPList | **A** | 95% |
+| [🌱 TaskBloom Loop](taskbloom-loop.md) ([レビュー](taskbloom-loop-review.md)) | パーソナル生産性（気分×体力×時間の3レイヤー再配置） | Rise / Sunsama / Finch | **A** | 97% |
+| [📎 ClipClaim JP](clipclaim-jp.md) ([レビュー](clipclaim-jp-review.md)) | マイクロSaaS（海外短尺訴求→日本語テンプレ化） | Foreplay / GummySearch / Typefully | **A** | 85% |
+| [🛡️ ConsentLabel Lite](consentlabel-lite.md) ([レビュー](consentlabel-lite-review.md)) | UGC同意ラベル管理（保険型） | Frame.io / DocuSign | **A** | 94% |
+
+### v40の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ConsentLabel Liteのみ守り系
+- **海外トレンド→日本語UX変換**: 3D見せ方、未完成公開文化、広告スワイプ文化をローカライズ
+- **$20達成の現実性**: 2〜3有料ユーザーで到達
+- **AIコスト最適化**: 月$2〜$10.5レンジで制御
+
+---
 
 ## 🚀 非保険偏重・海外トレンド設計 v39（2026-03-22）
 
