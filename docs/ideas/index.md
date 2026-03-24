@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v41（2026-03-24）
+
+保険型を1件に抑え、**ネオン系ムードボードAI / ゲーム化ボディダブル / 3分習慣OS / 海外広告文脈リミックス / 事前合意ライト契約（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🌈 NeonMood Board](neonmood-board.md) ([レビュー](neonmood-board-review.md)) | AI×クリエイティブ（30秒ムードボード生成） | Kosmik / VSCO Canvas / Miro AI Moodboard | **A** | 76% |
+| [🕹️ Accountability Arcade](accountability-arcade.md) ([レビュー](accountability-arcade-review.md)) | ソーシャル/コミュニティ（即席集中ルーム） | Focusmate / Flown | **A** | 75%+ |
+| [🧩 TinyRituals OS](tinyrituals-os.md) ([レビュー](tinyrituals-os-review.md)) | パーソナル生産性（3分習慣+進捗カード） | Finch / stoic | **A** | 90%+ |
+| [🌍 TrendRemix JP](trendremix-jp.md) ([レビュー](trendremix-jp-review.md)) | マイクロSaaS（海外広告→日本文脈変換） | Foreplay / AdSpy系 | **A** | 70% |
+| [🛡️ SafeSplit Collab Lite](safesplit-collab-lite.md) ([レビュー](safesplit-collab-lite-review.md)) | 事前合意サマリ（保険型） | DocuSign系ライト運用 | **A** | 85% |
+
+### v41の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: SafeSplit Collab Liteのみ守り系
+- **海外トレンド→日本語UX変換**: ムードボード潮流、ボディダブル、広告文脈変換を国内導線に最適化
+- **$20達成の現実性**: 4〜8有料/単発ユーザーで到達
+- **AIコスト最適化**: 月$0〜$13レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v40（2026-03-23）
 
 保険型を1件に抑え、**360°商品演出AI / 未完成作品サロン運営 / 気分連動3レイヤー生産性 / 海外クリップ訴求ローカライズ / UGC同意ラベル管理（保険型1件）**で新規5案を設計。全案A評価以上。
