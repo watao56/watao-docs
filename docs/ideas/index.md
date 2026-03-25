@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v42（2026-03-25）
+
+保険型を1件に抑え、**AIステッカー生成 / ランダムFBコミュニティ / 集中温度生産性 / 海外ペイン機能メニュー化 / 追加作業合意ライト（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎟️ StickerStory Studio](stickerstory-studio.md) ([レビュー](stickerstory-studio-review.md)) | AI×クリエイティブ（写真→動くステッカー） | Instagram AI Stickers / Canva | **A** | 77% |
+| [🎲 GuildRoulette Live](guildroulette-live.md) ([レビュー](guildroulette-live-review.md)) | ソーシャル/コミュニティ（15分相互FB） | ADPList / Lunchclub / Focusmate | **A** | 92% |
+| [🌡️ FocusThermostat OS](focus-thermostat-os.md) ([レビュー](focus-thermostat-os-review.md)) | パーソナル生産性（集中温度でタスク再配置） | Rise / Structured / Finch | **A** | 95% |
+| [🧪 PainMenu JP](painmenu-jp.md) ([レビュー](painmenu-jp-review.md)) | マイクロSaaS（海外痛み→機能メニュー化） | GummySearch / IndieHackers探索文化 | **A** | 78% |
+| [🤝 ScopeHandshake Lite](scopehandshake-lite.md) ([レビュー](scopehandshake-lite-review.md)) | 追加作業の変更合意記録（保険型） | Bonsai / 電子契約ライト運用 | **A** | 90% |
+
+### v42の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ScopeHandshake Liteのみ守り系
+- **海外トレンド→日本導線化**: AIステッカー、短時間FB、痛み収集を国内実装向けに変換
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$2〜$13レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v41（2026-03-24）
 
 保険型を1件に抑え、**ネオン系ムードボードAI / ゲーム化ボディダブル / 3分習慣OS / 海外広告文脈リミックス / 事前合意ライト契約（保険型1件）**で新規5案を設計。全案A評価以上。
