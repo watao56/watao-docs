@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v43（2026-03-26）
+
+保険型を1件に抑え、**AI試着リール / 15分FBコミュニティ / デスクペット生産性 / README→デモ動画 / 機材貸出タグ管理（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🪞 FitFlick Mirror](fitflick-mirror.md) ([レビュー](fitflick-mirror-review.md)) | AI×クリエイティブ（セルフィー→着用リール） | Doji / Google Try-On / Canva | **A** | 62〜70% |
+| [🎲 CritCrew Roulette](critcrew-roulette.md) ([レビュー](critcrew-roulette-review.md)) | ソーシャル/コミュニティ（15分相互FB） | ADPList / Lunchclub / Focusmate | **A** | 95% |
+| [🐾 DeskPet Sprint](deskpet-sprint.md) ([レビュー](deskpet-sprint-review.md)) | パーソナル生産性（集中で育つ常駐ペット） | Finch / virtual pet productivity apps | **A** | 97%+ |
+| [📼 Readme2Reel Lite](readme2reel-lite.md) ([レビュー](readme2reel-lite-review.md)) | マイクロSaaS（README→30秒デモ動画） | ScreenStudio文化 / build-in-public | **A** | 80% |
+| [🏷️ GearLoan Tag Lite](gearloan-tag-lite.md) ([レビュー](gearloan-tag-lite-review.md)) | 機材貸出トラブル防止（保険型） | ShareGrid運用文脈 / QR受け渡し | **A** | 95%+ |
+
+### v43の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: GearLoan Tag Liteのみ守り系
+- **海外トレンド→日本導線化**: AI try-on、超短時間FB、README動画化を国内導線向けに再設計
+- **$20達成の現実性**: 3〜4有料ユーザー、または買い切り4本で到達
+- **AIコスト最適化**: 月$0〜$12レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v42（2026-03-25）
 
 保険型を1件に抑え、**AIステッカー生成 / ランダムFBコミュニティ / 集中温度生産性 / 海外ペイン機能メニュー化 / 追加作業合意ライト（保険型1件）**で新規5案を設計。全案A評価以上。
