@@ -151,6 +151,13 @@ nav:
 
 
 
+    - v44 - 非保険偏重 2026-03-27:
+      - 🎨 RisoJam Studio: ideas/risojam-studio.md
+      - 🫂 BuildPair Lobby: ideas/buildpair-lobby.md
+      - 🧭 Focus Drift HUD: ideas/focus-drift-hud.md
+      - 📦 AppTeardown JP Nano: ideas/appteardown-jp-nano.md
+      - 🛡️ Permission Delta Lite: ideas/permission-delta-lite.md
+
     - v43 - 非保険偏重 2026-03-26:
       - 🪞 FitFlick Mirror: ideas/fitflick-mirror.md
       - 🎲 CritCrew Roulette: ideas/critcrew-roulette.md

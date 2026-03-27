@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v44（2026-03-27）
+
+保険型を1件に抑え、**リソグラフAIポスター / 15分ペア実行コミュニティ / 再始動HUD生産性 / 海外アプリ分解カード / 拡張権限差分監視（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎨 RisoJam Studio](risojam-studio.md) ([レビュー](risojam-studio-review.md)) | AI×クリエイティブ（リソ風ポスター生成） | Canva Magic Design / Kittl / risograph revival | **A** | 70% |
+| [🫂 BuildPair Lobby](buildpair-lobby.md) ([レビュー](buildpair-lobby-review.md)) | ソーシャル/コミュニティ（15分ペア進捗） | Focusmate / Lunchclub / Indie Hackers | **A** | 92% |
+| [🧭 Focus Drift HUD](focus-drift-hud.md) ([レビュー](focus-drift-hud-review.md)) | パーソナル生産性（中断復帰HUD） | Rise / Sunsama / Goblin Tools | **A** | 95%+ |
+| [📦 AppTeardown JP Nano](appteardown-jp-nano.md) ([レビュー](appteardown-jp-nano-review.md)) | マイクロSaaS（海外アプリ分解カード） | Exploding Topics / app teardown文化 | **A** | 87% |
+| [🛡️ Permission Delta Lite](permission-delta-lite.md) ([レビュー](permission-delta-lite-review.md)) | 拡張権限差分監視（保険型） | extension security運用 / MV3移行潮流 | **A** | 91% |
+
+### v44の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: Permission Delta Liteのみ守り系
+- **海外トレンド→日本導線化**: リソ再評価、短時間ペア行動、teardown文化を国内向けに再設計
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$0〜$15レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v43（2026-03-26）
 
 保険型を1件に抑え、**AI試着リール / 15分FBコミュニティ / デスクペット生産性 / README→デモ動画 / 機材貸出タグ管理（保険型1件）**で新規5案を設計。全案A評価以上。
