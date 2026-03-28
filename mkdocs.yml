@@ -151,6 +151,13 @@ nav:
 
 
 
+    - v45 - 非保険偏重 2026-03-28:
+      - 🛋️ ShelfScene AR: ideas/shelfscene-ar.md
+      - 🧩 MakerPatch Swap: ideas/makerpatch-swap.md
+      - 🧘 TabSabbath: ideas/tabsabbath.md
+      - 🌍 NicheSignal Brief: ideas/nichesignal-brief.md
+      - 🛡️ VenueDeposit Buddy Lite: ideas/venuedeposit-buddy-lite.md
+
     - v44 - 非保険偏重 2026-03-27:
       - 🎨 RisoJam Studio: ideas/risojam-studio.md
       - 🫂 BuildPair Lobby: ideas/buildpair-lobby.md

@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v45（2026-03-28）
+
+保険型を1件に抑え、**商品演出AI / 進捗交換コミュニティ / タブ断捨離生産性 / 海外ニッチ速報 / 会場返金期限ガード（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🛋️ ShelfScene AR](shelfscene-ar.md) ([レビュー](shelfscene-ar-review.md)) | AI×クリエイティブ（商品画像→生活シーン+ループ動画） | Photoroom / Pebblely / Arcads | **A** | 68〜75% |
+| [🧩 MakerPatch Swap](makerpatch-swap.md) ([レビュー](makerpatch-swap-review.md)) | ソーシャル/コミュニティ（before/after交換会） | Focusmate / ADPList / Indie Hackers | **A** | 88% |
+| [🧘 TabSabbath](tabsabbath.md) ([レビュー](tabsabbath-review.md)) | パーソナル生産性（閉じる儀式と再開要約） | OneTab / Arc Workspaces | **A** | 80% |
+| [🌍 NicheSignal Brief](nichesignal-brief.md) ([レビュー](nichesignal-brief-review.md)) | マイクロSaaS（海外ニッチ信号の日本語1枚化） | Exploding Topics / Trends.vc / GummySearch | **A** | 81% |
+| [🛡️ VenueDeposit Buddy Lite](venuedeposit-buddy-lite.md) ([レビュー](venuedeposit-buddy-lite-review.md)) | イベント会場返金期限管理（保険型） | HoneyBook / Eventbrite運営知見 | **A** | 82% |
+
+### v45の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: VenueDeposit Buddy Liteのみ守り系
+- **海外トレンド→日本導線化**: D2C演出・build log・タブ再開UX・英語圏ニッチ探索を国内向けに再設計
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$6〜$20レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v44（2026-03-27）
 
 保険型を1件に抑え、**リソグラフAIポスター / 15分ペア実行コミュニティ / 再始動HUD生産性 / 海外アプリ分解カード / 拡張権限差分監視（保険型1件）**で新規5案を設計。全案A評価以上。
