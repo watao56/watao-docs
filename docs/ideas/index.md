@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v46（2026-03-29）
+
+保険型を1件に抑え、**音ハメ訴求動画AI / 24hリレーチャレンジコミュニティ / 再開ガチャ生産性 / 未上陸トレンド実装カード / 納品前証跡ライト（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎚️ BeatPoster Studio](beatposter-studio.md) ([レビュー](beatposter-studio-review.md)) | AI×クリエイティブ（音楽同期キネティック訴求動画） | Captions / Submagic / CapCut Templates | **A** | 79% |
+| [🎤 PromptJam Relay](promptjam-relay.md) ([レビュー](promptjam-relay-review.md)) | ソーシャル/コミュニティ（24hお題リレー運営） | Flow Club / Focusmate / Daily UI challenge | **A** | 88% |
+| [🪟 WindowGacha OS](windowgacha-os.md) ([レビュー](windowgacha-os-review.md)) | パーソナル生産性（再開すべき3窓をガチャ提案） | Sunsama / Goblin Tools / OneTab | **A** | 93% |
+| [🌏 TrendCapsule JP](trendcapsule-jp.md) ([レビュー](trendcapsule-jp-review.md)) | マイクロSaaS（海外トレンド→日本実装カード） | Exploding Topics / Trends.vc / GummySearch | **A** | 70% |
+| [🛡️ ProofPack Lite](proofpack-lite.md) ([レビュー](proofpack-lite-review.md)) | 納品前合意証跡（保険型） | Bonsai / HoneyBook / Notion運用代替 | **A** | 85% |
+
+### v46の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ProofPack Liteのみ守り系
+- **海外トレンド→日本導線化**: 縦動画編集、チャレンジ運営、認知負荷軽減、トレンド抽出を国内向けに再設計
+- **$20達成の現実性**: 2〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$0〜$18レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v45（2026-03-28）
 
 保険型を1件に抑え、**商品演出AI / 進捗交換コミュニティ / タブ断捨離生産性 / 海外ニッチ速報 / 会場返金期限ガード（保険型1件）**で新規5案を設計。全案A評価以上。
