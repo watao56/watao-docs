@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v47（2026-03-30）
+
+保険型を1件に抑え、**スワイプ映え動画AI / リミックス共同制作コミュニティ / 中断復帰オーブ生産性 / 海外事例1枚化レーダー / 利用許諾ログ最小管理（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🌌 AuraSwipe Studio](aura-swipe-studio.md) ([レビュー](aura-swipe-studio-review.md)) | AI×クリエイティブ（写真→トレンド演出スワイプ動画） | Canva / Captions / PhotoRoom | **A** | 85% |
+| [🪩 RemixRoom Live](remix-room-live.md) ([レビュー](remix-room-live-review.md)) | ソーシャル/コミュニティ（毎日15分リミックス会） | Focusmate / ADPList | **A** | 93% |
+| [🔮 RestartOrb](restart-orb.md) ([レビュー](restart-orb-review.md)) | パーソナル生産性（中断復帰を1タップ化） | Goblin Tools / Sunsama | **A** | 97% |
+| [🛰️ BriefByte Radar JP](briefbyte-radar-jp.md) ([レビュー](briefbyte-radar-jp-review.md)) | マイクロSaaS（海外プロダクト事例の日本語1枚要約） | Exploding Topics / Trends.vc | **A** | 91% |
+| [🛡️ ConsentScope Mini](consentscope-mini.md) ([レビュー](consentscope-mini-review.md)) | AI生成物の利用許諾ログ管理（保険型） | DocuSign Clickwrap / TermsFeed | **A** | 92% |
+
+### v47の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ConsentScope Miniのみ守り系
+- **海外トレンド→日本導線化**: 映え動画・ライブ共同制作・再開UX・トレンド翻訳を国内向けに再設計
+- **$20達成の現実性**: 3〜5有料ユーザー（または買い切り5本）で到達
+- **AIコスト最適化**: 月$0〜$10レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v46（2026-03-29）
 
 保険型を1件に抑え、**音ハメ訴求動画AI / 24hリレーチャレンジコミュニティ / 再開ガチャ生産性 / 未上陸トレンド実装カード / 納品前証跡ライト（保険型1件）**で新規5案を設計。全案A評価以上。
