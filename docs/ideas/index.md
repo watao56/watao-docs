@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v48（2026-03-31）
+
+保険型を1件に抑え、**映画予告風AIクリエイティブ / 音声宣言コミュニティ / ラジオ型集中生産性 / 海外事例→実装カード / 追加修正合意ログ（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎬 GlowBoard Cinema](glowboard-cinema.md) ([レビュー](glowboard-cinema-review.md)) | AI×クリエイティブ（画像→映画予告風ループ動画） | Canva Magic Studio / CapCut / Captions | **A** | 80% |
+| [🎤 BuildChant Club](buildchant-club.md) ([レビュー](buildchant-club-review.md)) | ソーシャル/コミュニティ（15秒音声宣言→夜報告） | Geneva / Locket / BandLab | **A** | 88% |
+| [📻 FocusRadio Desk](focusradio-desk.md) ([レビュー](focusradio-desk-review.md)) | パーソナル生産性（タスク連動BGM実行） | Endel / Sunsama / Suno潮流 | **A** | 92.5% |
+| [🍴 TrendFork JP](trendfork-jp.md) ([レビュー](trendfork-jp-review.md)) | マイクロSaaS（海外事例→日本向け実装1枚化） | Exploding Topics / GummySearch / Foreplay | **A** | 78.5% |
+| [🛡️ ScopeSignoff Lite](scope-signoff-lite.md) ([レビュー](scope-signoff-lite-review.md)) | 追加修正合意ログ（保険型） | Bonsai / HoneyBook / Clickwrap運用 | **A** | 93% |
+
+### v48の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ScopeSignoff Liteのみ守り系
+- **海外トレンド→日本導線化**: 生成動画、音声コミュニティ、作業音UX、トレンド実装化を国内向け再設計
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$1〜$12レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v47（2026-03-30）
 
 保険型を1件に抑え、**スワイプ映え動画AI / リミックス共同制作コミュニティ / 中断復帰オーブ生産性 / 海外事例1枚化レーダー / 利用許諾ログ最小管理（保険型1件）**で新規5案を設計。全案A評価以上。
