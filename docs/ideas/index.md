@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v49（2026-04-01）
+
+保険型を1件に抑え、**ホログラム演出AI動画 / 音声宣言コミュニティ / 8タイル生産性 / 海外ニッチ→実装カード / 追加依頼合意ログ（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🎞️ HoloGrid Reel](hologrid-reel.md) ([レビュー](hologrid-reel-review.md)) | AI×クリエイティブ（静止画→ホログラム6秒ループ） | CapCut Templates / Canva / Runway潮流 | **A** | 72% |
+| [🗣️ ShipCircle Voice](shipcircle-voice.md) ([レビュー](shipcircle-voice-review.md)) | ソーシャル/コミュニティ（30秒音声宣言→夜報告） | Geneva / Locket / Focusmate | **A** | 85% |
+| [🧩 DayPilot Tiles](daypilot-tiles.md) ([レビュー](daypilot-tiles-review.md)) | パーソナル生産性（次の1手を8タイル提示） | Sunsama / Goblin Tools / Motion | **A** | 88% |
+| [🧪 Niche2Proto JP](niche2proto-jp.md) ([レビュー](niche2proto-jp-review.md)) | マイクロSaaS（海外ニッチ→日本MVP実装タスク化） | Exploding Topics / Trends.vc / Indie Hackers | **A** | 65〜75% |
+| [🤝 ChangeShake Lite](changeshake-lite.md) ([レビュー](changeshake-lite-review.md)) | 追加依頼合意ログ（保険型） | StopScopeCreep / Clickwrap運用 | **A** | 90% |
+
+### v49の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: ChangeShake Liteのみ守り系
+- **海外トレンド→日本導線化**: ショート動画演出、音声コミュニティ、迷い削減UI、トレンド実装化を国内向けに再設計
+- **$20達成の現実性**: 3〜5有料ユーザーで到達
+- **AIコスト最適化**: 月$4〜$20レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v48（2026-03-31）
 
 保険型を1件に抑え、**映画予告風AIクリエイティブ / 音声宣言コミュニティ / ラジオ型集中生産性 / 海外事例→実装カード / 追加修正合意ログ（保険型1件）**で新規5案を設計。全案A評価以上。
