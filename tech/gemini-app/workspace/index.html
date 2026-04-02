@@ -1,0 +1,2825 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/tech/gemini-app/workspace/">
+      
+      
+        <link rel="prev" href="../api/">
+      
+      
+        <link rel="next" href="../notebooklm/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Workspace連携 - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#google-workspace" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Workspace連携
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ideas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ 技術ノート
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🤖 AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../claude/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💜 Claude
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chatgpt/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💬 ChatGPT
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💬 Gemini
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💬 Gemini
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モード活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロンプト設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workspace連携
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workspace連携
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workspace連携の概要
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workspace連携の概要">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前提条件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gmail-gemini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gmail × Gemini
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gmail × Gemini">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メール作成支援
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メール作成支援">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ビジネスメール作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アポイントメント調整
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メール要約・分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart-reply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smart Reply 機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-docs-gemini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Docs × Gemini
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Docs × Gemini">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文書作成支援
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文書作成支援">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        企画書作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        会議議事録テンプレート
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文書校正・改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文書構成の改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-sheets-gemini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Sheets × Gemini
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Sheets × Gemini">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データ分析支援
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データ分析支援">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        売上データ分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        顧客分析ダッシュボード
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関数・数式生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        レポート自動生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-slides-gemini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Slides × Gemini
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Slides × Gemini">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プレゼン作成支援
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="プレゼン作成支援">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ビジネス提案プレゼン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        研修・教育用プレゼン
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        デザイン改善提案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        画像・図表生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-meet-gemini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Meet × Gemini
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Meet × Gemini">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        会議中のリアルタイム支援
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        会議後の要約配信
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実務での活用ワークフロー
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実務での活用ワークフロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロー例1: 月次レポート作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワークフロー例2: 企画書作成プロセス
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        効率化のポイント
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セキュリティ・プライバシー
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="セキュリティ・プライバシー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データの取り扱い
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        次のステップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooklm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NotebookLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vs-claude/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude使い分け
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../claude-code/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../gemini/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 Gemini CLI
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../codex/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 Codex CLI
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../skills/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Skills
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../mcp/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔌 MCP
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../ai/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 AI実装
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../aws/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☁️ AWS
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../projects/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../ideas/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🛠️ 技術ノート
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../claude/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🤖 AI
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    💬 Gemini
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="google-workspace">Google Workspace連携<a class="headerlink" href="#google-workspace" title="Permanent link">&para;</a></h1>
+<p>GeminiとGoogle Workspaceの連携により、Gmail、Docs、Sheets、Meet などの日常業務ツールでAI支援を受けることができます。業務効率化と生産性向上のための実践的な活用法を解説します。</p>
+<h2 id="workspace">Workspace連携の概要<a class="headerlink" href="#workspace" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Gemini for Workspace とは</p>
+<p>Google WorkspaceアプリにGeminiが統合され、各アプリ内で直接AI支援を受けられる機能です。Google AI Pro/Ultra プランで利用可能です。</p>
+</div>
+<p><strong>連携可能アプリ</strong>:
+- <strong>Gmail</strong>: メール作成・要約・検索
+- <strong>Google Docs</strong>: 文書作成・編集・校正
+- <strong>Google Sheets</strong>: データ分析・関数生成・レポート作成
+- <strong>Google Slides</strong>: プレゼン作成・デザイン提案
+- <strong>Google Meet</strong>: 議事録・要約・アクション抽出
+- <strong>Google Drive</strong>: ファイル検索・整理・要約
+- <strong>Google Chat</strong>: チーム コミュニケーション支援</p>
+<h3 id="_1">前提条件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><strong>必要なプラン</strong>:
+- Google AI Pro（月額2,900円）以上
+- または Google Workspace with Gemini Business/Enterprise</p>
+<p><strong>設定手順</strong>:
+1. Google アカウントでGemini Advanced（AI Pro）に加入
+2. Workspace Apps で「Gemini Apps を有効にする」
+3. 各アプリで Gemini 機能を有効化</p>
+<h2 id="gmail-gemini">Gmail × Gemini<a class="headerlink" href="#gmail-gemini" title="Permanent link">&para;</a></h2>
+<h3 id="_2">メール作成支援<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>基本的な使い方</strong>:
+1. Gmailで「作成」をクリック
+2. 右下の「✨ Help me write」を選択
+3. 作成したいメールの概要を入力</p>
+<p><strong>実用例</strong>:</p>
+<h4 id="_3">ビジネスメール作成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>プロンプト例:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&quot;顧客への四半期レポート送付メールを作成。丁寧で親しみやすい トーンで、レポートの要点を簡潔に伝える。&quot;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>生成例:
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>件名: Q4レポートをお送りします - お忙しい中お時間をいただきありがとうございます
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>いつもお世話になっております。〇〇です。
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>先日お約束しておりました第4四半期のレポートが完成いたしましたので、添付にてお送りいたします。
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>【レポートの要点】
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>・売上前年同期比115%を達成
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>・新規顧客獲得数が目標を上回る
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>・来期に向けた戦略提案を含む
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>ご質問やご不明な点がございましたら、お気軽にお声かけください。
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>来週にでもお時間をいただき、詳細をご説明させていただければと思います。
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>今後ともどうぞよろしくお願いいたします。
+</code></pre></div>
+<h4 id="_4">アポイントメント調整<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>プロンプト例:
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&quot;来週の会議日程調整メール。3つの候補日時を提示し、参加者の都合を確認する。&quot;
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>生成例:
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>件名: 【日程調整】プロジェクト進捗会議について
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>お疲れさまです。〇〇です。
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>次回のプロジェクト進捗会議の日程について、以下の候補からご都合の良い時間をお知らせください。
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>【候補日時】
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>① 2月18日（火）14:00-15:00
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>② 2月19日（水）10:00-11:00  
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>③ 2月20日（木）16:00-17:00
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>会議室は私の方で予約いたします。
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>2月16日（日）までに、ご都合の良い時間を返信いただけますでしょうか。
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>よろしくお願いします。
+</code></pre></div>
+<h3 id="_5">メール要約・分析<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>長いメールスレッドの要約</strong>:
+1. メールスレッドを開く
+2. 「🔍 Summarize this email」を選択</p>
+<p><strong>例</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>15通のやり取りを含む企画議論メール
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>↓
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>要約結果:
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>【決定事項】
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>- プロジェクト開始日: 3月1日
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>- 予算承認: 500万円
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>- チーム体制: 開発3名、デザイン2名
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>【未解決事項】
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>- 外部ベンダー選定（2/20まで）
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>- 詳細スケジュール策定（2/25まで）
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>【次のアクション】
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>- 山田さん: ベンダー比較資料作成
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>- 田中さん: 初期デザイン案準備
+</code></pre></div></p>
+<h3 id="smart-reply">Smart Reply 機能<a class="headerlink" href="#smart-reply" title="Permanent link">&para;</a></h3>
+<p>頻繁な問い合わせに対する自動返信候補：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>受信メール: &quot;来月の展示会の出展内容について教えてください&quot;
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>AI提案返信:
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>① &quot;詳細な出展内容を資料でお送りします。&quot;
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>② &quot;来週お時間をいただき、詳しくご説明させていただけますか？&quot;
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>③ &quot;Webサイトの出展情報ページをご確認ください。&quot;
+</code></pre></div>
+<h2 id="google-docs-gemini">Google Docs × Gemini<a class="headerlink" href="#google-docs-gemini" title="Permanent link">&para;</a></h2>
+<h3 id="_6">文書作成支援<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><strong>Help me write 機能</strong>:
+1. 新規文書を作成
+2. 左サイドバーの「✨ Help me write」を選択
+3. 作成したい文書の内容を指示</p>
+<p><strong>実用例</strong>:</p>
+<h4 id="_7">企画書作成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>プロンプト:
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>&quot;新商品ローンチ企画書を作成。ターゲット：30-40代女性、商品：美容サプリメント、予算：300万円&quot;
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>生成される構成例:
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>1. エグゼクティブサマリー
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>2. 市場分析
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>   - ターゲット市場規模
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>   - 競合状況
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>   - 市場機会
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>3. 商品概要
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>   - 商品特徴
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>   - 差別化ポイント
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>   - 価格設定
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>4. マーケティング戦略
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>   - プロモーション計画
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>   - 販売チャネル
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>   - 予算配分
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>5. スケジュール
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>6. 成果指標
+</code></pre></div>
+<h4 id="_8">会議議事録テンプレート<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>プロンプト:
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>&quot;週次チームミーティングの議事録テンプレートを作成。参加者、議題、決定事項、アクションアイテムを含む&quot;
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>生成例:
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a># 週次チームミーティング議事録
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>**日時**: [日付] [時間]
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>**参加者**: [名前一覧]
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>**司会**: [司会者名]
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>**記録**: [記録者名]
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>## 議題
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>1. [議題1]
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>2. [議題2]
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>3. [議題3]
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>## 決定事項
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>- [決定事項1]
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>- [決定事項2]
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>## アクションアイテム
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>| アクション | 担当者 | 期限 | ステータス |
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>|----------|--------|------|----------|
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>| [内容] | [名前] | [日付] | [進捗] |
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>## 次回ミーティング
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>**日時**: [次回日程]
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>**議題**: [次回の主要議題]
+</code></pre></div>
+<h3 id="_9">文書校正・改善<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><strong>Refine 機能</strong>:
+既存の文書を選択して、以下の改善ができます：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>原文:
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>&quot;この商品は売上が良くて、お客さんからの評価も高いです。なので、さらに販売を拡大していくべきだと思います。&quot;
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>改善後:
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>&quot;本商品は売上実績が好調で、顧客満足度も高い評価を獲得しています。これらの成果を踏まえ、販売拡大戦略の検討を推奨します。&quot;
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>改善ポイント:
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>- より専門的で適切な表現に変更
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>- 論理的な構成に整理
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>- ビジネス文書として適切なトーン
+</code></pre></div>
+<h3 id="_10">文書構成の改善<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>プロンプト例:
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>&quot;この報告書の構成を改善し、読みやすくして&quot;
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>Before:
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>- 情報が雑然と並んでいる
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>- 見出しが不明確
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>- 結論が分かりにくい
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>After:
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>1. エグゼクティブサマリー（要点を最初に）
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>2. 背景・目的（なぜこの調査を行ったか）
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>3. 方法・範囲（どのように調査したか）  
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>4. 結果・発見事項（何が分かったか）
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>5. 結論・推奨事項（何をすべきか）
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>6. 付録・詳細データ
+</code></pre></div>
+<h2 id="google-sheets-gemini">Google Sheets × Gemini<a class="headerlink" href="#google-sheets-gemini" title="Permanent link">&para;</a></h2>
+<h3 id="_11">データ分析支援<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><strong>Help me organize 機能</strong>:
+1. データ範囲を選択
+2. 右クリックで「Help me organize」を選択
+3. 分析したい内容を指示</p>
+<p><strong>実用例</strong>:</p>
+<h4 id="_12">売上データ分析<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>データ: 月別売上実績（12ヶ月分）
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>プロンプト: &quot;月別売上の傾向分析とグラフ作成&quot;
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>生成される結果:
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>1. 売上トレンドのライングラフ
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>2. 前年同月比較棒グラフ
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>3. 四半期別集計表
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>4. 主要な傾向の分析コメント
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>   - &quot;7-9月の売上が特に好調&quot;
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>   - &quot;12月は前年比120%の成長&quot;
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>   - &quot;来期Q1の予測は...&quot;
+</code></pre></div>
+<h4 id="_13">顧客分析ダッシュボード<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>データ: 顧客属性・購買履歴
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>プロンプト: &quot;顧客セグメント分析のダッシュボード作成&quot;
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>生成機能:
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>- 年代別顧客数の円グラフ
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>- 購買金額別ヒストグラム
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>- 商品カテゴリ別売上
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>- LTV（Life Time Value）計算
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>- リピート率分析
+</code></pre></div>
+<h3 id="_14">関数・数式生成<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><strong>Help me calculate 機能</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ユーザー入力: &quot;売上データから前年同月比の成長率を計算したい&quot;
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>AI生成式:
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>=((B2-C2)/C2)*100
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>説明:
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>- B2: 今年の売上
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>- C2: 昨年同月の売上
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>- 結果: パーセンテージでの成長率
+</code></pre></div>
+<p><strong>複雑な条件分岐</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>要件: &quot;売上目標達成率に応じてボーナス率を計算&quot;
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>- 120%以上: 15%
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>- 110-119%: 10%  
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>- 100-109%: 5%
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>- 100%未満: 0%
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>AI生成式:
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>=IF(B2&gt;=1.2,0.15,IF(B2&gt;=1.1,0.1,IF(B2&gt;=1,0.05,0)))
+</code></pre></div></p>
+<h3 id="_15">レポート自動生成<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>プロンプト: &quot;月次販売レポートを自動生成するテンプレート&quot;
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>生成されるシート構成:
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>1. ダッシュボードシート
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>   - 主要KPI表示
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>   - グラフ・チャート
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>   - トレンド分析
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>2. データシート  
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>   - 生データ格納
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>   - 計算用列
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>3. 分析シート
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>   - 詳細分析結果
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>   - セグメント別数値
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>4. アクションシート
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>   - 改善提案
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>   - 来月の目標
+</code></pre></div>
+<h2 id="google-slides-gemini">Google Slides × Gemini<a class="headerlink" href="#google-slides-gemini" title="Permanent link">&para;</a></h2>
+<h3 id="_16">プレゼン作成支援<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><strong>Help me create 機能</strong>:
+1. 新しいプレゼンテーションを作成
+2. 「✨ Help me create」を選択
+3. プレゼンの内容・目的を入力</p>
+<p><strong>実用例</strong>:</p>
+<h4 id="_17">ビジネス提案プレゼン<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>プロンプト:
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>&quot;新システム導入提案プレゼン。IT部門向け、20分間、課題解決とROIを重視&quot;
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>生成されるスライド構成:
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>1. タイトルスライド
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>   - プロジェクト名
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>   - 提案日・担当者
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>2. 現状課題
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>   - 具体的な問題点
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>   - 数値データでの現状把握
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>3. 提案ソリューション
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>   - システム概要
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>   - 機能・特徴
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>   - 技術仕様
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>4. 導入メリット
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>   - 効率改善効果
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>   - コスト削減効果
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>   - ROI計算
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>5. 実装計画
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>   - フェーズ分け
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>   - スケジュール
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>   - 必要リソース
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>6. リスク分析と対策
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>7. 投資回収計画
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>8. Q&amp;A・次のステップ
+</code></pre></div>
+<h4 id="_18">研修・教育用プレゼン<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>プロンプト:
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>&quot;新入社員向けビジネスマナー研修、90分間、参加型コンテンツを含む&quot;
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>生成スライド:
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>1. オープニング
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>   - アイスブレイク
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>   - 研修目標
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>2. ビジネスマナーの重要性
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>3. 基本的な挨拶・言葉遣い
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>   - 実践演習スライド
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>4. 電話応対マナー
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>   - ロールプレイング指示
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>5. メールマナー
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>   - 良い例・悪い例
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>6. 会議マナー
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>7. まとめ・質疑応答
+</code></pre></div>
+<h3 id="_19">デザイン改善提案<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p><strong>既存プレゼンの改善</strong>:
+1. 改善したいスライドを選択
+2. 「Improve this slide」を選択</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Before: テキストが多すぎるスライド
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>After: 
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>- 重要ポイントを3つに絞る
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>- 視覚的な図表を追加
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>- 読みやすいレイアウトに変更
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>- 適切なフォント・色使いを提案
+</code></pre></div>
+<h3 id="_20">画像・図表生成<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>プロンプト: &quot;売上成長の流れを示すインフォグラフィック&quot;
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>生成要素:
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>- 時系列グラフ
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>- アイコンを使った要因分析
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>- 色分けされた成果指標
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>- 視覚的に訴えるレイアウト
+</code></pre></div>
+<h2 id="google-meet-gemini">Google Meet × Gemini<a class="headerlink" href="#google-meet-gemini" title="Permanent link">&para;</a></h2>
+<h3 id="_21">会議中のリアルタイム支援<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p><strong>会議議事録の自動生成</strong>:
+1. Meet会議を開始
+2. 「議事録を取る」を有効化
+3. 会議終了後、自動で要約・議事録が生成</p>
+<p><strong>生成内容例</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>会議: 2026年2月プロジェクト進捗会議
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>日時: 2026-02-15 14:00-15:00
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>参加者: 田中、佐藤、山田、鈴木
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>## 主な議題
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>1. 開発進捗状況
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>2. 予算執行状況  
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>3. リスク要因と対策
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>## 決定事項
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>- β版リリース日: 3月15日に決定
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>- 追加予算50万円を承認
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>- 外部テスターを10名追加
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>## アクションアイテム
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>| タスク | 担当者 | 期限 |
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>|--------|--------|------|
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>| UIデザイン最終調整 | 佐藤 | 2/28 |
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>| セキュリティテスト | 山田 | 3/1 |
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>| ドキュメント作成 | 鈴木 | 3/10 |
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>## 次回ミーティング
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>日時: 2/22（木）14:00
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>議題: β版デモンストレーション
+</code></pre></div></p>
+<h3 id="_22">会議後の要約配信<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p><strong>自動要約メール</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>件名: [議事録] プロジェクト進捗会議 - 2026/2/15
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>本日の会議お疲れさまでした。
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>AIが生成した議事録をお送りします。
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>【重要な決定事項】
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>・β版リリース: 3/15
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>・追加予算承認: 50万円
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>・外部テスター追加: 10名
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>【個人へのアクション】
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>田中さん: 特になし
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>佐藤さん: UIデザイン最終調整（2/28まで）
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>山田さん: セキュリティテスト（3/1まで）
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>鈴木さん: ドキュメント作成（3/10まで）
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>修正がある場合は返信でお知らせください。
+</code></pre></div></p>
+<h2 id="_23">実務での活用ワークフロー<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<h3 id="1">ワークフロー例1: 月次レポート作成<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>1. Gmail で顧客からの報告依頼を受信
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>   → Geminiで返信メール自動生成（納期確認）
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>2. Sheets で売上データを分析
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>   → 「月次分析レポート作成」プロンプトで自動グラフ化
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>3. Docs でレポート本文を作成
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>   → Sheets のデータを参照しつつ、分析コメント生成
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>4. Slides でプレゼン資料を作成
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>   → Docs の内容をベースに、視覚的な資料に変換
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>5. Meet で顧客への報告会
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>   → 自動議事録で次回アクションを明確化
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>6. Gmail で議事録とレポートを送信
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>   → 礼状とフォローアップメールを自動生成
+</code></pre></div>
+<h3 id="2">ワークフロー例2: 企画書作成プロセス<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>段階1: リサーチ（Gemini Deep Research）
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>- 市場調査
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>- 競合分析
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>- トレンド調査
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>段階2: データ整理（Sheets + Gemini）
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>- 調査結果の数値化
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>- 比較表の作成
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>- 予算試算
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>段階3: 企画書執筆（Docs + Gemini）
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>- 構成案の自動生成
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>- 各セクションの下書き作成
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>- 論理構成の改善提案
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>段階4: プレゼン準備（Slides + Gemini）
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>- スライド構成の最適化
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>- 視覚効果の提案
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>- 質疑応答の準備
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>段階5: プレゼン実施（Meet + Gemini）
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>- リアルタイム議事録
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>- 質問・懸念の記録
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>- 次回フォロー事項の整理
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a>段階6: フォローアップ（Gmail + Gemini）
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a>- 感謝メール送信
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a>- 追加資料の提供
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>- スケジュール調整
+</code></pre></div>
+<h3 id="_24">効率化のポイント<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Workspace連携の効率化Tips</p>
+<p><strong>1. テンプレートの活用</strong>
+- よく使う文書形式をGeminiでテンプレート化
+- 部門別・用途別のテンプレート作成</p>
+<p><strong>2. 共有・標準化</strong>
+- チーム内でGeminiプロンプトを共有
+- 品質の統一とナレッジの蓄積</p>
+<p><strong>3. 段階的な活用</strong>
+- 簡単なタスクから始めて徐々に複雑な業務へ
+- 結果を検証しながら信頼性を確認</p>
+<p><strong>4. 人間の監督</strong>
+- AI生成内容は必ずレビュー
+- 重要な文書は複数人でチェック</p>
+</div>
+<h2 id="_25">セキュリティ・プライバシー<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
+<h3 id="_26">データの取り扱い<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">機密情報の注意</p>
+<ul>
+<li>Geminiに送信されたデータはGoogleサーバーで処理</li>
+<li>機密性の高い情報（個人情報、企業秘密等）の入力は避ける</li>
+<li>必要に応じてデータの匿名化・マスキング処理を実施</li>
+</ul>
+</div>
+<p><strong>推奨セキュリティ対策</strong>:
+1. <strong>機密度の分類</strong>: 公開可能な情報のみAI利用
+2. <strong>アクセス制御</strong>: 必要最小限のメンバーのみ利用
+3. <strong>ログ監視</strong>: Gemini利用履歴の定期確認
+4. <strong>ガイドライン策定</strong>: 社内利用ルールの明文化</p>
+<h2 id="_27">次のステップ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../notebooklm/">NotebookLM</a> - より高度な文書分析・学習支援</li>
+<li><a href="../api/">API活用</a> - カスタムシステムとのWorkspace連携</li>
+<li><a href="../vs-claude/">vs-Claude</a> - 他のAIツールとの使い分け</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

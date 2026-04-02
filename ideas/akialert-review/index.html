@@ -1,0 +1,874 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/ideas/akialert-review/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>📝 AkiAlert レビュー - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#akialert" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📝 AkiAlert レビュー
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tech/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../tech/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../projects/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="akialert">📝 AkiAlert レビュー<a class="headerlink" href="#akialert" title="Permanent link">&para;</a></h1>
+<h2 id="a-">総合評価: A-<a class="headerlink" href="#a-" title="Permanent link">&para;</a></h2>
+<h2 id="_1">評価内訳<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="b">技術実現性: B+<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>スクレイピング技術</strong>: Playwright + Proxy Rotationは確立済み</li>
+<li><strong>通知システム</strong>: LINE API等の統合は標準的</li>
+<li><strong>アーキテクチャ</strong>: 段階的インフラ構成が現実的</li>
+<li><strong>懸念</strong>: サイト側のbot対策、仕様変更への対応が継続的課題</li>
+</ul>
+<h3 id="a">課題解決の明確性: A+<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>明確すぎるペイン</strong>: 「人気店の予約が取れない」は万人共感</li>
+<li><strong>具体的価値</strong>: 時間節約（月4.5時間）、機会損失回避</li>
+<li><strong>定量的効果</strong>: 予約成功率3-5倍向上の見込み</li>
+<li><strong>ターゲット明確</strong>: 25-45歳の忙しい都市部住民</li>
+</ul>
+<h3 id="a_1">競合差別化: A<a class="headerlink" href="#a_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>技術差別化</strong>: 10秒即時通知 vs 競合の数時間遅延</li>
+<li><strong>網羅性</strong>: 複数サイト横断監視（競合は単発サイト）</li>
+<li><strong>UX差別化</strong>: LINEで完結 vs アプリインストール必要</li>
+<li><strong>AI活用</strong>: URL貼り付けで自動施設認識</li>
+</ul>
+<h3 id="a_2">収益性・ユニットエコノミクス: A<a class="headerlink" href="#a_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>超低初期コスト</strong>: ￥0/月での完全無料スタート</li>
+<li><strong>高ARPU</strong>: ￥780/月（$5.2）は十分な単価</li>
+<li><strong>優秀なLTV/CAC</strong>: 4.68で健全な成長可能性</li>
+<li><strong>94%粗利率</strong>: Phase 0での驚異的収益性</li>
+</ul>
+<h3 id="20-a">月$20達成可能性: A+<a class="headerlink" href="#20-a" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>4人で達成</strong>: 極めて現実的な数値</li>
+<li><strong>市場規模</strong>: TAM 2,000万人、SAM 200万人と巨大</li>
+<li><strong>早期採用層</strong>: 理論上限2,000人で十分な余裕</li>
+<li><strong>獲得計画</strong>: 3ヶ月で20人の段階的成長が具体的</li>
+</ul>
+<h2 id="_2">強み分析<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. ペインの普遍性・緊急性<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>体験済みユーザー</strong>: 都市部住民の80%以上が経験</li>
+<li><strong>ストレス度</strong>: 高（機会損失の後悔は強烈）</li>
+<li><strong>継続性</strong>: 美容院・レストランは定期利用</li>
+</ul>
+<h3 id="2">2. マネタイズの自然さ<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>価値実感</strong>: 1回の予約成功で元は取れる感覚</li>
+<li><strong>価格妥当性</strong>: 美容院￥5,000の10%で￥500は適正</li>
+<li><strong>継続理由</strong>: 便利さで解約されにくい</li>
+</ul>
+<h3 id="3">3. バイラル要素<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>成功体験シェア</strong>: 「取れました！」投稿が宣伝になる</li>
+<li><strong>口コミ自然発生</strong>: 友人への「いいサービスある」推薦</li>
+<li><strong>インフルエンサー親和性</strong>: グルメ・美容系で拡散力高い</li>
+</ul>
+<h3 id="4">4. 参入障壁の構築可能性<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>データ蓄積</strong>: 施設毎の予約パターン学習で精度向上</li>
+<li><strong>多サイト対応</strong>: 後発は複数サイト整備が困難</li>
+<li><strong>ネットワーク効果</strong>: ユーザー増→対応施設増→魅力度向上</li>
+</ul>
+<h2 id="_3">懸念点・リスク<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 法的・倫理的リスク（中程度）<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>利用規約</strong>: 多くのサイトでスクレイピング禁止</li>
+<li><strong>対策評価</strong>: robots.txt準拠、公開情報のみは妥当だが、グレーゾーン</li>
+<li><strong>リスク軽減</strong>: 複数サイト分散でリスク分散、API提供サイト優先</li>
+</ul>
+<h3 id="2_1">2. 技術的維持コスト（中程度）<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>サイト仕様変更</strong>: 予約サイト側の対策で継続的修正必要</li>
+<li><strong>スケール時負荷</strong>: 大量ユーザー時のスクレイピング負荷</li>
+<li><strong>対策評価</strong>: 自動復旧機能、段階的インフラ強化で対応可能</li>
+</ul>
+<h3 id="3_1">3. 競合参入リスク（低程度）<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>大手参入</strong>: ホットペッパー等が同機能追加の可能性</li>
+<li><strong>模倣容易性</strong>: 基本機能は技術的に模倣可能</li>
+<li><strong>対策評価</strong>: 先行者利益、データ蓄積、多サイト対応で差別化継続</li>
+</ul>
+<h3 id="4_1">4. 市場飽和リスク（低程度）<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>需要限界</strong>: 都市部限定、特定年齢層限定</li>
+<li><strong>対策評価</strong>: TAM 2,000万人は十分、地方展開も可能</li>
+</ul>
+<h2 id="_4">改善提案<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1_2">1. 法的リスク軽減強化<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>API提携戦略</strong>: 可能な予約サイトとのAPI契約交渉</li>
+<li><strong>利用規約明記</strong>: スクレイピングリスクをユーザーに明示</li>
+<li><strong>段階的展開</strong>: 1サイトで実績作り→徐々に拡大</li>
+</ul>
+<h3 id="2_2">2. 収益多角化<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>データ販売</strong>: 予約トレンドデータを飲食業界に販売</li>
+<li><strong>アフィリエイト</strong>: 予約成功時の店舗からの成果報酬</li>
+<li><strong>プレミアム機能</strong>: AI推奨「今狙い目の店」情報</li>
+</ul>
+<h3 id="3_2">3. 技術的差別化強化<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>予測機能</strong>: AIでキャンセルが出やすい時間帯予測</li>
+<li><strong>自動予約</strong>: 空きが出たら自動で仮予約（上級者向け）</li>
+</ul>
+<h2 id="a-_1">最終判定: A-評価<a class="headerlink" href="#a-_1" title="Permanent link">&para;</a></h2>
+<h3 id="_5">評価理由<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ペインの明確さ</strong>: 誰もが理解・共感できる課題</li>
+<li><strong>収益性</strong>: 4人で$20達成の超現実性</li>
+<li><strong>市場規模</strong>: TAM 2,000万人の巨大市場</li>
+<li><strong>差別化</strong>: 速度・網羅性・UXでの明確な差別化</li>
+</ul>
+<h3 id="a_3">A+への道<a class="headerlink" href="#a_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>法的リスクのさらなる軽減策</li>
+<li>より具体的な顧客獲得チャネル戦略</li>
+<li>技術的参入障壁の具体化</li>
+</ul>
+<p><strong>結論: A-評価。極めて実用的で需要明確、収益性高い。法的リスクはあるが対応可能レベル。即座に実装開始を推奨。</strong></p>
+<hr />
+<h2 id="_6">レビュー完了<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>評価: <strong>A-</strong></li>
+<li>推奨: 即座実装開始</li>
+<li>注意点: 法的リスク管理を慎重に</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

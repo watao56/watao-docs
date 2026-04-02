@@ -1,0 +1,1943 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/projects/python-quest/design-review/">
+      
+      
+        <link rel="prev" href="../design/">
+      
+      
+        <link rel="next" href="../mvp-review/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>設計レビュー - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-quest-3" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              設計レビュー
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tech/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ideas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../tech/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📋 プロジェクト
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../deadlink/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔗 DeadLink
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐍 Python Quest
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐍 Python Quest
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設計書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設計レビュー
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設計レビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        総合評価
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 前回指摘の反映度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 前回指摘の反映度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 適切に反映された項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 反映が不十分な項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. アーキテクチャ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. アーキテクチャ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👍 優れている点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 軽微な懸念
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. セキュリティ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. セキュリティ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👍 実用的なレベルに到達
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 残る軽微な課題
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. UX/教育設計
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. UX/教育設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👍 高い完成度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 改善の余地
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 技術的リスク
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 技術的リスク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リスク評価
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最大のリスク: コンテンツ品質
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. コスト
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. コスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👍 現実的な見積もり
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ まだ見落としている項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ロードマップ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. ロードマップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👍 適切な構成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 軽微な懸念
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 残課題・新たな懸念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 残課題・新たな懸念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 問題のバージョニング（前回からの継続課題）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 全角/半角混在問題（新規）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 先生用機能の認証・権限設計の詳細
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 設計書の保守性（前回指摘の継続）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 総括
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 総括">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        評価の推移
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3回のレビューを通じた総評
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        残課題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最終アクション
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mvp-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MVPレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blockly-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocklyレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ux-code-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UX・コードレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../ideas/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📋 プロジェクト
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🐍 Python Quest
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="python-quest-3">Python Quest - 設計書レビュー（第3回）<a class="headerlink" href="#python-quest-3" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>シニアエンジニアによる技術レビュー（最終版）
+レビュー履歴: 第1回 B+ → 第2回 A- → 今回: <strong>A</strong></p>
+</blockquote>
+<h2 id="_1">総合評価<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><strong>A</strong> — 第2回レビューの指摘事項がほぼ全て適切に反映され、設計書として<strong>プロダクション品質</strong>に到達した。特に以下3点の改善が評価を押し上げた：</p>
+<ol>
+<li><strong>サーバー側正解判定の具体設計（§8.4）</strong> — 前回「最も困る箇所」と警告した未決定事項が、ハイブリッド方式（クライアント実行+サーバー検証）として明確に設計された。コード整合性チェック・出力比較・★サーバー側再計算のフローが具体的で、実装可能なレベル。</li>
+<li><strong>ドメイン層分離（§5.10）</strong> — Service/Repository層の設計が追加され、API Routesの肥大化問題が解決された。<code>QuestService</code>の具体的なコード例まで示されている点が良い。</li>
+<li><strong>オフライン同期のコンフリクト解決（§5.12）</strong> — ★最大値採用、クリア状態の巻き戻し防止、XPサーバー側再計算という明確なルールが定義された。教育プラットフォームとして「子供のモチベーションを損なわない」方向に寄せた設計判断が正しい。</li>
+</ol>
+<p>A+に届かない理由は後述の残課題にあるが、いずれも実装フェーズで解決可能な軽微な項目であり、<strong>設計書としてはこれ以上磨く必要はない。</strong></p>
+<hr />
+<h2 id="1">1. 前回指摘の反映度<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">✅ 適切に反映された項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>前回指摘</th>
+<th>反映状況</th>
+<th>評価</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>サーバー側Python実行の矛盾</td>
+<td>§8.4にハイブリッド方式の具体設計。フロー図+コード例あり</td>
+<td>◎</td>
+</tr>
+<tr>
+<td>ドメイン層の分離設計</td>
+<td>§5.10にService/Repository層。QuestServiceの実装例あり</td>
+<td>◎</td>
+</tr>
+<tr>
+<td>ブラウザ最低動作環境</td>
+<td>§5.5にChrome 90+/Edge 90+/Safari 15+/Firefox 90+を定義。GIGAスクール対応明記</td>
+<td>◎</td>
+</tr>
+<tr>
+<td>プライバシーポリシーのPhase移動</td>
+<td>Phase 2aに移動済み。§14のロードマップに反映</td>
+<td>◎</td>
+</tr>
+<tr>
+<td>招待コード総当たり対策</td>
+<td>§8.5にレート制限(10回/時間)+遅延レスポンス+失敗ログ</td>
+<td>◎</td>
+</tr>
+<tr>
+<td>セッション管理の詳細</td>
+<td>§8.6にブラウザセッション/ログイン保持チェックボックス/同時セッション許可</td>
+<td>◎</td>
+</tr>
+<tr>
+<td>パスワード要件</td>
+<td>§8.7に4文字以上、先生による初期パスワード配布オプション</td>
+<td>◎</td>
+</tr>
+<tr>
+<td>SWR vs React Query</td>
+<td>§5.1でReact Query(TanStack Query)に決定。理由も記載</td>
+<td>◎</td>
+</tr>
+<tr>
+<td>Zustandストア間依存</td>
+<td>直接的な記載は薄いが、§5.10のService層が状態連鎖の整理に寄与</td>
+<td>○</td>
+</tr>
+<tr>
+<td>オフライン同期コンフリクト</td>
+<td>§5.12に5つの同期ルール+コード例。タイムスタンプベース設計</td>
+<td>◎</td>
+</tr>
+<tr>
+<td>AnalyticsEvent肥大化</td>
+<td>§10.3にデータ保存方針の記載あり（ただし具体的なアーカイブ戦略は薄い）</td>
+<td>○</td>
+</tr>
+<tr>
+<td>問題コンテンツ制作工数</td>
+<td>§15備考に反映（ただし§13.2の工数表に明示的な切り出しはなし）</td>
+<td>△</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">⚠️ 反映が不十分な項目<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>ワールド2の問題形式バリエーション</strong> — 前回「16問中どれがどの形式か未定義」と指摘したが、依然として具体化されていない。ただし実装フェーズで詳細化可能な範囲であり、設計書レベルではブロッカーではない。</p>
+</li>
+<li>
+<p><strong><code>related_quest_id</code>の配列化</strong> — 前回「つまづきが多い概念には複数の類似問題プール」を提案したが、スキーマは<code>related_quest_id</code>（単数）のまま。Phase 3以降で対応可能。</p>
+</li>
+<li>
+<p><strong>ボスクエストの不合格時フロー</strong> — 前回指摘のまま未設計。通常クエストと同じ救済フローで問題ないなら、その旨を明記すべき。</p>
+</li>
+</ol>
+<hr />
+<h2 id="2">2. アーキテクチャ<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="_4">👍 優れている点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ドメイン層分離（§5.10）が実装可能なレベルで設計されている。</strong> <code>QuestService</code>→<code>QuestRepository</code>/<code>ProgressRepository</code>の依存関係が明確で、テスタビリティ・再利用性の両面で正しい設計。API Route → Service → Repositoryの3層構造は67問規模のプロダクトに適切。</li>
+<li><strong>PythonRunnerインターフェース（§5.6）は引き続き優秀。</strong> Skulpt/Pyodideの切り替えがファクトリーパターンで完結する設計は、将来のスケーラビリティを確保している。</li>
+<li><strong>キャッシュ戦略（§5.9）が具体化された。</strong> 問題データSSG、先生ダッシュボードのReact Query（30秒キャッシュ+リアルタイム更新オプション）など、画面ごとの戦略が明確。</li>
+<li><strong>オフライン同期設計（§5.12）のルールが明快。</strong> 5つのルール（★最大値、クリア巻き戻し防止、コードはラストライトウィン、XPサーバー再計算、挑戦回数は最大値）は、CRDTのような過剰な複雑性を避けつつ、教育プラットフォームとして正しい方向に寄せている。</li>
+</ul>
+<h3 id="_5">⚠️ 軽微な懸念<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Zustandストア間の状態連鎖管理</strong> — クエストクリア時の<code>EditorStore</code>→<code>ProgressStore</code>→<code>GameStore</code>→<code>UIStore</code>の連鎖については、Service層の導入で整理の方向性は見えるが、フロントエンド側でのストア間連携パターン（subscribe/middleware等）の明示があると実装時に迷わない。ただしこれは実装詳細であり、設計書レベルでは十分。</p>
+</li>
+<li>
+<p><strong>問題データのSSG+ISRの整合性</strong> — §5.9で「問題追加時にISR再生成」とあるが、問題データがJSONファイル管理（§15備考）の場合、ISRではなくビルド時SSGで十分。DB移行後にISRが必要になる想定なら、その旨を明記すると良い。</p>
+</li>
+</ol>
+<hr />
+<h2 id="3">3. セキュリティ<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="_6">👍 実用的なレベルに到達<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>サーバー側正解判定（§8.4）のハイブリッド方式は現実的かつ適切。</strong> 「サーバーでPythonを再実行しない」という設計判断の理由（Skulptはブラウザ向け、Vercel Serverlessでのサンドボックスはコスト高）が明記されており、トレードオフの説明が誠実。「教育プラットフォームでは完全な改ざん防止よりUXが優先」という判断は正しい。</li>
+<li><strong>コード整合性チェック（<code>validateCode</code>）</strong> — 空コードチェック、必須キーワード確認、長さ制限の3段階バリデーションは「カジュアルな不正を防ぐ」レベルとして適切。過剰なセキュリティにならず、UXを損なわないバランス。</li>
+<li><strong>招待コード総当たり対策（§8.5）</strong> — レート制限+遅延レスポンス+失敗ログの3層防御は十分。</li>
+<li><strong>セッション管理（§8.6）</strong> — 「ブラウザセッションをデフォルト」「ログイン保持はオプトイン」「同時セッション許可」は学校環境を正確に考慮した設計。ログアウトボタンの位置への言及も子供向けとして適切。</li>
+<li><strong>パスワード要件（§8.7）</strong> — 4文字以上は子供向けとして現実的。先生による初期パスワード配布オプションも運用を考慮している。</li>
+</ul>
+<h3 id="_7">⚠️ 残る軽微な課題<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>RLSポリシーのINSERT制限が未記載。</strong> §8.3のRLSはSELECT/UPDATEのポリシーのみ。<code>user_progress</code>のINSERTに対するポリシー（自分のProgressのみ作成可能）も必要。悪意あるユーザーが他人のuser_idでProgressを挿入するのを防ぐため。</p>
+</li>
+<li>
+<p><strong><code>compareOutput</code>の正規化がやや甘い。</strong> 末尾空白の除去のみだが、全角/半角スペースの混在（子供が日本語入力モードのまま操作するケース）への対応も検討すべき。<code>'こんにちは、Python！'</code>と<code>'こんにちは、Python！'</code>（全角感嘆符 vs 半角）で不正解になると子供は混乱する。</p>
+</li>
+</ol>
+<hr />
+<h2 id="4-ux">4. UX/教育設計<a class="headerlink" href="#4-ux" title="Permanent link">&para;</a></h2>
+<h3 id="_8">👍 高い完成度<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>67問の3段階構成（基本・練習・チャレンジ）は教育設計として成熟している。</strong> ワールド1〜4にかけて同じ概念を螺旋的に深める構成は、Brunerの螺旋型カリキュラム理論に合致。</li>
+<li><strong>つまづき救済システム（§3.6）は本プロダクトの最も重要な差別化要素。</strong> ヒント3段階→「答えを見る」/「似た練習問題」/「NPCアドバイス」の分岐設計は、離脱率に直接影響する生命線。★0（XP半減）でペナルティを与えつつも「やり直して★を上げられる」設計が秀逸。</li>
+<li><strong>エラー日本語化（§9）の10パターン+よくあるミス検出は実用的。</strong> <code>pritn</code>→<code>print</code>の提案、コロン忘れの検出など、子供が「何が間違っているかわからない」状態を大幅に軽減する。</li>
+<li><strong>NPCの声かけ設計</strong> — 3分操作なし→「大丈夫？」、3日以上ブランク→「またいっしょに冒険しよう！」は子供の心理を考慮した設計。</li>
+<li><strong>自由制作クエスト（4-13, 4-14）の★評価対象外</strong>は創造性を制限しない正しい判断。</li>
+</ul>
+<h3 id="_9">⚠️ 改善の余地<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>turtle判定の許容範囲</strong> — 前回指摘した「±5%は曖昧」への対応が見当たらない。§3.4に「数値には±5%の許容範囲」とあるが、<code>forward(10)</code>に対して<code>forward(9.5)</code>〜<code>forward(10.5)</code>はOKでも、桁数ミスの<code>forward(100)</code>は弾くべき。「±5%かつ±20以内」のような複合条件を推奨。実装時に調整可能な範囲ではあるが、設計意図を明記しておくと良い。</p>
+</li>
+<li>
+<p><strong>エラー日本語化のカバレッジロードマップ</strong> — Phase 1で10パターン→Phase 3/4で拡充、という段階的計画があると良い。Skulptが出すエラーは数十種あり、未対応エラーには英語がそのまま表示されることへのフォールバック表示（「エラーが発生したよ！先生に聞いてみよう」等）を用意すべき。</p>
+</li>
+<li>
+<p><strong>W1→W2のモード変化が急でないかの懸念。</strong> W1は純粋なブロック操作、W2はブロック+コード並列。W1の最終盤（1-16, 1-17の関数ブロック）で「このブロックはPythonだとこう書くんだよ」的なプレビュー表示があると、W2への移行がよりスムーズになる。ただしこれは実装フェーズの細かいUX調整。</p>
+</li>
+</ol>
+<hr />
+<h2 id="5">5. 技術的リスク<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="_10">リスク評価<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>リスク</th>
+<th>深刻度</th>
+<th>発生確率</th>
+<th>対策状況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skulptの制約（Python 3互換性不足）</td>
+<td>中</td>
+<td>中</td>
+<td>◎ PythonRunner抽象化でPyodide移行パス確保</td>
+</tr>
+<tr>
+<td>GIGAスクール端末での低パフォーマンス</td>
+<td>中</td>
+<td>高</td>
+<td>○ Monaco遅延ロード+Phase 1でのユーザーテスト</td>
+</tr>
+<tr>
+<td>Blockly→Python変換の精度</td>
+<td>低</td>
+<td>低</td>
+<td>◎ Blockly標準機能で十分</td>
+</tr>
+<tr>
+<td>オフライン同期のエッジケース</td>
+<td>低</td>
+<td>中</td>
+<td>◎ 明確なルール定義済み</td>
+</tr>
+<tr>
+<td>無限ループによるブラウザフリーズ</td>
+<td>高</td>
+<td>高</td>
+<td>◎ Web Worker+タイムアウトで対策済み</td>
+</tr>
+<tr>
+<td>67問のコンテンツ品質管理</td>
+<td>中</td>
+<td>高</td>
+<td>△ バージョニング・難易度調整の仕組みが未設計</td>
+</tr>
+<tr>
+<td>MonacoのバンドルサイズによるUX劣化</td>
+<td>中</td>
+<td>中</td>
+<td>◎ 遅延ロード+部分インポート+フォールバック</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">最大のリスク: コンテンツ品質<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>技術的リスクは概ね対策済みだが、<strong>67問の教育コンテンツの品質管理</strong>が最大の実質リスク。難易度カーブが適切か、ヒントが有効か、NPC台詞が子供に響くかは、実装して子供にテストしないとわからない。Phase 1・Phase 3でのユーザーテストが生命線。テスト結果を踏まえた問題の改訂サイクル（作成→テスト→改訂→再テスト）を回す覚悟が必要。</p>
+<hr />
+<h2 id="6">6. コスト<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="_12">👍 現実的な見積もり<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>インフラコストの3段階提示（MVP ¥0 → 本格運用 ¥10,650/月 → 大規模 ¥11,000〜/月）</strong> は明快。Skulptによるブラウザ側Python実行でサーバーコストを最小化する戦略は正しい。</li>
+<li><strong>開発工数20〜26週間（5〜7ヶ月）</strong> は個人開発として現実的。</li>
+<li><strong>イラスト投資¥30,000〜¥100,000の推奨</strong>は子供向けプロダクトとして正しい判断。</li>
+</ul>
+<h3 id="_13">⚠️ まだ見落としている項目<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>コンテンツ制作工数の明示的な切り出し。</strong> 67問×（問題文+ヒント3段階+答え+NPC台詞+★基準）= 推定70〜140時間。§13.2の工数表ではPhase 2a/2b/3に含まれている想定だが、「コンテンツ制作」として独立行があると計画精度が上がる。</p>
+</li>
+<li>
+<p><strong>ユーザーテストの実施コスト。</strong> テスト被験者の確保方法（知人の子供？教育機関との連携？）、テスト環境の用意、フィードバック収集の仕組みが未検討。ゼロコストで実施可能かもしれないが、計画には含めるべき。</p>
+</li>
+<li>
+<p><strong>Supabase Freeプランの容量見積もり。</strong> 500MBで50人×67問の進捗+分析イベントは余裕だが、<code>code_execute</code>イベントの蓄積（1人1問あたり平均10回→50人×67問×10回=33,500レコード/周回）による上限到達タイミングの概算があると安心。</p>
+</li>
+</ol>
+<hr />
+<h2 id="7">7. ロードマップ<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="_14">👍 適切な構成<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Phase 2a/2bの分割が効いている。</strong> 認証+W2とW3+ゲームシステムの分離は依存関係の整理として正しい。</li>
+<li><strong>プライバシーポリシーがPhase 2aに移動済み</strong> — 前回の重要指摘が反映されている。</li>
+<li><strong>ユーザーテストのタイミング（Phase 1直後+Phase 3）</strong> は適切。</li>
+</ul>
+<h3 id="_15">⚠️ 軽微な懸念<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Phase 2aの負荷</strong> — 認証+RLS+W1残り15問+W2全16問は依然として4〜5週間ではタイト。前回も指摘したが、W2の問題数を絞る（8問→Phase 3で拡充）か、Phase 2aを5〜6週間に延長する方が安全。ただし個人開発のペースは本人が最もよく知っているため、強くは言わない。</p>
+</li>
+<li>
+<p><strong>Phase 4のアクセシビリティ</strong> — §11にキーボードナビゲーション・色覚多様性・フォントサイズ・スクリーンリーダー対応が設計されているが、Phase 4に後回しされている。基本的なコントラスト比とTab順序はPhase 1からCSSに組み込むべき（後から全面改修になるリスク）。ただしMVPの速度を優先する判断も理解できる。</p>
+</li>
+</ol>
+<hr />
+<h2 id="8">8. 残課題・新たな懸念<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h3 id="81">8.1 問題のバージョニング（前回からの継続課題）<a class="headerlink" href="#81" title="Permanent link">&para;</a></h3>
+<p>67問の品質改善サイクル（ユーザーテスト→改訂）を回す際、問題の改訂をどう管理するか。<code>quest.version</code>フィールドを持ち、旧バージョンでクリア済みの生徒の進捗を保持しつつ、新バージョンの問題を配信する仕組みが将来的に必要。MVP段階では不要だが、Phase 3以降で検討すべき。</p>
+<h3 id="82">8.2 全角/半角混在問題（新規）<a class="headerlink" href="#82" title="Permanent link">&para;</a></h3>
+<p>§8.4の<code>compareOutput</code>で末尾空白を正規化しているが、子供が日本語入力モードで操作する場合の全角/半角混在（全角スペース、全角括弧、全角感嘆符等）への対応が未設計。<code>print('こんにちは！')</code>（半角括弧+全角感嘆符）と<code>print（'こんにちは！'）</code>（全角括弧）で構文エラーになった場合、「もしかして括弧が全角になっていないかな？」というエラーメッセージが必要。§9.2のよくあるミスパターンに追加すべき。</p>
+<h3 id="83">8.3 先生用機能の認証・権限設計の詳細<a class="headerlink" href="#83" title="Permanent link">&para;</a></h3>
+<p>§7の先生用機能と§8.3のRLSで基本設計はあるが、先生アカウントの作成フロー（誰が先生アカウントを発行するのか）が未設計。「最初の先生アカウントはDB直接操作で作成」でMVPは十分だが、将来的にはスーパー管理者→先生アカウント発行の仕組みが必要。</p>
+<h3 id="84">8.4 設計書の保守性（前回指摘の継続）<a class="headerlink" href="#84" title="Permanent link">&para;</a></h3>
+<p>設計書が約1400行と大規模化している。現時点では一つのファイルで管理可能だが、実装が進むにつれて設計書と実装の乖離が生じやすい。<strong>実装開始後は設計書をliving documentとして継続更新するか、コード内のドキュメント（JSDoc/README）に移行するかを決めておくべき。</strong></p>
+<hr />
+<h2 id="9">9. 総括<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<h3 id="_16">評価の推移<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>観点</th>
+<th>第1回</th>
+<th>第2回</th>
+<th>第3回</th>
+<th>変化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アーキテクチャ</td>
+<td>B+</td>
+<td>A-</td>
+<td><strong>A</strong></td>
+<td>ドメイン層分離、オフライン同期設計が追加</td>
+</tr>
+<tr>
+<td>セキュリティ</td>
+<td>C+</td>
+<td>A-</td>
+<td><strong>A</strong></td>
+<td>サーバー側判定の具体設計、セッション管理、総当たり対策が追加</td>
+</tr>
+<tr>
+<td>UX/教育設計</td>
+<td>A-</td>
+<td>A</td>
+<td><strong>A</strong></td>
+<td>維持。十分な完成度</td>
+</tr>
+<tr>
+<td>コスト見積もり</td>
+<td>B-</td>
+<td>B+</td>
+<td><strong>B+</strong></td>
+<td>コンテンツ工数の明示的切り出しがまだない</td>
+</tr>
+<tr>
+<td>ロードマップ</td>
+<td>B</td>
+<td>B+</td>
+<td><strong>A-</strong></td>
+<td>プライバシーポリシー移動、Phase分割が適切</td>
+</tr>
+<tr>
+<td>運用/分析</td>
+<td>D</td>
+<td>B</td>
+<td><strong>B+</strong></td>
+<td>維持+軽微な改善</td>
+</tr>
+<tr>
+<td><strong>総合</strong></td>
+<td><strong>B+</strong></td>
+<td><strong>A-</strong></td>
+<td><strong>A</strong></td>
+<td><strong>設計書として完成。実装開始可能</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3_1">3回のレビューを通じた総評<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>この設計書は3回のレビューサイクルを通じて、<strong>アイデアスケッチからプロダクション品質の設計書に成長した。</strong> 特に評価すべき点は以下の3つ：</p>
+<ol>
+<li>
+<p><strong>レビュー指摘の反映品質が高い。</strong> 形式的に指摘を埋めるのではなく、設計全体の一貫性を保ちながら統合している。§8.4のサーバー側正解判定がその好例で、前回の「矛盾」指摘に対して、トレードオフを明示しながら現実的な解を提示している。</p>
+</li>
+<li>
+<p><strong>教育プラットフォームとしてのUX判断が一貫している。</strong> 「ペナルティなし設計」「★最大値採用」「エラー日本語化」「NPCの声かけ」——すべてが「子供が挫折しない」という一つの軸に沿っている。技術的な正しさよりUXを優先する判断（XP改ざん防止を100%にしない等）も成熟した設計判断。</p>
+</li>
+<li>
+<p><strong>技術選定が現実的。</strong> Skulptによるブラウザ完結設計、PythonRunner抽象化による移行パス確保、Monaco遅延ロードによるパフォーマンス最適化——いずれも「理想」ではなく「現実」を見た選定。個人開発のリソース制約を正しく認識した上での判断。</p>
+</li>
+</ol>
+<h3 id="_17">残課題<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>A+に到達するために必要だが、<strong>実装フェーズで解決可能</strong>な項目：</p>
+<ul>
+<li>RLSのINSERTポリシー追加</li>
+<li>全角/半角混在のエラーハンドリング</li>
+<li>コンテンツ制作工数の明示的計上</li>
+<li>turtle判定の許容範囲の精密化</li>
+<li>先生アカウント作成フローの設計</li>
+<li>Phase 1からのアクセシビリティ基盤（コントラスト比・Tab順序）</li>
+</ul>
+<h3 id="_18">最終アクション<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<ol>
+<li>✅ <strong>設計書はこれで完成。これ以上のレビューサイクルは不要。</strong></li>
+<li>✅ Phase 1に着手せよ。Blockly + Skulptの技術検証プロトタイプを最優先で。</li>
+<li>✅ Phase 1完了直後のユーザーテスト（実際の子供2〜3人）を必ず実施すること。テスト結果が設計書の答え合わせになる。</li>
+<li>✅ 上記残課題は実装中に随時対応すれば良い。設計書に戻って修正する必要はない。</li>
+</ol>
+<blockquote>
+<p><strong>最終コメント:</strong> 3回のレビューを通じて、設計者の成長が明確に見えた。第1回では「セキュリティが手薄」「コスト感が甘い」だった設計書が、第3回では「トレードオフを理解した上で現実的な解を選んでいる」設計書になった。<strong>あとは作るだけ。子供たちにPythonの楽しさを届けてほしい。</strong> 🐍</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

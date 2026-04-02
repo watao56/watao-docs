@@ -1,0 +1,1571 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/tech/aws/s3/">
+      
+      
+        <link rel="prev" href="../ec2/security/">
+      
+      
+        <link rel="next" href="setup/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Amazon S3 - Simple Storage Service - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#amazon-s3-simple-storage-service" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Amazon S3 - Simple Storage Service
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ideas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ 技術ノート
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../claude/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 AI
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☁️ AWS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ☁️ AWS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../ec2/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EC2
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S3
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    S3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="use-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    活用事例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../cloudfront/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CloudFront
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../projects/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../ideas/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🛠️ 技術ノート
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ☁️ AWS
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    S3
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="amazon-s3-simple-storage-service">Amazon S3 - Simple Storage Service<a class="headerlink" href="#amazon-s3-simple-storage-service" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">このページについて</p>
+<p>Amazon S3の概要とストレージクラスについて解説します。実際の設定手順は<a href="setup/">セットアップガイド</a>を、活用事例は<a href="use-cases/">ユースケース</a>をご覧ください。</p>
+</div>
+<h2 id="s3">S3とは<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h2>
+<p>Amazon Simple Storage Service（S3）は、Webアプリケーション、モバイルアプリケーション、エンタープライズアプリケーション、IoTデバイスなど、どこからでもデータを格納・取得できる<strong>オブジェクトストレージサービス</strong>です。</p>
+<h3 id="_1">特徴<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>高い耐久性</strong>: 99.999999999%（イレブンナイン）の耐久性</li>
+<li><strong>無制限のストレージ</strong>: 容量制限なし</li>
+<li><strong>グローバル</strong>: 世界中のリージョンで利用可能</li>
+<li><strong>多様なストレージクラス</strong>: コストと用途に応じて選択可能</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">オブジェクトストレージとは</p>
+<p>従来のファイルシステムとは異なり、フラットな構造でファイル（オブジェクト）を保存する方式です。各オブジェクトにはユニークなキー（パス）が付与され、URLでアクセス可能です。</p>
+</div>
+<h2 id="_2">ストレージクラス<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>S3では、データのアクセス頻度と取得時間要件に基づいて複数のストレージクラスを提供しています。</p>
+<h3 id="1-s3-standard">1. S3 Standard<a class="headerlink" href="#1-s3-standard" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用途</td>
+<td>頻繁にアクセスするデータ</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>最小保存期間</td>
+<td>なし</td>
+</tr>
+<tr>
+<td>取り出し料金</td>
+<td>なし</td>
+</tr>
+<tr>
+<td>初回バイト待ち時間</td>
+<td>ミリ秒</td>
+</tr>
+</tbody>
+</table>
+<p><strong>使用例</strong>: ウェブサイト画像、動的コンテンツ、頻繁にアクセスされるファイル</p>
+<h3 id="2-s3-standard-infrequent-accessia">2. S3 Standard-Infrequent Access（IA）<a class="headerlink" href="#2-s3-standard-infrequent-accessia" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用途</td>
+<td>月に1回程度アクセスするデータ</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>99.9%</td>
+</tr>
+<tr>
+<td>最小保存期間</td>
+<td>30日</td>
+</tr>
+<tr>
+<td>取り出し料金</td>
+<td>あり</td>
+</tr>
+<tr>
+<td>初回バイト待ち時間</td>
+<td>ミリ秒</td>
+</tr>
+</tbody>
+</table>
+<p><strong>使用例</strong>: バックアップファイル、災害復旧データ</p>
+<div class="admonition warning">
+<p class="admonition-title">注意点</p>
+<p>30日未満で削除すると、30日分の料金が請求されます。</p>
+</div>
+<h3 id="3-s3-glacier-instant-retrieval">3. S3 Glacier Instant Retrieval<a class="headerlink" href="#3-s3-glacier-instant-retrieval" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用途</td>
+<td>四半期に1回程度アクセスするデータ</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>99.9%</td>
+</tr>
+<tr>
+<td>最小保存期間</td>
+<td>90日</td>
+</tr>
+<tr>
+<td>取り出し料金</td>
+<td>あり</td>
+</tr>
+<tr>
+<td>初回バイト待ち時間</td>
+<td>ミリ秒</td>
+</tr>
+</tbody>
+</table>
+<p><strong>使用例</strong>: アーカイブデータ（即座にアクセス必要）</p>
+<h3 id="4-s3-glacier-flexible-retrieval">4. S3 Glacier Flexible Retrieval<a class="headerlink" href="#4-s3-glacier-flexible-retrieval" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用途</td>
+<td>年に1-2回程度アクセスするデータ</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>最小保存期間</td>
+<td>90日</td>
+</tr>
+<tr>
+<td>取り出し料金</td>
+<td>あり</td>
+</tr>
+<tr>
+<td>初回バイト待ち時間</td>
+<td>分〜時間</td>
+</tr>
+</tbody>
+</table>
+<p><strong>取得オプション</strong>:
+- <strong>緊急</strong>: 1-5分（高コスト）
+- <strong>標準</strong>: 3-5時間（中コスト）
+- <strong>一括</strong>: 5-12時間（低コスト）</p>
+<h3 id="5-s3-glacier-deep-archive">5. S3 Glacier Deep Archive<a class="headerlink" href="#5-s3-glacier-deep-archive" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用途</td>
+<td>7-10年以上の長期保存データ</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>最小保存期間</td>
+<td>180日</td>
+</tr>
+<tr>
+<td>取り出し料金</td>
+<td>あり</td>
+</tr>
+<tr>
+<td>初回バイト待ち時間</td>
+<td>12時間〜48時間</td>
+</tr>
+</tbody>
+</table>
+<p><strong>取得オプション</strong>:
+- <strong>標準</strong>: 12時間
+- <strong>一括</strong>: 48時間（低コスト）</p>
+<h3 id="6-s3-intelligent-tiering">6. S3 Intelligent-Tiering<a class="headerlink" href="#6-s3-intelligent-tiering" title="Permanent link">&para;</a></h3>
+<p>機械学習によるアクセスパターン分析で、自動的に最適なストレージクラスに移動します。</p>
+<div class="admonition tip">
+<p class="admonition-title">Intelligent-Tieringの階層</p>
+<ul>
+<li><strong>高頻度階層</strong>: Standard相当</li>
+<li><strong>低頻度階層</strong>: IA相当</li>
+<li><strong>アーカイブインスタント階層</strong>: Glacier Instant Retrieval相当</li>
+<li><strong>アーカイブアクセス階層</strong>: Glacier Flexible Retrieval相当</li>
+<li><strong>ディープアーカイブ階層</strong>: Glacier Deep Archive相当</li>
+</ul>
+</div>
+<h2 id="_3">料金体系<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="2025">2025年現在の東京リージョン料金（目安）<a class="headerlink" href="#2025" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ストレージクラス</th>
+<th>ストレージ料金（GB/月）</th>
+<th>取り出し料金（GB）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard</td>
+<td>$0.025</td>
+<td>無料</td>
+</tr>
+<tr>
+<td>Standard-IA</td>
+<td>$0.019</td>
+<td>$0.01</td>
+</tr>
+<tr>
+<td>Glacier Instant</td>
+<td>$0.007</td>
+<td>$0.03</td>
+</tr>
+<tr>
+<td>Glacier Flexible</td>
+<td>$0.005</td>
+<td>$0.01-0.05</td>
+</tr>
+<tr>
+<td>Glacier Deep Archive</td>
+<td>$0.002</td>
+<td>$0.02</td>
+</tr>
+<tr>
+<td>Intelligent-Tiering</td>
+<td>$0.025 + 監視料金</td>
+<td>無料（階層移動時）</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">料金の注意点</p>
+<ul>
+<li>上記は目安価格です。最新の料金は<a href="https://aws.amazon.com/s3/pricing/">AWS公式ページ</a>をご確認ください</li>
+<li>リクエスト料金（PUT、GET等）が別途発生します</li>
+<li>データ転送料金（特にCloudFront以外への転送）も考慮が必要です</li>
+</ul>
+</div>
+<h3 id="_4">その他の料金要素<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>リクエスト料金</strong>: PUT、POST、GET等の操作ごと</li>
+<li><strong>データ転送料金</strong>: インターネットへの転送</li>
+<li><strong>管理・分析料金</strong>: S3 Analytics、Inventory等</li>
+</ul>
+<h2 id="_5">ユースケース概要<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. ウェブアプリケーション<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>静的コンテンツ配信</li>
+<li>ユーザーアップロードファイル保存</li>
+<li>ログファイル保存</li>
+</ul>
+<h3 id="2">2. バックアップ・アーカイブ<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>データベースバックアップ</li>
+<li>法的要件による長期保存</li>
+<li>災害復旧用データ</li>
+</ul>
+<h3 id="3">3. データ分析<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>データレイク構築</li>
+<li>ビッグデータ分析基盤</li>
+<li>機械学習データセット</li>
+</ul>
+<h3 id="4">4. コンテンツ配信<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>メディアファイル（画像、動画、音声）</li>
+<li>ソフトウェア配布</li>
+<li>CDN（CloudFront）との組み合わせ</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">次のステップ</p>
+<ul>
+<li><a href="setup/">セットアップガイド</a>: S3バケットの作成から詳細設定まで</li>
+<li><a href="use-cases/">ユースケース</a>: 具体的な活用事例とベストプラクティス</li>
+</ul>
+</div>
+<h2 id="_6">関連リンク<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/s3/">AWS S3 公式ドキュメント</a></li>
+<li><a href="https://aws.amazon.com/s3/pricing/">S3 料金</a></li>
+<li><a href="https://aws.amazon.com/s3/storage-classes/">S3 ストレージクラス比較</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

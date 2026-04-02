@@ -1,0 +1,2006 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/projects/python-quest/mvp-review/">
+      
+      
+        <link rel="prev" href="../design-review/">
+      
+      
+        <link rel="next" href="../blockly-review/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>MVPレビュー - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-quest-mvp-3" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MVPレビュー
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tech/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ideas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../tech/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📋 プロジェクト
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../deadlink/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔗 DeadLink
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐍 Python Quest
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐍 Python Quest
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設計書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設計レビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MVPレビュー
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MVPレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        総合評価
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 前回指摘の反映度
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-uiux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. UI/UX
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. UI/UX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        良い点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        改善余地
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-blockly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Blocklyエディタ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Blocklyエディタ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用可能ブロック種別
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        懸念点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 実行・判定体験
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 実行・判定体験">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pythonskulpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python実行エンジン（Skulpt）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エラーハンドリング（15パターン）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判定ロジック
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ゲーム体験
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ゲーム体験">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クエスト構成（8クエスト）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワールド構成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ゲーミフィケーション要素
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. パフォーマンス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. パフォーマンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バンドルサイズ分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        評価
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最適化提案
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. バグ・不具合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. バグ・不具合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ソースコード上で確認された潜在的問題
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 子供目線での評価
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 子供目線での評価">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 良い点（子供が喜ぶ要素）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 改善したい点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 要注意
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 改善提案（優先度付き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 改善提案（優先度付き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 高優先度（リリース前に対応推奨）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 中優先度（初期リリース後に対応）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 低優先度（将来的に検討）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 総括
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 総括">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-b-2-a-3-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第1回 B+ → 第2回 A- → 第3回 A
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blockly-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocklyレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ux-code-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UX・コードレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../ideas/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📋 プロジェクト
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🐍 Python Quest
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="python-quest-mvp-3">Python Quest MVP - デプロイレビュー（第3回）<a class="headerlink" href="#python-quest-mvp-3" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>シニアエンジニアによる実機レビュー
+URL: https://python-quest-three.vercel.app
+レビュー日: 2026-02-17
+レビュー方法: ソースコード静的解析（バンドルJS解析） + web_fetch
+レビュー履歴: 第1回 B+ → 第2回 A- → 今回: <strong>A</strong></p>
+</blockquote>
+<h2 id="_1">総合評価<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><strong>A（優秀）</strong> — 前回のA-から着実にステップアップ。</p>
+<p>教育系プロダクトとしてのMVPクオリティは十分に達成している。特にエラーメッセージの日本語化（15パターン）、チュートリアル導入、タブレット対応の折りたたみサイドバーなど、前回指摘の主要項目がすべて反映されている点は高く評価できる。子供が「つまずいて投げ出す」ポイントが大幅に減った。</p>
+<p>ただしA+に至らない理由として、ブラウザ実機操作での検証ができなかったため（sandbox制約）、Blocklyのドラッグ&amp;ドロップ操作感やサウンドフィードバックの実際の体感は未確認。ソースコード上は設計が健全。</p>
+<h2 id="1">1. 前回指摘の反映度<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>前回の指摘</th>
+<th>対応状況</th>
+<th>評価</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>チュートリアル導入</td>
+<td>✅ 4ステップのガイド付きチュートリアル実装</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>コード表示常時可視化</td>
+<td>✅ エディタ下部に80-140pxの固定表示エリア</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>エラーメッセージ日本語化</td>
+<td>✅ 15パターン、emoji付きで親しみやすい</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>タブレット折りたたみサイドバー</td>
+<td>✅ アイコンモード（48px）に折りたたみ可能</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>フライアウト幅制限+自動閉じ</td>
+<td>✅ 実装確認（ソース上）</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>フォント14px対応</td>
+<td>✅ <code>text-base</code> クラス適用</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>ワークスペースoverflow制御</td>
+<td>✅ 修正適用済み</td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反映度: 100%</strong> — 全指摘事項が対応済み。素晴らしい。</p>
+<h2 id="2-uiux">2. UI/UX<a class="headerlink" href="#2-uiux" title="Permanent link">&para;</a></h2>
+<h3 id="_2">良い点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ダークテーマの統一感</strong>: <code>#0a0a1a</code> ベースで全画面統一。目に優しく、ゲーム感がある</li>
+<li><strong>グラデーション活用</strong>: ヘッダー、ボタン、XPバーにグラデーションを効果的に使用</li>
+<li><strong>レスポンシブ設計</strong>: モバイル（タブ切替） → タブレット（2カラム） → デスクトップ（3カラム）の3段階</li>
+<li><strong>折りたたみサイドバー</strong>: 円形トグルボタン（right:-14px）で直感的に操作可能</li>
+<li><strong>アイコンモード時のナビ</strong>: 📋🎯💡🏠の4アイコンで最低限のアクセスを維持</li>
+</ul>
+<h3 id="_3">改善余地<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Press Start 2P フォント</strong>: タイトルには良いが、読みやすさが犠牲になる箇所がないか要注意</li>
+<li><strong>モバイルタブ</strong>: 「📋 情報」「🧩 エディタ」「📺 出力」の3タブ切替は機能的だが、初見で「どれを選べばいいか」がやや分かりづらい可能性</li>
+<li><strong>出力パネル</strong>: lgブレークポイント以上でのみ表示。md幅では出力が隠れる設計は意図的か？</li>
+</ul>
+<h2 id="3-blockly">3. Blocklyエディタ<a class="headerlink" href="#3-blockly" title="Permanent link">&para;</a></h2>
+<h3 id="_4">実装分析<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Dynamic import</strong> で遅延読み込み（<code>next/dynamic</code>, SSR: false） — 正しい設計</li>
+<li><strong>コード表示エリア</strong>: <code>minHeight: 80px, maxHeight: 140px, overflowY: auto</code> — 適切な制約</li>
+<li><strong>コード変更時のフラッシュアニメーション</strong>: <code>code-flash</code> CSSクラスで視覚フィードバック</li>
+<li><strong>availableBlocks制御</strong>: クエストごとに使用可能ブロックを制限（良い設計）</li>
+</ul>
+<h3 id="_5">利用可能ブロック種別<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>print</code> — 出力</li>
+<li><code>text</code> — テキスト</li>
+<li><code>text_join</code> — 文字列結合</li>
+<li><code>math_number</code> — 数値</li>
+<li><code>math_arithmetic</code> — 四則演算</li>
+<li><code>variables</code> — 変数</li>
+</ul>
+<p>MVP段階としては十分なブロック種類。段階的に増やす設計が見える。</p>
+<h3 id="_6">懸念点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>BlocklyEditorコンポーネント自体のソースはChunk分離されており詳細未確認</li>
+<li>ツールボックスのカテゴリ構成、ブロックのカスタムスタイル等はBlockly初期化コードに依存</li>
+</ul>
+<h2 id="4">4. 実行・判定体験<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="pythonskulpt">Python実行エンジン（Skulpt）<a class="headerlink" href="#pythonskulpt" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CDNから動的読み込み</strong>: <code>skulpt.org/js/skulpt.min.js</code> + <code>skulpt-stdlib.js</code></li>
+<li><strong>実行制限</strong>: <code>execLimit: 5000</code>（5秒） — 無限ループ対策として適切</li>
+<li><strong>出力正規化</strong>: <code>A()</code> 関数で末尾空白除去、全角→半角変換、全角スペース→半角変換</li>
+<li><strong>これは秀逸</strong>: 子供が全角文字を入力しがちな問題を自動解決</li>
+</ul>
+<h3 id="15">エラーハンドリング（15パターン）<a class="headerlink" href="#15" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>TimeLimitError → ⏰ くり返しが止まらない
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>IndentationError → 📏 スペースの数
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>SyntaxError(EOL) → 📝 クォーテーション閉じ忘れ
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>SyntaxError → 🔍 書き方の間違い
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>NameError(pritn) → 🤔 &quot;print&quot;の間違い？
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>NameError(prnt) → 🤔 &quot;print&quot;の間違い？
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>NameError → 🤔 名前が見つからない
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>TypeError(concatenate) → 🔀 文字と数字
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>TypeError → ⚠️ データの種類
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>ZeroDivisionError → 🚫 0で割る
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>IndexError → 📋 リスト範囲超え
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>ValueError → 🔢 値がおかしい
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>KeyError → 🔑 キーがない
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>AttributeError → ❓ 機能が使えない
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>RecursionError → 🔄 呼びすぎ
+</code></pre></div>
+<p><strong>評価: 非常に良い。</strong> 子供向けとして、エラーメッセージの質は競合他社と比べても高水準。emoji + 平易な日本語 + 具体的なアドバイスの3点セットが揃っている。</p>
+<h3 id="_7">判定ロジック<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>正規化後の文字列完全一致 → シンプルで正しい</li>
+<li>星評価: ヒント未使用+1回目クリア=★3、ヒント未使用=★2、それ以外=★1</li>
+</ul>
+<h2 id="5">5. ゲーム体験<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="8">クエスト構成（8クエスト）<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>タイトル</th>
+<th>難易度</th>
+<th>XP</th>
+<th>コイン</th>
+<th>学習内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>はじめてのprint</td>
+<td>basic</td>
+<td>30</td>
+<td>20</td>
+<td>print + text</td>
+</tr>
+<tr>
+<td>2</td>
+<td>いろんな文字を表示しよう</td>
+<td>practice</td>
+<td>30</td>
+<td>20</td>
+<td>複数print</td>
+</tr>
+<tr>
+<td>3</td>
+<td>文字をつなげよう</td>
+<td>basic</td>
+<td>40</td>
+<td>25</td>
+<td>text_join</td>
+</tr>
+<tr>
+<td>4</td>
+<td>自己紹介を作ろう</td>
+<td>practice</td>
+<td>40</td>
+<td>25</td>
+<td>text_join応用</td>
+</tr>
+<tr>
+<td>5</td>
+<td>計算してみよう</td>
+<td>basic</td>
+<td>40</td>
+<td>25</td>
+<td>四則演算</td>
+</tr>
+<tr>
+<td>6</td>
+<td>いろんな計算</td>
+<td>practice</td>
+<td>40</td>
+<td>25</td>
+<td>かけ算</td>
+</tr>
+<tr>
+<td>7</td>
+<td>変数を使おう</td>
+<td>basic</td>
+<td>50</td>
+<td>30</td>
+<td>変数導入</td>
+</tr>
+<tr>
+<td>8</td>
+<td>変数で計算</td>
+<td>challenge</td>
+<td>60</td>
+<td>40</td>
+<td>変数+演算</td>
+</tr>
+</tbody>
+</table>
+<p><strong>設計として優れている点:</strong>
+- basic → practice の交互構成で「学ぶ→試す」のサイクルが自然
+- XP/コインが段階的に増加しモチベーション維持
+- 各クエストに3段階のヒントとNPC対話</p>
+<h3 id="_8">ワールド構成<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ スクラッチの森（実装済み・8クエスト）</li>
+<li>🔒 変換の洞窟（Lv.4で解放）</li>
+<li>🔒 Pythonの大地（Lv.6で解放）</li>
+<li>🔒 turtleの草原（Lv.8で解放）</li>
+</ul>
+<p>将来の拡張パスが明確で、ユーザーに「まだ先がある」期待感を持たせている。</p>
+<h3 id="_9">ゲーミフィケーション要素<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>XPとレベルシステム（100XP刻み推定）</li>
+<li>コイン（現時点では使途不明 → 将来のショップ/カスタマイズ用？）</li>
+<li>★評価（1-3段階）</li>
+<li>クリア演出（紙吹雪40個、スプリングアニメーション、カウントアップ）</li>
+<li>失敗時の励まし（試行回数に応じたメッセージ変化）</li>
+</ul>
+<h2 id="6">6. パフォーマンス<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="_10">バンドルサイズ分析<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>チャンク</th>
+<th>サイズ</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>メインページ</td>
+<td>6KB</td>
+<td>ホーム画面コンポーネント</td>
+</tr>
+<tr>
+<td>クエストページ</td>
+<td>42KB</td>
+<td>クエスト画面 + 全UI</td>
+</tr>
+<tr>
+<td>Framer Motion</td>
+<td>117KB</td>
+<td>アニメーションライブラリ</td>
+</tr>
+<tr>
+<td>Blockly</td>
+<td>127KB</td>
+<td>エディタ（動的読み込み）</td>
+</tr>
+<tr>
+<td>Next.js Runtime</td>
+<td>225KB</td>
+<td>フレームワーク</td>
+</tr>
+<tr>
+<td>その他</td>
+<td>~150KB</td>
+<td>styled-jsx, React等</td>
+</tr>
+</tbody>
+</table>
+<p><strong>合計: 約670KB</strong>（gzip前）</p>
+<h3 id="_11">評価<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Blocklyの動的読み込みは正しい判断</li>
+<li>Framer Motionの117KBはやや重いが、アニメーション品質とのトレードオフとしては許容範囲</li>
+<li>Skulpt（Python実行エンジン）は外部CDNから読み込み — 初回実行時にラグの可能性あり</li>
+</ul>
+<h3 id="_12">最適化提案<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Skulptをセルフホスト化してService Workerでキャッシュ</li>
+<li>Framer Motion → CSS Animationsへの段階的移行（将来的に）</li>
+</ul>
+<h2 id="7">7. バグ・不具合<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="_13">ソースコード上で確認された潜在的問題<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Skulpt CDN依存</strong>: <code>skulpt.org</code> がダウンした場合、Python実行が完全に機能停止する。エラーハンドリングは<code>e.onerror=()=&gt;e(!1)</code>で存在するが、ユーザーへの通知が「Python実行エンジンが読み込まれていません」のみ</li>
+<li><strong>リスク</strong>: 中（CDN障害時に全機能停止）</li>
+<li>
+<p><strong>推奨</strong>: セルフホスト化またはフォールバック</p>
+</li>
+<li>
+<p><strong>全角→半角変換の範囲</strong>: <code>[\uff01-\uff5e]</code> で変換しているが、全角カッコ <code>（）</code> は範囲外。クエスト内容に全角カッコを使う場合に不一致が起こる可能性</p>
+</li>
+<li>
+<p><strong>リスク</strong>: 低（現在のクエストでは問題なし）</p>
+</li>
+<li>
+<p><strong>次のクエストIDの計算</strong>: <code>1-${parseInt(l.id.split("-")[1])+1}</code> — ワールド2以降のIDが <code>2-1</code> 形式の場合、<code>1-</code> ハードコードで壊れる</p>
+</li>
+<li><strong>リスク</strong>: 中（ワールド拡張時に必ずバグになる）</li>
+<li>
+<p><strong>推奨</strong>: クエストデータから次クエストを参照する設計に変更</p>
+</li>
+<li>
+<p><strong>localStorage依存</strong>: ゲームの進捗がlocalStorageに保存されている模様。クリアすると進捗全消失</p>
+</li>
+<li><strong>リスク</strong>: 低（MVP段階では許容）</li>
+<li>
+<p><strong>将来</strong>: クラウド同期の検討</p>
+</li>
+<li>
+<p><strong>出力パネルの表示条件</strong>: <code>lg:flex</code>で制御されているため、md幅（768-1024px）では出力パネルが非表示。タブレット横向きで出力が見えない可能性</p>
+</li>
+<li><strong>リスク</strong>: 中（タブレット利用者に影響）</li>
+</ol>
+<h2 id="8_1">8. 子供目線での評価<a class="headerlink" href="#8_1" title="Permanent link">&para;</a></h2>
+<h3 id="_14">🟢 良い点（子供が喜ぶ要素）<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ブロッくん（NPC）が常に励ましてくれる</strong>: 失敗時も「あきらめないで！」</li>
+<li><strong>紙吹雪クリア演出</strong>: 40個のemoji紙吹雪は子供に刺さる</li>
+<li><strong>ヒント段階公開</strong>: 1回目で解けなくても、段階的にヒントが増える安心感</li>
+<li><strong>🧩 ブロッくん</strong>: キャラクター設定が明確で親しみやすい</li>
+<li><strong>ミッション形式</strong>: 「RPGのクエスト」として学習をラップしている設計が秀逸</li>
+<li><strong>全角→半角自動変換</strong>: 子供が全角で入力しても正しく判定される（ストレス軽減）</li>
+</ul>
+<h3 id="_15">🟡 改善したい点<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>コインの使い道が不明</strong>: 「コインもらったけど何に使うの？」が生まれる</li>
+<li><strong>マップに戻るボタンの視認性</strong>: <code>text-sm text-slate-500</code> は子供には見つけにくい</li>
+<li><strong>ワールド選択の「🔒」</strong>: 解放条件は書かれているが、「あと何XPで解放？」が分かるとモチベーション維持に</li>
+</ul>
+<h3 id="_16">🔴 要注意<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>チュートリアルスキップの誘惑</strong>: 「スキップ」ボタンが目立ちすぎず良いが、一度スキップすると二度と見られない（localStorageにフラグ保存）</li>
+<li><strong>失敗が連続した時</strong>: 5回以上失敗すると「ヒントを見て」だけ。動画やアニメーションでの解法デモがあるとさらに良い</li>
+</ul>
+<h2 id="9">9. 改善提案（優先度付き）<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<h3 id="_17">🔴 高優先度（リリース前に対応推奨）<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Skulptのセルフホスト化</strong></li>
+<li>CDN障害リスクの排除</li>
+<li>工数: 1-2時間</li>
+<li>
+<p><code>public/</code> に配置して <code>&lt;script src="/skulpt.min.js"&gt;</code> に変更</p>
+</li>
+<li>
+<p><strong>次クエストID計算のハードコード修正</strong></p>
+</li>
+<li>ワールド拡張時のバグを事前防止</li>
+<li>工数: 30分</li>
+<li>
+<p>クエストデータの配列インデックスで次を取得する形に</p>
+</li>
+<li>
+<p><strong>md幅での出力パネル表示</strong></p>
+</li>
+<li>タブレット横向きで出力が見えない問題</li>
+<li>工数: 30分</li>
+<li><code>md:flex</code> に変更するか、タブ切替をmd幅でも有効にする</li>
+</ol>
+<h3 id="_18">🟡 中優先度（初期リリース後に対応）<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>コインの用途の提示</strong></li>
+<li>「ショップ（準備中）」のUIだけでも配置</li>
+<li>
+<p>工数: 1-2時間</p>
+</li>
+<li>
+<p><strong>チュートリアル再表示機能</strong></p>
+</li>
+<li>設定画面またはヘルプボタンからリプレイ可能に</li>
+<li>
+<p>工数: 1時間</p>
+</li>
+<li>
+<p><strong>進捗のエクスポート/インポート</strong></p>
+</li>
+<li>localStorage消失対策</li>
+<li>
+<p>工数: 2-3時間</p>
+</li>
+<li>
+<p><strong>サウンドフィードバックの音量調整UI</strong></p>
+</li>
+<li>ソースにサウンド有効化の記述があるが、ON/OFF/音量のUI確認必要</li>
+<li>工数: 1-2時間</li>
+</ol>
+<h3 id="_19">🟢 低優先度（将来的に検討）<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>解法デモアニメーション</strong>: 多数失敗時のフォロー</li>
+<li><strong>アクセシビリティ</strong>: キーボードナビゲーション、スクリーンリーダー対応</li>
+<li><strong>PWA対応</strong>: オフラインでも遊べるように</li>
+<li><strong>保護者向けダッシュボード</strong>: 学習進捗の可視化</li>
+<li><strong>Framer Motion → CSS Animations移行</strong>: バンドルサイズ削減</li>
+</ol>
+<h2 id="10">10. 総括<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h3 id="1-b-2-a-3-a">第1回 B+ → 第2回 A- → 第3回 A<a class="headerlink" href="#1-b-2-a-3-a" title="Permanent link">&para;</a></h3>
+<p>Python Quest MVPは、第3回レビューで <strong>教育系Webアプリとしての最低限のクオリティライン（MVP）を明確に超えた</strong> と判断する。</p>
+<p><strong>特に評価する点:</strong>
+- 前回指摘の <strong>100%反映率</strong> — 開発チームのレスポンスの速さと正確さが光る
+- <strong>エラーメッセージの日本語化15パターン</strong> — 子供向け教育ツールとして、この品質は競合（Scratch, Progate, paiza等）と比較しても遜色ない
+- <strong>全角→半角自動変換</strong> — 地味だが、日本の子供向けツールとして極めて重要な配慮
+- <strong>チュートリアル導入</strong> — 初見ユーザーの離脱率を大幅に下げるはず
+- <strong>段階的なヒントシステム</strong> — 教育設計として模範的</p>
+<p><strong>A+に届かない理由:</strong>
+- Skulpt CDN依存（運用リスク）
+- ワールド拡張時の既知バグ要因（次クエストID）
+- md幅での出力パネル非表示
+- コイン用途の未実装（ゲームデザイン上の穴）</p>
+<p><strong>結論: 子供に触らせて実際のフィードバックを取るフェーズに進んでよい。</strong> 技術的な致命的問題はなく、UX上の重要な配慮も十分になされている。高優先度の3項目を修正すれば、限定公開（友人の子供等）でのユーザーテストを推奨する。</p>
+<hr />
+<p><em>レビュー実施環境: ソースコード静的解析（Next.js Turbopack バンドルJS分析）。ブラウザ実機操作は環境制約により未実施。Blocklyのドラッグ操作感、サウンドフィードバック、実際のアニメーション体感については次回レビュー時に確認予定。</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

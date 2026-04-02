@@ -1,0 +1,2111 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/projects/deadlink/review-code/">
+      
+      
+        <link rel="prev" href="../review-product/">
+      
+      
+        <link rel="next" href="../../python-quest/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>コードレビュー - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deadlink" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              コードレビュー
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tech/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ideas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../tech/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📋 プロジェクト
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔗 DeadLink
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🔗 DeadLink
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    アーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    開発ログ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../review-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロダクトレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コードレビュー
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コードレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        総合評価: C+（動くが、本番運用には要改善）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. コード品質
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. コード品質">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        良い点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        問題点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. セキュリティ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. セキュリティ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Critical
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔴 Critical">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 APIレート制限がメモリベースで無効
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 サイトスキャンAPIに認可チェックの不備
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ssrfserver-side-request-forgery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 SSRF（Server-Side Request Forgery）リスク
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟠 High
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟠 High">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#24-webhook-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Webhook URLの検証なし
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-supabase-rlsrow-level-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Supabase RLS（Row Level Security）依存の不明確さ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. パフォーマンス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. パフォーマンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟠 High
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟠 High">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-supabase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Supabaseクライアントの毎回再生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-dynamodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 DynamoDBへの逐次書き込み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-headerapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Headerコンポーネントが毎回API呼び出し
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Medium
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟡 Medium">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#34-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 クローラーでHEAD非対応サイトへのフォールバックなし
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. エラーハンドリング
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. エラーハンドリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟠 High
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟠 High">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 空のcatchブロック
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 サイトスキャンのエラーが飲み込まれる
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. テスト
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. テスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現状: テストゼロ 🔴
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推奨テスト（優先度順）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. スケーラビリティ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. スケーラビリティ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現在の限界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        改善案
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. バグ・潜在的問題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. バグ・潜在的問題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Critical
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔴 Critical">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-after" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 after() の挙動依存
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-loadsites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 loadSites の無限再生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟠 High
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟠 High">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 認証チェックの競合状態
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 レート制限のIPヘッダー偽装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. ベストプラクティスからの逸脱
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 改善提案まとめ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 改善提案まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Critical（本番運用前に必須）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟠 High（1-2週間以内）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Medium（1ヶ月以内）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Low（将来）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ファイル別サマリー
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        まとめ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../python-quest/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐍 Python Quest
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../ideas/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📋 プロジェクト
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🔗 DeadLink
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="deadlink">DeadLink コードレビュー<a class="headerlink" href="#deadlink" title="Permanent link">&para;</a></h1>
+<p><strong>レビュー日</strong>: 2026-02-16<br />
+<strong>対象</strong>: <code>deadlink/frontend/src/</code> 全ファイル<br />
+<strong>レビュアー</strong>: シニアエンジニア視点</p>
+<hr />
+<h2 id="c">総合評価: C+（動くが、本番運用には要改善）<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
+<p>MVP として最低限動く状態だが、セキュリティ・パフォーマンス・エラーハンドリングに複数の問題がある。</p>
+<hr />
+<h2 id="1">1. コード品質<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_1">良い点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ファイル構造が明快</strong>: App Router のルール通りに整理されている</li>
+<li><strong>型定義がある</strong>: TypeScript の interface が適切に定義されている</li>
+<li><strong>コンポーネント分離</strong>: Header, ScanForm が適切に分離</li>
+<li><strong>クローラーの設計が良い</strong>: polite crawl（300ms間隔）、User-Agent設定、robots.txt意識</li>
+</ul>
+<h3 id="_2">問題点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>lib/dynamodb.ts</strong>: 型が <code>Record&lt;string, unknown&gt;</code> で型安全でない</li>
+<li><strong>コンポーネントが大きい</strong>: <code>scan/[id]/page.tsx</code> が200行超。結果表示部分をコンポーネントに分離すべき</li>
+<li><strong>マジックナンバー</strong>: <code>20</code>, <code>100</code>, <code>300</code>, <code>10000</code> 等がハードコーディング。定数化すべき</li>
+<li><strong>コメントがほぼゼロ</strong>: ビジネスロジック（特にクローラー）にはコメントが必要</li>
+</ul>
+<hr />
+<h2 id="2">2. セキュリティ<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="critical">🔴 Critical<a class="headerlink" href="#critical" title="Permanent link">&para;</a></h3>
+<h4 id="21-api">2.1 APIレート制限がメモリベースで無効<a class="headerlink" href="#21-api" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// api/scan/instant/route.ts</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">rateLimitMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="nx">resetAt</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">}</span><span class="o">&gt;</span><span class="p">();</span>
+</code></pre></div>
+<strong>問題</strong>: Vercelはリクエストごとにコールドスタートする可能性があり、Mapはリクエスト間で共有されない。サーバーレス環境ではインメモリのレート制限は<strong>事実上無効</strong>。</p>
+<p><strong>修正</strong>: Upstash Redis（無料枠あり）でレート制限を実装する。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Ratelimit</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@upstash/ratelimit&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Redis</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@upstash/redis&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">ratelimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Ratelimit</span><span class="p">({</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nx">redis</span><span class="o">:</span><span class="w"> </span><span class="kt">Redis.fromEnv</span><span class="p">(),</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nx">limiter</span><span class="o">:</span><span class="w"> </span><span class="kt">Ratelimit.slidingWindow</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1 d&quot;</span><span class="p">),</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">});</span>
+</code></pre></div></p>
+<h4 id="22-api">2.2 サイトスキャンAPIに認可チェックの不備<a class="headerlink" href="#22-api" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// api/sites/[id]/reports/route.ts</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">GET</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">siteId</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">params</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getReportsBySiteId</span><span class="p">(</span><span class="nx">siteId</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">NextResponse</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">reports</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
+</code></pre></div>
+<strong>問題</strong>: 認証チェックが<strong>一切ない</strong>。UUIDを推測されれば他人のレポートが閲覧可能。</p>
+<p><strong>修正</strong>: 全ての<code>/api/sites/</code>エンドポイントでユーザー認証 + 所有権チェックを追加。</p>
+<h4 id="23-ssrfserver-side-request-forgery">2.3 SSRF（Server-Side Request Forgery）リスク<a class="headerlink" href="#23-ssrfserver-side-request-forgery" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// lib/crawler.ts</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">pageUrl</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<strong>問題</strong>: ユーザーが <code>http://169.254.169.254/latest/meta-data/</code> 等を入力するとAWSメタデータにアクセスされる。内部ネットワークへのアクセスも可能。</p>
+<p><strong>修正</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">isAllowedUrl</span><span class="p">(</span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">parsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">hostname</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">hostname</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;127.&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">hostname</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;169.254.&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">hostname</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;10.&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">hostname</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;192.168.&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">hostname</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;172.&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">hostname</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mf">1</span><span class="p">]);</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">second</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">second</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">31</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">protocol</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;http:&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">parsed</span><span class="p">.</span><span class="nx">protocol</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;https:&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">}</span>
+</code></pre></div></p>
+<h3 id="high">🟠 High<a class="headerlink" href="#high" title="Permanent link">&para;</a></h3>
+<h4 id="24-webhook-url">2.4 Webhook URLの検証なし<a class="headerlink" href="#24-webhook-url" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// settings/page.tsx</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">await</span><span class="w"> </span><span class="nx">supabase</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="s2">&quot;profiles&quot;</span><span class="p">).</span><span class="nx">upsert</span><span class="p">({</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nx">discord_webhook</span><span class="o">:</span><span class="w"> </span><span class="kt">discordWebhook</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nx">slack_webhook</span><span class="o">:</span><span class="w"> </span><span class="kt">slackWebhook</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">});</span>
+</code></pre></div>
+<strong>問題</strong>: Discord/Slack以外のURLを保存できる。悪用の起点になりうる（通知発火時に任意URLにPOSTされる）。</p>
+<p><strong>修正</strong>: <code>discord.com/api/webhooks/</code> と <code>hooks.slack.com/services/</code> のプレフィックスチェック。</p>
+<h4 id="25-supabase-rlsrow-level-security">2.5 Supabase RLS（Row Level Security）依存の不明確さ<a class="headerlink" href="#25-supabase-rlsrow-level-security" title="Permanent link">&para;</a></h4>
+<p>ダッシュボードでは <code>supabase.from("sites").select("*")</code> を直接呼んでいるが、RLSが正しく設定されているか不明。RLS未設定なら全ユーザーのサイトが閲覧可能。</p>
+<p><strong>確認・修正</strong>: Supabaseダッシュボードで <code>sites</code> と <code>profiles</code> テーブルのRLSポリシーを確認し、ドキュメントに記載。</p>
+<hr />
+<h2 id="3">3. パフォーマンス<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="high_1">🟠 High<a class="headerlink" href="#high_1" title="Permanent link">&para;</a></h3>
+<h4 id="31-supabase">3.1 Supabaseクライアントの毎回再生成<a class="headerlink" href="#31-supabase" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// dashboard/page.tsx</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">supabase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createClient</span><span class="p">();</span><span class="w"> </span><span class="c1">// レンダリングごとに新規作成</span>
+</code></pre></div>
+<strong>問題</strong>: <code>createClient()</code> がレンダリングごとに呼ばれる。<code>useMemo</code> を使うか、Contextで共有すべき。</p>
+<p><strong>修正</strong>: settings/page.tsx では <code>useMemo</code> を使っている。統一してProviderパターンに。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// lib/supabase-provider.tsx</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">SupabaseContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createContext</span><span class="p">(</span><span class="nx">createClient</span><span class="p">());</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">SupabaseProvider</span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></p>
+<h4 id="32-dynamodb">3.2 DynamoDBへの逐次書き込み<a class="headerlink" href="#32-dynamodb" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">putResult</span><span class="p">({</span><span class="w"> </span><span class="p">...</span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">report_id</span><span class="o">:</span><span class="w"> </span><span class="kt">reportId</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">}</span>
+</code></pre></div>
+<strong>問題</strong>: 500リンクなら500回の逐次API呼び出し。BatchWriteを使えば1/20に削減。</p>
+<p><strong>修正</strong>: <code>BatchWriteCommand</code> で25件ずつバッチ書き込み。</p>
+<h4 id="33-headerapi">3.3 Headerコンポーネントが毎回API呼び出し<a class="headerlink" href="#33-headerapi" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nx">supabase</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">getUser</span><span class="p">().</span><span class="nx">then</span><span class="p">(({</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setUser</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">user</span><span class="p">));</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">supabase</span><span class="p">]);</span>
+</code></pre></div>
+<strong>問題</strong>: ページ遷移のたびに <code>getUser()</code> を呼ぶ。<code>onAuthStateChange</code> リスナーを使うべき。</p>
+<h3 id="medium">🟡 Medium<a class="headerlink" href="#medium" title="Permanent link">&para;</a></h3>
+<h4 id="34-head">3.4 クローラーでHEAD非対応サイトへのフォールバックなし<a class="headerlink" href="#34-head" title="Permanent link">&para;</a></h4>
+<p>一部サイトはHEADリクエストを拒否する（405 Method Not Allowed）。GETへのフォールバックが必要。</p>
+<hr />
+<h2 id="4">4. エラーハンドリング<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="high_2">🟠 High<a class="headerlink" href="#high_2" title="Permanent link">&para;</a></h3>
+<h4 id="41-catch">4.1 空のcatchブロック<a class="headerlink" href="#41-catch" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// dashboard/sites/[id]/page.tsx</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="c1">// ignore</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">}</span>
+</code></pre></div>
+<strong>問題</strong>: 7箇所で<code>catch</code>がエラーを握り潰している。ユーザーにフィードバックがない。</p>
+<p><strong>修正</strong>: 最低限 <code>console.error</code> + ユーザーへのエラーメッセージ表示。</p>
+<h4 id="42">4.2 サイトスキャンのエラーが飲み込まれる<a class="headerlink" href="#42" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// api/sites/[id]/scan/route.ts</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nx">crawlSite</span><span class="p">(</span><span class="nx">site</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">site</span><span class="p">.</span><span class="nx">page_limit</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">100</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="p">...</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">});</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1">// .catch がない！</span>
+</code></pre></div>
+<strong>問題</strong>: <code>crawlSite</code>がエラーを投げた場合、レポートが<code>running</code>のまま永久に残る。instant scanでは<code>after()</code>内でcatchしているが、site scanでは未処理。</p>
+<p><strong>修正</strong>: <code>.catch()</code> を追加してレポートを<code>failed</code>に更新。</p>
+<hr />
+<h2 id="5">5. テスト<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="_3">現状: テストゼロ 🔴<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>テストファイルが一切存在しない。</p>
+<h3 id="_4">推奨テスト（優先度順）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>クローラーのユニットテスト</strong>: URL正規化、リンク抽出、ステータス判定</li>
+<li><strong>APIルートの統合テスト</strong>: レート制限、認証チェック、エラーケース</li>
+<li><strong>E2Eテスト</strong>: 即スキャンフローの一気通貫テスト（Playwright）</li>
+<li><strong>SSRFフィルターのテスト</strong>: 内部IPアドレスのブロック確認</li>
+</ol>
+<hr />
+<h2 id="6">6. スケーラビリティ<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="_5">現在の限界<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Vercel Hobby</strong>: 関数実行10秒制限 → 即スキャンの <code>maxDuration = 60</code> は効かない</li>
+<li><strong>同時スキャン</strong>: 制御がない。100人が同時スキャンしたらVercelの同時実行数制限に引っかかる</li>
+<li><strong>DynamoDB書き込み</strong>: 逐次処理がボトルネック</li>
+</ul>
+<h3 id="_6">改善案<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>長時間クロールはバックグラウンドWorker（AWS Lambda or Vercel Cron）に分離</li>
+<li>SQSキューイングは設計書にあるが未実装</li>
+<li>WebSocketかSSEでリアルタイム進捗通知</li>
+</ul>
+<hr />
+<h2 id="7">7. バグ・潜在的問題<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="critical_1">🔴 Critical<a class="headerlink" href="#critical_1" title="Permanent link">&para;</a></h3>
+<h4 id="71-after">7.1 <code>after()</code> の挙動依存<a class="headerlink" href="#71-after" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// api/scan/instant/route.ts</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">after</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;next/server&quot;</span><span class="p">;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nx">after</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<code>after()</code> はNext.js 15の実験的機能。Vercel以外のデプロイ先では動作しない可能性がある。また、Hobby planでの実行時間制限を超える可能性が高い。</p>
+<h4 id="72-loadsites">7.2 <code>loadSites</code> の無限再生成<a class="headerlink" href="#72-loadsites" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// dashboard/page.tsx</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">loadSites</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="p">...</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">supabase</span><span class="p">]);</span><span class="w"> </span><span class="c1">// supabaseが毎回新規作成されるのでloadSitesも毎回再生成</span>
+</code></pre></div>
+<strong>問題</strong>: <code>supabase</code> が <code>createClient()</code> で毎回新規オブジェクトになるため、<code>useCallback</code> の依存配列が常に変化 → <code>useEffect</code> が無限ループする可能性。</p>
+<h3 id="high_3">🟠 High<a class="headerlink" href="#high_3" title="Permanent link">&para;</a></h3>
+<h4 id="73">7.3 認証チェックの競合状態<a class="headerlink" href="#73" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="nx">supabase</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">getUser</span><span class="p">().</span><span class="nx">then</span><span class="p">(({</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">.</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;/auth/login&quot;</span><span class="p">);</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nx">loadSites</span><span class="p">();</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">  </span><span class="p">});</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">supabase</span><span class="p">.</span><span class="nx">auth</span><span class="p">,</span><span class="w"> </span><span class="nx">router</span><span class="p">,</span><span class="w"> </span><span class="nx">loadSites</span><span class="p">]);</span>
+</code></pre></div>
+<code>supabase.auth</code> を依存配列に入れているが、これはオブジェクト参照。不安定な動作の原因になる。</p>
+<h4 id="74-ip">7.4 レート制限のIPヘッダー偽装<a class="headerlink" href="#74-ip" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;x-forwarded-for&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span><span class="p">;</span>
+</code></pre></div>
+<code>x-forwarded-for</code> はクライアントが任意に設定可能。Vercelでは <code>request.ip</code> を使うべき（Vercelが保証するIP）。</p>
+<hr />
+<h2 id="8">8. ベストプラクティスからの逸脱<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>現状</th>
+<th>推奨</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>環境変数の型安全性</td>
+<td><code>!</code> で非null assertion</td>
+<td><code>zod</code> でバリデーション + 起動時チェック</td>
+</tr>
+<tr>
+<td>APIレスポンス型</td>
+<td>型なし（<code>any</code>相当）</td>
+<td>共通のレスポンス型定義</td>
+</tr>
+<tr>
+<td>エラーバウンダリ</td>
+<td>なし</td>
+<td><code>error.tsx</code> でグローバルエラーハンドリング</td>
+</tr>
+<tr>
+<td>Loading UI</td>
+<td>各ページで個別実装</td>
+<td><code>loading.tsx</code> で統一</td>
+</tr>
+<tr>
+<td>Middleware</td>
+<td>なし</td>
+<td>認証が必要なルートを middleware.ts で一括保護</td>
+</tr>
+<tr>
+<td>SEO</td>
+<td>最低限のmetadata</td>
+<td>各ページごとのmetadata + OGP設定</td>
+</tr>
+<tr>
+<td>アクセシビリティ</td>
+<td>考慮なし</td>
+<td>aria-label、キーボード操作対応</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9">9. 改善提案まとめ<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<h3 id="critical_2">🔴 Critical（本番運用前に必須）<a class="headerlink" href="#critical_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>SSRFフィルター実装</strong> — 内部IP・メタデータエンドポイントへのアクセスをブロック</li>
+<li><strong><code>/api/sites/[id]/reports</code> に認証追加</strong> — 他人のデータが丸見え</li>
+<li><strong>レート制限をRedisベースに変更</strong> — メモリベースはサーバーレスで無効</li>
+<li><strong><code>after()</code> の代替実装検討</strong> — Vercel Hobby制限を考慮</li>
+</ol>
+<h3 id="high1-2">🟠 High（1-2週間以内）<a class="headerlink" href="#high1-2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>空catchブロックの修正</strong> — エラーログ + ユーザー通知</li>
+<li><strong>site scanの <code>.catch()</code> 追加</strong> — runningのまま放置されるバグ修正</li>
+<li><strong>Supabase Provider パターン導入</strong> — クライアント再生成の無限ループ防止</li>
+<li><strong>DynamoDB BatchWrite</strong> — 書き込みパフォーマンス改善</li>
+<li><strong>middleware.ts で認証ルート保護</strong> — 各ページでの個別チェックを廃止</li>
+<li><strong>Webhook URLのバリデーション</strong> — Discord/Slack以外を拒否</li>
+</ol>
+<h3 id="medium1">🟡 Medium（1ヶ月以内）<a class="headerlink" href="#medium1" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>テスト追加</strong>（クローラー単体テスト優先）</li>
+<li><strong>環境変数のバリデーション</strong>（zod）</li>
+<li><strong>error.tsx / loading.tsx の追加</strong></li>
+<li><strong>HEAD非対応サイトへのGETフォールバック</strong></li>
+<li><strong>コンポーネント分離</strong>（scan結果ページ）</li>
+<li><strong>定数の一元管理</strong></li>
+</ol>
+<h3 id="low">🟢 Low（将来）<a class="headerlink" href="#low" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>アクセシビリティ対応</strong></li>
+<li><strong>各ページのSEO最適化</strong></li>
+<li><strong>WebSocket/SSEでリアルタイム進捗</strong></li>
+<li><strong>SQSキューイング実装</strong>（設計書に記載あるが未実装）</li>
+</ol>
+<hr />
+<h2 id="_7">ファイル別サマリー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>評価</th>
+<th>主な問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lib/crawler.ts</code></td>
+<td>B+</td>
+<td>SSRFリスク以外は良い設計</td>
+</tr>
+<tr>
+<td><code>lib/dynamodb.ts</code></td>
+<td>B</td>
+<td>型安全でない、BatchWrite未使用</td>
+</tr>
+<tr>
+<td><code>lib/supabase.ts</code></td>
+<td>A</td>
+<td>シンプルで正しい</td>
+</tr>
+<tr>
+<td><code>lib/supabase-server.ts</code></td>
+<td>A</td>
+<td>適切な実装</td>
+</tr>
+<tr>
+<td><code>api/scan/instant/route.ts</code></td>
+<td>C</td>
+<td>レート制限無効、SSRF</td>
+</tr>
+<tr>
+<td><code>api/scan/[id]/route.ts</code></td>
+<td>B</td>
+<td>問題少ない</td>
+</tr>
+<tr>
+<td><code>api/sites/[id]/reports/route.ts</code></td>
+<td>D</td>
+<td><strong>認証なし</strong></td>
+</tr>
+<tr>
+<td><code>api/sites/[id]/scan/route.ts</code></td>
+<td>C+</td>
+<td>catch不足</td>
+</tr>
+<tr>
+<td><code>app/page.tsx</code></td>
+<td>A-</td>
+<td>LP as code、シンプル</td>
+</tr>
+<tr>
+<td><code>app/dashboard/page.tsx</code></td>
+<td>C</td>
+<td>無限ループリスク、認証不安定</td>
+</tr>
+<tr>
+<td><code>app/scan/[id]/page.tsx</code></td>
+<td>B</td>
+<td>ポーリング実装は良い、コンポーネント大きい</td>
+</tr>
+<tr>
+<td><code>app/settings/page.tsx</code></td>
+<td>B-</td>
+<td>Webhook検証なし</td>
+</tr>
+<tr>
+<td><code>app/auth/login/page.tsx</code></td>
+<td>B+</td>
+<td>2パス認証、シンプル</td>
+</tr>
+<tr>
+<td><code>components/Header.tsx</code></td>
+<td>B</td>
+<td>毎回getUser()</td>
+</tr>
+<tr>
+<td><code>components/ScanForm.tsx</code></td>
+<td>A-</td>
+<td>小さく、正しい</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_8">まとめ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>MVPとして素早く作った成果物としては悪くない。しかし、<strong>セキュリティ面の問題（SSRF、認証欠如、レート制限無効）は本番公開状態では危険</strong>。Criticalの4項目は即座に対応すべき。</p>
+<p>コードの構造自体は良く、改善のベースが整っている。型安全性とエラーハンドリングを強化すれば、保守可能な品質に到達する。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

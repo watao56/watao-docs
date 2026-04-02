@@ -1,0 +1,2160 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/projects/python-quest/ux-code-review/">
+      
+      
+        <link rel="prev" href="../blockly-review/">
+      
+      
+        <link rel="next" href="../../../ideas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>UX・コードレビュー - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-quest-uiux" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UX・コードレビュー
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tech/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ideas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../tech/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📋 プロジェクト
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../deadlink/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔗 DeadLink
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐍 Python Quest
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐍 Python Quest
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設計書
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    設計レビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mvp-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MVPレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blockly-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blocklyレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UX・コードレビュー
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UX・コードレビュー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bmvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        総合評価: B（MVPとしては合格、プロダクトリリースには不足）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. UI品質
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. UI品質">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        良い点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        問題点（深刻度付き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="問題点（深刻度付き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Critical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#major" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Major
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Minor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スコア: C+（コントラスト問題が深刻）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. UX品質
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. UX品質">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        良い点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        問題点（深刻度付き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="問題点（深刻度付き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Critical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#major_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Major
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minor_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Minor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スコア: C+（モバイル体験とチュートリアル不足が深刻）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. コード品質
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. コード品質">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        良い点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        問題点（深刻度付き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="問題点（深刻度付き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Critical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#major_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Major
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minor_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Minor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スコア: C（巨大コンポーネント・アクセシビリティ欠如・テストなし）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 子供向けプロダクトとしての評価
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 子供向けプロダクトとしての評価">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        良い点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        問題点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="問題点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 致命的
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 重要
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スコア: B-（基本的な教育設計は良いが、自立学習には不十分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 改善提案（優先度・工数付き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 改善提案（優先度・工数付き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#p0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P0（リリース前必須）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1（初期リリース後1週間以内）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P2（中期改善）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 総括
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 総括">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MVPとしての評価
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロダクトリリースとしての評価
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ポテンシャル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最終スコア
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../ideas/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📋 プロジェクト
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🐍 Python Quest
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="python-quest-uiux">Python Quest - UI/UX・コードレビュー<a class="headerlink" href="#python-quest-uiux" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>シニアUI/UXエンジニアによる厳格レビュー
+URL: https://python-quest-three.vercel.app
+レビュー日: 2026-02-17
+ソースコード: /home/node/clawd/python-quest/src/</p>
+</blockquote>
+<h2 id="bmvp">総合評価: B（MVPとしては合格、プロダクトリリースには不足）<a class="headerlink" href="#bmvp" title="Permanent link">&para;</a></h2>
+<p>MVPとしての基本機能は揃っているが、UI品質・アクセシビリティ・コード設計に複数の深刻な問題がある。子供が一人で使うプロダクトとしては、もう1〜2スプリント分の改善が必要。</p>
+<hr />
+<h2 id="1-ui">1. UI品質<a class="headerlink" href="#1-ui" title="Permanent link">&para;</a></h2>
+<h3 id="_1">良い点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>ダークテーマの世界観が統一されており、ゲーム感がある</li>
+<li>グラデーション・グロウエフェクトの使い方がRPG風でターゲットに合っている</li>
+<li>絵文字を効果的にアイコン代わりに使っており、追加アセット不要で視覚的に伝わる</li>
+<li><code>Press Start 2P</code> フォントのアクセント使いは適切</li>
+<li>ClearModalの紙吹雪アニメーション・CountUpは達成感を演出できている</li>
+<li>XPバーのシマーアニメーションは高品質</li>
+</ul>
+<h3 id="_2">問題点（深刻度付き）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="critical">🔴 Critical<a class="headerlink" href="#critical" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>コントラスト比がWCAG AA不適合（複数箇所）</strong></li>
+<li><code>text-slate-500</code> (#64748b) on <code>#0a0a1a</code> → コントラスト比 約3.2:1（AA要件 4.5:1に不適合）</li>
+<li><code>text-[#4a4a6a]</code> on <code>#0a0a1a</code> → 約2.0:1（完全に不適合）</li>
+<li><code>text-[#333]</code>のロックアイコン → ほぼ見えない</li>
+<li>NPCダイアログの <code>text-purple-200</code> は読みやすいが、<code>text-slate-500</code> の説明文は子供には読みにくい</li>
+<li>
+<p><strong>影響</strong>: 視力の弱い子供、明るい部屋でのモニター使用時に致命的</p>
+</li>
+<li>
+<p><strong>フォントサイズの不統一・小ささ</strong></p>
+</li>
+<li>ワールドマップのスター表示 <code>text-[8px]</code> → 子供には完全に読めない</li>
+<li>XPバーの情報が <code>text-sm</code> (14px) で小さすぎる</li>
+<li>クエストノードのテキスト <code>text-sm</code> → タップターゲットは12x12だが表示テキストが小さい</li>
+</ol>
+<h4 id="major">🟡 Major<a class="headerlink" href="#major" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong><code>animate-pulse</code>の使い方が不適切</strong></li>
+<li>利用可能クエストノードに <code>animate-pulse</code> を使用 → 常時点滅はアクセシビリティガイドライン違反（<code>prefers-reduced-motion</code> 未対応）</li>
+<li>
+<p>てんかん誘発リスクは低いが、注意散漫の原因になる</p>
+</li>
+<li>
+<p><strong>CTA「冒険をつづける」ボタンの常時スケールアニメーション</strong></p>
+</li>
+<li><code>scale: [1, 1.05, 1]</code> が永続的に繰り返される → 落ち着きがなく、UIの品質を下げる</li>
+<li>
+<p>初回注目を引いた後は停止すべき</p>
+</li>
+<li>
+<p><strong>フライアウト幅のハードコード</strong></p>
+</li>
+<li><code>max-width: 200px !important</code> で強制制限 → ブロック名が切れる可能性がある</li>
+<li><code>!important</code> 乱用（globals.cssに4箇所）</li>
+</ol>
+<h4 id="minor">🟢 Minor<a class="headerlink" href="#minor" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>ロック済みワールドの <code>opacity: 0.35</code></strong></li>
+<li>
+<p>情報としては読ませたいが、opacity 0.35は低すぎる。0.5〜0.6が適切</p>
+</li>
+<li>
+<p><strong>レスポンシブブレークポイントのギャップ</strong></p>
+</li>
+<li><code>md</code> と <code>lg</code> でレイアウトが大きく変わる（2カラム → 3カラム）が、中間状態の考慮不足</li>
+<li>タブレット横向き（1024px付近）で出力パネルが突然現れる</li>
+</ol>
+<h3 id="c">スコア: C+（コントラスト問題が深刻）<a class="headerlink" href="#c" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="2-ux">2. UX品質<a class="headerlink" href="#2-ux" title="Permanent link">&para;</a></h2>
+<h3 id="_3">良い点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>ミッションイントロモーダルでクエスト開始前にNPCが説明 → 文脈設定が良い</li>
+<li>チュートリアルのステップインジケーター（ドット表示）が分かりやすい</li>
+<li>FailModalの段階的メッセージ（試行回数に応じた励まし）は教育的に優秀</li>
+<li>diff表示で期待値と実際の出力を並べる → 何が間違っているか視覚的に分かる</li>
+<li>エラーメッセージの日本語化が丁寧（15パターン対応）</li>
+<li>ワールドマップ → クエスト → クリア → 次のクエストの導線が明確</li>
+<li>正解判定のnormalize処理（全角半角変換）が子供の入力ミスに寛容</li>
+</ul>
+<h3 id="_4">問題点（深刻度付き）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="critical_1">🔴 Critical<a class="headerlink" href="#critical_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>モバイルでのBlocklyエディタ操作性</strong></li>
+<li>タブ切り替え式UIで、エディタと出力を同時に見られない</li>
+<li>ブロックを組み立てた後、出力タブに切り替えて確認、またエディタに戻る → 認知負荷が高い</li>
+<li>Blocklyのタッチ操作（ピンチズーム・ドラッグ）とページスクロールの競合未対応</li>
+<li>
+<p><strong>小学4年生がスマホで使うケースを考えると致命的</strong></p>
+</li>
+<li>
+<p><strong>チュートリアルがクエスト1-1でしか表示されない</strong></p>
+</li>
+<li><code>localStorage</code>ベースで一度完了すると二度と表示されない</li>
+<li>リセット手段がUI上にない</li>
+<li>
+<p>新しいブロック種類（結合、計算、変数）が登場するクエストでの追加チュートリアルがない</p>
+</li>
+<li>
+<p><strong>「もう一度」の体験が不親切</strong></p>
+</li>
+<li>FailModal閉じた後、ブロックはそのまま → 何を直せばいいか分からない</li>
+<li>エラー箇所のハイライトやブロックへの視覚的フィードバックがない</li>
+</ol>
+<h4 id="major_1">🟡 Major<a class="headerlink" href="#major_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>戻るボタンの発見困難性</strong></li>
+<li>「← マップに戻る」がサイドバー最下部の <code>text-slate-500</code> → 見つけにくい</li>
+<li>ブラウザバックに依存するユーザーが多いはず（子供は特に）</li>
+<li>
+<p>ヘッダーに常時表示すべき</p>
+</li>
+<li>
+<p><strong>クリア後の自動遷移がない</strong></p>
+</li>
+<li>ClearModal表示後、ユーザーが「次のクエストへ」を押さないと進めない</li>
+<li>
+<p>子供は達成感で興奮しているときに次のアクションを忘れがち</p>
+</li>
+<li>
+<p><strong>コイン（coins）の使い道が不明</strong></p>
+</li>
+<li>コインを獲得するがUIに表示されない（XPバーにも、マップにもない）</li>
+<li>
+<p>報酬として表示されるが使えない → 期待を裏切る</p>
+</li>
+<li>
+<p><strong>Skulpt CDN依存のリスク</strong></p>
+</li>
+<li><code>skulpt.org</code> からの外部スクリプト読み込み → CDNダウン時にアプリ完全停止</li>
+<li>ローディング状態の表示がない（skulptReady=falseの間、実行ボタンがdisabledなだけ）</li>
+<li>
+<p>子供には「なぜ押せないの？」が分からない</p>
+</li>
+<li>
+<p><strong>サイドバー折りたたみ時のアイコンのみ表示</strong></p>
+</li>
+<li>📋🎯💡 のアイコンだけでは何ができるか分からない</li>
+<li>tooltip もない</li>
+</ol>
+<h4 id="minor_1">🟢 Minor<a class="headerlink" href="#minor_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>ヒントボタンがFailModal内にしかない</strong></li>
+<li>失敗する前にヒントを見たい子供がいるはず</li>
+<li>
+<p>サイドバーにヒントボタンを常時表示すべき</p>
+</li>
+<li>
+<p><strong>クエスト選択時のステータス表示不足</strong></p>
+<ul>
+<li>クリア済みクエストを再プレイできるが、そのことが伝わらない</li>
+</ul>
+</li>
+</ol>
+<h3 id="c_1">スコア: C+（モバイル体験とチュートリアル不足が深刻）<a class="headerlink" href="#c_1" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="3">3. コード品質<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="_5">良い点<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Zustand + persist</strong> の選択は適切。教育アプリの進捗保存にぴったり</li>
+<li><code>partialize</code> でストアの永続化対象を絞っている</li>
+<li>SSRハイドレーション対策（<code>mounted</code> state）を意識している</li>
+<li><code>normalizeOutput</code> で全角半角を吸収 → 実用的</li>
+<li>TypeScriptの型定義が概ね適切（Quest, QuestProgress, GameState）</li>
+<li><code>dynamic import</code> でBlocklyをSSR回避</li>
+<li>エラーメッセージの翻訳パターンが拡張しやすい設計</li>
+</ul>
+<h3 id="_6">問題点（深刻度付き）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="critical_2">🔴 Critical<a class="headerlink" href="#critical_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>QuestPageの巨大コンポーネント（約250行）</strong></li>
+<li>状態が11個（useState x 11）→ 責務過多</li>
+<li>ミッションイントロ、チュートリアル、エディタ、出力、サイドバー、モーダル2種が1コンポーネントに</li>
+<li>テスト不可能、メンテナンス困難</li>
+<li>
+<p><strong>分割案</strong>: <code>QuestSidebar</code>, <code>QuestEditor</code>, <code>QuestModals</code>, <code>MissionIntro</code> に分離すべき</p>
+</li>
+<li>
+<p><strong><code>handleRun</code> 内でのストア直接呼び出し（レンダリング中の状態読み取り）</strong></p>
+</li>
+<li><code>getQuestProgress</code> をイベントハンドラ内で呼んでいるが、クロージャの問題でstale stateになる可能性</li>
+<li>
+<p><code>clearQuest</code> の直後に <code>getQuestProgress</code> → 更新が反映されない可能性</p>
+</li>
+<li>
+<p><strong>Skulptの<code>window.Sk</code>直接参照</strong></p>
+</li>
+<li>グローバル変数汚染</li>
+<li>TypeScript的に <code>declare global</code> で逃げているが、型安全性ゼロ</li>
+<li>
+<p>Skulptの読み込みエラー時のリカバリがない</p>
+</li>
+<li>
+<p><strong>pythonRunner.tsにerrorMessages.tsの内容が重複</strong></p>
+</li>
+<li><code>translateError</code> が <code>errorMessages.ts</code> に定義されているが、<code>pythonRunner.ts</code> にも同じパターン配列がコピペされている → 二重管理</li>
+</ol>
+<h4 id="major_2">🟡 Major<a class="headerlink" href="#major_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>BlocklyEditorの<code>onCodeChange</code>コールバック</strong></li>
+<li>親から渡される <code>handleCodeChange</code> は <code>useCallback</code> だが、依存配列が空 → 問題ないが、将来的にバグの温床</li>
+<li>BlocklyのchangeListenerが高頻度で発火 → デバウンスなし</li>
+<li>
+<p>毎回 <code>generatePython</code> が走る → パフォーマンス懸念</p>
+</li>
+<li>
+<p><strong><code>@ts-expect-error</code> の使用</strong></p>
+</li>
+<li><code>flyoutAutoClose</code> に対して型エラーを抑制 → Blocklyの型定義更新で壊れるリスク</li>
+<li>
+<p><code>(flyout as any)</code>, <code>(Blockly as any)</code> が複数箇所 → 型安全性の放棄</p>
+</li>
+<li>
+<p><strong>CSSの <code>!important</code> 乱用</strong></p>
+</li>
+<li>globals.css内に <code>!important</code> が7箇所</li>
+<li>Blocklyのスタイル上書きに必要だが、コメントで理由が書かれていない</li>
+<li>
+<p>より良い方法: Blocklyのテーマ設定で対応可能な箇所がある</p>
+</li>
+<li>
+<p><strong>アクセシビリティ属性の完全欠如</strong></p>
+</li>
+<li><code>aria-label</code>, <code>aria-live</code>, <code>role</code> が一切ない</li>
+<li>クエストノードボタンにラベルなし → スクリーンリーダーでは「ボタン 1」としか読まれない</li>
+<li>モーダルに <code>role="dialog"</code>, <code>aria-modal="true"</code> なし</li>
+<li>キーボード操作: Escでモーダルを閉じられない</li>
+<li>
+<p>フォーカストラップなし</p>
+</li>
+<li>
+<p><strong><code>useEffect</code> の依存配列問題</strong></p>
+</li>
+<li>BlocklyEditor: <code>availableBlocks</code> が配列なので、親が再レンダリングするたびに新しい参照 → Blockly再初期化のリスク（実際にはrefチェックで防がれているが偶然）</li>
+</ol>
+<h4 id="minor_2">🟢 Minor<a class="headerlink" href="#minor_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>コンポーネントファイルの整理不足</strong></p>
+<ul>
+<li><code>components/</code> 直下にフラットに配置 → 機能別ディレクトリ（<code>components/quest/</code>, <code>components/modals/</code>）に分けるべき</li>
+</ul>
+</li>
+<li>
+<p><strong>マジックナンバー</strong></p>
+<ul>
+<li><code>setTimeout(() =&gt; setShowClear(true), 2500)</code> の2500msが定数化されていない</li>
+<li>XPバーの <code>Math.min((xp / 100) * 100, 100)</code> → 100がレベルテーブルと無関係のハードコード</li>
+</ul>
+</li>
+<li>
+<p><strong>Press Start 2P フォントのGoogle Fonts読み込み</strong></p>
+<ul>
+<li><code>&lt;head&gt;</code> 直接 → Next.jsの <code>next/font</code> を使うべき（パフォーマンス最適化）</li>
+</ul>
+</li>
+<li>
+<p><strong>テストの不在</strong></p>
+<ul>
+<li>テストファイルが1つもない</li>
+<li><code>normalizeOutput</code>, <code>translateError</code>, ストアのロジックは単体テスト必須</li>
+</ul>
+</li>
+</ol>
+<h3 id="c_2">スコア: C（巨大コンポーネント・アクセシビリティ欠如・テストなし）<a class="headerlink" href="#c_2" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="4">4. 子供向けプロダクトとしての評価<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="_7">良い点<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>RPGメタファー（クエスト、ワールド、レベル、XP）は小学生に馴染みやすい</li>
+<li>ブロッくんのキャラクター性があり、対話形式のガイドは効果的</li>
+<li>ヒントが段階的に表示される仕組みは教育的に正しい</li>
+<li>失敗時の励ましメッセージが試行回数に応じて変化 → 挫折防止</li>
+<li>エラーメッセージの日本語化が丁寧で、子供でも理解できる表現</li>
+<li>クエスト設計がprint → 文字結合 → 計算 → 変数と段階的</li>
+</ul>
+<h3 id="_8">問題点<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">🔴 致命的<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>「何をすればいいか分からない」瞬間が多すぎる</strong></li>
+<li>チュートリアルが初回のみ。クエスト1-3で「結合ブロック」が初登場するが説明なし</li>
+<li>NPCのダイアログだけでは、Blocklyの操作方法（ドラッグ→接続→値入力）を理解できない</li>
+<li>
+<p><strong>対策</strong>: 各クエストの新概念にインタラクティブチュートリアルが必要</p>
+</li>
+<li>
+<p><strong>ダークテーマ固定</strong></p>
+</li>
+<li>子供向けアプリでダークテーマ固定はリスク</li>
+<li>明るい教室、保護者と一緒に見る場面 → 暗い画面は不自然</li>
+<li>
+<p>ライトテーマオプションまたは明るめダークが望ましい</p>
+</li>
+<li>
+<p><strong>保護者機能の不在</strong></p>
+</li>
+<li>進捗確認、使用時間、リセット機能がない</li>
+<li>localStorage依存でデバイス間同期なし</li>
+</ol>
+<h4 id="_10">🟡 重要<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>報酬システムの未完成</strong></li>
+<li>コインの使い道がない → 集める動機がない</li>
+<li>スター3つの条件が不透明（ヒント0回＆1回で正解）→ 子供には分からない</li>
+<li>
+<p>レベルアップの演出がない（静かにレベルが上がる）</p>
+</li>
+<li>
+<p><strong>ゲームオーバーがない（良い面もある）</strong></p>
+</li>
+<li>無限リトライ可能は教育的に良いが、チャレンジ感が薄い</li>
+<li>
+<p>時間制限や「残りHP」のような緊張感の仕組みがあると良い</p>
+</li>
+<li>
+<p><strong>クエスト数が少なすぎる（8問）</strong></p>
+</li>
+<li>ワールド1のみで完結 → 30分〜1時間で終わる</li>
+<li>終わった後の「次にやること」がない</li>
+</ol>
+<h3 id="b-">スコア: B-（基本的な教育設計は良いが、自立学習には不十分）<a class="headerlink" href="#b-" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="5">5. 改善提案（優先度・工数付き）<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="p0">P0（リリース前必須）<a class="headerlink" href="#p0" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>改善内容</th>
+<th>工数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>コントラスト比のWCAG AA適合</td>
+<td>2h</td>
+<td><code>text-slate-500</code> → <code>text-slate-300</code>等に変更</td>
+</tr>
+<tr>
+<td>2</td>
+<td>アクセシビリティ属性追加（aria, role, キーボード操作）</td>
+<td>4h</td>
+<td>法的リスク、教育機関導入の障壁</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>prefers-reduced-motion</code> 対応</td>
+<td>1h</td>
+<td>アニメーション無効化オプション</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Skulptローカルバンドル or フォールバック</td>
+<td>3h</td>
+<td>CDN障害時のサービス停止防止</td>
+</tr>
+<tr>
+<td>5</td>
+<td>pythonRunner.tsの重複コード削除</td>
+<td>0.5h</td>
+<td>バグの温床</td>
+</tr>
+</tbody>
+</table>
+<h3 id="p11">P1（初期リリース後1週間以内）<a class="headerlink" href="#p11" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>改善内容</th>
+<th>工数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>QuestPageのコンポーネント分割</td>
+<td>4h</td>
+<td>メンテナビリティ</td>
+</tr>
+<tr>
+<td>7</td>
+<td>モバイルでエディタ+出力の分割ビュー</td>
+<td>6h</td>
+<td>モバイルUXの致命的問題解消</td>
+</tr>
+<tr>
+<td>8</td>
+<td>各クエスト新概念時のミニチュートリアル</td>
+<td>8h</td>
+<td>子供の自立学習に必須</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ヒントボタンのサイドバー常時表示</td>
+<td>1h</td>
+<td>失敗前にヒントを見たい</td>
+</tr>
+<tr>
+<td>10</td>
+<td>戻るボタンのヘッダー移動</td>
+<td>0.5h</td>
+<td>ナビゲーション改善</td>
+</tr>
+<tr>
+<td>11</td>
+<td>コインの使い道（テーマ変更、キャラスキン等）</td>
+<td>8h</td>
+<td>報酬の意味付け</td>
+</tr>
+</tbody>
+</table>
+<h3 id="p2">P2（中期改善）<a class="headerlink" href="#p2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>改善内容</th>
+<th>工数</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>ライトテーマ対応</td>
+<td>6h</td>
+<td>教室利用、保護者との共用</td>
+</tr>
+<tr>
+<td>13</td>
+<td>レベルアップ演出</td>
+<td>3h</td>
+<td>ゲーム体験の向上</td>
+</tr>
+<tr>
+<td>14</td>
+<td>next/font への移行</td>
+<td>1h</td>
+<td>パフォーマンス</td>
+</tr>
+<tr>
+<td>15</td>
+<td>テスト追加（normalizeOutput, store, translateError）</td>
+<td>4h</td>
+<td>品質保証</td>
+</tr>
+<tr>
+<td>16</td>
+<td>BlocklyのchangeListenerデバウンス</td>
+<td>2h</td>
+<td>パフォーマンス</td>
+</tr>
+<tr>
+<td>17</td>
+<td>保護者ダッシュボード</td>
+<td>16h</td>
+<td>進捗確認、利用管理</td>
+</tr>
+<tr>
+<td>18</td>
+<td>クエスト追加（ワールド2以降）</td>
+<td>20h+</td>
+<td>コンテンツ拡充</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">6. 総括<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="mvp">MVPとしての評価<a class="headerlink" href="#mvp" title="Permanent link">&para;</a></h3>
+<p>Python Questは<strong>MVPとしての最低限の機能は達成している</strong>。ブロックプログラミング→Python変換→実行→正解判定の基本ループが動作し、8つのクエストで段階的学習ができる。RPG風のUIとキャラクター（ブロッくん）による対話的ガイドは、子供向けプロダクトの方向性として正しい。</p>
+<h3 id="_11">プロダクトリリースとしての評価<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><strong>現状ではリリース不可</strong>。以下が主な理由:</p>
+<ol>
+<li><strong>アクセシビリティの完全欠如</strong> — 教育プロダクトとして、WCAG AA準拠は最低ライン。aria属性ゼロ、コントラスト不適合は公開NGレベル</li>
+<li><strong>モバイル体験の貧弱さ</strong> — 子供のメインデバイスがスマホ/タブレットであることを考えると、タブ切り替え式UIは致命的</li>
+<li><strong>自立学習の壁</strong> — チュートリアルが初回のみで、新概念導入時のガイダンスがない。小学4年生が一人で使うには不十分</li>
+<li><strong>コード品質</strong> — 250行の巨大コンポーネント、テストゼロ、型安全性の放棄箇所が多く、チーム開発やメンテナンスに耐えない</li>
+</ol>
+<h3 id="_12">ポテンシャル<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>設計思想は良い。RPGメタファー、段階的ヒント、子供向けエラーメッセージ翻訳、全角半角正規化など、<strong>ユーザーへの思いやりが感じられる設計判断</strong>が随所にある。P0改善（推定10h）を入れればβリリース可能、P1改善（推定28h）を入れれば正式リリース可能なレベル。</p>
+<h3 id="_13">最終スコア<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>カテゴリ</th>
+<th>スコア</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UI品質</td>
+<td>C+</td>
+</tr>
+<tr>
+<td>UX品質</td>
+<td>C+</td>
+</tr>
+<tr>
+<td>コード品質</td>
+<td>C</td>
+</tr>
+<tr>
+<td>子供向け評価</td>
+<td>B-</td>
+</tr>
+<tr>
+<td><strong>総合</strong></td>
+<td><strong>B</strong>（MVP合格/リリース不可）</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2810 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/tech/chatgpt/prompts/">
+      
+      
+        <link rel="prev" href="../modes/">
+      
+      
+        <link rel="next" href="../custom-instructions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>プロンプト設計 - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              プロンプト設計
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ideas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ 技術ノート
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🤖 AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../claude/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💜 Claude
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💬 ChatGPT
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💬 ChatGPT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モード活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロンプト設計
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロンプト設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本原則
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基本原則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 明確さ（Clarity）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-specificity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 具体性（Specificity）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. コンテキスト（Context）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロンプトエンジニアリング・テクニック集
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="プロンプトエンジニアリング・テクニック集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-few-shot-prompting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Few-shot Prompting（例示学習）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-chain-of-thought-cot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Chain of Thought (CoT)：段階的思考
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 構造化プロンプト（マークダウン活用）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-role-playing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. ロール設定（Role Playing）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 制約条件の明確化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 出力フォーマット指定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 出力フォーマット指定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メール・ビジネス文書
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コーディング
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コーディング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関数・アルゴリズム作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        デバッグ・コードレビュー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        市場調査
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        翻訳・ローカライゼーション
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="翻訳・ローカライゼーション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        専門文書翻訳
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        要約
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="要約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        長文文書要約
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        よくある失敗パターンと改善方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="よくある失敗パターンと改善方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        失敗パターン1: 曖昧すぎる指示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        失敗パターン2: 一度に複数のタスクを依頼
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        失敗パターン3: コンテキスト不足
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        失敗パターン4: 出力フォーマットの指定なし
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロンプトテンプレート集
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="プロンプトテンプレート集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ビジネス文書作成テンプレート
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 分析タスクテンプレート
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 技術タスクテンプレート
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        まとめ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本原則の徹底
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        テクニックの活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        継続的改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-instructions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    カスタム指示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-gpts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    カスタムGPTs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vs-claude/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude使い分け
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../gemini-app/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💬 Gemini
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../claude-code/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../gemini/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 Gemini CLI
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../codex/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 Codex CLI
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../skills/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Skills
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../mcp/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔌 MCP
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../ai/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 AI実装
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../aws/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☁️ AWS
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../projects/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../ideas/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🛠️ 技術ノート
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../claude/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🤖 AI
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    💬 ChatGPT
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">効果的なプロンプト設計<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>プロンプトエンジニアリングは、AIの能力を最大限に引き出すための重要なスキルです。このページでは、ChatGPTで効果的なプロンプトを設計するための原則、テクニック、実践例を詳しく解説します。</p>
+<h2 id="_2">基本原則<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="1-clarity">1. 明確さ（Clarity）<a class="headerlink" href="#1-clarity" title="Permanent link">&para;</a></h3>
+<p><strong>曖昧な指示</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>文章を書いて
+</code></pre></div></p>
+<p><strong>明確な指示</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ブログ記事「初心者向けのAI活用術」を2000字で書いてください。
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>対象読者：IT初心者のビジネスパーソン
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>内容：具体的な活用事例を3つ含める
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>構成：導入→事例→まとめの流れで
+</code></pre></div></p>
+<h3 id="2-specificity">2. 具体性（Specificity）<a class="headerlink" href="#2-specificity" title="Permanent link">&para;</a></h3>
+<p><strong>漠然とした依頼</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>プレゼン資料を作って
+</code></pre></div></p>
+<p><strong>具体的な依頼</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>新入社員研修用のプレゼン資料を作成してください。
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>- スライド数：15-20枚
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>- 時間：30分想定
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>- 内容：会社概要、業務フロー、ツール使い方
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>- 形式：PowerPoint向けの構成案とスライドタイトル案
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>- 特記事項：インタラクティブな要素を含める
+</code></pre></div></p>
+<h3 id="3-context">3. コンテキスト（Context）<a class="headerlink" href="#3-context" title="Permanent link">&para;</a></h3>
+<p><strong>コンテキスト不足</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>この問題を解決して
+</code></pre></div></p>
+<p><strong>コンテキスト豊富</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Webサイトの読み込み速度改善について相談です。
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>現状：
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>- ECサイト（商品数約1000点）
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>- 平均読み込み時間：5秒
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>- 主要ユーザー：モバイル70%、PC30%
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>- 使用技術：WordPress + WooCommerce
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>目標：
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>- 読み込み時間を3秒以下に
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>- 予算：月10万円以内
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>- 期限：2ヶ月
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>具体的な改善策を優先度と実装難易度付きで提案してください。
+</code></pre></div></p>
+<h2 id="_3">プロンプトエンジニアリング・テクニック集<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-few-shot-prompting">1. Few-shot Prompting（例示学習）<a class="headerlink" href="#1-few-shot-prompting" title="Permanent link">&para;</a></h3>
+<p>AIに期待する出力形式を例で示す手法。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>以下の形式でカスタマーレビューを要約してください：
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>【例】
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>レビュー：&quot;商品の品質は良いが、配送が遅かった。梱包は丁寧。カスタマーサポートの対応は迅速で満足。&quot;
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>要約：&quot;品質：良 配送：△ 梱包：良 サポート：良&quot;
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>【例】
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>レビュー：&quot;価格は高めだが、デザインが素晴らしく長く使えそう。説明書が分かりにくい。&quot;
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>要約：&quot;価格：△ デザイン：良 耐久性：良 説明書：△&quot;
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>では、以下のレビューを同じ形式で要約してください：
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>レビュー：&quot;[実際のレビュー文]&quot;
+</code></pre></div>
+<h3 id="2-chain-of-thought-cot">2. Chain of Thought (CoT)：段階的思考<a class="headerlink" href="#2-chain-of-thought-cot" title="Permanent link">&para;</a></h3>
+<p>複雑な問題を段階的に解決する指示。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>以下のビジネス課題を、段階的に分析して解決策を提案してください：
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>課題：「オンライン売上が前年同期比20%減少」
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>分析手順：
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">1.</span> 原因の仮説を3つ立てる
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">2.</span> 各仮説を検証するための指標を特定
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">3.</span> 指標に基づいて最有力原因を絞り込む
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">4.</span> 解決策を短期・中期・長期に分けて提案
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">5.</span> 各解決策のROI予測を含める
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>この手順に従って、段階的に思考プロセスを示しながら分析してください。
+</code></pre></div>
+<h3 id="3">3. 構造化プロンプト（マークダウン活用）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>マークダウン記法で構造化された指示。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gh"># タスク</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>企業向けAI導入コンサルティングの提案書作成
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="gu">## 前提条件</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">-</span><span class="w"> </span><span class="gs">**クライアント**</span>: 従業員500名の製造業
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">-</span><span class="w"> </span><span class="gs">**課題**</span>: 品質管理の効率化
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">-</span><span class="w"> </span><span class="gs">**予算**</span>: 年間3000万円
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">-</span><span class="w"> </span><span class="gs">**期限**</span>: 6ヶ月で効果実感
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="gu">## 出力形式</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="gu">### 1. エグゼクティブサマリー (300字)</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="gu">### 2. 現状分析と課題 (500字)</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="gu">### 3. AI導入提案 (800字)</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">   </span><span class="k">-</span><span class="w"> </span>具体的なソリューション
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">   </span><span class="k">-</span><span class="w"> </span>導入スケジュール
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">   </span><span class="k">-</span><span class="w"> </span>費用対効果
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="gu">### 4. リスクと対策 (300字)</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="gu">## 制約条件</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="k">-</span><span class="w"> </span>専門用語は最小限に
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="k">-</span><span class="w"> </span>具体的な数値・事例を含める
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="k">-</span><span class="w"> </span>経営陣向けの説得力重視
+</code></pre></div>
+<h3 id="4-role-playing">4. ロール設定（Role Playing）<a class="headerlink" href="#4-role-playing" title="Permanent link">&para;</a></h3>
+<p>特定の専門性や視点を持つペルソナとして振る舞わせる。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>あなたは以下の設定で回答してください：
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>【ロール】
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>経験20年のWebマーケティングコンサルタント
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">-</span><span class="w"> </span>Google Ads認定資格保持
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">-</span><span class="w"> </span>年間50社の支援実績
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">-</span><span class="w"> </span>データ分析とROI改善が専門
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>【コミュニケーションスタイル】
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">-</span><span class="w"> </span>具体的な数値・事例を多用
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">-</span><span class="w"> </span>専門用語は分かりやすく説明
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="k">-</span><span class="w"> </span>実行可能なアクションプランを提示
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="k">-</span><span class="w"> </span>リスクも必ず言及
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>【質問】
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>小規模ECサイト（月商500万円）のGoogle Ads運用について、
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>月予算50万円でROAS 300%以上を目指したい。
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>現在のROASは180%。具体的な改善戦略を教えてください。
+</code></pre></div>
+<h3 id="5">5. 制約条件の明確化<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>出力に対する具体的な制約・要件を指定。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ソーシャルメディア投稿用のキャッチコピーを作成してください。
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>【制約条件】
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">-</span><span class="w"> </span>文字数：140字以内（Twitter用）
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">-</span><span class="w"> </span>ハッシュタグ：3つ以内
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">-</span><span class="w"> </span>絵文字：2-3個使用
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">-</span><span class="w"> </span>トーン：親しみやすく、でも信頼感のある
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="k">-</span><span class="w"> </span>含めるべき要素：新商品、限定性、行動喚起
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">-</span><span class="w"> </span>避ける表現：過度な煽り、誇大表現
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>【商品情報】
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="k">-</span><span class="w"> </span>商品名：オーガニックスキンケアクリーム
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="k">-</span><span class="w"> </span>特徴：天然成分100%、敏感肌対応
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="k">-</span><span class="w"> </span>キャンペーン：先着100名限定20%オフ
+</code></pre></div>
+<h3 id="6">6. 出力フォーマット指定<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>期待する出力の形式を詳細に指定。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>競合分析レポートを以下のJSON形式で出力してください：
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>```json
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>{
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  &quot;competitor_name&quot;: &quot;競合社名&quot;,
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  &quot;market_share&quot;: &quot;市場シェア（%）&quot;,
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>  &quot;strengths&quot;: [&quot;強み1&quot;, &quot;強み2&quot;, &quot;強み3&quot;],
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  &quot;weaknesses&quot;: [&quot;弱み1&quot;, &quot;弱み2&quot;],
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>  &quot;pricing_strategy&quot;: &quot;価格戦略の特徴&quot;,
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>  &quot;target_audience&quot;: &quot;主要ターゲット層&quot;,
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>  &quot;unique_value_proposition&quot;: &quot;独自価値提案&quot;,
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>  &quot;threat_level&quot;: &quot;脅威度（High/Medium/Low）&quot;,
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>  &quot;recommended_actions&quot;: [&quot;対策1&quot;, &quot;対策2&quot;, &quot;対策3&quot;]
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>}
+</code></pre></div>
+<p>対象競合：[競合企業名を3社指定]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>## タスク別プロンプト例
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>### 文章作成
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>#### ブログ記事作成
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>```markdown
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>SEOに最適化されたブログ記事を作成してください。
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>【記事設定】
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>- タイトル：「リモートワーク導入の完全ガイド」
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>- 目標キーワード：リモートワーク 導入（月間検索量3,000回）
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>- 文字数：3,000-3,500字
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>- 対象読者：人事・総務担当者（従業員50-200名企業）
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>【SEO要件】
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>- タイトルにメインキーワードを含める
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>- メタディスクリプション（120字以内）も作成
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>- H2見出しに関連キーワード配置
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>- 内部リンク提案箇所を3-5箇所指定
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>【構成要求】
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>1. 導入（問題提起）
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>2. リモートワークのメリット・デメリット
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>3. 導入前の準備（チェックリスト形式）
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>4. 段階的導入プロセス
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>5. よくある課題と解決策
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>6. 成功事例（2-3社）
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>7. まとめ（行動喚起含む）
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>【トーン】
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>実務的で信頼感があり、すぐ実行できる具体性重視
+</code></pre></div></p>
+<h4 id="_4">メール・ビジネス文書<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>以下のシチュエーションに適したビジネスメールを作成してください：
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>【シチュエーション】
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">-</span><span class="w"> </span>送信者：営業部マネージャー
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">-</span><span class="w"> </span>受信者：既存顧客（担当者）
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="k">-</span><span class="w"> </span>目的：契約更新時期における追加サービス提案
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="k">-</span><span class="w"> </span>背景：3年取引継続、満足度は高い、予算増額の可能性あり
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>【メール要件】
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="k">-</span><span class="w"> </span>件名：開封率を意識した魅力的なもの
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="k">-</span><span class="w"> </span>本文：400字程度
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="k">-</span><span class="w"> </span>構成：感謝→現状確認→提案→次アクション
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="k">-</span><span class="w"> </span>トーン：親しみやすいが、プロフェッショナル
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="k">-</span><span class="w"> </span>添付：提案書があることを想定
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>【避けるべき要素】
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="k">-</span><span class="w"> </span>押し売り感
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="k">-</span><span class="w"> </span>複数の提案（焦点をぼかす）
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="k">-</span><span class="w"> </span>長文による負担
+</code></pre></div>
+<h3 id="_5">コーディング<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">関数・アルゴリズム作成<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>以下の要件に従ってPython関数を作成してください：
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>【機能要件】
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">-</span><span class="w"> </span>関数名：calculate_roi
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">-</span><span class="w"> </span>目的：マーケティングキャンペーンのROI計算
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="k">-</span><span class="w"> </span>入力パラメータ：
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>revenue: 売上額（float）
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>cost: コスト（float）
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">  </span><span class="k">-</span><span class="w"> </span>period: 期間（int, 月数）
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="k">-</span><span class="w"> </span>出力：ROI（%）、月次ROI、判定（Good/Fair/Poor）
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>【技術要件】
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">-</span><span class="w"> </span>型ヒント（Type Hints）を使用
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="k">-</span><span class="w"> </span>docstring（Google形式）を含める
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="k">-</span><span class="w"> </span>エラーハンドリング：負の値、0除算対応
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="k">-</span><span class="w"> </span>単体テスト（pytest）も含める
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>【判定基準】
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="k">-</span><span class="w"> </span>ROI 200%以上：Good
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="k">-</span><span class="w"> </span>ROI 100-200%：Fair
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="k">-</span><span class="w"> </span>ROI 100%未満：Poor
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>【追加要求】
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="k">-</span><span class="w"> </span>計算過程をオプションで表示する機能
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="k">-</span><span class="w"> </span>複数キャンペーンの比較機能も実装
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="k">-</span><span class="w"> </span>使用例とコメントを豊富に含める
+</code></pre></div>
+<h4 id="_7">デバッグ・コードレビュー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>以下のPythonコードをレビューして、改善点を指摘してください：
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>```python
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>[問題のあるコード]
+</code></pre></div>
+<p>【レビュー観点】
+1. <strong>セキュリティ</strong>: 脆弱性の有無
+2. <strong>パフォーマンス</strong>: 効率性の問題
+3. <strong>保守性</strong>: 可読性・拡張性
+4. <strong>Python慣例</strong>: PEP8、Pythonic記法
+5. <strong>エラーハンドリング</strong>: 例外処理の適切性</p>
+<p>【出力形式】
+各問題について：
+- 問題箇所（行番号）
+- 問題の説明
+- 修正方法
+- 改善理由
+- 修正後のコード例</p>
+<p>最後に全体的な改善版コードも提示してください。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>### 分析・調査
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>#### データ分析
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>```markdown
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>添付のCSVデータを分析して、インサイトとアクション提案をしてください：
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>【データ概要】
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>- ファイル：sales_data.csv
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>- 期間：2025年1月-12月
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>- 含む項目：日付、売上、商品ID、地域、チャネル
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>【分析要求】
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>1. **基本統計**: 平均、中央値、標準偏差
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>2. **トレンド分析**: 月次・季節性パターン
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>3. **セグメント分析**: 地域・チャネル・商品別
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>4. **異常値検出**: 特異データの特定と原因推測
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>5. **相関分析**: 各要因間の関係性
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>【可視化要求】
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>- 時系列グラフ（月次売上推移）
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>- 棒グラフ（地域・チャネル別比較）
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>- 散布図（相関関係）
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>- ヒートマップ（月×地域）
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>【アウトプット形式】
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>1. エグゼクティブサマリー（300字）
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>2. 詳細分析結果
+<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>3. 重要なインサイト（3-5点）
+<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a>4. アクション提案（優先度付き）
+<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a>5. 追加分析の提案
+</code></pre></div></p>
+<h4 id="_8">市場調査<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>以下の市場について調査・分析してください：
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>【調査対象】
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>日本国内のAIチャットボット市場（2026年現在）
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>【調査項目】
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="k">1.</span> <span class="gs">**市場規模**</span>: 金額・成長率・予測
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="k">2.</span> <span class="gs">**主要プレイヤー**</span>: シェア・特徴・戦略
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="k">3.</span> <span class="gs">**顧客セグメント**</span>: 業界・企業規模別需要
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="k">4.</span> <span class="gs">**技術トレンド**</span>: 最新動向・今後の方向性
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="k">5.</span> <span class="gs">**価格動向**</span>: 平均価格・価格モデル
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>【情報源】
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="k">-</span><span class="w"> </span>公開されている市場調査レポート
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="k">-</span><span class="w"> </span>企業の決算資料・プレスリリース
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="k">-</span><span class="w"> </span>業界メディアの記事
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="k">-</span><span class="w"> </span>政府統計データ
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>【出力形式】
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="k">1.</span> 市場概要（500字）
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="k">2.</span> 競合分析（主要5社の詳細）
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="k">3.</span> 市場機会・課題
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="k">4.</span> 参入戦略の提案
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="k">5.</span> 情報源リスト
+<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a>
+<a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a>【注意事項】
+<a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="k">-</span><span class="w"> </span>情報の信頼性を必ず確認・明記
+<a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a><span class="k">-</span><span class="w"> </span>データの日付を明確にする
+<a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a><span class="k">-</span><span class="w"> </span>推測と事実を明確に分離
+</code></pre></div>
+<h3 id="_9">翻訳・ローカライゼーション<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">専門文書翻訳<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>以下の技術文書を日本語に翻訳してください：
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>【翻訳要件】
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">-</span><span class="w"> </span>原文：英語技術文書（AI/機械学習領域）
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="k">-</span><span class="w"> </span>対象読者：日本の技術者・研究者
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="k">-</span><span class="w"> </span>文体：である調、技術文書として自然
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="k">-</span><span class="w"> </span>専門用語：業界標準の日本語訳を使用
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>【特別な指示】
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="k">1.</span> <span class="gs">**専門用語**</span>: 初出時は英語併記 例：「機械学習（Machine Learning）」
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="k">2.</span> <span class="gs">**図表**</span>: キャプションも翻訳
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="k">3.</span> <span class="gs">**引用・参考文献**</span>: 英語のまま保持
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="k">4.</span> <span class="gs">**コード・数式**</span>: そのまま保持
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="k">5.</span> <span class="gs">**注釈**</span>: 日本の読者向けの補足説明を適宜追加
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>【品質チェックポイント】
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="k">-</span><span class="w"> </span>原文の意味を正確に伝達
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="k">-</span><span class="w"> </span>日本語として自然な表現
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="k">-</span><span class="w"> </span>技術的内容の一貫性
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="k">-</span><span class="w"> </span>読みやすさ（長文の適切な分割）
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>【納品形式】
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="k">-</span><span class="w"> </span>翻訳文
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="k">-</span><span class="w"> </span>専門用語集（英日対照）
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="k">-</span><span class="w"> </span>翻訳時の判断事項メモ
+</code></pre></div>
+<h3 id="_11">要約<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">長文文書要約<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>以下の長文レポートを要約してください：
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>【要約要件】
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="k">-</span><span class="w"> </span>元文書：約10,000字のビジネスレポート
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="k">-</span><span class="w"> </span>要約長：1,000字（元の10%）
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="k">-</span><span class="w"> </span>対象読者：経営陣（忙しい、要点のみ知りたい）
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>【要約構成】
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="k">1.</span> <span class="gs">**エグゼクティブサマリー**</span>（200字）：最重要ポイントのみ
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="k">2.</span> <span class="gs">**主要発見事項**</span>（300字）：データ・事実ベース
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="k">3.</span> <span class="gs">**推奨アクション**</span>（300字）：具体的な次ステップ
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="k">4.</span> <span class="gs">**リスク・課題**</span>（200字）：注意すべき点
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>【要約原則】
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="k">-</span><span class="w"> </span>数値・具体例は必ず保持
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="k">-</span><span class="w"> </span>筆者の主観より客観的事実を優先
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="k">-</span><span class="w"> </span>アクション指向の表現
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="k">-</span><span class="w"> </span>専門用語は分かりやすく言い換え
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>【出力形式】
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>各セクションを明確に分け、重要度に応じて太字やリストを活用
+</code></pre></div>
+<h2 id="_13">よくある失敗パターンと改善方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="1">失敗パターン1: 曖昧すぎる指示<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>❌ <strong>悪い例</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>いい感じのWebサイトを作って
+</code></pre></div></p>
+<p>✅ <strong>改善後</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>コーポレートサイトのワイヤーフレームを作成してください。
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>要件：
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>- 業種：IT企業（従業員50名）
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>- ページ：ホーム、サービス、会社概要、お問い合わせ
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>- デザイン方向性：クリーン、プロフェッショナル、信頼感
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>- 特記事項：採用情報を目立たせたい
+</code></pre></div></p>
+<h3 id="2">失敗パターン2: 一度に複数のタスクを依頼<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>❌ <strong>悪い例</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>マーケティング戦略を考えて、競合分析もして、
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>予算案も作って、スケジュールも提案して
+</code></pre></div></p>
+<p>✅ <strong>改善後</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>まずは競合分析から始めましょう。
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>主要競合3社の特徴と強み・弱みを分析してください。
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>その結果を踏まえて、次にマーケティング戦略を検討します。
+</code></pre></div></p>
+<h3 id="3_1">失敗パターン3: コンテキスト不足<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>❌ <strong>悪い例</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>売上が下がっているので対策を教えて
+</code></pre></div></p>
+<p>✅ <strong>改善後</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ECサイトの売上が下がっています。詳細は以下の通り：
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>現状：
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>- 前年同期比15%減少
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>- 主力商品：アパレル（女性向け）
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>- 客層：20-40代女性
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>- 減少要因（仮説）：新規獲得数減少
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>背景：
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>- コロナ後の外出機会増加
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>- 競合の価格攻勢
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>- 広告費削減の影響
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>これらの情報を踏まえて、対策を提案してください。
+</code></pre></div></p>
+<h3 id="4">失敗パターン4: 出力フォーマットの指定なし<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>❌ <strong>悪い例</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>プロジェクト進捗をまとめて
+</code></pre></div></p>
+<p>✅ <strong>改善後</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>プロジェクト進捗レポートを以下の形式で作成してください：
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>## フォーマット
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>1. プロジェクト概要（1行）
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>2. 進捗状況（%表示）
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>3. 完了タスク（リスト形式）
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>4. 未完了タスク（優先度付き）
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>5. リスク・課題（あれば）
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>6. 次週の計画
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>## 制約
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>- 箇条書き中心
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>- A4用紙1枚以内
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>- 経営陣向け（専門用語最小限）
+</code></pre></div></p>
+<h2 id="_14">プロンプトテンプレート集<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. ビジネス文書作成テンプレート<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="gh"># [文書種別]作成依頼</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="gu">## 基本情報</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="k">-</span><span class="w"> </span>文書種別：[提案書/報告書/企画書など]
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="k">-</span><span class="w"> </span>対象読者：[役職・立場・専門性レベル]
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="k">-</span><span class="w"> </span>目的：[何を達成したいか]
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="k">-</span><span class="w"> </span>文字数：[〇〇字程度]
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="gu">## 背景・前提</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="k">-</span><span class="w"> </span>[現状・課題・機会など]
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="gu">## 必須含有要素</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="k">-</span><span class="w"> </span>[含めるべき内容を箇条書き]
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="gu">## 構成要求</span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="k">1.</span> [セクション1] - [内容・文字数]
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="k">2.</span> [セクション2] - [内容・文字数]
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>...
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a><span class="gu">## トーン・文体</span>
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a><span class="k">-</span><span class="w"> </span>[フォーマル/カジュアル/説得的など]
+<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a><span class="k">-</span><span class="w"> </span>[読み手に与えたい印象]
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>
+<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a><span class="gu">## 制約条件</span>
+<a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a><span class="k">-</span><span class="w"> </span>[避けるべき表現・内容]
+<a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a><span class="k">-</span><span class="w"> </span>[必須フォーマット要件]
+</code></pre></div>
+<h3 id="2_1">2. 分析タスクテンプレート<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="gh"># [対象]分析依頼</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="gu">## 分析対象</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="k">-</span><span class="w"> </span>[データ/市場/競合/課題など]
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="gu">## 分析目的</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="k">-</span><span class="w"> </span>[何を明らかにしたいか]
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="k">-</span><span class="w"> </span>[分析結果をどう活用するか]
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="gu">## 分析手法</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="k">-</span><span class="w"> </span>[定量/定性/統計手法など]
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="gu">## 利用可能データ</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="k">-</span><span class="w"> </span>[データソース・期間・制約]
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="gu">## 期待アウトプット</span>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="k">1.</span> [分析結果1] - [具体的な形式]
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="k">2.</span> [分析結果2] - [具体的な形式]
+<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>...
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a><span class="gu">## アクション指向</span>
+<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a><span class="k">-</span><span class="w"> </span>[分析結果から導き出したい施策]
+<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a><span class="k">-</span><span class="w"> </span>[意思決定に必要な情報]
+</code></pre></div>
+<h3 id="3_2">3. 技術タスクテンプレート<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="gh"># [技術要件]実装依頼</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="gu">## 要件定義</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="k">-</span><span class="w"> </span>[機能概要]
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="k">-</span><span class="w"> </span>[技術制約]
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="k">-</span><span class="w"> </span>[パフォーマンス要求]
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="gu">## 技術スタック</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="k">-</span><span class="w"> </span>[使用言語・フレームワーク]
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="k">-</span><span class="w"> </span>[依存関係・ライブラリ]
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="gu">## 入出力仕様</span>
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="k">-</span><span class="w"> </span>Input: [型・形式・例]
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="k">-</span><span class="w"> </span>Output: [型・形式・例]
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="gu">## 品質要件</span>
+<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="k">-</span><span class="w"> </span>[テストケース]
+<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a><span class="k">-</span><span class="w"> </span>[エラーハンドリング]
+<a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="k">-</span><span class="w"> </span>[ドキュメント]
+<a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>
+<a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a><span class="gu">## 納品物</span>
+<a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a><span class="k">-</span><span class="w"> </span>[ソースコード]
+<a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="k">-</span><span class="w"> </span>[テストコード]
+<a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a><span class="k">-</span><span class="w"> </span>[使用方法・コメント]
+</code></pre></div>
+<h2 id="_15">まとめ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>効果的なプロンプト設計は、ChatGPTの能力を最大限に引き出すための重要なスキルです。以下の点を意識して、継続的に改善していきましょう：</p>
+<h3 id="_16">基本原則の徹底<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>明確性</strong>: 曖昧さを排除した具体的な指示</li>
+<li><strong>具体性</strong>: 詳細な要件と制約の明示</li>
+<li><strong>コンテキスト</strong>: 十分な背景情報の提供</li>
+</ul>
+<h3 id="_17">テクニックの活用<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Few-shot</strong>: 例示による期待値の明確化</li>
+<li><strong>CoT</strong>: 段階的思考による複雑問題の解決</li>
+<li><strong>ロール設定</strong>: 専門性の活用</li>
+<li><strong>構造化</strong>: マークダウンによる整理</li>
+</ul>
+<h3 id="_18">継続的改善<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<ul>
+<li>出力結果の評価と分析</li>
+<li>プロンプトの反復改善</li>
+<li>テンプレート化による効率向上</li>
+</ul>
+<p>2025年以降のChatGPTは、特にo系モデルでより高度な推論が可能になっています。適切なプロンプト設計により、従来では困難だった複雑なタスクも効率的に実行できるようになりました。</p>
+<p>自分の用途に合わせたプロンプトライブラリを構築し、ChatGPTとの対話品質を継続的に向上させていくことが成功の鍵です。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,889 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/ideas/schemalint-review/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>📐 SchemaLint — シニアエンジニアレビュー - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#schemalint" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📐 SchemaLint — シニアエンジニアレビュー
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tech/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../tech/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../projects/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="schemalint">📐 SchemaLint — シニアエンジニアレビュー<a class="headerlink" href="#schemalint" title="Permanent link">&para;</a></h1>
+<h2 id="saas-10">レビュアー: シニアエンジニア（SaaS設計/インフラ/事業戦略 10年+）<a class="headerlink" href="#saas-10" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="a-">総合評価: <strong>A-</strong><a class="headerlink" href="#a-" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="_1">評価サマリー<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>カテゴリ</th>
+<th>評価</th>
+<th>コメント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>課題の深刻度</td>
+<td>⭐⭐⭐⭐</td>
+<td>リッチスニペット消失=CTR30%低下。実害あり</td>
+</tr>
+<tr>
+<td>WTP（支払意欲）</td>
+<td>⭐⭐⭐⭐</td>
+<td>SEO依存事業なら払う。ただし構造化データの認知度が壁</td>
+</tr>
+<tr>
+<td>技術的実現性</td>
+<td>⭐⭐⭐⭐</td>
+<td>HTML解析+JSONパース。Puppeteer必要なケースあり</td>
+</tr>
+<tr>
+<td>競合優位性</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>構造化データ専門の定期監視SaaSは存在しない</td>
+</tr>
+<tr>
+<td>$20達成確度</td>
+<td>⭐⭐⭐⭐</td>
+<td>ECサイト・メディア運営者が明確なターゲット</td>
+</tr>
+<tr>
+<td>スケーラビリティ</td>
+<td>⭐⭐⭐⭐</td>
+<td>SQS+Lambda並列で線形スケール</td>
+</tr>
+<tr>
+<td>粗利率</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>99.9%。優秀</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">良い点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. ブルーオーシャン<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>「構造化データの定期監視SaaS」は市場に存在しない。Google Rich Results Testは手動・1ページずつ。この隙間は明確。</p>
+<h3 id="2">2. 被害額が定量化できる<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>CTR 30%低下→月間検索流入X万クリック→損失Y万円。ROIが計算しやすい=セールスピッチが作りやすい。</p>
+<h3 id="3-roboguard">3. RoboGuardとの補完性<a class="headerlink" href="#3-roboguard" title="Permanent link">&para;</a></h3>
+<p>RoboGuard（robots.txt/sitemap監視）+ SchemaLint（構造化データ監視）でSEO保全スイートが完成。バンドル販売の可能性。</p>
+<h3 id="4-ec">4. ECサイトとの相性<a class="headerlink" href="#4-ec" title="Permanent link">&para;</a></h3>
+<p>EC事業者にとってProduct Schemaの星評価・価格表示は売上に直結。「リッチスニペットが消えてたら教えてくれるサービス」のWTPは高い。</p>
+<h3 id="5-sqslambda">5. SQS+Lambda並列の設計<a class="headerlink" href="#5-sqslambda" title="Permanent link">&para;</a></h3>
+<p>大量ページのスキャンをキューで分散処理する設計は適切。ページ単位で独立実行できるため、障害の影響範囲が限定的。</p>
+<h2 id="_3">懸念点と改善提案<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-spassr">1. SPA/SSRサイトの対応（中程度）<a class="headerlink" href="#1-spassr" title="Permanent link">&para;</a></h3>
+<p>React/Next.js等のSPAはHTMLに直接JSON-LDが埋め込まれず、JavaScriptで動的生成されるケースがある。
+→ <strong>対策</strong>: 基本はHTMLパース（cheerio）で高速処理。SPA検知時のみPuppeteer fallback。設計書に言及あり。</p>
+<h3 id="2_1">2. 構造化データの認知度（中程度）<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>「構造化データ」「JSON-LD」を知らないサイト運営者が多い。特に日本市場。
+→ <strong>対策</strong>: 「リッチスニペット」「検索結果の星評価」というわかりやすい言葉でマーケ。「あなたのサイト、Google検索で星が出てますか？」のLP。</p>
+<h3 id="3-schemaorg">3. Schema.org仕様の更新追従（軽微）<a class="headerlink" href="#3-schemaorg" title="Permanent link">&para;</a></h3>
+<p>Schema.orgは定期的に新プロパティを追加する。バリデーションルールの陳腐化リスク。
+→ <strong>対策</strong>: schema-dtsパッケージの自動更新。必須プロパティのみチェック（推奨プロパティは警告レベル）。</p>
+<h3 id="4-google-rich-results-test">4. Google Rich Results Testとの差別化<a class="headerlink" href="#4-google-rich-results-test" title="Permanent link">&para;</a></h3>
+<p>「Googleの無料ツールでいいのでは？」への明確な回答が必要。
+→ <strong>対策</strong>: 「Googleのツールは1ページずつ手動。SchemaLintは100ページを毎日自動チェック。壊れたら即通知」。</p>
+<h2 id="_4">技術レビュー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>判定</th>
+<th>コメント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アーキテクチャ</td>
+<td>✅</td>
+<td>SQS+Lambda並列は適切</td>
+</tr>
+<tr>
+<td>DB設計</td>
+<td>✅</td>
+<td>ページ×スキャンの2次元保存が適切</td>
+</tr>
+<tr>
+<td>コスト見積もり</td>
+<td>✅</td>
+<td>SQSコスト含め現実的</td>
+</tr>
+<tr>
+<td>MVP範囲</td>
+<td>✅</td>
+<td>2週間で実現可能。SPA対応はMVP後でOK</td>
+</tr>
+<tr>
+<td>HTML解析</td>
+<td>✅</td>
+<td>cheerioは高速で実績あり</td>
+</tr>
+</tbody>
+</table>
+<h2 id="20">$20達成の現実性<a class="headerlink" href="#20" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>評価</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ターゲット到達</td>
+<td>✅ EC運営者・SEOコミュニティ経由</td>
+</tr>
+<tr>
+<td>無料→有料転換</td>
+<td>✅ 10ページ→100ページのアップグレード動機明確</td>
+</tr>
+<tr>
+<td>4人の有料化</td>
+<td>✅ ECサイト2社+メディア2社で達成</td>
+</tr>
+<tr>
+<td>継続率</td>
+<td>✅ SEO資産保全は継続必須</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">結論<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><strong>A-評価</strong>。ブルーオーシャン×定量化できる被害額×低コスト構造のバランスが良い。RoboGuardとの補完性もあり、SEO保全スイートとしてのバンドル展開に発展可能。A評価でない理由は、構造化データの認知度と「Googleの無料ツールで十分」という反論への対応が必要な点。ただしどちらも対策可能であり、有望な案。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

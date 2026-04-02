@@ -1,0 +1,875 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/ideas/gitnudge-review/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>📝 GitNudge レビュー - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gitnudge" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📝 GitNudge レビュー
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tech/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../tech/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../projects/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="gitnudge">📝 GitNudge レビュー<a class="headerlink" href="#gitnudge" title="Permanent link">&para;</a></h1>
+<h2 id="a-">総合評価: A-<a class="headerlink" href="#a-" title="Permanent link">&para;</a></h2>
+<h2 id="_1">評価内訳<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="a">技術実現性: A<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GitHub API統合</strong>: 確立された技術、豊富なドキュメント</li>
+<li><strong>Webhook システム</strong>: GitHub Webhookは高信頼性</li>
+<li><strong>通知システム</strong>: Slack/Discord API統合は標準的</li>
+<li><strong>インフラ</strong>: 段階的構成で拡張性十分</li>
+<li><strong>開発期間</strong>: 2週間MVPは現実的</li>
+</ul>
+<h3 id="a_1">課題解決の明確性: A+<a class="headerlink" href="#a_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>開発者の実ペイン</strong>: PR放置、レビュー遅延は日常的課題</li>
+<li><strong>定量的効果</strong>: PR処理時間50%短縮（3日→1.5日）は説得力</li>
+<li><strong>ターゲット明確</strong>: スタートアップ・アジャイルチーム（5-50人）</li>
+<li><strong>継続的価値</strong>: 開発プロセス改善で継続利用必然</li>
+</ul>
+<h3 id="a-_1">競合差別化: A-<a class="headerlink" href="#a-_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GitHub特化</strong>: Issue・PR専用で無駄機能なし</li>
+<li><strong>価格優位性</strong>: $12/5人 vs Linear $40/5人 (70%安)</li>
+<li><strong>設定簡単</strong>: 3分完了 vs 競合1時間</li>
+<li><strong>軽量性</strong>: Jiraの過剰機能回避、小チーム最適</li>
+</ul>
+<h3 id="a_2">収益性・ユニットエコノミクス: A+<a class="headerlink" href="#a_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>超低初期コスト</strong>: $0/月での完全無料運用</li>
+<li><strong>超高粗利率</strong>: 92-100%（変動費ほぼゼロ）</li>
+<li><strong>優秀なLTV/CAC</strong>: 10.98で非常に健全</li>
+<li><strong>継続率</strong>: 開発ツールは高継続性（18ヶ月）</li>
+</ul>
+<h3 id="20-a">月$20達成可能性: A+<a class="headerlink" href="#20-a" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>2チームで達成</strong>: 極めて現実的（1.09チーム理論値）</li>
+<li><strong>TAM十分</strong>: 開発チーム2万は必要な市場規模</li>
+<li><strong>獲得容易</strong>: 開発者コミュニティでの口コミ効果高い</li>
+</ul>
+<h2 id="_2">強み分析<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 開発者ペインの深度・普遍性<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>日常的課題</strong>: すべての開発チームが経験</li>
+<li><strong>隠れコスト</strong>: 放置による品質低下・遅延の経済損失</li>
+<li><strong>感情的ストレス</strong>: 「確認する」「されない」のイライラ</li>
+</ul>
+<h3 id="2-">2. プロダクト-マーケットフィット確度<a class="headerlink" href="#2-" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>シンプル価値</strong>: 「放置を無くす」だけで十分</li>
+<li><strong>即効性</strong>: 導入直後から効果実感</li>
+<li><strong>習慣化</strong>: 一度使うと手放せない利便性</li>
+</ul>
+<h3 id="3">3. 成長エンジンの強さ<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>口コミ自然発生</strong>: 効果実感→同僚に勧める</li>
+<li><strong>GitHub統合</strong>: バッジ表示で認知拡大</li>
+<li><strong>OSS戦略</strong>: 無料提供でコミュニティ信頼獲得</li>
+</ul>
+<h3 id="4">4. マネタイズの自然さ<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>明確ROI</strong>: 開発効率50%向上 vs $12/月は圧倒的</li>
+<li><strong>継続理由</strong>: 一度組み込まれると外せない</li>
+<li><strong>アップセル</strong>: チーム成長で自然にプラン上昇</li>
+</ul>
+<h2 id="_3">懸念点・リスク分析<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-github">1. GitHub自社開発リスク（中程度）<a class="headerlink" href="#1-github" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>脅威</strong>: Microsoft/GitHubが同機能追加の可能性</li>
+<li><strong>対策評価</strong>: 細かいニーズ特化、早期シェア確保で対応可能</li>
+<li><strong>リスク軽減</strong>: GitHubは大きな機能追加より、エコシステム重視の傾向</li>
+</ul>
+<h3 id="2">2. 市場規模の限定性（軽微）<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>制約</strong>: 開発チーム限定（一般企業でない）</li>
+<li><strong>対策評価</strong>: TAM 2万チームは十分、隣接市場拡張も可能</li>
+<li><strong>成長可能性</strong>: DevOps・CI/CD監視への機能拡張</li>
+</ul>
+<h3 id="3_1">3. 競合参入リスク（中程度）<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>脅威</strong>: Linear, Jira等の機能追加</li>
+<li><strong>対策評価</strong>: GitHub特化・軽量性・低価格で差別化維持</li>
+<li><strong>参入障壁</strong>: 早期ユーザー獲得、コミュニティ信頼</li>
+</ul>
+<h3 id="4_1">4. 技術陳腐化リスク（低）<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>脅威</strong>: GitHub API仕様変更</li>
+<li><strong>対策評価</strong>: GitHubは後方互換性重視、影響軽微</li>
+</ul>
+<h2 id="_4">改善提案<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 差別化のさらなる強化<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>AI活用</strong>: 放置されやすいPRパターン学習・予測</li>
+<li><strong>パフォーマンス分析</strong>: チーム生産性ベンチマーク提供</li>
+<li><strong>カスタマイズ</strong>: チーム文化に合わせた通知カスタマイズ</li>
+</ul>
+<h3 id="2_1">2. 市場拡張戦略<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GitLab対応</strong>: GitHubだけでなく、GitLab等も対応</li>
+<li><strong>統合強化</strong>: Jira, Linear等との双方向連携</li>
+<li><strong>エンタープライズ</strong>: 大企業向け高度分析・レポート機能</li>
+</ul>
+<h3 id="3_2">3. コミュニティ戦略強化<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>オープンソース</strong>: コア機能のOSS化でコミュニティ貢献</li>
+<li><strong>プラグイン</strong>: IDE統合（VSCode拡張等）</li>
+<li><strong>API公開</strong>: 他ツールからの統合促進</li>
+</ul>
+<h2 id="a-_2">最終判定: A-評価<a class="headerlink" href="#a-_2" title="Permanent link">&para;</a></h2>
+<h3 id="_5">評価理由<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ペインの深さ</strong>: 開発者なら誰でも理解・共感</li>
+<li><strong>実現容易性</strong>: 技術的ハードル低く、2週間で実装可能</li>
+<li><strong>収益確実性</strong>: 2チームで$20達成の超現実性</li>
+<li><strong>成長ポテンシャル</strong>: 口コミ・コミュニティ効果で自然成長</li>
+</ul>
+<h3 id="a_3">A+への道<a class="headerlink" href="#a_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>GitHub依存リスクのさらなる軽減策</li>
+<li>より具体的なエンタープライズ戦略</li>
+<li>技術的参入障壁の構築</li>
+</ul>
+<p><strong>結論: A-評価。開発者の実ペインを解決する実用的サービス。技術実装容易、収益確実性高い。GitHubリスクはあるが、早期参入で先行者利益確保可能。</strong></p>
+<hr />
+<h2 id="_6">レビュー完了<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>評価: <strong>A-</strong></li>
+<li>推奨: 即座実装開始</li>
+<li>注意点: GitHub依存リスク管理、早期シェア確保が重要</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

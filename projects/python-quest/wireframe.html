@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Quest - ワイヤーフレーム v3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Hiragino Sans', sans-serif; background: #0a0a1a; color: #e2e8f0; overflow-x: hidden; }
+  .pixel { font-family: 'Press Start 2P', monospace; }
+
+  /* NAV */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: flex; flex-direction: column; }
+  .page-label {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: linear-gradient(90deg, #7c3aed, #ec4899);
+    color: white; text-align: center; padding: 6px; font-size: 11px; z-index: 200;
+    letter-spacing: 1px;
+  }
+  .page-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #0a0a1aee; backdrop-filter: blur(10px);
+    border-top: 2px solid #1e1e3a;
+    display: flex; justify-content: center; gap: 4px; flex-wrap: wrap;
+    padding: 6px 8px; z-index: 200;
+  }
+  .page-nav button {
+    background: #1e1e3a; color: #64648a; border: 2px solid #2a2a4a;
+    padding: 6px 10px; border-radius: 8px; cursor: pointer; font-size: 11px;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .page-nav button.active { background: #7c3aed; color: white; border-color: #a78bfa; box-shadow: 0 0 12px rgba(124,58,237,0.4); }
+  .page-nav button:hover { border-color: #7c3aed; color: #a78bfa; }
+
+  /* ANIMATIONS */
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes bounce { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+  @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+  @keyframes rainbow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+  @keyframes confettiFall { 0% { transform: translateY(-20px) rotate(0deg); opacity:1; } 100% { transform: translateY(100vh) rotate(720deg); opacity:0; } }
+  @keyframes ringExpand { 0% { transform: scale(0.5); opacity: 0.8; } 100% { transform: scale(3); opacity: 0; } }
+  @keyframes xpFill { from { width: 0; } }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+  .float { animation: float 3s ease-in-out infinite; }
+  .bounce { animation: bounce 2s ease-in-out infinite; }
+
+  /* XP BAR common */
+  .xp-bar-bg { background: #1e1e3a; border-radius: 10px; height: 16px; overflow: hidden; border: 2px solid #2a2a4a; }
+  .xp-bar-fill { height: 100%; border-radius: 10px; position: relative; }
+  .xp-bar-fill::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); animation: shimmer 2s infinite; }
+
+  /* ========== PAGE 0: TOP ========== */
+  .top-hero {
+    margin-top: 28px; flex: 0 0 auto;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 50px 20px 30px;
+    background: radial-gradient(ellipse at center, #1a1040 0%, #0a0a1a 70%);
+    position: relative;
+  }
+  .top-hero::before {
+    content:''; position:absolute; inset:0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%237c3aed' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .char-wrap { position: relative; margin-bottom: 16px; z-index:1; }
+  .main-char { font-size: 72px; animation: float 3s ease-in-out infinite; filter: drop-shadow(0 0 20px rgba(124,58,237,0.5)); }
+  .char-lv {
+    position:absolute; bottom:-4px; right:-14px;
+    background: linear-gradient(135deg,#f59e0b,#ef4444); color:white;
+    font-size:13px; font-weight:bold; width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:2px solid #fbbf24; box-shadow:0 0 10px rgba(245,158,11,0.5);
+  }
+  .top-hero h1 {
+    font-family:'Press Start 2P',monospace; font-size:26px; margin-bottom:6px;
+    background: linear-gradient(90deg,#a78bfa,#ec4899,#f59e0b);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    animation: rainbow 8s linear infinite; position:relative; z-index:1;
+  }
+  .top-sub { font-size:15px; color:#94a3b8; margin-bottom:8px; position:relative; z-index:1; }
+  .xp-top { width:280px; margin:10px 0 20px; position:relative; z-index:1; }
+  .xp-top .xp-label { display:flex; justify-content:space-between; font-size:11px; color:#94a3b8; margin-bottom:4px; }
+  .xp-top .xp-bar-fill { background: linear-gradient(90deg,#7c3aed,#ec4899); width:65%; animation: xpFill 1.5s ease-out; }
+  .start-btn {
+    background: linear-gradient(135deg,#7c3aed,#ec4899); color:white; border:none;
+    padding:14px 44px; border-radius:14px; font-size:18px; cursor:pointer; font-weight:bold;
+    box-shadow:0 0 30px rgba(124,58,237,0.4); transition:all .3s;
+    position:relative; z-index:1; animation: bounce 2s ease-in-out infinite;
+  }
+  .start-btn:hover { transform:scale(1.08); box-shadow:0 0 50px rgba(124,58,237,0.6); }
+
+  /* World select */
+  .worlds { padding:30px 20px 80px; max-width:800px; margin:0 auto; flex:1; }
+  .worlds h2 { font-family:'Press Start 2P',monospace; font-size:13px; color:#a78bfa; text-align:center; margin-bottom:24px; }
+  .world-list { display:flex; flex-direction:column; gap:16px; }
+  .world-row {
+    display:flex; align-items:center; gap:16px;
+    background: #12122a; border:2px solid #1e1e3a; border-radius:16px;
+    padding:18px 20px; cursor:pointer; transition:all .3s;
+  }
+  .world-row:hover { border-color:#7c3aed; transform:translateX(6px); }
+  .world-row.locked { opacity:.35; pointer-events:none; }
+  .world-row.current { border-color:#a78bfa; box-shadow:0 0 20px rgba(124,58,237,0.2); }
+  .w-icon { font-size:36px; flex-shrink:0; }
+  .w-info { flex:1; }
+  .w-name { font-size:16px; font-weight:bold; margin-bottom:4px; }
+  .w-desc { font-size:12px; color:#64648a; }
+  .w-progress { width:120px; text-align:right; }
+  .w-progress .w-frac { font-size:13px; color:#94a3b8; margin-bottom:4px; }
+  .w-prog-bg { background:#1e1e3a; height:8px; border-radius:4px; overflow:hidden; }
+  .w-prog-fill { height:100%; border-radius:4px; }
+  .w-status { font-size:11px; margin-top:4px; }
+
+  /* Quest nodes inside world */
+  .quest-nodes {
+    display:flex; gap:10px; flex-wrap:wrap; padding:16px 0 0 52px;
+  }
+  .qnode {
+    width:48px; height:48px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:bold; cursor:pointer; transition:all .2s;
+    position:relative;
+  }
+  .qnode.cleared { background:#0a2a0a; border:2px solid #22c55e; color:#22c55e; }
+  .qnode.current { background:#2a1a4a; border:2px solid #a78bfa; color:#a78bfa; animation:pulse 2s infinite; }
+  .qnode.locked { background:#1a1a2a; border:2px solid #333; color:#333; }
+  .qnode.boss { border-color:#ef4444; color:#ef4444; background:#2a0a0a; width:54px; height:54px; }
+  .qnode:hover:not(.locked) { transform:scale(1.2); }
+  .qnode .q-star { position:absolute; top:-8px; font-size:8px; white-space:nowrap; }
+
+  /* ========== PAGE 1: BLOCK QUEST (W1) ========== */
+  .quest-layout {
+    margin-top:28px; flex:1;
+    display:grid; grid-template-columns:280px 1fr 1fr;
+    height:calc(100vh - 76px);
+  }
+  .quest-sidebar {
+    background: linear-gradient(180deg,#12122a,#0a0a1a);
+    border-right:2px solid #1e1e3a; padding:16px; overflow-y:auto;
+  }
+  .q-header {
+    background: linear-gradient(135deg,#1e1e3a,#2a1a4a);
+    border-radius:12px; padding:14px; margin-bottom:14px; border:1px solid #333366;
+  }
+  .q-badge {
+    display:inline-flex; align-items:center; gap:5px;
+    background:linear-gradient(135deg,#7c3aed,#ec4899);
+    color:white; padding:3px 10px; border-radius:16px; font-size:10px; font-weight:bold; margin-bottom:8px;
+  }
+  .q-title { font-size:16px; font-weight:bold; }
+  .npc-box {
+    display:flex; align-items:flex-start; gap:10px;
+    background:#1e1e3a; border-radius:10px; padding:12px; margin-bottom:14px;
+    border:1px solid #2a2a4a;
+  }
+  .npc-av { font-size:32px; flex-shrink:0; animation:float 4s ease-in-out infinite; }
+  .npc-nm { font-size:10px; color:#7c3aed; font-weight:bold; margin-bottom:3px; }
+  .npc-tx { font-size:12px; color:#c4b5fd; line-height:1.6; }
+  .mission {
+    background:#0a0a1a; border:2px solid #f59e0b; border-radius:10px;
+    padding:12px; margin-bottom:14px; box-shadow:0 0 12px rgba(245,158,11,0.08);
+  }
+  .mission-label { font-size:10px; color:#f59e0b; font-weight:bold; margin-bottom:6px; }
+  .mission-target { font-family:monospace; font-size:13px; color:#fbbf24; background:#1e1e2a; border-radius:6px; padding:8px; border-left:3px solid #f59e0b; }
+  .rewards { display:flex; gap:10px; justify-content:center; }
+  .rew { background:#1e1e3a; border-radius:8px; padding:8px 14px; text-align:center; border:1px solid #2a2a4a; font-size:11px; }
+  .rew .r-icon { font-size:18px; }
+  .rew .r-val { color:#fbbf24; font-weight:bold; }
+
+  /* Blockly mock */
+  .blockly-panel { display:flex; flex-direction:column; background:#1a1a2e; }
+  .panel-header {
+    background:#12122a; padding:8px 14px;
+    display:flex; justify-content:space-between; align-items:center;
+    border-bottom:2px solid #1e1e3a;
+  }
+  .panel-tab { font-size:12px; color:#94a3b8; display:flex; align-items:center; gap:6px; }
+  .panel-tab .dot { width:7px; height:7px; border-radius:50%; }
+  .run-btn {
+    background:linear-gradient(135deg,#22c55e,#16a34a); color:white; border:none;
+    padding:8px 20px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:bold;
+    box-shadow:0 0 12px rgba(34,197,94,0.3); display:flex; align-items:center; gap:5px;
+  }
+  .run-btn:hover { transform:scale(1.05); box-shadow:0 0 20px rgba(34,197,94,0.5); }
+  .blockly-body { flex:1; padding:20px; display:flex; flex-direction:column; gap:12px; overflow-y:auto; }
+
+  /* Block shapes */
+  .block {
+    border-radius:8px; padding:10px 14px; font-size:13px; font-weight:bold;
+    display:inline-flex; align-items:center; gap:8px; width:fit-content;
+    box-shadow:0 3px 0 rgba(0,0,0,0.3); cursor:grab; transition:transform .15s;
+  }
+  .block:hover { transform:translateY(-2px); }
+  .block.purple { background:#7c3aed; color:white; }
+  .block.green { background:#22c55e; color:white; }
+  .block.blue { background:#3b82f6; color:white; }
+  .block.orange { background:#f59e0b; color:white; }
+  .block.red { background:#ef4444; color:white; }
+  .block .hole {
+    background:rgba(0,0,0,0.25); border-radius:4px; padding:2px 12px;
+    font-weight:normal; min-width:80px; text-align:center;
+  }
+  .block .nested { margin-left:20px; margin-top:6px; }
+  .block-indent { padding-left:24px; border-left:4px solid rgba(124,58,237,0.3); }
+
+  .toolbox {
+    background:#12122a; border-radius:10px; padding:12px; margin-top:auto;
+    border:1px dashed #2a2a4a;
+  }
+  .toolbox-label { font-size:10px; color:#4a4a6a; margin-bottom:8px; }
+  .toolbox-items { display:flex; gap:6px; flex-wrap:wrap; }
+  .toolbox-item {
+    background:#1e1e3a; border:1px solid #2a2a4a; border-radius:6px;
+    padding:4px 10px; font-size:11px; color:#94a3b8; cursor:grab;
+  }
+
+  /* Output panel */
+  .output-panel { display:flex; flex-direction:column; background:#0a0a1a; border-left:2px solid #1e1e3a; }
+  .output-tabs { background:#12122a; display:flex; border-bottom:2px solid #1e1e3a; }
+  .output-tabs button {
+    background:none; border:none; color:#4a4a6a; padding:10px 16px;
+    cursor:pointer; font-size:11px; border-bottom:2px solid transparent; transition:all .2s;
+  }
+  .output-tabs button.active { color:#a78bfa; border-bottom-color:#7c3aed; }
+  .output-body { flex:1; display:flex; align-items:center; justify-content:center; }
+  .output-mock {
+    width:280px; height:280px; border:2px solid #1e1e3a; border-radius:14px;
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px;
+    background:radial-gradient(circle,#12122a,#0a0a1a); position:relative; overflow:hidden;
+  }
+  .output-mock .grid-bg {
+    position:absolute; inset:0;
+    background: repeating-linear-gradient(0deg,transparent,transparent 29px,#1e1e3a22 30px),
+                repeating-linear-gradient(90deg,transparent,transparent 29px,#1e1e3a22 30px);
+  }
+  .output-mock .mock-icon { font-size:42px; opacity:.3; animation:float 3s ease-in-out infinite; z-index:1; }
+  .output-mock .mock-text { font-size:12px; color:#4a4a6a; z-index:1; }
+
+  /* ========== PAGE 2: CONVERT QUEST (W2) ========== */
+  .convert-layout {
+    margin-top:28px; flex:1;
+    display:grid; grid-template-columns:260px 1fr 1fr 1fr;
+    height:calc(100vh - 76px);
+  }
+  .convert-panel { display:flex; flex-direction:column; }
+  .convert-body { flex:1; padding:16px; display:flex; flex-direction:column; gap:10px; }
+  .arrow-col {
+    display:flex; align-items:center; justify-content:center;
+    font-size:36px; color:#a78bfa; background:#0d0d1a;
+    border-left:2px solid #1e1e3a; border-right:2px solid #1e1e3a;
+    flex-direction:column; gap:8px; min-width: 60px;
+  }
+  .arrow-col .arr-label { font-size:10px; color:#64648a; writing-mode:vertical-rl; }
+
+  /* Code panel (Monaco mock) */
+  .code-panel { display:flex; flex-direction:column; background:#0d0d1a; }
+  .code-body {
+    flex:1; padding:14px; font-family:'Fira Code','Courier New',monospace;
+    font-size:13px; line-height:1.8;
+  }
+  .ln { display:flex; }
+  .ln-num { color:#333366; width:30px; text-align:right; margin-right:14px; user-select:none; flex-shrink:0; }
+  .kw { color:#c084fc; }
+  .str { color:#34d399; }
+  .fn { color:#60a5fa; }
+  .cm { color:#4a4a6a; }
+  .cursor-b { border-right:2px solid #a78bfa; animation:pulse 1s step-end infinite; }
+
+  /* Match line */
+  .match-highlight { background: rgba(124,58,237,0.1); border-radius:4px; padding:2px 0; }
+
+  /* ========== PAGE 3: CODE QUEST (W3) ========== */
+  /* reuses quest-layout with code-panel instead of blockly */
+
+  /* ========== PAGE 4: TURTLE QUEST (W4) ========== */
+  .turtle-canvas {
+    flex:1; display:flex; align-items:center; justify-content:center;
+    background:#0a0a1a; border-left:2px solid #1e1e3a;
+  }
+  .turtle-mock {
+    width:340px; height:340px; border:2px solid #1e1e3a; border-radius:14px;
+    background:#111; position:relative; overflow:hidden;
+  }
+  .turtle-mock .grid-bg { position:absolute; inset:0; background: repeating-linear-gradient(0deg,transparent,transparent 19px,#1a1a2a 20px), repeating-linear-gradient(90deg,transparent,transparent 19px,#1a1a2a 20px); }
+  .turtle-mock .t-drawing {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    z-index:1;
+  }
+  .turtle-mock .t-drawing svg { width:200px; height:200px; }
+  .turtle-icon {
+    position:absolute; z-index:2; font-size:20px;
+    filter:drop-shadow(0 0 6px rgba(34,197,94,0.5));
+  }
+  .target-overlay {
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    z-index:0;
+  }
+  .target-shape { opacity:.15; }
+
+  /* ========== RESULT PAGES ========== */
+  .result-page {
+    margin-top:28px; flex:1;
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .result-page.correct { background:radial-gradient(ellipse at center,#1a2a1a,#0a0a1a); }
+  .result-page.wrong { background:radial-gradient(ellipse at center,#2a1a1a,#0a0a1a); }
+  .result-page.levelup { background:radial-gradient(ellipse at center,#2a1a4a,#0a0a1a); }
+  .r-card {
+    background:linear-gradient(135deg,#12122a,#1a2a1a);
+    border:3px solid #22c55e; border-radius:24px;
+    padding:36px; text-align:center; max-width:460px; width:100%;
+    position:relative; z-index:2; animation:slideUp .5s ease-out;
+  }
+  .r-card.wrong-c { background:linear-gradient(135deg,#12122a,#2a1a1a); border-color:#ef4444; }
+  .r-char { font-size:72px; margin-bottom:10px; }
+  .r-title { font-family:'Press Start 2P',monospace; font-size:18px; margin-bottom:6px; }
+  .r-title.green { color:#22c55e; text-shadow:0 0 20px rgba(34,197,94,0.5); }
+  .r-title.red { color:#ef4444; text-shadow:0 0 20px rgba(239,68,68,0.5); }
+  .r-sub { color:#94a3b8; margin-bottom:18px; font-size:13px; }
+  .stars-big { font-size:36px; margin-bottom:16px; filter:drop-shadow(0 0 8px rgba(245,158,11,0.5)); }
+  .r-rewards { display:flex; gap:14px; justify-content:center; margin-bottom:20px; }
+  .r-rew {
+    background:#1e1e3a; border-radius:10px; padding:10px 18px;
+    border:2px solid #2a2a4a; animation:slideUp .5s ease-out both;
+  }
+  .r-rew:nth-child(2) { animation-delay:.15s; }
+  .r-rew:nth-child(3) { animation-delay:.3s; }
+  .r-rew .ri { font-size:22px; }
+  .r-rew .rv { font-size:16px; font-weight:bold; color:#fbbf24; }
+  .r-rew .rl { font-size:10px; color:#94a3b8; }
+  .r-xp-bar { margin:0 16px 6px; }
+  .r-xp-bar .xp-bar-fill { background:linear-gradient(90deg,#7c3aed,#ec4899); animation:xpFill 1.5s ease-out; }
+  .r-xp-label { font-size:11px; color:#94a3b8; margin-bottom:20px; }
+  .btn-next {
+    background:linear-gradient(135deg,#7c3aed,#6d28d9); color:white; border:none;
+    padding:12px 32px; border-radius:12px; font-size:15px; cursor:pointer; font-weight:bold;
+    box-shadow:0 0 16px rgba(124,58,237,0.4);
+  }
+  .btn-retry {
+    background:linear-gradient(135deg,#ef4444,#dc2626); color:white; border:none;
+    padding:10px 24px; border-radius:10px; font-size:14px; cursor:pointer; font-weight:bold;
+    box-shadow:0 0 12px rgba(239,68,68,0.3); margin-right:8px;
+  }
+  .btn-hint {
+    background:#1e1e3a; border:2px solid #f59e0b; color:#f59e0b;
+    padding:10px 18px; border-radius:10px; font-size:12px; cursor:pointer;
+  }
+  .error-diff {
+    background:#0a0a1a; border-radius:8px; padding:14px; margin:14px 0;
+    text-align:left; font-family:monospace; font-size:12px; border:1px solid #2a2a4a;
+  }
+  .diff-ok { color:#22c55e; }
+  .diff-ng { color:#ef4444; }
+  .npc-enc {
+    display:flex; align-items:center; gap:10px;
+    background:#1e1e3a; border-radius:10px; padding:10px; margin:14px 0; text-align:left;
+  }
+  .npc-enc .npc-s { font-size:26px; }
+  .npc-enc .npc-m { font-size:11px; color:#c4b5fd; line-height:1.5; }
+  .confetti { position:absolute; z-index:1; animation:confettiFall 3s linear infinite; }
+
+  /* Levelup */
+  .lu-card { text-align:center; z-index:2; position:relative; animation:slideUp .5s ease-out; }
+  .lu-label { font-family:'Press Start 2P',monospace; font-size:13px; color:#a78bfa; margin-bottom:18px; letter-spacing:4px; }
+  .lu-num {
+    font-family:'Press Start 2P',monospace; font-size:72px;
+    background:linear-gradient(180deg,#fbbf24,#f59e0b,#ef4444);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 30px rgba(245,158,11,0.5));
+    animation:bounce 1s ease-in-out infinite; margin-bottom:10px;
+  }
+  .lu-title { font-size:16px; color:#fbbf24; margin-bottom:20px; }
+  .unlock-box {
+    background:#1e1e3a; border:2px solid #f59e0b; border-radius:14px;
+    padding:18px; margin-bottom:20px; box-shadow:0 0 16px rgba(245,158,11,0.12);
+  }
+  .unlock-label { font-size:11px; color:#f59e0b; margin-bottom:10px; }
+  .unlock-items { display:flex; gap:14px; justify-content:center; }
+  .unlock-item { text-align:center; }
+  .unlock-item .ui { font-size:32px; margin-bottom:3px; }
+  .unlock-item .un { font-size:10px; color:#94a3b8; }
+  .ring {
+    position:absolute; border-radius:50%; border:2px solid rgba(124,58,237,0.3);
+    animation:ringExpand 3s ease-out infinite;
+  }
+
+  /* ========== PAGE 7: DASHBOARD ========== */
+  .dashboard { margin-top:28px; padding:40px 20px 80px; max-width:860px; margin-left:auto; margin-right:auto; }
+  .d-header { display:flex; align-items:center; gap:18px; margin-bottom:28px; animation:slideUp .3s ease-out; }
+  .d-avatar {
+    width:72px; height:72px; border-radius:50%;
+    background:linear-gradient(135deg,#1e1e3a,#2a1a4a);
+    border:3px solid #7c3aed; display:flex; align-items:center; justify-content:center;
+    font-size:36px; box-shadow:0 0 16px rgba(124,58,237,0.3);
+  }
+  .d-name { font-size:22px; font-weight:bold; margin-bottom:3px; }
+  .d-rank {
+    display:inline-flex; align-items:center; gap:5px;
+    background:linear-gradient(135deg,#7c3aed,#ec4899);
+    color:white; padding:3px 12px; border-radius:16px; font-size:11px; font-weight:bold;
+  }
+  .d-xp {
+    background:#12122a; border-radius:14px; padding:16px;
+    border:2px solid #1e1e3a; margin-bottom:20px;
+  }
+  .d-xp-row { display:flex; justify-content:space-between; margin-bottom:6px; font-size:12px; }
+  .d-xp-row .l { color:#94a3b8; }
+  .d-xp-row .v { color:#a78bfa; font-weight:bold; }
+  .d-xp .xp-bar-fill { background:linear-gradient(90deg,#7c3aed,#ec4899); width:70%; }
+  .d-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:24px; }
+  .d-stat {
+    background:#12122a; border-radius:12px; padding:16px; text-align:center;
+    border:2px solid #1e1e3a; transition:all .2s; animation:slideUp .5s ease-out both;
+  }
+  .d-stat:nth-child(2){animation-delay:.1s} .d-stat:nth-child(3){animation-delay:.2s} .d-stat:nth-child(4){animation-delay:.3s}
+  .d-stat:hover { border-color:#7c3aed; transform:translateY(-3px); }
+  .d-stat .ds-i { font-size:24px; margin-bottom:4px; }
+  .d-stat .ds-n { font-size:24px; font-weight:bold; }
+  .d-stat .ds-l { font-size:10px; color:#4a4a6a; margin-top:3px; }
+  .d-ach h3 { font-size:14px; color:#a78bfa; margin-bottom:12px; }
+  .d-ach-list { display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; }
+  .ach {
+    background:#12122a; border-radius:12px; padding:14px; min-width:120px;
+    text-align:center; border:2px solid #1e1e3a; flex-shrink:0;
+  }
+  .ach.earned { border-color:#f59e0b; box-shadow:0 0 12px rgba(245,158,11,0.12); }
+  .ach.locked { opacity:.3; }
+  .ach .a-i { font-size:28px; margin-bottom:6px; }
+  .ach .a-n { font-size:10px; color:#94a3b8; }
+
+  /* ========== PAGE 8: TEACHER ========== */
+  .teacher { margin-top:28px; padding:40px 20px 80px; max-width:900px; margin-left:auto; margin-right:auto; }
+  .teacher h1 { font-size:22px; margin-bottom:6px; }
+  .teacher .t-sub { color:#94a3b8; font-size:13px; margin-bottom:24px; }
+  .t-summary { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:24px; }
+  .t-sum-card {
+    background:#12122a; border-radius:12px; padding:18px; text-align:center;
+    border:2px solid #1e1e3a;
+  }
+  .t-sum-card .ts-i { font-size:28px; margin-bottom:4px; }
+  .t-sum-card .ts-n { font-size:28px; font-weight:bold; }
+  .t-sum-card .ts-l { font-size:11px; color:#4a4a6a; }
+  .t-table {
+    width:100%; border-collapse:collapse; font-size:13px;
+  }
+  .t-table th {
+    background:#12122a; padding:10px 12px; text-align:left;
+    border-bottom:2px solid #1e1e3a; color:#94a3b8; font-size:11px;
+  }
+  .t-table td {
+    padding:10px 12px; border-bottom:1px solid #1e1e3a;
+  }
+  .t-table tr:hover td { background:#12122a; }
+  .prog-mini { display:inline-block; width:60px; height:6px; background:#1e1e3a; border-radius:3px; overflow:hidden; vertical-align:middle; margin-left:6px; }
+  .prog-mini-fill { height:100%; border-radius:3px; }
+  .t-btn {
+    background:#1e1e3a; border:2px solid #2a2a4a; color:#94a3b8;
+    padding:8px 16px; border-radius:8px; cursor:pointer; font-size:12px;
+    margin-top:16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-nav">
+  <button class="active" onclick="sp(0)">🗺 マップ</button>
+  <button onclick="sp(1)">🧩 W1:ブロック</button>
+  <button onclick="sp(2)">🔀 W2:変換</button>
+  <button onclick="sp(3)">🐍 W3:コード</button>
+  <button onclick="sp(4)">🎨 W4:turtle</button>
+  <button onclick="sp(5)">🎉 正解</button>
+  <button onclick="sp(6)">💀 不正解</button>
+  <button onclick="sp(7)">⬆ LvUP</button>
+  <button onclick="sp(8)">👤 ステータス</button>
+  <button onclick="sp(9)">👨‍🏫 先生</button>
+</div>
+
+<!-- ===== P0: WORLD MAP ===== -->
+<div class="page active" id="p-0">
+  <div class="page-label">Page 1 / 10 ─ ワールドマップ</div>
+  <div class="top-hero">
+    <div class="char-wrap"><div class="main-char">🐍</div><div class="char-lv">3</div></div>
+    <h1>Python Quest</h1>
+    <div class="top-sub">コードを書いて、世界を冒険しよう！</div>
+    <div class="xp-top">
+      <div class="xp-label"><span>Lv.3 コードの見習い</span><span>350 / 500 XP</span></div>
+      <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:65%;background:linear-gradient(90deg,#7c3aed,#ec4899)"></div></div>
+    </div>
+    <button class="start-btn" onclick="sp(1)">⚔ 冒険をつづける</button>
+  </div>
+  <div class="worlds">
+    <h2>🌍 ワールド選択</h2>
+    <div class="world-list">
+      <!-- W1 -->
+      <div>
+        <div class="world-row" style="border-color:#22c55e;">
+          <div class="w-icon">🌱</div>
+          <div class="w-info">
+            <div class="w-name">スクラッチの森</div>
+            <div class="w-desc">ブロックを組み合わせてプログラミングの基本を学ぼう</div>
+          </div>
+          <div class="w-progress">
+            <div class="w-frac">8 / 8</div>
+            <div class="w-prog-bg"><div class="w-prog-fill" style="width:100%;background:#22c55e;"></div></div>
+            <div class="w-status" style="color:#22c55e;">✓ クリア済み</div>
+          </div>
+        </div>
+        <div class="quest-nodes">
+          <div class="qnode cleared"><span class="q-star">⭐⭐⭐</span>1</div>
+          <div class="qnode cleared"><span class="q-star">⭐⭐⭐</span>2</div>
+          <div class="qnode cleared"><span class="q-star">⭐⭐☆</span>3</div>
+          <div class="qnode cleared"><span class="q-star">⭐⭐⭐</span>4</div>
+          <div class="qnode cleared"><span class="q-star">⭐☆☆</span>5</div>
+          <div class="qnode cleared"><span class="q-star">⭐⭐⭐</span>6</div>
+          <div class="qnode cleared"><span class="q-star">⭐⭐☆</span>7</div>
+          <div class="qnode boss cleared">👹</div>
+        </div>
+      </div>
+      <!-- W2 -->
+      <div>
+        <div class="world-row current" onclick="sp(2)">
+          <div class="w-icon">🔀</div>
+          <div class="w-info">
+            <div class="w-name">変換の洞窟</div>
+            <div class="w-desc">ブロックがPythonコードになる仕組みを覚えよう</div>
+          </div>
+          <div class="w-progress">
+            <div class="w-frac">3 / 8</div>
+            <div class="w-prog-bg"><div class="w-prog-fill" style="width:37%;background:linear-gradient(90deg,#7c3aed,#a78bfa);"></div></div>
+            <div class="w-status" style="color:#a78bfa;">▶ 進行中</div>
+          </div>
+        </div>
+        <div class="quest-nodes">
+          <div class="qnode cleared"><span class="q-star">⭐⭐⭐</span>1</div>
+          <div class="qnode cleared"><span class="q-star">⭐⭐☆</span>2</div>
+          <div class="qnode cleared"><span class="q-star">⭐☆☆</span>3</div>
+          <div class="qnode current">4</div>
+          <div class="qnode locked">5</div>
+          <div class="qnode locked">6</div>
+          <div class="qnode locked">7</div>
+          <div class="qnode boss locked">🔒</div>
+        </div>
+      </div>
+      <!-- W3 -->
+      <div>
+        <div class="world-row locked">
+          <div class="w-icon">🐍</div>
+          <div class="w-info">
+            <div class="w-name">Pythonの大地</div>
+            <div class="w-desc">自分の手でPythonコードを書いてみよう</div>
+          </div>
+          <div class="w-progress">
+            <div class="w-frac">🔒 Lv.6で解放</div>
+          </div>
+        </div>
+      </div>
+      <!-- W4 -->
+      <div>
+        <div class="world-row locked">
+          <div class="w-icon">🎨</div>
+          <div class="w-info">
+            <div class="w-name">turtleの草原</div>
+            <div class="w-desc">コードで絵を描こう！亀を動かして図形を作る</div>
+          </div>
+          <div class="w-progress">
+            <div class="w-frac">🔒 Lv.8で解放</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P1: W1 BLOCK QUEST ===== -->
+<div class="page" id="p-1">
+  <div class="page-label">Page 2 / 10 ─ 🌱 ワールド1：スクラッチの森（ブロックモード）</div>
+  <div class="quest-layout">
+    <div class="quest-sidebar">
+      <div class="q-header">
+        <div class="q-badge">🌱 W1 クエスト 5/8</div>
+        <div class="q-title">🔀 if文で分岐！</div>
+      </div>
+      <div class="npc-box">
+        <div class="npc-av">🧩</div>
+        <div><div class="npc-nm">ブロッくん</div><div class="npc-tx">ブロックを使って条件分岐を作ってみよう！<br>「もし〜なら」ブロックを使うんだ！</div></div>
+      </div>
+      <div class="mission">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-target">xが10より大きいとき<br>「大きい！」と表示せよ</div>
+      </div>
+      <div class="rewards">
+        <div class="rew"><div class="r-icon">✨</div><div class="r-val">+40 XP</div></div>
+        <div class="rew"><div class="r-icon">💰</div><div class="r-val">+20</div></div>
+        <div class="rew"><div class="r-icon">⭐</div><div class="r-val">★3</div></div>
+      </div>
+    </div>
+    <div class="blockly-panel">
+      <div class="panel-header">
+        <div class="panel-tab"><div class="dot" style="background:#f59e0b;"></div>🧩 ブロックエディタ</div>
+        <button class="run-btn" onclick="sp(5)">▶ 実行！</button>
+      </div>
+      <div class="blockly-body">
+        <div class="block orange">🏷 x を <span class="hole">15</span> にする</div>
+        <div style="margin-top:8px;">
+          <div class="block purple">🔀 もし <span class="hole">x > 10</span> なら</div>
+          <div class="block-indent" style="margin-top:6px;">
+            <div class="block green">📢 <span class="hole">大きい！</span> と表示</div>
+          </div>
+        </div>
+        <div class="toolbox">
+          <div class="toolbox-label">🧰 ブロック一覧（ドラッグ）</div>
+          <div class="toolbox-items">
+            <div class="toolbox-item">📢 表示する</div>
+            <div class="toolbox-item">🏷 変数を作る</div>
+            <div class="toolbox-item">🔀 もし〜なら</div>
+            <div class="toolbox-item">🔁 くり返す</div>
+            <div class="toolbox-item">🔢 数字</div>
+            <div class="toolbox-item">📝 文字</div>
+            <div class="toolbox-item">➕ 計算</div>
+            <div class="toolbox-item">⚖ 比較</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="output-panel">
+      <div class="output-tabs"><button class="active">📺 出力</button><button>✅ テスト</button></div>
+      <div class="output-body">
+        <div class="output-mock"><div class="grid-bg"></div><div class="mock-icon">🧩</div><div class="mock-text">▶ 実行するとここに表示</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P2: W2 CONVERT QUEST ===== -->
+<div class="page" id="p-2">
+  <div class="page-label">Page 3 / 10 ─ 🔀 ワールド2：変換の洞窟（変換モード）</div>
+  <div class="convert-layout">
+    <div class="quest-sidebar">
+      <div class="q-header">
+        <div class="q-badge">🔀 W2 クエスト 4/8</div>
+        <div class="q-title">🔀 if文の変換</div>
+      </div>
+      <div class="npc-box">
+        <div class="npc-av">🔀</div>
+        <div><div class="npc-nm">ヘンカンジャー</div><div class="npc-tx">左のブロックをよく見て！<br>右側に同じ動きをするPythonコードを完成させるのじゃ！</div></div>
+      </div>
+      <div class="mission">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-target">ブロックと同じ動きになるように<br>Pythonコードの穴を埋めよう</div>
+      </div>
+      <div class="rewards">
+        <div class="rew"><div class="r-icon">✨</div><div class="r-val">+50 XP</div></div>
+        <div class="rew"><div class="r-icon">💰</div><div class="r-val">+30</div></div>
+      </div>
+    </div>
+    <div class="blockly-panel" style="border-right:none;">
+      <div class="panel-header">
+        <div class="panel-tab"><div class="dot" style="background:#f59e0b;"></div>🧩 ブロック（お手本）</div>
+      </div>
+      <div class="blockly-body">
+        <div class="block orange match-highlight">🏷 x を <span class="hole">15</span> にする</div>
+        <div style="margin-top:8px;">
+          <div class="block purple match-highlight">🔀 もし <span class="hole">x > 10</span> なら</div>
+          <div class="block-indent" style="margin-top:6px;">
+            <div class="block green match-highlight">📢 <span class="hole">大きい！</span> と表示</div>
+          </div>
+        </div>
+        <div style="margin-top:24px; padding:12px; background:#1e1e3a; border-radius:8px; border:1px solid #2a2a4a;">
+          <div style="font-size:10px; color:#f59e0b; margin-bottom:6px;">💡 対応表</div>
+          <div style="font-size:11px; color:#94a3b8; line-height:1.8;">
+            🏷 変数 → <code style="color:#c084fc;">x = 値</code><br>
+            🔀 もし → <code style="color:#c084fc;">if 条件:</code><br>
+            📢 表示 → <code style="color:#c084fc;">print("文字")</code>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="arrow-col">
+      <div style="font-size:28px;">→</div>
+      <div class="arr-label">変換</div>
+    </div>
+    <div class="code-panel">
+      <div class="panel-header">
+        <div class="panel-tab"><div class="dot" style="background:#22c55e;"></div>🐍 Python（穴埋め）</div>
+        <button class="run-btn" onclick="sp(5)">▶ 実行！</button>
+      </div>
+      <div class="code-body">
+        <div class="ln match-highlight"><span class="ln-num">1</span><span class="kw">x</span> = <span class="fn">15</span></div>
+        <div class="ln"><span class="ln-num">2</span></div>
+        <div class="ln match-highlight"><span class="ln-num">3</span><span class="kw">if</span> x > <span class="fn">10</span>:</div>
+        <div class="ln match-highlight"><span class="ln-num">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="background:#f59e0b33; border:1px dashed #f59e0b; border-radius:4px; padding:1px 20px; color:#f59e0b; font-size:12px;">ここを埋めよう</span></div>
+        <div class="ln"><span class="ln-num">5</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P3: W3 CODE QUEST ===== -->
+<div class="page" id="p-3">
+  <div class="page-label">Page 4 / 10 ─ 🐍 ワールド3：Pythonの大地（コードモード）</div>
+  <div class="quest-layout">
+    <div class="quest-sidebar">
+      <div class="q-header">
+        <div class="q-badge">🐍 W3 クエスト 5/8</div>
+        <div class="q-title">🔀 if文を書こう！</div>
+      </div>
+      <div class="npc-box">
+        <div class="npc-av">🧙</div>
+        <div><div class="npc-nm">パイソン先生</div><div class="npc-tx">いよいよ自分でコードを書くときが来たのう！<br>ワールド1と2で学んだことを思い出すのじゃ！</div></div>
+      </div>
+      <div class="mission">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-target">xが10より大きければ<br>「大きい！」と表示せよ</div>
+      </div>
+      <div class="rewards">
+        <div class="rew"><div class="r-icon">✨</div><div class="r-val">+60 XP</div></div>
+        <div class="rew"><div class="r-icon">💰</div><div class="r-val">+40</div></div>
+        <div class="rew"><div class="r-icon">⭐</div><div class="r-val">★3</div></div>
+      </div>
+    </div>
+    <div class="code-panel" style="border-left:none;">
+      <div class="panel-header">
+        <div class="panel-tab"><div class="dot" style="background:#22c55e;"></div>🐍 quest.py</div>
+        <button class="run-btn" onclick="sp(5)">▶ 実行！</button>
+      </div>
+      <div class="code-body">
+        <div class="ln"><span class="ln-num">1</span><span class="cm"># 🎯 xが10より大きければ「大きい！」と表示しよう</span></div>
+        <div class="ln"><span class="ln-num">2</span><span class="kw">x</span> = <span class="fn">15</span></div>
+        <div class="ln"><span class="ln-num">3</span></div>
+        <div class="ln"><span class="ln-num">4</span><span class="kw">if</span> x > <span class="fn">10</span>:</div>
+        <div class="ln"><span class="ln-num">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">print</span>(<span class="str">"大きい！"</span>)<span class="cursor-b"> </span></div>
+        <div class="ln"><span class="ln-num">6</span></div>
+        <div class="ln"><span class="ln-num">7</span></div>
+        <div class="ln"><span class="ln-num">8</span></div>
+      </div>
+    </div>
+    <div class="output-panel">
+      <div class="output-tabs"><button class="active">📺 出力</button><button>✅ テスト</button></div>
+      <div class="output-body">
+        <div class="output-mock"><div class="grid-bg"></div><div class="mock-icon">🐍</div><div class="mock-text">▶ 実行するとここに表示</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P4: W4 TURTLE QUEST ===== -->
+<div class="page" id="p-4">
+  <div class="page-label">Page 5 / 10 ─ 🎨 ワールド4：turtleの草原（turtleモード）</div>
+  <div class="quest-layout">
+    <div class="quest-sidebar">
+      <div class="q-header">
+        <div class="q-badge">🎨 W4 クエスト 3/8</div>
+        <div class="q-title">🟦 四角形を描こう</div>
+      </div>
+      <div class="npc-box">
+        <div class="npc-av">🐢</div>
+        <div><div class="npc-nm">カメさん</div><div class="npc-tx">ループを使って四角形を描いてみよう！<br>同じ動きを4回くり返すといいぞ🐢</div></div>
+      </div>
+      <div class="mission">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-target">turtleを使って<br>1辺100の正方形を描け</div>
+      </div>
+      <div style="margin-top:12px; padding:10px; background:#1e1e3a; border-radius:8px; border:1px solid #2a2a4a;">
+        <div style="font-size:10px; color:#64648a; margin-bottom:4px;">🎯 お手本</div>
+        <div style="text-align:center;">
+          <svg width="80" height="80" viewBox="0 0 80 80"><rect x="10" y="10" width="60" height="60" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="4"/></svg>
+        </div>
+      </div>
+      <div class="rewards" style="margin-top:12px;">
+        <div class="rew"><div class="r-icon">✨</div><div class="r-val">+70 XP</div></div>
+        <div class="rew"><div class="r-icon">💰</div><div class="r-val">+50</div></div>
+      </div>
+    </div>
+    <div class="code-panel" style="border-left:none;">
+      <div class="panel-header">
+        <div class="panel-tab"><div class="dot" style="background:#22c55e;"></div>🎨 turtle.py</div>
+        <button class="run-btn" onclick="sp(5)">▶ 実行！</button>
+      </div>
+      <div class="code-body">
+        <div class="ln"><span class="ln-num">1</span><span class="kw">import</span> <span class="fn">turtle</span></div>
+        <div class="ln"><span class="ln-num">2</span></div>
+        <div class="ln"><span class="ln-num">3</span><span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">4</span>):</div>
+        <div class="ln"><span class="ln-num">4</span>&nbsp;&nbsp;&nbsp;&nbsp;turtle.<span class="fn">forward</span>(<span class="fn">100</span>)</div>
+        <div class="ln"><span class="ln-num">5</span>&nbsp;&nbsp;&nbsp;&nbsp;turtle.<span class="fn">right</span>(<span class="fn">90</span>)<span class="cursor-b"> </span></div>
+        <div class="ln"><span class="ln-num">6</span></div>
+      </div>
+    </div>
+    <div class="turtle-canvas">
+      <div class="turtle-mock">
+        <div class="grid-bg"></div>
+        <div class="target-overlay">
+          <svg class="target-shape" width="200" height="200" viewBox="0 0 200 200">
+            <rect x="40" y="40" width="120" height="120" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="8"/>
+          </svg>
+        </div>
+        <div class="t-drawing">
+          <svg width="200" height="200" viewBox="0 0 200 200">
+            <path d="M40 40 L160 40 L160 160 L40 160 Z" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="turtle-icon" style="top:152px; left:32px;">🐢</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P5: CORRECT ===== -->
+<div class="page" id="p-5">
+  <div class="page-label">Page 6 / 10 ─ 🎉 クエストクリア演出</div>
+  <div class="result-page correct" id="correct-ov">
+    <div class="r-card">
+      <div class="r-char" style="animation:bounce 1s ease-in-out infinite;">🐍</div>
+      <div class="r-title green">QUEST CLEAR!</div>
+      <div class="r-sub">「if文で分岐！」をクリア！</div>
+      <div class="stars-big">⭐⭐⭐</div>
+      <div class="r-rewards">
+        <div class="r-rew"><div class="ri">✨</div><div class="rv">+60</div><div class="rl">XP</div></div>
+        <div class="r-rew"><div class="ri">💰</div><div class="rv">+40</div><div class="rl">コイン</div></div>
+        <div class="r-rew"><div class="ri">🏅</div><div class="rv">NEW!</div><div class="rl">称号ゲット</div></div>
+      </div>
+      <div class="r-xp-bar"><div class="xp-bar-bg"><div class="xp-bar-fill" style="width:80%;background:linear-gradient(90deg,#7c3aed,#ec4899);animation:xpFill 1.5s ease-out;"></div></div></div>
+      <div class="r-xp-label">Lv.3 → あと 150 XP で Lv.4！</div>
+      <button class="btn-next" onclick="sp(0)">次のクエストへ →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P6: WRONG ===== -->
+<div class="page" id="p-6">
+  <div class="page-label">Page 7 / 10 ─ 💀 ミッション失敗</div>
+  <div class="result-page wrong">
+    <div class="r-card wrong-c">
+      <div class="r-char" style="animation:shake .5s ease-in-out;">😵</div>
+      <div class="r-title red">MISSION FAILED...</div>
+      <div class="r-sub">もうちょっと！あきらめないで！</div>
+      <div class="error-diff">
+        <div class="diff-ok">✓ 期待: 大きい！</div>
+        <div class="diff-ng">✗ 実際: おおきい</div>
+      </div>
+      <div class="npc-enc">
+        <div class="npc-s">🧙</div>
+        <div class="npc-m"><strong>パイソン先生：</strong><br>惜しいのう！文字列をよく見比べてみるのじゃ。<br>「！」は全角かな？🤔</div>
+      </div>
+      <div><button class="btn-retry" onclick="sp(3)">⚔ もう一度！</button><button class="btn-hint">💡 ヒント</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P7: LEVEL UP ===== -->
+<div class="page" id="p-7">
+  <div class="page-label">Page 8 / 10 ─ ⬆ レベルアップ演出</div>
+  <div class="result-page levelup" id="lu-ov">
+    <div class="ring" style="width:200px;height:200px;top:calc(50% - 100px);left:calc(50% - 100px);"></div>
+    <div class="ring" style="width:200px;height:200px;top:calc(50% - 100px);left:calc(50% - 100px);animation-delay:1s;"></div>
+    <div class="ring" style="width:200px;height:200px;top:calc(50% - 100px);left:calc(50% - 100px);animation-delay:2s;"></div>
+    <div class="lu-card">
+      <div class="lu-label">L E V E L&nbsp;&nbsp;U P !</div>
+      <div class="lu-num">4</div>
+      <div class="lu-title">🏅 「コードの冒険者」になった！</div>
+      <div class="unlock-box">
+        <div class="unlock-label">🔓 解放されたもの</div>
+        <div class="unlock-items">
+          <div class="unlock-item"><div class="ui">🔀</div><div class="un">変換の洞窟</div></div>
+          <div class="unlock-item"><div class="ui">🐉</div><div class="un">新キャラ</div></div>
+          <div class="unlock-item"><div class="ui">🎵</div><div class="un">BGM変更</div></div>
+        </div>
+      </div>
+      <button class="btn-next" onclick="sp(0)">冒険を続ける →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P8: DASHBOARD ===== -->
+<div class="page" id="p-8">
+  <div class="page-label">Page 9 / 10 ─ 👤 冒険者ステータス</div>
+  <div class="dashboard">
+    <div class="d-header">
+      <div class="d-avatar">🐍</div>
+      <div><div class="d-name">たろう</div><span class="d-rank">🏅 コードの見習い (Lv.3)</span></div>
+    </div>
+    <div class="d-xp">
+      <div class="d-xp-row"><span class="l">次のレベルまで</span><span class="v">350 / 500 XP</span></div>
+      <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:70%;background:linear-gradient(90deg,#7c3aed,#ec4899);"></div></div>
+    </div>
+    <div class="d-stats">
+      <div class="d-stat"><div class="ds-i">⚔</div><div class="ds-n">11</div><div class="ds-l">クリア</div></div>
+      <div class="d-stat"><div class="ds-i">⭐</div><div class="ds-n">27</div><div class="ds-l">スター</div></div>
+      <div class="d-stat"><div class="ds-i">🔥</div><div class="ds-n">3</div><div class="ds-l">連続日数</div></div>
+      <div class="d-stat"><div class="ds-i">💰</div><div class="ds-n">420</div><div class="ds-l">コイン</div></div>
+    </div>
+    <div class="d-ach">
+      <h3>🏆 実績</h3>
+      <div class="d-ach-list">
+        <div class="ach earned"><div class="a-i">📜</div><div class="a-n">はじめてのコード</div></div>
+        <div class="ach earned"><div class="a-i">🔥</div><div class="a-n">3日連続ログイン</div></div>
+        <div class="ach earned"><div class="a-i">⭐</div><div class="a-n">パーフェクト★3</div></div>
+        <div class="ach earned"><div class="a-i">🌱</div><div class="a-n">森クリア</div></div>
+        <div class="ach locked"><div class="a-i">👹</div><div class="a-n">ボス撃破</div></div>
+        <div class="ach locked"><div class="a-i">🎨</div><div class="a-n">turtleマスター</div></div>
+        <div class="ach locked"><div class="a-i">💯</div><div class="a-n">全問コンプ</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P9: TEACHER ===== -->
+<div class="page" id="p-9">
+  <div class="page-label">Page 10 / 10 ─ 👨‍🏫 先生用管理画面</div>
+  <div class="teacher">
+    <h1>👨‍🏫 クラス管理</h1>
+    <div class="t-sub">Aクラス ─ 生徒 4人</div>
+    <div class="t-summary">
+      <div class="t-sum-card"><div class="ts-i">👥</div><div class="ts-n">4</div><div class="ts-l">生徒数</div></div>
+      <div class="t-sum-card"><div class="ts-i">📊</div><div class="ts-n">42%</div><div class="ts-l">平均進捗</div></div>
+      <div class="t-sum-card"><div class="ts-i">🔥</div><div class="ts-n">3</div><div class="ts-l">今日アクティブ</div></div>
+    </div>
+    <table class="t-table">
+      <thead>
+        <tr><th>名前</th><th>Lv</th><th>🌱 W1</th><th>🔀 W2</th><th>🐍 W3</th><th>🎨 W4</th><th>最終ログイン</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🐍 たろう</td><td>Lv.3</td>
+          <td>8/8 <span class="prog-mini"><span class="prog-mini-fill" style="width:100%;background:#22c55e;"></span></span></td>
+          <td>3/8 <span class="prog-mini"><span class="prog-mini-fill" style="width:37%;background:#a78bfa;"></span></span></td>
+          <td>🔒</td><td>🔒</td><td>今日</td>
+        </tr>
+        <tr>
+          <td>🐱 はなこ</td><td>Lv.4</td>
+          <td>8/8 <span class="prog-mini"><span class="prog-mini-fill" style="width:100%;background:#22c55e;"></span></span></td>
+          <td>6/8 <span class="prog-mini"><span class="prog-mini-fill" style="width:75%;background:#a78bfa;"></span></span></td>
+          <td>1/8 <span class="prog-mini"><span class="prog-mini-fill" style="width:12%;background:#ec4899;"></span></span></td>
+          <td>🔒</td><td>今日</td>
+        </tr>
+        <tr>
+          <td>🐶 けんた</td><td>Lv.2</td>
+          <td>5/8 <span class="prog-mini"><span class="prog-mini-fill" style="width:62%;background:#22c55e;"></span></span></td>
+          <td>🔒</td><td>🔒</td><td>🔒</td><td>今日</td>
+        </tr>
+        <tr>
+          <td>🐰 ゆい</td><td>Lv.1</td>
+          <td>2/8 <span class="prog-mini"><span class="prog-mini-fill" style="width:25%;background:#22c55e;"></span></span></td>
+          <td>🔒</td><td>🔒</td><td>🔒</td><td style="color:#ef4444;">3日前</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="t-btn">📥 CSVエクスポート</button>
+  </div>
+</div>
+
+<script>
+function sp(i) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.page-nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('p-'+i).classList.add('active');
+  document.querySelectorAll('.page-nav button')[i].classList.add('active');
+  if (i===5) spawnC('correct-ov');
+  if (i===7) spawnC('lu-ov');
+}
+function spawnC(id) {
+  const o = document.getElementById(id);
+  o.querySelectorAll('.confetti').forEach(c=>c.remove());
+  const e = ['🎊','✨','🌟','💫','🎉','⭐','🎈','💎','🔥'];
+  for (let i=0;i<25;i++){
+    const c=document.createElement('div'); c.className='confetti';
+    c.textContent=e[Math.floor(Math.random()*e.length)];
+    c.style.left=Math.random()*100+'%';
+    c.style.animationDelay=Math.random()*2+'s';
+    c.style.animationDuration=(2+Math.random()*2)+'s';
+    c.style.fontSize=(16+Math.random()*20)+'px';
+    o.appendChild(c);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+/* === Watao Docs - Dark Modern Theme === */
+
+:root {
+  --md-primary-fg-color: #0d1117;
+  --md-primary-bg-color: #e6edf3;
+  --md-default-bg-color: #0d1117;
+  --md-default-fg-color: #e6edf3;
+  --accent-primary: #58a6ff;
+  --accent-secondary: #39d353;
+  --accent-cyan: #56d4dd;
+  --surface-1: #161b22;
+  --surface-2: #21262d;
+  --border-color: #30363d;
+  --glow-color: rgba(88, 166, 255, 0.15);
+}
+
+/* Background */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #0d1117;
+  --md-default-fg-color--light: #8b949e;
+  --md-code-bg-color: #161b22;
+  --md-typeset-a-color: var(--accent-primary);
+  --md-accent-fg-color: var(--accent-cyan);
+}
+
+/* Header */
+.md-header {
+  background: var(--surface-1) !important;
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+}
+
+.md-header__title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Navigation sidebar */
+.md-sidebar {
+  background: var(--surface-1);
+  border-right: 1px solid var(--border-color);
+}
+
+.md-nav__link:hover,
+.md-nav__link--active {
+  color: var(--accent-primary) !important;
+}
+
+.md-nav__item--active > .md-nav__link {
+  color: var(--accent-primary) !important;
+  font-weight: 600;
+}
+
+/* Content */
+.md-content {
+  max-width: 900px;
+}
+
+/* Headings */
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 1em;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  color: #e6edf3;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.4em;
+}
+
+/* Links */
+.md-typeset a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--accent-cyan);
+}
+
+/* Cards on homepage */
+.md-typeset .grid.cards > ul > li {
+  background: var(--surface-1) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 1.5em !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 4px 24px var(--glow-color), 0 0 0 1px var(--accent-primary) !important;
+  transform: translateY(-4px) !important;
+}
+
+.md-typeset .grid.cards > ul > li p:first-child {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+/* Card link arrows */
+.md-typeset .grid.cards a {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.md-typeset .grid.cards a:hover {
+  color: var(--accent-cyan);
+}
+
+/* Code blocks */
+.md-typeset code {
+  background: var(--surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+  font-size: 0.85em;
+}
+
+.md-typeset pre > code {
+  border: none;
+  padding: 1em;
+}
+
+.highlight {
+  background: var(--surface-1) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Admonitions */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 8px !important;
+  border: 1px solid var(--border-color) !important;
+  background: var(--surface-1) !important;
+}
+
+/* Search */
+.md-search__input {
+  background: var(--surface-2) !important;
+  border-radius: 8px !important;
+}
+
+/* Footer */
+.md-footer {
+  background: var(--surface-1) !important;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
+
+/* Back to top button */
+.md-top {
+  background: var(--accent-primary) !important;
+  color: #0d1117 !important;
+  border-radius: 8px !important;
+}
+
+/* Tables */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--surface-2);
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  border-color: var(--border-color);
+}
+
+/* Selection */
+::selection {
+  background: rgba(88, 166, 255, 0.3);
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}

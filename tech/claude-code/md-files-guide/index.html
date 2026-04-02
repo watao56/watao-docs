@@ -1,0 +1,2916 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="watao56のドキュメントサイト">
+      
+      
+        <meta name="author" content="watao56">
+      
+      
+        <link rel="canonical" href="https://watao56.github.io/watao-docs/tech/claude-code/md-files-guide/">
+      
+      
+        <link rel="prev" href="../setup-windows/">
+      
+      
+        <link rel="next" href="../agent-mode/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>CLAUDE.md メモリ管理 - Watao Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#claudemd" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Watao Docs" class="md-header__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Watao Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLAUDE.md メモリ管理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 調査メモ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🛠️ 技術ノート
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../projects/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📋 プロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ideas/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡 アイデア
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Watao Docs" class="md-nav__button md-logo" aria-label="Watao Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>
+
+    </a>
+    Watao Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 調査メモ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ 技術ノート
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ 技術ノート
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🤖 AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../claude/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💜 Claude
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chatgpt/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💬 ChatGPT
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../gemini-app/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💬 Gemini
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 Claude Code
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🤖 Claude Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup-mac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mac セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLAUDE.md メモリ管理
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLAUDE.md メモリ管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メモリの全体像
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メモリの全体像">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メモリの種類と配置場所
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claudemd_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLAUDE.md
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLAUDE.md">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#claudemd_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLAUDE.md とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        書き方のベストプラクティス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="書き方のベストプラクティス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        含めるべきもの vs 含めないもの
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        強調のテクニック
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /init コマンドで生成する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        @ によるファイルインポート
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        配置場所と読み込み
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clauderules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モジュラールール（.claude/rules/）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="モジュラールール（.claude/rules/）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本構成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パス固有のルール
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユーザーレベルルール
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto Memory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto-memory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto Memory とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保存される内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ストレージ構造
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-memory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto Memory の管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills（スキル）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skills（スキル）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skills_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スキルの配置場所
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スキルの種類
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="スキルの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リファレンス型（自動適用される知識）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タスク型（手動起動するワークフロー）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フロントマター設定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        変数の利用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        動的コンテキスト注入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        呼び出し制御
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claudemd_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロジェクト別 CLAUDE.md の設定例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="プロジェクト別 CLAUDE.md の設定例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typescript-react" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TypeScript + React プロジェクト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python + FastAPI プロジェクト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rust プロジェクト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メンテナンスの習慣
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent-mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エージェントモード
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hooks-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hooks・自動化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci-cd-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI/CD連携
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI・MCP連携
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ghostty-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ghostty連携
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips-and-tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    活用事例集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    上級ワークフロー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-project-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    実例：全工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../gemini/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 Gemini CLI
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../codex/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 Codex CLI
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../skills/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎯 Skills
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../mcp/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔌 MCP
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../ai/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 AI実装
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../aws/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☁️ AWS
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../projects/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 プロジェクト
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../ideas/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡 アイデア
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="ナビゲーション" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    ホーム
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🛠️ 技術ノート
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../claude/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🤖 AI
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    🤖 Claude Code
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="claudemd">CLAUDE.md メモリ管理ガイド<a class="headerlink" href="#claudemd" title="Permanent link">&para;</a></h1>
+<p>Claude Code の動作をカスタマイズするメモリシステムの全体像。CLAUDE.md、Auto Memory、Rules、Skills、サブエージェントの書き方と管理方法を、Anthropic 公式ドキュメントに基づいて解説する。</p>
+<h2 id="_1">メモリの全体像<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Claude Code には<strong>2種類のメモリ</strong>がセッションをまたいで永続化する（<a href="https://code.claude.com/docs/en/memory">公式ドキュメント</a>）：</p>
+<ul>
+<li><strong>CLAUDE.md ファイル</strong>: ユーザーが書いて管理する指示・ルール・プリファレンス</li>
+<li><strong>Auto Memory</strong>: Claude が自動的に保存する有用なコンテキスト（プロジェクトのパターン、コマンド、プリファレンスなど）</li>
+</ul>
+<p>両方ともセッション開始時に Claude のコンテキストに読み込まれる。</p>
+<h3 id="_2">メモリの種類と配置場所<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>メモリタイプ</th>
+<th>場所</th>
+<th>用途</th>
+<th>共有範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>管理ポリシー</strong></td>
+<td>macOS: <code>/Library/Application Support/ClaudeCode/CLAUDE.md</code> / Linux: <code>/etc/claude-code/CLAUDE.md</code></td>
+<td>組織全体の指示（IT/DevOps 管理）</td>
+<td>組織の全ユーザー</td>
+</tr>
+<tr>
+<td><strong>プロジェクトメモリ</strong></td>
+<td><code>./CLAUDE.md</code> または <code>./.claude/CLAUDE.md</code></td>
+<td>チーム共有のプロジェクト指示</td>
+<td>チームメンバー（ソース管理経由）</td>
+</tr>
+<tr>
+<td><strong>プロジェクトルール</strong></td>
+<td><code>./.claude/rules/*.md</code></td>
+<td>モジュラーなトピック別指示</td>
+<td>チームメンバー（ソース管理経由）</td>
+</tr>
+<tr>
+<td><strong>ユーザーメモリ</strong></td>
+<td><code>~/.claude/CLAUDE.md</code></td>
+<td>全プロジェクト共通の個人設定</td>
+<td>自分のみ</td>
+</tr>
+<tr>
+<td><strong>プロジェクトメモリ（ローカル）</strong></td>
+<td><code>./CLAUDE.local.md</code></td>
+<td>個人的なプロジェクト固有設定</td>
+<td>自分のみ</td>
+</tr>
+<tr>
+<td><strong>Auto Memory</strong></td>
+<td><code>~/.claude/projects/&lt;project&gt;/memory/</code></td>
+<td>Claude 自身のメモ・学習</td>
+<td>自分のみ（プロジェクト別）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="claudemd_1">CLAUDE.md<a class="headerlink" href="#claudemd_1" title="Permanent link">&para;</a></h2>
+<h3 id="claudemd_2">CLAUDE.md とは<a class="headerlink" href="#claudemd_2" title="Permanent link">&para;</a></h3>
+<p>Claude Code が<strong>毎セッション開始時に自動で読み込む</strong>設定ファイル。プロジェクトのルール、コーディング規約、ワークフローを永続的に伝える手段。</p>
+<blockquote>
+<p>CLAUDE.md はコードのように扱う：問題が起きたらレビューし、定期的に整理し、変更後は Claude の挙動が変わるか観察する。</p>
+<p>— <a href="https://code.claude.com/docs/en/best-practices">公式ベストプラクティス</a></p>
+</blockquote>
+<h3 id="_3">書き方のベストプラクティス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>簡潔に保つことが最重要。</strong> 各行について「この指示を削除したら Claude はミスするか？」と問い、答えが No なら削除する。肥大化した CLAUDE.md は、重要な指示が埋もれて無視される原因になる。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># コードスタイル</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">-</span><span class="w"> </span>ES Modules (import/export) を使う。CommonJS (require) は使わない
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">-</span><span class="w"> </span>可能な限り import を分割代入する（例: import { foo } from &#39;bar&#39;）
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gh"># ワークフロー</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">-</span><span class="w"> </span>コード変更後は必ず型チェックを実行すること
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">-</span><span class="w"> </span>テストは個別実行を優先。全テストスイートは実行しない
+</code></pre></div>
+<h4 id="vs">含めるべきもの vs 含めないもの<a class="headerlink" href="#vs" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>✅ 含める</th>
+<th>❌ 含めない</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude が推測できない Bash コマンド</td>
+<td>コードを読めばわかること</td>
+</tr>
+<tr>
+<td>デフォルトと異なるコードスタイルルール</td>
+<td>言語の標準規約（Claude は既に知っている）</td>
+</tr>
+<tr>
+<td>テスト手順と推奨テストランナー</td>
+<td>詳細な API ドキュメント（リンクで十分）</td>
+</tr>
+<tr>
+<td>リポジトリの作法（ブランチ命名、PR 手順）</td>
+<td>頻繁に変わる情報</td>
+</tr>
+<tr>
+<td>アーキテクチャ上の意思決定</td>
+<td>ファイルごとの説明</td>
+</tr>
+<tr>
+<td>開発環境の癖（必須環境変数など）</td>
+<td>「きれいなコードを書け」のような自明なこと</td>
+</tr>
+<tr>
+<td>よくあるハマりポイント</td>
+<td>長い説明やチュートリアル</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_4">強調のテクニック<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>重要なルールには強調を付けると遵守率が上がる：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>IMPORTANT: テストは必ず個別実行。全テストスイートは絶対に実行しない
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>YOU MUST: コミット前に typecheck を通す
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>NEVER: node_modules を直接編集しない
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Claude が指示を無視する場合</p>
+<p>CLAUDE.md にルールがあるのに Claude が従わない場合、ファイルが長すぎてルールが埋もれている可能性が高い。また、Claude が CLAUDE.md に答えがある質問をしてくる場合、表現が曖昧かもしれない。</p>
+</div>
+<h3 id="init">/init コマンドで生成する<a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Claude Code 内で実行</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>/init
+</code></pre></div>
+<p>プロジェクトのビルドシステム、テストフレームワーク、コードパターンを自動検出して CLAUDE.md の土台を生成する。生成後に不要な記述を削除・調整する。</p>
+<h3 id="_5">@ によるファイルインポート<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>CLAUDE.md 内で <code>@path/to/file</code> と書くと、そのファイルの内容がインポートされる。相対パスはインポート元ファイルからの相対パスで解決される。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>プロジェクト概要: <span class="ni">@README</span>.md で確認
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>npm コマンド: <span class="ni">@package</span>.json で確認
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="gh"># 追加の指示</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">-</span><span class="w"> </span>Git ワークフロー: <span class="ni">@docs/git</span>-instructions.md
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">-</span><span class="w"> </span>個人設定: @~/.claude/my-project-instructions.md
+</code></pre></div>
+<p>インポートされたファイルはさらに再帰的にインポートでき、最大深度は 5 ホップ。コードスパンやコードブロック内の <code>@</code> はインポートとして扱われない。</p>
+<h3 id="_6">配置場所と読み込み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ホームディレクトリ</strong> (<code>~/.claude/CLAUDE.md</code>): 全セッション共通</li>
+<li><strong>プロジェクトルート</strong> (<code>./CLAUDE.md</code>): git にコミットしてチーム共有</li>
+<li><strong>プロジェクトルート・ローカル</strong> (<code>./CLAUDE.local.md</code>): 個人用（.gitignore 推奨）</li>
+<li><strong>親ディレクトリ</strong>: モノレポで <code>root/CLAUDE.md</code> と <code>root/foo/CLAUDE.md</code> の両方が読み込まれる</li>
+<li><strong>子ディレクトリ</strong>: Claude がそのディレクトリのファイルを操作する時にオンデマンドで読み込まれる</li>
+</ul>
+<p>すべての階層の CLAUDE.md が<strong>マージされて</strong>読み込まれる。より具体的な指示が広い指示より優先される。</p>
+<h2 id="clauderules">モジュラールール（.claude/rules/）<a class="headerlink" href="#clauderules" title="Permanent link">&para;</a></h2>
+<p>大規模プロジェクトでは、1つの CLAUDE.md ではなく <code>.claude/rules/</code> ディレクトリに複数のルールファイルを配置できる。</p>
+<h3 id="_7">基本構成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>your-project/
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── .claude/
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>│   ├── CLAUDE.md           # メインのプロジェクト指示
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│   └── rules/
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│       ├── code-style.md   # コードスタイル
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│       ├── testing.md      # テスト規約
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>│       └── security.md     # セキュリティ要件
+</code></pre></div>
+<p><code>.claude/rules/</code> 内の全 <code>.md</code> ファイルはプロジェクトメモリとして自動的に読み込まれる。</p>
+<h3 id="_8">パス固有のルール<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>YAML フロントマターの <code>paths</code> フィールドで、特定のファイルにスコープを限定できる：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>---
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>paths:
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="gu">  - &quot;src/api/**/*.ts&quot;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="gu">---</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="gh"># API 開発ルール</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">-</span><span class="w"> </span>全 API エンドポイントにバリデーションを含める
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">-</span><span class="w"> </span>標準エラーレスポンス形式を使用する
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">-</span><span class="w"> </span>OpenAPI ドキュメントコメントを含める
+</code></pre></div>
+<p><code>paths</code> フィールドなしのルールは無条件に全ファイルに適用される。glob パターン、ブレース展開（<code>*.{ts,tsx}</code>）、サブディレクトリ配置にも対応。</p>
+<h3 id="_9">ユーザーレベルルール<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><code>~/.claude/rules/</code> に個人用ルールを配置できる。プロジェクトルールより低い優先度で読み込まれる。</p>
+<h2 id="auto-memory">Auto Memory<a class="headerlink" href="#auto-memory" title="Permanent link">&para;</a></h2>
+<h3 id="auto-memory_1">Auto Memory とは<a class="headerlink" href="#auto-memory_1" title="Permanent link">&para;</a></h3>
+<p>Claude が作業中に<strong>自動的にメモを保存する</strong>仕組み。CLAUDE.md がユーザーの書いた指示なのに対し、Auto Memory は Claude 自身が発見したことに基づくメモ。</p>
+<h3 id="_10">保存される内容<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>プロジェクトパターン</strong>: ビルドコマンド、テスト規約、コードスタイル</li>
+<li><strong>デバッグの知見</strong>: トリッキーな問題の解決策、よくあるエラーの原因</li>
+<li><strong>アーキテクチャメモ</strong>: 重要なファイル、モジュールの関係、重要な抽象</li>
+<li><strong>ユーザーの好み</strong>: コミュニケーションスタイル、ワークフロー、ツール選択</li>
+</ul>
+<h3 id="_11">ストレージ構造<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>~/.claude/projects/&lt;project&gt;/memory/
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── MEMORY.md              # 簡潔なインデックス（最初の200行がセッション開始時に読み込まれる）
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>├── debugging.md           # デバッグパターンの詳細メモ
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>├── api-conventions.md     # API 設計の決定事項
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>└── ...                    # その他のトピックファイル
+</code></pre></div>
+<ul>
+<li><code>MEMORY.md</code> の最初の 200 行がセッション開始時にシステムプロンプトに読み込まれる</li>
+<li>トピックファイル（<code>debugging.md</code> など）は起動時には読み込まれず、必要な時にオンデマンドで読み込まれる</li>
+<li>Claude に特定のことを保存させたい場合は直接指示：「pnpm を使うことを覚えて」「API テストにはローカル Redis が必要なことをメモリに保存して」</li>
+</ul>
+<h3 id="auto-memory_2">Auto Memory の管理<a class="headerlink" href="#auto-memory_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Claude Code 内で /memory コマンドでメモリファイルを開く</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>/memory
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># 環境変数で制御</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CLAUDE_CODE_DISABLE_AUTO_MEMORY</span><span class="o">=</span><span class="m">1</span><span class="w">  </span><span class="c1"># 無効化</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CLAUDE_CODE_DISABLE_AUTO_MEMORY</span><span class="o">=</span><span class="m">0</span><span class="w">  </span><span class="c1"># 強制有効化</span>
+</code></pre></div>
+<h2 id="skills">Skills（スキル）<a class="headerlink" href="#skills" title="Permanent link">&para;</a></h2>
+<h3 id="skills_1">Skills とは<a class="headerlink" href="#skills_1" title="Permanent link">&para;</a></h3>
+<p>Claude Code の知識・能力を拡張するモジュラーな仕組み。<a href="https://agentskills.io">Agent Skills</a> オープンスタンダードに準拠。関連する作業で<strong>自動的に読み込まれる</strong>か、<code>/skill-name</code> で<strong>手動起動</strong>できる。</p>
+<p>CLAUDE.md は毎セッション読み込まれるが、Skills は<strong>必要な時だけ</strong>読み込まれるため、コンテキストを膨らませない。</p>
+<h3 id="_12">スキルの配置場所<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>場所</th>
+<th>パス</th>
+<th>適用範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>企業管理</td>
+<td>マネージド設定</td>
+<td>組織の全ユーザー</td>
+</tr>
+<tr>
+<td>個人用</td>
+<td><code>~/.claude/skills/&lt;name&gt;/SKILL.md</code></td>
+<td>全プロジェクト</td>
+</tr>
+<tr>
+<td>プロジェクト用</td>
+<td><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td>
+<td>そのプロジェクトのみ</td>
+</tr>
+<tr>
+<td>プラグイン</td>
+<td><code>&lt;plugin&gt;/skills/&lt;name&gt;/SKILL.md</code></td>
+<td>プラグイン有効時</td>
+</tr>
+</tbody>
+</table>
+<p>同名のスキルは高優先度の場所が勝つ（企業 &gt; 個人 &gt; プロジェクト）。</p>
+<h3 id="_13">スキルの種類<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">リファレンス型（自動適用される知識）<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nn">---</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-conventions</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REST API 設計規約</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nn">---</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># API 規約</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URL パスは kebab-case</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JSON プロパティは camelCase</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">リストエンドポイントにはページネーション必須</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URL パスにバージョンを含める（/v1/, /v2/）</span>
+</code></pre></div>
+<h4 id="_15">タスク型（手動起動するワークフロー）<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nn">---</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fix-issue</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GitHub Issue を修正する</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nt">disable-model-invocation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nn">---</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="l l-Scalar l-Scalar-Plain">GitHub Issue $ARGUMENTS を分析して修正する。</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="l l-Scalar l-Scalar-Plain">1. `gh issue view $0` で Issue の詳細を取得</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="l l-Scalar l-Scalar-Plain">2. 問題を理解する</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="l l-Scalar l-Scalar-Plain">3. 関連ファイルをコードベースから検索</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="l l-Scalar l-Scalar-Plain">4. 修正を実装</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="l l-Scalar l-Scalar-Plain">5. テストを書いて実行</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="l l-Scalar l-Scalar-Plain">6. lint・型チェックを通す</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="l l-Scalar l-Scalar-Plain">7. わかりやすいコミットメッセージで commit</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="l l-Scalar l-Scalar-Plain">8. push して PR を作成</span>
+</code></pre></div>
+<p>使い方: <code>/fix-issue 1234</code></p>
+<h3 id="_16">フロントマター設定<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>フィールド</th>
+<th>必須</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>No</td>
+<td>スキル名（小文字・数字・ハイフン、最大64文字）</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>推奨</td>
+<td>説明（Claude が自動適用の判断に使用）</td>
+</tr>
+<tr>
+<td><code>argument-hint</code></td>
+<td>No</td>
+<td>引数のヒント（例: <code>[issue-number]</code>）</td>
+</tr>
+<tr>
+<td><code>disable-model-invocation</code></td>
+<td>No</td>
+<td><code>true</code> で自動適用を無効化（手動専用に）</td>
+</tr>
+<tr>
+<td><code>user-invocable</code></td>
+<td>No</td>
+<td><code>false</code> で /メニューから非表示（バックグラウンド知識用）</td>
+</tr>
+<tr>
+<td><code>allowed-tools</code></td>
+<td>No</td>
+<td>許可するツール（例: <code>Read, Grep, Glob</code>）</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>No</td>
+<td>使用モデルの指定</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>No</td>
+<td><code>fork</code> でサブエージェント実行</td>
+</tr>
+<tr>
+<td><code>agent</code></td>
+<td>No</td>
+<td><code>context: fork</code> 時のサブエージェントタイプ</td>
+</tr>
+<tr>
+<td><code>hooks</code></td>
+<td>No</td>
+<td>スキルのライフサイクルにスコープされたフック</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_17">変数の利用<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>変数</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$ARGUMENTS</code></td>
+<td><code>/skill-name</code> に渡された全引数</td>
+</tr>
+<tr>
+<td><code>$ARGUMENTS[0]</code>, <code>$0</code></td>
+<td>第1引数</td>
+</tr>
+<tr>
+<td><code>$ARGUMENTS[1]</code>, <code>$1</code></td>
+<td>第2引数</td>
+</tr>
+<tr>
+<td><code>${CLAUDE_SESSION_ID}</code></td>
+<td>セッション ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_18">動的コンテキスト注入<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p><code>!`command`</code> 構文でシェルコマンドの出力をスキル内容に埋め込める：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nn">---</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr-summary</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PR の変更を要約する</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fork</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nt">agent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Explore</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nt">allowed-tools</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bash(gh *)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nn">---</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1">## Pull request context</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">PR diff</span><span class="p">:</span><span class="w"> </span><span class="kt">!</span><span class="err">`</span><span class="l l-Scalar l-Scalar-Plain">gh pr diff`</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">PR コメント</span><span class="p">:</span><span class="w"> </span><span class="kt">!</span><span class="err">`</span><span class="l l-Scalar l-Scalar-Plain">gh pr view --comments`</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">変更ファイル</span><span class="p">:</span><span class="w"> </span><span class="kt">!</span><span class="err">`</span><span class="l l-Scalar l-Scalar-Plain">gh pr diff --name-only`</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1">## タスク</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="l l-Scalar l-Scalar-Plain">この Pull Request を要約して...</span>
+</code></pre></div>
+<p>コマンドは Claude が見る前に実行され、出力で置換される。</p>
+<h3 id="_19">呼び出し制御<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>フロントマター</th>
+<th>ユーザーが呼び出し</th>
+<th>Claude が呼び出し</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>（デフォルト）</td>
+<td>✅</td>
+<td>✅</td>
+<td>通常のスキル</td>
+</tr>
+<tr>
+<td><code>disable-model-invocation: true</code></td>
+<td>✅</td>
+<td>❌</td>
+<td>デプロイなど副作用のあるワークフロー</td>
+</tr>
+<tr>
+<td><code>user-invocable: false</code></td>
+<td>❌</td>
+<td>✅</td>
+<td>バックグラウンド知識</td>
+</tr>
+</tbody>
+</table>
+<h2 id="claudemd_3">プロジェクト別 CLAUDE.md の設定例<a class="headerlink" href="#claudemd_3" title="Permanent link">&para;</a></h2>
+<h3 id="typescript-react">TypeScript + React プロジェクト<a class="headerlink" href="#typescript-react" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="gh"># CLAUDE.md</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="gu">## ビルド・テスト</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">-</span><span class="w"> </span><span class="sb">`pnpm dev`</span> — 開発サーバー
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">-</span><span class="w"> </span><span class="sb">`pnpm test -- --run &lt;file&gt;`</span> — 個別テスト
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">-</span><span class="w"> </span><span class="sb">`pnpm typecheck`</span> — 型チェック
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="k">-</span><span class="w"> </span><span class="sb">`pnpm lint`</span> — ESLint
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="gu">## コードスタイル</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="k">-</span><span class="w"> </span>関数コンポーネント + hooks のみ
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="k">-</span><span class="w"> </span>styled-components は使わない（Tailwind CSS）
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="k">-</span><span class="w"> </span>Server Components がデフォルト、&#39;use client&#39; は必要な場合のみ
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="gu">## アーキテクチャ</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="k">-</span><span class="w"> </span>app/ — Next.js App Router
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="k">-</span><span class="w"> </span>components/ — 再利用コンポーネント
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="k">-</span><span class="w"> </span>lib/ — ユーティリティ
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="k">-</span><span class="w"> </span>IMPORTANT: API Route は app/api/ に配置
+</code></pre></div>
+<h3 id="python-fastapi">Python + FastAPI プロジェクト<a class="headerlink" href="#python-fastapi" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="gh"># CLAUDE.md</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="gu">## 環境</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">-</span><span class="w"> </span>Python 3.12+, uv でパッケージ管理
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">-</span><span class="w"> </span><span class="sb">`uv run pytest tests/&lt;file&gt;`</span> — テスト実行
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="k">-</span><span class="w"> </span><span class="sb">`uv run ruff check .`</span> — lint
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">-</span><span class="w"> </span><span class="sb">`uv run mypy .`</span> — 型チェック
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="gu">## コードスタイル</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="k">-</span><span class="w"> </span>型ヒント必須
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="k">-</span><span class="w"> </span>Pydantic v2 モデル使用
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="k">-</span><span class="w"> </span>async/await を優先
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="gu">## NEVER</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="k">-</span><span class="w"> </span>requirements.txt を直接編集しない（uv で管理）
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="k">-</span><span class="w"> </span>グローバル変数は使わない
+</code></pre></div>
+<h3 id="rust">Rust プロジェクト<a class="headerlink" href="#rust" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="gh"># CLAUDE.md</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="gu">## ビルド・テスト</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">-</span><span class="w"> </span><span class="sb">`cargo build`</span> — ビルド
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">-</span><span class="w"> </span><span class="sb">`cargo test &lt;test_name&gt;`</span> — 個別テスト
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="k">-</span><span class="w"> </span><span class="sb">`cargo clippy`</span> — lint
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="k">-</span><span class="w"> </span><span class="sb">`cargo fmt --check`</span> — フォーマットチェック
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="gu">## スタイル</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="k">-</span><span class="w"> </span>unwrap() は禁止。Result/Option を適切に処理
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="k">-</span><span class="w"> </span>pub は最小限に
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="k">-</span><span class="w"> </span>エラー型は thiserror で定義
+</code></pre></div>
+<h3 id="_20">メンテナンスの習慣<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>定期的に見直す</strong>: Claude が不要な行動をしたら CLAUDE.md を確認</li>
+<li><strong>肥大化を防ぐ</strong>: 長くなりすぎたら <code>.claude/rules/</code> に分割</li>
+<li><strong>git にコミット</strong>: チーム全体で共有、レビュー対象にする</li>
+<li><strong>動作確認</strong>: ルールを変更したら Claude の挙動が変わるか観察</li>
+<li><strong>Hook に変換</strong>: Claude が既にルール通りに動いているなら削除するか、確実に実行させたい場合は Hook に変換する</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy", "navigation.instant", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
