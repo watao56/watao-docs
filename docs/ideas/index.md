@@ -2,6 +2,27 @@
 
 プロダクトアイデアと設計書のまとめです。
 
+## 🚀 非保険偏重・海外トレンド設計 v50（2026-04-02）
+
+保険型を1件に抑え、**パララックスLP演出AI / Give-first交換コミュニティ / 作業契約型生産性 / Product Hunt→日本実装ブリッジ / 軽量合意スタンプ（保険型1件）**で新規5案を設計。全案A評価以上。
+
+| プロダクト | カテゴリ | 海外事例 | 評価 | 粗利率 |
+|-----------|---------|---------|------|--------|
+| [🌊 ParallaxPoster Lab](parallaxposter-lab.md) ([レビュー](parallaxposter-lab-review.md)) | AI×クリエイティブ（1枚画像→奥行き動画） | Framer parallax templates / Canva / LP motion潮流 | **A** | 82% |
+| [🔁 Give2Get Booth](give2get-booth.md) ([レビュー](give2get-booth-review.md)) | ソーシャル/コミュニティ（2件レビューで投稿ブースト） | Indie Hackers / ADPList / Reddit karma設計 | **A** | 86% |
+| [⏱️ FocusContracts](focus-contracts.md) ([レビュー](focus-contracts-review.md)) | パーソナル生産性（作業契約+成果カード） | Beeminder / Sunsama / Finch | **A** | 87% |
+| [🌉 PH Bridge JP](ph-bridge-jp.md) ([レビュー](ph-bridge-jp-review.md)) | マイクロSaaS（PH新着→日本MVPタスク化） | Product Hunt / BetaList / Exploding Topics | **A** | 81% |
+| [🛡️ PromiseStamp Lite](promise-stamp-lite.md) ([レビュー](promise-stamp-lite-review.md)) | 軽量合意ログ（保険型） | Bonsai / HoneyBook / clickwrap UX | **A** | 87% |
+
+### v50の特徴
+- **カテゴリ完全分散**: 5案の用途重複を回避
+- **保険型は1/5のみ**: PromiseStamp Liteのみ守り系
+- **海外トレンド→日本導線化**: LPモーション、give-firstコミュニティ、commitment device、PH探索を国内導線に変換
+- **$20達成の現実性**: 3〜5有料ユーザー（または単発販売）で到達
+- **AIコスト最適化**: 月$6〜$16レンジで制御
+
+---
+
 ## 🚀 非保険偏重・海外トレンド設計 v49（2026-04-01）
 
 保険型を1件に抑え、**ホログラム演出AI動画 / 音声宣言コミュニティ / 8タイル生産性 / 海外ニッチ→実装カード / 追加依頼合意ログ（保険型1件）**で新規5案を設計。全案A評価以上。
